@@ -97,7 +97,6 @@ function formatAssistantMessage(content: string): React.ReactNode {
     </div>
   );
 }
-
 const DemoPage: React.FC = () => {
   const [step, setStep] = useState('login');
   const [message, setMessage] = useState("");
@@ -110,6 +109,7 @@ const DemoPage: React.FC = () => {
   const [user, setUser] = useState({ name: '', email: '' });
   const [isMapFullscreen, setIsMapFullscreen] = useState(false);
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
+  
 
 
   useEffect(() => {
@@ -153,15 +153,39 @@ const DemoPage: React.FC = () => {
     }
   };
 
-  const handleLogin = (e: FormEvent<HTMLFormElement>) => {
+  const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = new FormData(e.target as HTMLFormElement);
-    setUser({
-      name: formData.get('name') as string,
-      email: formData.get('email') as string
+    
+    const form = e.target as HTMLFormElement;
+    const formData = new FormData(form);
+    
+    // Use formData.get() to retrieve values
+    const name = formData.get('name') as string;
+    const email = formData.get('email') as string;
+  
+    // Update local state for the demo
+    setUser ({
+      name,
+      email
     });
     setStep('chat');
+    
+    // Prepare the URLSearchParams
+    const params = new URLSearchParams();
+    params.append('name', name);
+    params.append('email', email);
+  
+    try {
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: params.toString()
+      });
+    } catch (error) {
+      console.error('Error submitting form to Netlify:', error);
+    }
   };
+
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>, overrideQuery?: string) => {
     e.preventDefault();
@@ -200,7 +224,6 @@ const DemoPage: React.FC = () => {
     const fakeEvent = { preventDefault: () => {} } as FormEvent<HTMLFormElement>;
     await handleSubmit(fakeEvent, query);
   };
-  
 
   const toggleMapFullscreen = () => {
     setIsMapFullscreen(!isMapFullscreen);
@@ -252,14 +275,24 @@ const DemoPage: React.FC = () => {
             <div className="w-full max-w-xl">
               <h1 className="text-5xl font-bold text-center text-primary mb-4">Welcome to NeuraCities</h1>
               <div className="text-lg text-center mb-2 text-secondary">Please Sign up to access the free City of Vancouver demo!</div>
-              <form name="demo-form" method="POST" data-netlify="true" onSubmit={handleLogin} className="space-y-6">
-              <input type="hidden" name="form-name" value="footer-form" />
+              <form 
+                name="demo-form" 
+                method="POST" 
+                data-netlify="true" 
+                netlify-honeypot="bot-field"
+                onSubmit={handleLogin} 
+                className="space-y-6"
+              >
+                <input type="hidden" name="form-name" value="demo-form" />
+                <input type="hidden" name="bot-field" />
+                
                 <Input
                   name="name"
                   placeholder="Name"
                   required
                   className="w-full text-lg h-12 bg-white"
                 />
+                
                 <Input
                   name="email"
                   type="email"
@@ -267,6 +300,7 @@ const DemoPage: React.FC = () => {
                   required
                   className="w-full text-lg h-12 bg-white"
                 />
+                
                 <div className="flex items-center font-semibold bg-coral/1 space-x-2 text-md">
                   <Checkbox
                     id="newsletter"
@@ -275,9 +309,11 @@ const DemoPage: React.FC = () => {
                     label="Keep me updated with NeuraCities!"
                   />
                 </div>
+                
                 <div className="text-md text-primary">
                   We respect your privacy. Your information will never be shared.
                 </div>
+                
                 <Button type="submit" className="w-full h-12 text-lg text-white bg-coral hover:bg-coral/95">
                   Get Started
                 </Button>

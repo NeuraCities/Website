@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Netlify Forms</title>
+  </head>
+  <body>
+    <!-- Footer form from ContactAndFAQ component -->
+    <form name="footer-form" netlify netlify-honeypot="bot-field" hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <textarea name="message"></textarea>
+    </form>
+    
+    <!-- Contact page form -->
+    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="text" name="jobTitle" />
+      <input type="tel" name="phone" />
+      <select name="organizationType"></select>
+      <textarea name="message"></textarea>
+    </form>
+    
+    <!-- Demo page form -->
+    <form name="demo-form" netlify netlify-honeypot="bot-field" hidden>
+        <input type="text" name="name" />
+        <input type="email" name="email" />
+        <input type="checkbox" name="newsletter" />
+    </form>
+  </body>
+</html>

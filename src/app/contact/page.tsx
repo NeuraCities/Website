@@ -1,8 +1,17 @@
 "use client";
 import React, { useState } from "react";
 
+type FormDataType = {
+  name: string;
+  email: string;
+  message: string;
+  organizationType: string;
+  jobTitle: string;
+  phone: string;
+};
+
 const Contact: React.FC = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormDataType>({
     name: "",
     email: "",
     message: "",
@@ -20,11 +29,26 @@ const Contact: React.FC = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Implement actual submission logic (e.g. sending data to your API)
-    console.log(formData);
-    setSubmitted(true);
+
+    // Convert formData to URLSearchParams
+    const params = new URLSearchParams();
+    for (const key in formData) {
+      params.append(key, formData[key as keyof FormDataType]);
+    }
+
+    try {
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: params.toString() // Use the URLSearchParams string
+      });
+      setSubmitted(true);
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      // Handle error state
+    }
   };
 
   return (
@@ -49,16 +73,19 @@ const Contact: React.FC = () => {
               <form
                 onSubmit={handleSubmit}
                 className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-coral/90 p-8 rounded-lg shadow-lg"
-                name="contact" // Add this line
-                data-netlify="true" // Add this line
+                name="contact"
+                method="POST"
+                data-netlify="true"
                 netlify-honeypot="bot-field"
               >
+                <input type="hidden" name="form-name" value="contact" />
+                <input type="hidden" name="bot-field" />
                 <div className="md:col-span-2">
                   <label className="block text-sm font-medium text-neutral mb-2">
                     Organization Type
                   </label>
                   <select
-                    name="organizationType" // Add name attribute
+                    name="organizationType"
                     onChange={handleChange}
                     className="w-full p-3 border border-secondary/20 rounded-lg focus:outline-none focus:border-primary"
                     required
@@ -76,7 +103,7 @@ const Contact: React.FC = () => {
                   </label>
                   <input
                     type="text"
-                    name="name" // Add name attribute
+                    name="name"
                     required
                     onChange={handleChange}
                     className="w-full p-3 border border-secondary/20 rounded-lg focus:outline-none focus:border-primary"
@@ -88,7 +115,7 @@ const Contact: React.FC = () => {
                   </label>
                   <input
                     type="text"
-                    name="jobTitle" // Add name attribute
+                    name="jobTitle"
                     required
                     onChange={handleChange}
                     className="w-full p-3 border border-secondary/20 rounded-lg focus:outline-none focus:border-primary"
@@ -100,7 +127,7 @@ const Contact: React.FC = () => {
                   </label>
                   <input
                     type="email"
-                    name="email" // Add name attribute
+                    name="email"
                     required
                     onChange={handleChange}
                     className="w-full p-3 border border-secondary/20 rounded-lg focus:outline-none focus:border-primary"
@@ -112,7 +139,7 @@ const Contact: React.FC = () => {
                   </label>
                   <input
                     type="tel"
-                    name="phone" // Add name attribute
+                    name="phone"
                     onChange={handleChange}
                     className="w-full p-3 border border-secondary/20 rounded-lg focus:outline-none focus:border-primary"
                   />
@@ -122,7 +149,7 @@ const Contact: React.FC = () => {
                     Message
                   </label>
                   <textarea
-                    name="message" // Add name attribute
+                    name="message"
                     rows={4}
                     onChange={handleChange}
                     className="w-full p-3 border border-secondary/20 rounded-lg focus:outline-none focus:border-primary"

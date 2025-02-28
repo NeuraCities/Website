@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@netlify/plugin-nextjs": "^5.9.4",
+    "@netlify/plugin-nextjs": "^4.9.0",
     "@radix-ui/react-slot": "^1.1.2",
     "@react-spring/three": "^9.7.5",
     "@react-three/drei": "^9.122.0",
@@ -54,9 +54,9 @@
     "webpack": "^5.98.0"
   },
   "plugins": [
-  {
-    "package": "@opennextjs/netlify",
-    "version": "^5.9.0"
-  }
-]
+    {
+      "package": "@opennextjs/netlify",
+      "version": "^5.9.0"
+    }
+  ]
 }

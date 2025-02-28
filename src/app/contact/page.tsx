@@ -51,6 +51,7 @@ const Contact: React.FC = () => {
                 className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-coral/90 p-8 rounded-lg shadow-lg"
                 name="contact" // Add this line
                 data-netlify="true" // Add this line
+                netlify-honeypot="bot-field"
               >
                 <div className="md:col-span-2">
                   <label className="block text-sm font-medium text-neutral mb-2">
@@ -137,7 +138,7 @@ const Contact: React.FC = () => {
                 </div>
               </form>
             ) : (
-              <div className="bg-white p-8 rounded-lg shadow-lg text-center">
+              <div className="bg-coral p-8 rounded-lg shadow-lg text-center">
                 <h2 className="text-2xl font-bold text-white mb-4">Thank You!</h2>
                 <p className="text-neutral">
                   We&apos;ll be in touch within 1 business day to schedule your personalized demo.

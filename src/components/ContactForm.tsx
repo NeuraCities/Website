@@ -2,6 +2,10 @@
 import React, { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 
+export async function getStaticProps() {
+  return { props: {} };
+}
+
 interface FAQ {
   question: string;
   answer: string;
@@ -83,8 +87,9 @@ const ContactAndFAQ: React.FC = () => {
             <h2 className="text-3xl font-bold text-primary text-center mb-6">
               Get In Touch
             </h2>
-            <form name="footer-form" method="POST" data-netlify="true" className="space-y-4 text-center text-secondary">
+            <form name="footer-form" method="POST" data-netlify="true" netlify-honeypot="bot-field" className="space-y-4 text-center text-secondary">
             <input type="hidden" name="form-name" value="footer-form" />
+            <input type="hidden" name="bot-field" />
               <input
                 type="text"
                 placeholder="Name"

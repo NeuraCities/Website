@@ -52,5 +52,11 @@
     "tailwindcss": "^3.4.17",
     "typescript": "^5.7.3",
     "webpack": "^5.98.0"
-  }
+  },
+  "plugins": [
+    {
+      "package": "@netlify/plugin-nextjs",
+      "version": "latest"
+    }
+  ]
 }

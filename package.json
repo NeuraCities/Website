@@ -54,9 +54,9 @@
     "webpack": "^5.98.0"
   },
   "plugins": [
-    {
-      "package": "@netlify/plugin-nextjs",
-      "version": "5.9.4"
-    }
-  ]
+  {
+    "package": "@opennextjs/netlify",
+    "version": "^5.9.0"
+  }
+]
 }

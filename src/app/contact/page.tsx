@@ -2,12 +2,23 @@
 import React, { useState } from "react";
 
 const Contact: React.FC = () => {
-  const [formData] = useState({
+  const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
+    organizationType: "",
+    jobTitle: "",
+    phone: "",
   });
   const [submitted, setSubmitted] = useState(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -25,7 +36,7 @@ const Contact: React.FC = () => {
             Let&apos;s Get in Touch
           </h1>
           <p className="text-2xl md:text-2xl text-secondary max-w-2xl">
-            Schedule a call to enhance your departments capabilities.
+            Schedule a call to enhance your department&apos;s capabilities.
           </p>
         </div>
       </header>
@@ -35,12 +46,19 @@ const Contact: React.FC = () => {
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
             {!submitted ? (
-              <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-coral/90 p-8 rounded-lg shadow-lg">
+              <form
+                onSubmit={handleSubmit}
+                className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-coral/90 p-8 rounded-lg shadow-lg"
+                name="contact" // Add this line
+                data-netlify="true" // Add this line
+              >
                 <div className="md:col-span-2">
                   <label className="block text-sm font-medium text-neutral mb-2">
                     Organization Type
                   </label>
-                  <select 
+                  <select
+                    name="organizationType" // Add name attribute
+                    onChange={handleChange}
                     className="w-full p-3 border border-secondary/20 rounded-lg focus:outline-none focus:border-primary"
                     required
                   >
@@ -57,50 +75,55 @@ const Contact: React.FC = () => {
                   </label>
                   <input
                     type="text"
-                    name="name"
+                    name="name" // Add name attribute
                     required
+                    onChange={handleChange}
                     className="w-full p-3 border border-secondary/20 rounded-lg focus:outline-none focus:border-primary"
                   />
                 </div>
                 <div>
-                <label className="block text-sm font-medium text-neutral mb-2">
-                Job Title
+                  <label className="block text-sm font-medium text-neutral mb-2">
+                    Job Title
                   </label>
                   <input
                     type="text"
-                    name="title"
+                    name="jobTitle" // Add name attribute
                     required
+                    onChange={handleChange}
                     className="w-full p-3 border border-secondary/20 rounded-lg focus:outline-none focus:border-primary"
                   />
                 </div>
                 <div>
-                <label className="block text-sm font-medium text-neutral mb-2">
-                Work Email
+                  <label className="block text-sm font-medium text-neutral mb-2">
+                    Work Email
                   </label>
                   <input
                     type="email"
-                    name="email"
+                    name="email" // Add name attribute
                     required
+                    onChange={handleChange}
                     className="w-full p-3 border border-secondary/20 rounded-lg focus:outline-none focus:border-primary"
                   />
                 </div>
                 <div>
-                <label className="block text-sm font-medium text-neutral mb-2">
-                Phone
+                  <label className="block text-sm font-medium text-neutral mb-2">
+                    Phone
                   </label>
                   <input
                     type="tel"
-                    name="phone"
+                    name="phone" // Add name attribute
+                    onChange={handleChange}
                     className="w-full p-3 border border-secondary/20 rounded-lg focus:outline-none focus:border-primary"
                   />
                 </div>
                 <div className="md:col-span-2">
-                <label className="block text-sm font-medium text-neutral mb-2">
-                Message
+                  <label className="block text-sm font-medium text-neutral mb-2">
+                    Message
                   </label>
                   <textarea
-                    name="message"
+                    name="message" // Add name attribute
                     rows={4}
+                    onChange={handleChange}
                     className="w-full p-3 border border-secondary/20 rounded-lg focus:outline-none focus:border-primary"
                   ></textarea>
                 </div>
@@ -109,7 +132,7 @@ const Contact: React.FC = () => {
                     type="submit"
                     className="w-full p-3 border bg-cta text-white border-secondary/20 rounded-lg focus:outline-none focus:border-primary"
                   >
-                    Send 
+                    Send
                   </button>
                 </div>
               </form>
@@ -125,7 +148,7 @@ const Contact: React.FC = () => {
         </div>
       </section>
     </div>
-    );
+  );
 };
 
 export default Contact;

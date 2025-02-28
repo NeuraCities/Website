@@ -20,6 +20,7 @@
     "leaflet": "^1.9.4",
     "lottie-react": "^2.4.1",
     "lucide-react": "^0.471.2",
+    "netlify-identity-widget": "^1.9.2",
     "next": "15.1.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

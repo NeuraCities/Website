@@ -83,7 +83,8 @@ const ContactAndFAQ: React.FC = () => {
             <h2 className="text-3xl font-bold text-primary text-center mb-6">
               Get In Touch
             </h2>
-            <form className="space-y-4 text-center text-secondary">
+            <form name="footer-form" method="POST" data-netlify="true" className="space-y-4 text-center text-secondary">
+            <input type="hidden" name="form-name" value="footer-form" />
               <input
                 type="text"
                 placeholder="Name"

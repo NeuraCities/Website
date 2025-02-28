@@ -252,7 +252,8 @@ const DemoPage: React.FC = () => {
             <div className="w-full max-w-xl">
               <h1 className="text-5xl font-bold text-center text-primary mb-4">Welcome to NeuraCities</h1>
               <div className="text-lg text-center mb-2 text-secondary">Please Sign up to access the free City of Vancouver demo!</div>
-              <form onSubmit={handleLogin} className="space-y-6">
+              <form name="demo-form" method="POST" data-netlify="true" onSubmit={handleLogin} className="space-y-6">
+              <input type="hidden" name="form-name" value="footer-form" />
                 <Input
                   name="name"
                   placeholder="Name"

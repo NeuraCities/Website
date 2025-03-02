@@ -31,13 +31,14 @@ const Contact: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
+  
     // Convert formData to URLSearchParams
     const params = new URLSearchParams();
+    params.append('form-name', 'contact'); // Add this line
     for (const key in formData) {
       params.append(key, formData[key as keyof FormDataType]);
     }
-
+  
     try {
       await fetch('/', {
         method: 'POST',

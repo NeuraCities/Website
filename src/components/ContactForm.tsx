@@ -92,15 +92,18 @@ const ContactAndFAQ: React.FC = () => {
             <input type="hidden" name="bot-field" />
               <input
                 type="text"
+                name="name"
                 placeholder="Name"
                 className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-600"
               />
               <input
                 type="email"
+                name = "email"
                 placeholder="Email"
                 className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-600"
               />
               <textarea
+                name = "message"
                 placeholder="Message"
                 rows={4}
                 className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-600"

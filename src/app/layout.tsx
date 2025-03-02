@@ -3,6 +3,7 @@ import Footer from "../components/Footer";
 import ContactForm from "../components/ContactForm";
 import React from "react";
 import "./globals.css";
+import Script from 'next/script';
 
 export const metadata = {
   title: 'NeuraCities',
@@ -19,6 +20,39 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        {/* Add this script to inject the Netlify form definitions */}
+        <Script id="netlify-forms" strategy="afterInteractive">
+          {`
+            if (typeof window !== 'undefined') {
+              const div = document.createElement('div');
+              div.innerHTML = \`
+                <form name="footer-form" netlify netlify-honeypot="bot-field" hidden>
+                  <input type="text" name="name" />
+                  <input type="email" name="email" />
+                  <textarea name="message"></textarea>
+                </form>
+                
+                <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+                  <input type="text" name="name" />
+                  <input type="email" name="email" />
+                  <input type="text" name="jobTitle" />
+                  <input type="tel" name="phone" />
+                  <select name="organizationType"></select>
+                  <textarea name="message"></textarea>
+                </form>
+                
+                <form name="demo-form" netlify netlify-honeypot="bot-field" hidden>
+                  <input type="text" name="name" />
+                  <input type="email" name="email" />
+                  <input type="checkbox" name="newsletter" />
+                </form>
+              \`;
+              document.body.appendChild(div);
+            }
+          `}
+        </Script>
+      </head>
       <body className="antialiased">
         <div className="relative min-h-screen">
           {/* Topographic Overlay */}

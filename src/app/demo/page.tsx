@@ -162,9 +162,9 @@ const DemoPage: React.FC = () => {
     // Use formData.get() to retrieve values
     const name = formData.get('name') as string;
     const email = formData.get('email') as string;
-  
+    
     // Update local state for the demo
-    setUser ({
+    setUser({
       name,
       email
     });
@@ -172,9 +172,11 @@ const DemoPage: React.FC = () => {
     
     // Prepare the URLSearchParams
     const params = new URLSearchParams();
+    params.append('form-name', 'demo-form'); // Add this line
     params.append('name', name);
     params.append('email', email);
-  
+    params.append('newsletter', newsletter ? 'yes' : 'no'); // Add this line
+    
     try {
       await fetch('/', {
         method: 'POST',
@@ -302,12 +304,12 @@ const DemoPage: React.FC = () => {
                 />
                 
                 <div className="flex items-center font-semibold bg-coral/1 space-x-2 text-md">
-                  <Checkbox
-                    id="newsletter"
-                    checked={newsletter}
-                    onCheckedChange={(checked) => setNewsletter(checked as boolean)}
-                    label="Keep me updated with NeuraCities!"
-                  />
+                <Checkbox
+                  id="newsletter"
+                  checked={newsletter}
+                  onCheckedChange={(checked) => setNewsletter(checked as boolean)}
+                  label="Keep me updated with NeuraCities!"
+                />
                 </div>
                 
                 <div className="text-md text-primary">

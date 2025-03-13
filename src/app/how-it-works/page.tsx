@@ -11,8 +11,6 @@ const AnimatedMapping = dynamic(() => import('@/app/how-it-works/solution-visual
 const AnimatedWorkflow = dynamic(() => import('@/app/how-it-works/solution-visualizations').then(mod => mod.AnimatedWorkflow), { ssr: false });
 const AnimatedCollaboration = dynamic(() => import('@/app/how-it-works/solution-visualizations').then(mod => mod.AnimatedCollaboration), { ssr: false });
 
-
-
 const SolutionsPage = () => {
   const [activeSection, setActiveSection] = useState(0);
   const sectionRefs = useRef<(HTMLElement | null)[]>([]);
@@ -25,7 +23,7 @@ const SolutionsPage = () => {
       icon: <Map className="w-8 h-8" />,
       features: [
         'Natural language GIS commands',
-        'Integration with ArcGIS and Excel workflows',
+        'Integration with GIS softwares and Excel workflows',
         'Automated spatial analysis tools',
         'Custom planning tools without coding'
       ],

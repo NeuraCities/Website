@@ -9,8 +9,181 @@ import {
   BarChart2,
   CheckCircle2
 } from 'lucide-react';
-import { CircleMarker, MapContainer, TileLayer } from 'react-leaflet';
+import { CircleMarker, MapContainer, TileLayer} from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
+import { Map as LeafletMap } from 'leaflet';
+
+const useSteppedAnimationWithResetDelay = (
+  totalSteps: number,
+  normalDelay: number = 2000,
+  resetDelay: number = 100
+) => {
+  const [step, setStep] = useState(0);
+  useEffect(() => {
+    const delay = step === totalSteps - 1 ? resetDelay : normalDelay;
+    const timer = setTimeout(() => {
+      setStep((prev) => (prev + 1) % totalSteps);
+    }, delay);
+    return () => clearTimeout(timer);
+  }, [step, totalSteps, normalDelay, resetDelay]);
+  return step;
+};
+
+const Typewriter = ({
+  text,
+  speed = 50,
+  className = '',
+}: {
+  text: string;
+  speed?: number;
+  className?: string;
+}) => {
+  const [displayedText, setDisplayedText] = useState('');
+  useEffect(() => {
+    let index = 0;
+    setDisplayedText('');
+    const interval = setInterval(() => {
+      setDisplayedText(text.slice(0, index));
+      index++;
+      if (index > text.length) {
+        clearInterval(interval);
+      }
+    }, speed);
+    return () => clearInterval(interval);
+  }, [text, speed]);
+  return (
+    <span className={className}>
+      {displayedText}
+      <span className="border-r border-gray-500 ml-1 animate-pulse" />
+    </span>
+  );
+};
+
+const AnimatedMapping = () => {
+  const step = useSteppedAnimationWithResetDelay(6, 2000, 100);
+  const [mapKey, setMapKey] = useState(0);
+  const mapRef = useRef<LeafletMap | null>(null);
+  const randomPointsRef = useRef<{ lat: number; lng: number }[]>([]);
+  const mapVisibleRef = useRef<boolean>(false);
+
+  // Generate a fixed set of random points (once)
+  useEffect(() => {
+    if (randomPointsRef.current.length === 0) {
+      randomPointsRef.current = Array.from({ length: 10 }, () => ({
+        lat: 30.2672 + (Math.random() - 0.5) * 0.04,
+        lng: -97.7431 + (Math.random() - 0.5) * 0.04,
+      }));
+    }
+  }, []);
+  // Check if the map visibility state has changed
+  useEffect(() => {
+    const isMapVisible = step >= 2 && step < 5;
+    
+    if (isMapVisible !== mapVisibleRef.current) {
+      mapVisibleRef.current = isMapVisible;
+      
+      // Only update key when map is about to become visible
+      if (isMapVisible) {
+        setMapKey(prev => prev + 1);
+      }
+    }
+  }, [step]);
+
+  return (
+    <div className="w-full h-72 relative bg-gradient-to-br from-white to-gray-100 rounded-xl p-6 overflow-hidden shadow-xl">
+      {/* Command Input */}
+      <div
+        className={`absolute top-4 left-1/2 transform -translate-x-1/2 transition-all duration-200 ${
+          step > 0 && step < 5 ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'
+        }`}
+      >
+        <div className="bg-white rounded-full shadow-lg p-2 flex items-center gap-2 border border-blue-200 hover:shadow-2xl transition-shadow">
+          <Command className="w-5 h-5 text-blue-500 animate-pulse" />
+          <div className="w-60 h-7 bg-gray-100 rounded-full relative overflow-hidden">
+            <div
+              className="absolute inset-y-0 left-0 bg-gradient-to-r from-blue-100 to-blue-50 transition-all duration-1000 ease-in-out"
+              style={{ width: '100%' }}
+            />
+            <div className="absolute inset-y-0 left-3 flex items-center text-xs text-gray-500">
+              {step === 1 ? (
+                <Typewriter
+                  text="Show recent accidents in Austin"
+                  speed={50}
+                  className="whitespace-nowrap"
+                />
+              ) : step >= 2 && step < 5 ? (
+                "Show recent accidents in Austin"
+              ) : null}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Conditionally render the Map Wrapper only when visible */}
+      {step >= 2 && step < 5 && (
+        <div
+          key={`map-wrapper-${mapKey}`}
+          className="absolute left-1/2 transition-all duration-700 top-20 opacity-100 scale-100"
+          style={{ transform: 'translateX(-50%)', width: '90%', height: '160px' }}
+        >
+          <MapContainer
+            key={`map-${mapKey}`}
+            center={[30.2672, -97.7431]}
+            zoom={13}
+            scrollWheelZoom={false}
+            style={{
+              height: '100%',
+              width: '100%',
+              borderRadius: '0.75rem',
+              position: 'relative'
+            }}
+            ref={mapRef}
+          > 
+            <TileLayer
+              attribution='&copy; <a href="https://cartocdn.com/">CARTO</a>'
+              url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
+            />
+            
+            {randomPointsRef.current.map((point, i) => (
+              <CircleMarker
+                key={i}
+                center={[point.lat, point.lng]}
+                radius={4}
+                pathOptions={{ color: '#FF5733', fillColor: '#FF5733', fillOpacity: 0.8 }}
+                className="animate-pulse"
+              />
+            ))}
+          </MapContainer>
+        </div>
+      )}
+
+      {/* Tools Panel */}
+      <div
+        className={`absolute transition-all duration-700 ${
+          step >= 2 && step < 5 ? 'bottom-6 opacity-100 translate-y-0' : 'bottom-0 opacity-0 translate-y-10'
+        }`}
+        style={{ left: '50%', transform: 'translateX(-50%)' }}
+      >
+        <div className="bg-white rounded-full shadow-lg p-2 flex items-center gap-4 border border-gray-200">
+          {[
+            { Icon: Layers, color: 'text-blue-500' },
+            { Icon: Palette, color: 'text-purple-500' },
+            { Icon: MapIcon, color: 'text-orange-500' },
+            { Icon: Settings, color: 'text-green-500' },
+          ].map(({ Icon, color }, i) => (
+            <div
+              key={i}
+              className="transition-transform duration-200 hover:scale-125 cursor-pointer"
+              style={{ transitionDelay: `${i * 100}ms` }}
+            >
+              <Icon className={`w-6 h-6 ${color}`} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const useAnimationController = (totalSteps = 4, duration = 2000, autoPlay = true) => {
   const [step, setStep] = useState(0);
@@ -152,153 +325,6 @@ const AnimatedDataRetrieval = () => {
   );
 };
 
-const useSteppedAnimationWithResetDelay = (
-  totalSteps: number,
-  normalDelay: number = 2000,
-  resetDelay: number = 100
-) => {
-  const [step, setStep] = useState(0);
-  useEffect(() => {
-    const delay = step === totalSteps - 1 ? resetDelay : normalDelay;
-    const timer = setTimeout(() => {
-      setStep((prev) => (prev + 1) % totalSteps);
-    }, delay);
-    return () => clearTimeout(timer);
-  }, [step, totalSteps, normalDelay, resetDelay]);
-  return step;
-};
-
-const Typewriter = ({
-  text,
-  speed = 50,
-  className = '',
-}: {
-  text: string;
-  speed?: number;
-  className?: string;
-}) => {
-  const [displayedText, setDisplayedText] = useState('');
-  useEffect(() => {
-    let index = 0;
-    const interval = setInterval(() => {
-      setDisplayedText(text.slice(0, index));
-      index++;
-      if (index > text.length) {
-        clearInterval(interval);
-      }
-    }, speed);
-    return () => clearInterval(interval);
-  }, [text, speed]);
-  return (
-    <span className={className}>
-      {displayedText}
-      <span className="border-r border-gray-500 ml-1 animate-pulse" />
-    </span>
-  );
-};
-
-const AnimatedMapping = () => {
-  // Using 6 steps, with a normal delay of 2000ms and a reset delay of 500ms.
-  const step = useSteppedAnimationWithResetDelay(6, 2000, 100);
-
-  // Generate a fixed set of random points (for the overlay) around Austin.
-  const randomPointsRef = useRef<{ lat: number; lng: number }[]>([]);
-  useEffect(() => {
-    if (randomPointsRef.current.length === 0) {
-      randomPointsRef.current = Array.from({ length: 10 }, () => ({
-        lat: 30.2672 + (Math.random() - 0.5) * 0.04,
-        lng: -97.7431 + (Math.random() - 0.5) * 0.04,
-      }));
-    }
-  }, []);
-
-  return (
-    <div className="w-full h-72 relative bg-gradient-to-br from-white to-gray-100 rounded-xl p-6 overflow-hidden shadow-xl">
-      {/* Command Input */}
-      <div
-        className={`absolute top-4 left-1/2 transform -translate-x-1/2 transition-all duration-200 ${
-          step > 0 && step < 5 ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'
-        }`}
-      >
-        <div className="bg-white rounded-full shadow-lg p-2 flex items-center gap-2 border border-blue-200 hover:shadow-2xl transition-shadow">
-          <Command className="w-5 h-5 text-blue-500 animate-pulse" />
-          <div className="w-60 h-7 bg-gray-100 rounded-full relative overflow-hidden">
-            <div
-              className="absolute inset-y-0 left-0 bg-gradient-to-r from-blue-100 to-blue-50 transition-all duration-1000 ease-in-out"
-              style={{ width: '100%' }}
-            />
-            <div className="absolute inset-y-0 left-3 flex items-center text-xs text-gray-500">
-              {step === 1 ? (
-                <Typewriter
-                  text="Show recent accidents in Austin"
-                  speed={50}
-                  className="whitespace-nowrap"
-                />
-              ) : step >= 2 && step < 5 ? (
-                "Show recent accidents in Austin"
-              ) : null}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Map */}
-      <div
-        className={`absolute left-1/2 transition-all duration-700 ${
-          step >= 2 && step < 5 ? 'top-20 opacity-100 scale-100' : 'top-8 opacity-0 scale-95'
-        }`}
-        style={{ transform: 'translateX(-50%)', width: '90%', height: '160px' }}
-      >
-        <MapContainer
-          center={[30.2672, -97.7431]}
-          zoom={13}
-          scrollWheelZoom={false}
-          style={{ height: '100%', width: '100%', borderRadius: '0.75rem', position: 'relative' }}
-        >
-          <TileLayer
-            attribution='&copy; <a href="https://cartocdn.com/">CARTO</a>'
-            url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
-          />
-          {/* Overlay random pulsing points */}
-          {randomPointsRef.current.map((point, i) => (
-            <CircleMarker
-              key={i}
-              center={[point.lat, point.lng]}
-              radius={4}
-              pathOptions={{ color: '#FF5733', fillColor: '#FF5733', fillOpacity: 0.8 }}
-              className="animate-pulse"
-            />
-          ))}
-        </MapContainer>
-      </div>
-
-      {/* Tools Panel */}
-      <div
-        className={`absolute transition-all duration-700 ${
-          step >= 2 && step < 5 ? 'bottom-6 opacity-100 translate-y-0' : 'bottom-0 opacity-0 translate-y-10'
-        }`}
-        style={{ left: '50%', transform: 'translateX(-50%)' }}
-      >
-        <div className="bg-white rounded-full shadow-lg p-2 flex items-center gap-4 border border-gray-200">
-          {[
-            { Icon: Layers, color: 'text-blue-500' },
-            { Icon: Palette, color: 'text-purple-500' },
-            { Icon: MapIcon, color: 'text-orange-500' },
-            { Icon: Settings, color: 'text-green-500' },
-          ].map(({ Icon, color }, i) => (
-            <div
-              key={i}
-              className="transition-transform duration-200 hover:scale-125 cursor-pointer"
-              style={{ transitionDelay: `${i * 100}ms` }}
-            >
-              <Icon className={`w-6 h-6 ${color}`} />
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-};
 const AnimatedWorkflow = () => {
   // Using a 6-step cycle so the final state stays visible a bit longer.
   const { step } = useAnimationController(6);

@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect, FormEvent} from 'react';
 import Link from 'next/link';
+import { motion } from "framer-motion";
 import {
   ChevronRight,
   ArrowRight,
@@ -24,6 +25,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import Image from "next/image";
 
 interface ChatMessage {
   role: "user" | "assistant";
@@ -48,12 +50,44 @@ interface GradioClient {
 const SPACE_NAME = "neuracities-ai/NeuraCitiesDemo";
 const MAX_MESSAGES = 3;
 
+const SponsorshipSection: React.FC = () => {
+  return (
+    <section className="py-10">
+      <div className="container mx-auto px-4 md:px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-center max-w-3xl mx-auto"
+        >
+          <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">Supported By</h2>
+          <p className="text-secondary mb-6 text-sm md:text-base">
+            We&apos;re proud to be part of the Microsoft Founders Hub program, 
+            empowering us with resources and support to build innovative solutions.
+          </p>
+          <div className="flex justify-center">
+            <div className="w-64 md:w-80">
+              <Image
+                src="/images/MS_Startups_FH_lockup_hrz_OnLght_RGB.png"
+                alt="Microsoft Founders Hub"
+                width={800}
+                height={600}
+                className="object-contain h-full w-full"
+              />
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
 const challenges = [
   {
     id: 'geospatial',
     title: "Advanced Geospatial Analysis",
     description:
-      "Perform complex GIS operations using plain language commands. Eliminate the need to juggle multiple tools like ArcGIS, Google Maps, Excel, and Python.",
+      "Perform complex GIS operations using plain language commands. Eliminate the need to juggle multiple tools like GIS softwares, Excel, Google Maps, and Python.",
     icon: <Brain className="w-8 h-8 text-coral" />,
     stats: [
       { label: "Analysis Time", value: "-85%" },
@@ -538,6 +572,13 @@ const HomePage = () => {
                 </button>
               </Link>
             </div>
+          </div>
+        </div>
+      </section>
+      <section className="py-0 bg-transparent">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="relative">
+          <SponsorshipSection />
           </div>
         </div>
       </section>

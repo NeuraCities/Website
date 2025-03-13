@@ -4,6 +4,7 @@ import webpack from "webpack";
 
 const nextConfig: NextConfig = {
   trailingSlash: true,
+  reactStrictMode: false,
   webpack: (config, { isServer }) => {
     if (!isServer) {
       // Provide fallbacks for modules that are not available in the browser.

@@ -24,14 +24,14 @@ const Navbar = () => {
         <div className="flex justify-between items-center">
           <Link href="/" className="flex text-primary font-semibold items-center gap-2">
             {/*<Image 
-              src="images/500x500-NC_Logo.svg" 
+              src="/images/500x500-NC_Logo.svg" 
               alt="NeuraCities Logo" 
               width={40} 
               height={40} 
                
             />*/}
             <Image 
-              src="images/880x191-NC_Name.svg" 
+              src="/images/880x191-NC_Name.svg" 
               alt="NeuraCities" 
               width={146.67} 
               height={31.833} 

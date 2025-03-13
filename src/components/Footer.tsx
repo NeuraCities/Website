@@ -6,14 +6,14 @@ const Footer = () => {
     <footer className="bg-white text-primary py-6 text-center">
       <div className="flex flex-col items-center justify-center mb-2">
         <Image 
-          src="images/500x500-NC_Logo.svg" 
+          src="/images/500x500-NC_Logo.svg" 
           alt="NeuraCities Logo" 
           width={40} 
           height={40} 
           className="mb-2"
         />
         <Image 
-          src="images/880x191-NC_Name.svg" 
+          src="/images/880x191-NC_Name.svg" 
           alt="NeuraCities" 
           width={146.67} 
           height={31.833} 

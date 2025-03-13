@@ -32,11 +32,38 @@ const Contact: React.FC = () => {
       [name]: value,
     }));
   };
+  const formDataToUrlSearchParams = (formData: FormData): URLSearchParams => {
+    const params = new URLSearchParams();
+    formData.forEach((value, key) => {
+      params.append(key, value as string);
+    });
+    return params;
+  };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault(); // Prevent the default form submission
-    setSubmitted(true); // Set submitted state to true
-    // Here you can also handle any additional logic, like sending the form data to an API
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    
+    // Encode form data for Netlify
+    const formData = new FormData(e.currentTarget);
+    
+    try {
+      // Send form data directly to Netlify's form handler
+      const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: formDataToUrlSearchParams(formData).toString(),
+      });
+      
+      if (response.ok) {
+        setSubmitted(true);
+      } else {
+        console.error("Form submission error:", response.statusText);
+        alert("There was an error submitting the form. Please try again.");
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      alert("There was an error submitting the form. Please try again.");
+    }
   };
 
   return (
@@ -64,7 +91,8 @@ const Contact: React.FC = () => {
                 method="POST"
                 data-netlify="true"
                 netlify-honeypot="bot-field"
-                onSubmit={handleSubmit} // Add onSubmit handler
+                onSubmit={handleSubmit}
+                action="/"
               >
                 {/* Hidden fields required by Netlify */}
                 <input type="hidden" name="form-name" value="contact" />

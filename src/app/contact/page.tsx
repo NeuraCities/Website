@@ -1,80 +1,36 @@
 "use client";
 import React, { useState } from "react";
 
-type FormDataType = {
-  name: string;
-  email: string;
-  message: string;
-  organizationType: string;
-  jobTitle: string;
-  phone: string;
-};
-
 const Contact: React.FC = () => {
-  const [formData, setFormData] = useState<FormDataType>({
-    name: "",
-    email: "",
-    message: "",
-    organizationType: "",
-    jobTitle: "",
-    phone: "",
-  });
   const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
-  const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  
+  // This function will only be used to show the thank you message
+  // The actual form submission will be handled by Netlify
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setError(null);
-
-    try {
-      // Create form data object for Netlify format
-      const formDataObj = new FormData();
-      formDataObj.append("form-name", "contact");
-      
-      // Add all form fields
-      Object.entries(formData).forEach(([key, value]) => {
-        formDataObj.append(key, value);
-      });
-
-      // Submit the form
-      const response = await fetch("/", {
-        method: "POST",
-        // Important: Do NOT set Content-Type header when using FormData
-        // The browser will automatically set the correct content type with boundary
-        body: formDataObj,
-      });
-
-      if (!response.ok) {
-        throw new Error(`Form submission failed with status: ${response.status}`);
-      }
-
-      // Success!
+    // We're not preventing default here - letting the native HTML form submission happen
+    // This is just to show the thank you message in case JavaScript is enabled
+    setTimeout(() => {
       setSubmitted(true);
-      setFormData({
-        name: "",
-        email: "",
-        message: "",
-        organizationType: "",
-        jobTitle: "",
-        phone: "",
-      });
-    } catch (error) {
-      console.error("Error submitting form:", error);
-      setError("There was a problem submitting your form. Please try again.");
-    }
+    }, 100);
   };
+
+  if (submitted) {
+    return (
+      <div className="min-h-screen flex flex-col bg-transparent">
+        <header className="relative py-16 md:py-16 sm:py-32 bg-transparent">
+          <div className="relative z-10 flex flex-col justify-center items-center text-center px-4 max-w-4xl mx-auto">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary mb-4 sm:mb-6">
+              Thank You!
+            </h1>
+            <p className="text-lg sm:text-xl md:text-2xl text-secondary max-w-2xl px-2">
+              We&apos;ll be in touch within 1 business day to schedule your personalized demo.
+            </p>
+          </div>
+        </header>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen flex flex-col bg-transparent">
@@ -92,22 +48,23 @@ const Contact: React.FC = () => {
 
       {/* Contact Form Section */}
       <section id="contact-form" className="bg-transparent px-4 pb-12">
-      <div className="container mx-auto">
-        <div className="max-w-4xl mx-auto">
-          {!submitted ? (
+        <div className="container mx-auto">
+          <div className="max-w-4xl mx-auto">
+            {/* Pure HTML form approach for Netlify */}
             <form
-              onSubmit={handleSubmit}
-              className="grid grid-cols-1 gap-4 sm:gap-6 bg-coral/90 p-6 sm:p-8 rounded-lg shadow-lg"
               name="contact"
               method="POST"
               data-netlify="true"
               netlify-honeypot="bot-field"
-              action="/"
+              onSubmit={handleSubmit}
+              className="grid grid-cols-1 gap-4 sm:gap-6 bg-coral/90 p-6 sm:p-8 rounded-lg shadow-lg"
             >
               {/* Hidden fields required by Netlify */}
               <input type="hidden" name="form-name" value="contact" />
               <div hidden>
-                <input name="bot-field" />
+                <label>
+                  Don&apos;t fill this out if you&apos;re human: <input name="bot-field" />
+                </label>
               </div>
 
               <div className="col-span-1">
@@ -116,21 +73,13 @@ const Contact: React.FC = () => {
                 </label>
                 <select
                   name="organizationType"
-                  value={formData.organizationType}
-                  onChange={handleChange}
                   className="w-full p-2 sm:p-3 border border-secondary/20 rounded-lg focus:outline-none focus:border-primary text-base"
                   required
                 >
                   <option value="">Select your organization type</option>
-                  <option value="government">
-                    Government Planning Department
-                  </option>
-                  <option value="urban-planning">
-                    Urban Planning Firm
-                  </option>
-                  <option value="engineering">
-                    Engineering Consultancy
-                  </option>
+                  <option value="government">Government Planning Department</option>
+                  <option value="urban-planning">Urban Planning Firm</option>
+                  <option value="engineering">Engineering Consultancy</option>
                   <option value="other">Other</option>
                 </select>
               </div>
@@ -142,9 +91,7 @@ const Contact: React.FC = () => {
                 <input
                   type="text"
                   name="name"
-                  value={formData.name}
                   required
-                  onChange={handleChange}
                   className="w-full p-2 sm:p-3 border border-secondary/20 rounded-lg focus:outline-none focus:border-primary text-base"
                 />
               </div>
@@ -156,9 +103,7 @@ const Contact: React.FC = () => {
                 <input
                   type="text"
                   name="jobTitle"
-                  value={formData.jobTitle}
                   required
-                  onChange={handleChange}
                   className="w-full p-2 sm:p-3 border border-secondary/20 rounded-lg focus:outline-none focus:border-primary text-base"
                 />
               </div>
@@ -170,9 +115,7 @@ const Contact: React.FC = () => {
                 <input
                   type="email"
                   name="email"
-                  value={formData.email}
                   required
-                  onChange={handleChange}
                   className="w-full p-2 sm:p-3 border border-secondary/20 rounded-lg focus:outline-none focus:border-primary text-base"
                 />
               </div>
@@ -184,8 +127,6 @@ const Contact: React.FC = () => {
                 <input
                   type="tel"
                   name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
                   className="w-full p-2 sm:p-3 border border-secondary/20 rounded-lg focus:outline-none focus:border-primary text-base"
                 />
               </div>
@@ -196,16 +137,10 @@ const Contact: React.FC = () => {
                 </label>
                 <textarea
                   name="message"
-                  value={formData.message}
                   rows={3}
-                  onChange={handleChange}
                   className="w-full p-2 sm:p-3 border border-secondary/20 rounded-lg focus:outline-none focus:border-primary text-base"
                 ></textarea>
               </div>
-
-              {error && (
-                <div className="col-span-1 text-red-500 text-sm">{error}</div>
-              )}
 
               <div className="col-span-1 pt-2">
                 <button
@@ -216,19 +151,9 @@ const Contact: React.FC = () => {
                 </button>
               </div>
             </form>
-          ) : (
-            <div className="bg-coral p-6 sm:p-8 rounded-lg shadow-lg text-center">
-              <h2 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">
-                Thank You!
-              </h2>
-              <p className="text-neutral">
-                We&apos;ll be in touch within 1 business day to schedule your personalized demo.
-              </p>
-            </div>
-          )}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
     </div>
   );
 };

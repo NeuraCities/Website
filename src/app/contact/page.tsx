@@ -48,7 +48,7 @@ const Contact: React.FC = () => {
     
     try {
       // Send form data directly to Netlify's form handler
-      const response = await fetch("/", {
+      const response = await fetch("url('/netlify-forms.html')", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: formDataToUrlSearchParams(formData).toString(),

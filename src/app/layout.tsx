@@ -3,7 +3,7 @@ import Footer from "../components/Footer";
 import ContactForm from "../components/ContactForm";
 import React from "react";
 import "./globals.css";
-import Script from 'next/script';
+//import Script from 'next/script';
 
 export const metadata = {
   title: 'NeuraCities',
@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Add this script to inject the Netlify form definitions */}
+        {/* Add this script to inject the Netlify form definitions 
         <Script id="netlify-forms" strategy="afterInteractive">
           {`
             if (typeof window !== 'undefined') {
@@ -51,7 +51,7 @@ export default function RootLayout({
               document.body.appendChild(div);
             }
           `}
-        </Script>
+        </Script>*/}
       </head>
       <body className="antialiased">
         <div className="relative min-h-screen">

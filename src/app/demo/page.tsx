@@ -188,7 +188,6 @@ const DemoPage: React.FC = () => {
     }
   };
 
-
   const handleSubmit = async (e: FormEvent<HTMLFormElement>, overrideQuery?: string) => {
     e.preventDefault();
     // Use the override query if provided; otherwise use the message state.

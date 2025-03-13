@@ -84,7 +84,7 @@ const ContactAndFAQ: React.FC = () => {
           </div>
           
           {/* Contact Form */}
-          <div className="w-full md:col-span-2 max-w-md mx-auto md:mx-0 order-2 md:order-2">
+          <div className="w-full md:col-span-2 max-w-md mx-auto md:mx-18 order-2 md:order-2">
             <h2 className="text-2xl sm:text-3xl font-bold text-primary text-center mb-4 sm:mb-6">
               Get In Touch
             </h2>

@@ -20,6 +20,7 @@ const Contact: React.FC = () => {
     phone: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -35,24 +36,43 @@ const Contact: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    // Convert formData into URLSearchParams format
-    const params = new URLSearchParams();
-    params.append("form-name", "contact"); // must match the form name in both your hidden HTML file and here
-    for (const key in formData) {
-      params.append(key, formData[key as keyof FormDataType]);
-    }
+    setError(null);
 
     try {
-      await fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: params.toString(),
+      // Create form data object for Netlify format
+      const formDataObj = new FormData();
+      formDataObj.append("form-name", "contact");
+      
+      // Add all form fields
+      Object.entries(formData).forEach(([key, value]) => {
+        formDataObj.append(key, value);
       });
+
+      // Submit the form
+      const response = await fetch("/", {
+        method: "POST",
+        // Important: Do NOT set Content-Type header when using FormData
+        // The browser will automatically set the correct content type with boundary
+        body: formDataObj,
+      });
+
+      if (!response.ok) {
+        throw new Error(`Form submission failed with status: ${response.status}`);
+      }
+
+      // Success!
       setSubmitted(true);
+      setFormData({
+        name: "",
+        email: "",
+        message: "",
+        organizationType: "",
+        jobTitle: "",
+        phone: "",
+      });
     } catch (error) {
       console.error("Error submitting form:", error);
-      // You can handle error state here
+      setError("There was a problem submitting your form. Please try again.");
     }
   };
 
@@ -82,10 +102,13 @@ const Contact: React.FC = () => {
               method="POST"
               data-netlify="true"
               netlify-honeypot="bot-field"
+              action="/"
             >
               {/* Hidden fields required by Netlify */}
               <input type="hidden" name="form-name" value="contact" />
-              <input type="hidden" name="bot-field" />
+              <div hidden>
+                <input name="bot-field" />
+              </div>
 
               <div className="col-span-1">
                 <label className="block text-sm font-medium text-neutral mb-1 sm:mb-2">
@@ -93,6 +116,7 @@ const Contact: React.FC = () => {
                 </label>
                 <select
                   name="organizationType"
+                  value={formData.organizationType}
                   onChange={handleChange}
                   className="w-full p-2 sm:p-3 border border-secondary/20 rounded-lg focus:outline-none focus:border-primary text-base"
                   required
@@ -118,6 +142,7 @@ const Contact: React.FC = () => {
                 <input
                   type="text"
                   name="name"
+                  value={formData.name}
                   required
                   onChange={handleChange}
                   className="w-full p-2 sm:p-3 border border-secondary/20 rounded-lg focus:outline-none focus:border-primary text-base"
@@ -131,6 +156,7 @@ const Contact: React.FC = () => {
                 <input
                   type="text"
                   name="jobTitle"
+                  value={formData.jobTitle}
                   required
                   onChange={handleChange}
                   className="w-full p-2 sm:p-3 border border-secondary/20 rounded-lg focus:outline-none focus:border-primary text-base"
@@ -144,6 +170,7 @@ const Contact: React.FC = () => {
                 <input
                   type="email"
                   name="email"
+                  value={formData.email}
                   required
                   onChange={handleChange}
                   className="w-full p-2 sm:p-3 border border-secondary/20 rounded-lg focus:outline-none focus:border-primary text-base"
@@ -157,6 +184,7 @@ const Contact: React.FC = () => {
                 <input
                   type="tel"
                   name="phone"
+                  value={formData.phone}
                   onChange={handleChange}
                   className="w-full p-2 sm:p-3 border border-secondary/20 rounded-lg focus:outline-none focus:border-primary text-base"
                 />
@@ -168,11 +196,16 @@ const Contact: React.FC = () => {
                 </label>
                 <textarea
                   name="message"
+                  value={formData.message}
                   rows={3}
                   onChange={handleChange}
                   className="w-full p-2 sm:p-3 border border-secondary/20 rounded-lg focus:outline-none focus:border-primary text-base"
                 ></textarea>
               </div>
+
+              {error && (
+                <div className="col-span-1 text-red-500 text-sm">{error}</div>
+              )}
 
               <div className="col-span-1 pt-2">
                 <button

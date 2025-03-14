@@ -155,34 +155,42 @@ const DemoPage: React.FC = () => {
 
   const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
+      
     const form = e.target as HTMLFormElement;
     const formData = new FormData(form);
-    
+      
     // Use formData.get() to retrieve values
     const name = formData.get('name') as string;
     const email = formData.get('email') as string;
+    
+    // Explicitly add the newsletter value to formData
+    formData.set('newsletter', newsletter ? 'yes' : 'no');
     
     // Update local state for the demo
     setUser({
       name,
       email
     });
-    setStep('chat');
     
-    // Prepare the URLSearchParams
+    // Convert FormData directly to URLSearchParams
     const params = new URLSearchParams();
-    params.append('form-name', 'demo-form'); // Add this line
-    params.append('name', name);
-    params.append('email', email);
-    params.append('newsletter', newsletter ? 'yes' : 'no'); // Add this line
+    formData.forEach((value, key) => {
+      params.append(key, value as string);
+    });
     
     try {
-      await fetch('/forms.html', {
+      const response = await fetch('/forms.html', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: params.toString()
       });
+      
+      if (response.ok) {
+        // Form submitted successfully
+        setStep('chat');
+      } else {
+        console.error('Error submitting form to Netlify:', response.statusText);
+      }
     } catch (error) {
       console.error('Error submitting form to Netlify:', error);
     }
@@ -281,11 +289,17 @@ const DemoPage: React.FC = () => {
                 method="POST" 
                 data-netlify="true" 
                 netlify-honeypot="bot-field"
-                onSubmit={handleLogin} 
+                onSubmit={handleLogin}
+                action="/forms.html"
                 className="space-y-6"
               >
                 <input type="hidden" name="form-name" value="demo-form" />
-                <input type="hidden" name="bot-field" />
+                <div hidden>
+                  <input name="bot-field" />
+                </div>
+                
+                {/* Add hidden input for newsletter value */}
+                <input type="hidden" name="newsletter" value={newsletter ? "yes" : "no"} />
                 
                 <Input
                   name="name"
@@ -303,12 +317,12 @@ const DemoPage: React.FC = () => {
                 />
                 
                 <div className="flex items-center font-semibold bg-coral/1 space-x-2 text-md">
-                <Checkbox
-                  id="newsletter"
-                  checked={newsletter}
-                  onCheckedChange={(checked) => setNewsletter(checked as boolean)}
-                  label="Keep me updated with NeuraCities!"
-                />
+                  <Checkbox
+                    id="newsletter"
+                    checked={newsletter}
+                    onCheckedChange={(checked) => setNewsletter(checked as boolean)}
+                    label="Keep me updated with NeuraCities!"
+                  />
                 </div>
                 
                 <div className="text-md text-primary">

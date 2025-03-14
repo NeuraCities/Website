@@ -178,7 +178,7 @@ const DemoPage: React.FC = () => {
     params.append('newsletter', newsletter ? 'yes' : 'no'); // Add this line
     
     try {
-      await fetch('/', {
+      await fetch('/forms.html', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: params.toString()
@@ -321,8 +321,6 @@ const DemoPage: React.FC = () => {
               </form>
             </div>
           </div>
-          
-          {/* Added features coming soon section to login page */}
           <FeaturesComingSoon />
         </div>
       </div>

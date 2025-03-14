@@ -11,8 +11,20 @@ interface FAQ {
   answer: string;
 }
 
+type FooterFormData = {
+  name: string;
+  email: string;
+  message: string;
+};
+
 const ContactAndFAQ: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [formData, setFormData] = useState<FooterFormData>({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [submitted, setSubmitted] = useState(false);
 
   const faqs: FAQ[] = [
     {
@@ -39,6 +51,55 @@ const ContactAndFAQ: React.FC = () => {
 
   const toggleAccordion = (index: number): void => {
     setOpenIndex(openIndex === index ? null : index);
+  };
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const formDataToUrlSearchParams = (formData: FormData): URLSearchParams => {
+    const params = new URLSearchParams();
+    formData.forEach((value, key) => {
+      params.append(key, value as string);
+    });
+    return params;
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    
+    // Encode form data for Netlify
+    const formData = new FormData(e.currentTarget);
+    
+    try {
+      // Send form data directly to Netlify's form handler
+      const response = await fetch("/forms.html", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: formDataToUrlSearchParams(formData).toString(),
+      });
+      
+      if (response.ok) {
+        setSubmitted(true);
+        setFormData({
+          name: "",
+          email: "",
+          message: "",
+        });
+      } else {
+        console.error("Form submission error:", response.statusText);
+        alert("There was an error submitting the form. Please try again.");
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      alert("There was an error submitting the form. Please try again.");
+    }
   };
 
   return (
@@ -88,34 +149,63 @@ const ContactAndFAQ: React.FC = () => {
             <h2 className="text-2xl sm:text-3xl font-bold text-primary text-center mb-4 sm:mb-6">
               Get In Touch
             </h2>
-            <form name="footer-form" method="POST" data-netlify="true" netlify-honeypot="bot-field" className="space-y-3 sm:space-y-4 text-center text-secondary">
-              <input type="hidden" name="form-name" value="footer-form" />
-              <input type="hidden" name="bot-field" />
-              <input
-                type="text"
-                name="name"
-                placeholder="Name"
-                className="w-full px-3 sm:px-4 py-2 text-base border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-600"
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                className="w-full px-3 sm:px-4 py-2 text-base border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-600"
-              />
-              <textarea
-                name="message"
-                placeholder="Message"
-                rows={3}
-                className="w-full px-3 sm:px-4 py-2 text-base border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-600"
-              />
-              <button 
-                type="submit"
-                className="w-full bg-cta text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg hover:opacity-90 transition-colors text-base font-medium"
+            {!submitted ? (
+              <form 
+                name="footer-form" 
+                method="POST" 
+                data-netlify="true" 
+                netlify-honeypot="bot-field"
+                onSubmit={handleSubmit}
+                action="/forms.html"
+                className="space-y-3 sm:space-y-4 text-center text-secondary"
               >
-                Send Message
-              </button>
-            </form>
+                <input type="hidden" name="form-name" value="footer-form" />
+                <div hidden>
+                  <input name="bot-field" />
+                </div>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-3 sm:px-4 py-2 text-base border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-600"
+                />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-3 sm:px-4 py-2 text-base border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-600"
+                />
+                <textarea
+                  name="message"
+                  placeholder="Message"
+                  rows={3}
+                  value={formData.message}
+                  onChange={handleChange}
+                  className="w-full px-3 sm:px-4 py-2 text-base border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-600"
+                />
+                <button 
+                  type="submit"
+                  className="w-full bg-cta text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg hover:opacity-90 transition-colors text-base font-medium"
+                >
+                  Send Message
+                </button>
+              </form>
+            ) : (
+              <div className="bg-coral p-6 sm:p-8 rounded-lg shadow-lg text-center">
+                <h2 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">
+                  Thank You!
+                </h2>
+                <p className="text-neutral">
+                  We&apos;ll be in touch soon about your inquiry.
+                </p>
+              </div>
+            )}
           </div>
         </div>
       </div>

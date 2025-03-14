@@ -48,7 +48,7 @@ const Contact: React.FC = () => {
     
     try {
       // Send form data directly to Netlify's form handler
-      const response = await fetch("/__forms.html", {
+      const response = await fetch("/forms.html", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: formDataToUrlSearchParams(formData).toString(),
@@ -92,7 +92,7 @@ const Contact: React.FC = () => {
                 data-netlify="true"
                 netlify-honeypot="bot-field"
                 onSubmit={handleSubmit}
-                action="/__forms.html"
+                action="/forms.html"
               >
                 {/* Hidden fields required by Netlify */}
                 <input type="hidden" name="form-name" value="contact" />

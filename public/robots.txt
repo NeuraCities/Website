@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://neuracities.com
+
+# Sitemaps
+Sitemap: https://neuracities.com/sitemap.xml

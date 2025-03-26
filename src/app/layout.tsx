@@ -4,14 +4,15 @@ import ContactForm from "../components/ContactForm";
 import React from "react";
 import "./globals.css";
 //import Script from 'next/script';
+import Head from 'next/head';
 
 export const metadata = {
-  title: 'NeuraCities',
-  description: 'We enable Planners with AI solutions!',
-  icons: {
-    icon: '/icon.ico',
+  title: 'NeuraCities – Your AI-Powered Geospatial Assistant',
+  description: 'Unify your GIS analysis and data management with NeuraCities. Get from data to decisions in minutes with our AI-powered geospatial assistant.',
+  alternates: {
+    canonical: 'https://neuracities.com',
   },
-}
+};
 
 export default function RootLayout({
   children,
@@ -20,6 +21,20 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "NeuraCities",
+              "url": "https://neuracities.com",
+              "logo": "https://neuracities.com/path-to-logo.png",
+            }),
+          }}
+        />
+      </Head>
       <head>
         {/* Add this script to inject the Netlify form definitions 
         <Script id="netlify-forms" strategy="afterInteractive">

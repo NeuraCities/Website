@@ -3,14 +3,49 @@ import Footer from "../components/Footer";
 import ContactForm from "../components/ContactForm";
 import React from "react";
 import "./globals.css";
-//import Script from 'next/script';
-import Head from 'next/head';
+//import Head from "next/head";
+import Script from 'next/script';
 
 export const metadata = {
   title: 'NeuraCities – Your AI-Powered Geospatial Assistant',
-  description: 'Unify your GIS analysis and data management with NeuraCities. Get from data to decisions in minutes with our AI-powered geospatial assistant.',
-  alternates: {
-    canonical: 'https://neuracities.com',
+  description:
+    'NeuraCities is a platform for advanced geospatial analysis, unifying GIS, data management, and collaboration in one intelligent solution.',
+  keywords: [
+    'neuracities',
+    'neural cities',
+    'urban intelligence',
+    'smart cities',
+    'geospatial AI',
+    'NeuraCities',
+    'Efficiency',
+    'Data management',
+    'Easy data',
+    'GIS data',
+    'map creation'
+  ],
+  openGraph: {
+    title: 'NeuraCities',
+    description:
+      'NeuraCities is a platform for advanced geospatial analysis, unifying GIS, data management, and collaboration in one intelligent solution.',
+    url: 'https://neuracities.com',
+    siteName: 'NeuraCities',
+    images: [
+      {
+        url: 'https://neuracities.com/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'NeuraCities',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'NeuraCities',
+    description:
+      'NeuraCities is a platform for advanced geospatial analysis, unifying GIS, data management, and collaboration in one intelligent solution.',
+    images: ['https://neuracities.com/twitter-image.jpg'],
   },
 };
 
@@ -21,53 +56,22 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <Head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              "name": "NeuraCities",
-              "url": "https://neuracities.com",
-              "logo": "https://neuracities.com/path-to-logo.png",
-            }),
-          }}
-        />
-      </Head>
-      <head>
-        {/* Add this script to inject the Netlify form definitions 
-        <Script id="netlify-forms" strategy="afterInteractive">
-          {`
-            if (typeof window !== 'undefined') {
-              const div = document.createElement('div');
-              div.innerHTML = \`
-                <form name="footer-form" netlify netlify-honeypot="bot-field" hidden>
-                  <input type="text" name="name" />
-                  <input type="email" name="email" />
-                  <textarea name="message"></textarea>
-                </form>
-                
-                <form name="contact" netlify netlify-honeypot="bot-field" hidden>
-                  <input type="text" name="name" />
-                  <input type="email" name="email" />
-                  <input type="text" name="jobTitle" />
-                  <input type="tel" name="phone" />
-                  <select name="organizationType"></select>
-                  <textarea name="message"></textarea>
-                </form>
-                
-                <form name="demo-form" netlify netlify-honeypot="bot-field" hidden>
-                  <input type="text" name="name" />
-                  <input type="email" name="email" />
-                  <input type="checkbox" name="newsletter" />
-                </form>
-              \`;
-              document.body.appendChild(div);
-            }
-          `}
-        </Script>*/}
-      </head>
+      {/*<Head>
+         Structured Data (optional JSON-LD will be injected via separate component) 
+      </Head>*/}
+      {/* Using next/script to load GA early */}
+      <Script
+        strategy="afterInteractive"
+        src="https://www.googletagmanager.com/gtag/js?id=G-EMVFEF7Z9R"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-EMVFEF7Z9R');
+        `}
+      </Script>
       <body className="antialiased">
         <div className="relative min-h-screen">
           {/* Topographic Overlay */}
@@ -79,9 +83,10 @@ export default function RootLayout({
               filter: "opacity(0.1)",
             }}
           />
+          {/* Your site components */}
           <Navbar />
           <main className="relative z-20">{children}</main>
-          <ContactForm/>
+          <ContactForm />
           <Footer />
         </div>
       </body>

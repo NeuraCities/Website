@@ -26,6 +26,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import Image from "next/image";
+import JsonLd from '@/components/JSONLd';
 
 interface ChatMessage {
   role: "user" | "assistant";
@@ -34,7 +35,6 @@ interface ChatMessage {
     title: string | null;
   };
 }
-
 interface GradioClient {
   predict: (
     endpoint: string,
@@ -155,8 +155,6 @@ function formatAssistantMessage(content: string): React.ReactNode {
   );
 }
 
-
-
 const HomePage = () => {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
   const [message, setMessage] = useState("");
@@ -185,6 +183,30 @@ const HomePage = () => {
 
     initClient();
   }, []);
+  const websiteSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'NeuraCities',
+    url: 'https://neuracities.com',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: 'https://neuracities.com/search?q={search_term_string}',
+      'query-input': 'required name=search_term_string',
+    },
+  };
+
+  const organizationSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'NeuraCities',
+    url: 'https://neuracities.com',
+    logo: 'https://neuracities.com/logo.png',
+    sameAs: [
+      'https://twitter.com/neuracities',
+      'https://www.linkedin.com/company/neuracities',
+      // add other social profiles as needed
+    ],
+  };
 
   const processMessage = async (userMessage: string) => {
     if (!client || !isClientReady) {
@@ -259,6 +281,8 @@ const HomePage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-neutral-50 to-white">
+      <JsonLd data={websiteSchema} />
+      <JsonLd data={organizationSchema} />
       {/* Hero Section */}
       <header className="relative bg-transparent py-32 overflow-hidden">
         <div className="absolute inset-0 bg-transparent" />

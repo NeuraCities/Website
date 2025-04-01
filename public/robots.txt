@@ -6,4 +6,4 @@ Allow: /
 Host: https://neuracities.com
 
 # Sitemaps
-Sitemap: https://neuracities.com/sitemap.xml
+Sitemap: https://neuracities.com/sitemap-0.xml

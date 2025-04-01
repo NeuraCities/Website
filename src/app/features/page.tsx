@@ -32,9 +32,10 @@ const FeatureSection: React.FC = () => {
   const [currentResponseStep, setCurrentResponseStep] = useState(0);
   const [showFinalResponse, setShowFinalResponse] = useState(false);
   
-  const typingRef = useRef<NodeJS.Timeout | null>(null);
-  const responseTimerRef = useRef<NodeJS.Timeout | null>(null);
-  const responseStepTimerRef = useRef<NodeJS.Timeout | null>(null);
+  // Changed from NodeJS.Timeout to number for browser compatibility
+  const typingRef = useRef<number | null>(null);
+  const responseTimerRef = useRef<number | null>(null);
+  const responseStepTimerRef = useRef<number | null>(null);
 
   const features: Record<string, Feature> = {
     timeWarper: {
@@ -173,6 +174,7 @@ const FeatureSection: React.FC = () => {
 
   // Memoize the function so it doesn't change on every render
   const startTypingAnimation = useCallback(() => {
+    // Reset states
     setShowResponse(false);
     setShowFinalResponse(false);
     setCurrentResponseStep(0);
@@ -182,43 +184,36 @@ const FeatureSection: React.FC = () => {
     const currentPrompt = features[activeFeature].prompt;
     let i = 0;
     
-    if (typingRef.current) clearTimeout(typingRef.current);
-    if (responseTimerRef.current) clearTimeout(responseTimerRef.current);
-    if (responseStepTimerRef.current) clearTimeout(responseStepTimerRef.current);
+    // Clear any existing timeouts
+    if (typingRef.current) window.clearTimeout(typingRef.current);
+    if (responseTimerRef.current) window.clearTimeout(responseTimerRef.current);
+    if (responseStepTimerRef.current) window.clearTimeout(responseStepTimerRef.current);
     
     const typeNextChar = () => {
       if (i < currentPrompt.length) {
         setDisplayText(currentPrompt.substring(0, i + 1));
         i++;
-        typingRef.current = setTimeout(typeNextChar, 40 + Math.random() * 30);
+        typingRef.current = window.setTimeout(typeNextChar, 40 + Math.random() * 30);
       } else {
         setIsTyping(false);
-        responseTimerRef.current = setTimeout(() => {
+        responseTimerRef.current = window.setTimeout(() => {
           setShowResponse(true);
           startResponseStepAnimation();
         }, 800);
       }
     };
     
-    typingRef.current = setTimeout(typeNextChar, 600);
-  }, [activeFeature, features]); // include dependencies used inside the function
+    // Start typing with a delay
+    typingRef.current = window.setTimeout(typeNextChar, 600);
+  }, [activeFeature]); // Only include activeFeature as dependency
 
-  useEffect(() => {
-    startTypingAnimation();
-    return () => {
-      if (typingRef.current) clearTimeout(typingRef.current);
-      if (responseTimerRef.current) clearTimeout(responseTimerRef.current);
-      if (responseStepTimerRef.current) clearTimeout(responseStepTimerRef.current);
-    };
-  }, [activeFeature, startTypingAnimation]); // now include the memoized function
-  
-  const startResponseStepAnimation = () => {
+  const startResponseStepAnimation = useCallback(() => {
     const steps = features[activeFeature].responseSteps;
     
     const animateNextStep = (stepIndex: number) => {
       if (stepIndex < steps.length) {
         setCurrentResponseStep(stepIndex);
-        responseStepTimerRef.current = setTimeout(() => {
+        responseStepTimerRef.current = window.setTimeout(() => {
           animateNextStep(stepIndex + 1);
         }, 2000);
       } else {
@@ -227,18 +222,49 @@ const FeatureSection: React.FC = () => {
     };
     
     animateNextStep(0);
-  };
+  }, [activeFeature, features]);
+
+  // Initialize animation when component mounts or active feature changes
+  useEffect(() => {
+    // Ensure clean start
+    setIsTyping(false);
+    setDisplayText('');
+    setShowResponse(false);
+    setShowFinalResponse(false);
+    
+    // Start animation with a slight delay
+    const initTimer = window.setTimeout(() => {
+      startTypingAnimation();
+    }, 300);
+    
+    // Clean up timeouts
+    return () => {
+      window.clearTimeout(initTimer);
+      if (typingRef.current) window.clearTimeout(typingRef.current);
+      if (responseTimerRef.current) window.clearTimeout(responseTimerRef.current);
+      if (responseStepTimerRef.current) window.clearTimeout(responseStepTimerRef.current);
+    };
+  }, [activeFeature, startTypingAnimation]);
 
   const handleFeatureChange = (key: string) => {
+    if (key === activeFeature) return; // Don't change if same feature
+    
     setIsAnimating(true);
-    if (typingRef.current) clearTimeout(typingRef.current);
-    if (responseTimerRef.current) clearTimeout(responseTimerRef.current);
-    if (responseStepTimerRef.current) clearTimeout(responseStepTimerRef.current);
+    
+    // Clear all timeouts
+    if (typingRef.current) window.clearTimeout(typingRef.current);
+    if (responseTimerRef.current) window.clearTimeout(responseTimerRef.current);
+    if (responseStepTimerRef.current) window.clearTimeout(responseStepTimerRef.current);
+    
+    // Reset states during animation
+    setIsTyping(false);
+    setDisplayText('');
+    setShowResponse(false);
+    setShowFinalResponse(false);
     
     setTimeout(() => {
       setActiveFeature(key);
       setIsAnimating(false);
-      startTypingAnimation();
     }, 300);
   };
 
@@ -309,8 +335,8 @@ const FeatureSection: React.FC = () => {
                   {features[activeFeature].description}
                 </p>
                 
-                {/* Prompt with typing effect */}
-                <div className="bg-black/20 p-4 rounded-lg backdrop-blur-sm mb-2">
+                {/* Prompt with typing effect - Added key prop for forced re-render */}
+                <div className="bg-black/20 p-4 rounded-lg backdrop-blur-sm mb-2" key={`prompt-${activeFeature}`}>
                   <div className="flex items-center mb-2">
                     <Zap size={16} className="mr-2" />
                     <span className="text-sm font-medium">Just Say...</span>
@@ -321,10 +347,22 @@ const FeatureSection: React.FC = () => {
                   </div>
                 </div>
                 
-                {/* Response section */}
-                <div className={`bg-white/10 rounded-lg p-4 transition-all duration-500 overflow-hidden ${showResponse ? 'opacity-100 max-h-full md:max-h-80' : 'opacity-0 max-h-0'}`}>
-                {features[activeFeature].responseSteps.map((step, index) => (
-                    <div key={index} className={`transition-all duration-300 ${index <= currentResponseStep ? 'opacity-100' : 'opacity-0 hidden'}`}>
+                {/* Response section - Added clearer visibility control */}
+                <div 
+                  className={`bg-white/10 rounded-lg p-4 transition-all duration-500 ${
+                    showResponse 
+                    ? 'opacity-100 max-h-[600px]' 
+                    : 'opacity-0 max-h-0 overflow-hidden'
+                  }`}
+                  key={`response-${activeFeature}`}
+                >
+                  {features[activeFeature].responseSteps.map((step, index) => (
+                    <div 
+                      key={index} 
+                      className={`transition-all duration-300 ${
+                        index <= currentResponseStep ? 'opacity-100' : 'opacity-0 h-0 overflow-hidden'
+                      }`}
+                    >
                       <div className="flex items-center mb-2 text-sm text-white/80">
                         <span className="flex items-center">
                           {React.cloneElement(step.icon, { size: 16, className: "mr-2" })}
@@ -344,8 +382,14 @@ const FeatureSection: React.FC = () => {
                   ))}
                   
                   {/* Final response */}
-                  <div className={`border-t border-white/20 pt-3 mt-2 transition-all duration-500 ${showFinalResponse ? 'opacity-100 max-h-full md:max-h-80' : 'opacity-0 h-0 overflow-hidden'}`}>
-                  <p className="text-white font-medium mb-2">{features[activeFeature].finalResponse}</p>
+                  <div 
+                    className={`border-t border-white/20 pt-3 mt-2 transition-all duration-500 ${
+                      showFinalResponse 
+                      ? 'opacity-100 max-h-[300px]' 
+                      : 'opacity-0 max-h-0 overflow-hidden'
+                    }`}
+                  >
+                    <p className="text-white font-medium mb-2">{features[activeFeature].finalResponse}</p>
                     <div className="flex flex-wrap gap-2 mt-2">
                       {features[activeFeature].outputArtifacts.map((artifact, index) => (
                         <span key={index} className="bg-white/20 text-white text-xs py-1 px-2 rounded-full flex items-center">

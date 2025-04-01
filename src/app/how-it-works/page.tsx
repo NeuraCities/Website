@@ -143,8 +143,8 @@ const SolutionsPage = () => {
                   className={`
                     w-full justify-start gap-3 transition-all duration-300
                     ${activeSection === index 
-                      ? 'bg-gradient-to-r from-coral/10 to-coral/5 text-coral transform scale-105' 
-                      : 'text-secondary/80 hover:bg-gradient-to-r from-secondary/10 to-secondary/5 hover:text-coral'}
+                      ? 'bg-gradient-to-r from-coral/10 to-coral/5 text-coral transform rounded-full scale-105' 
+                      : 'text-secondary/80 hover:bg-gradient-to-r from-secondary/10 to-secondary/5 rounded-full hover:text-coral'}
                   `}
                 >
                   <div className={`

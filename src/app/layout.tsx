@@ -7,7 +7,7 @@ import "./globals.css";
 import Script from 'next/script';
 
 export const metadata = {
-  title: 'NeuraCities – Your AI-Powered Geospatial Assistant',
+  title: 'NeuraCities',
   description:
     'NeuraCities is a platform for advanced geospatial analysis, unifying GIS, data management, and collaboration in one intelligent solution.',
   keywords: [
@@ -21,7 +21,11 @@ export const metadata = {
     'Data management',
     'Easy data',
     'GIS data',
-    'map creation'
+    'map creation',
+    'urban planning',
+    'neura city',
+    'neural city',
+    'planning', 'urban AI'
   ],
   openGraph: {
     title: 'NeuraCities',

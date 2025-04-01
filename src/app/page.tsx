@@ -1,34 +1,27 @@
 "use client";
-import { useState, useEffect, FormEvent} from 'react';
+import { useState} from 'react';
 import Link from 'next/link';
 import { motion } from "framer-motion";
 import {
   ChevronRight,
   ArrowRight,
-  Zap,
   Database,
   Share2,
   Brain,
-  Send,
-  Loader2,
-  MapPin,
-  Castle,
   Shield,
-  Clock,
-  Lock,
-  CloudRainWind,
-  Target,
-  Droplets,
-  Milestone,
-  TrainFront,
+  Lock
 } from 'lucide-react';
-import { Input } from '@/components/ui/input';
+//import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
+//import { Card, CardContent } from '@/components/ui/card';
 import Image from "next/image";
 import JsonLd from '@/components/JsonLd';
+import animationData from "@/Heading.json";
+import dynamic from 'next/dynamic';
+const Lottie = dynamic(() => import('lottie-react'), { ssr: false });
+import FeatureSection from "@/app/features/page";
 
-interface ChatMessage {
+{/*interface ChatMessage {
   role: "user" | "assistant";
   content: string;
   metadata?: {
@@ -47,9 +40,82 @@ interface GradioClient {
   }>;
 }
 
-const SPACE_NAME = "neuracities-ai/NeuraCitiesDemo";
-const MAX_MESSAGES = 3;
+//const SPACE_NAME = "neuracities-ai/NeuraCitiesDemo";
+//const MAX_MESSAGES = 3;
 
+
+function formatAssistantMessage(content: string): React.ReactNode {
+  // Split the content by newline
+  const lines = content.split("\n");
+  return (
+    <div>
+      {lines.map((line, idx) => {
+        // Check for common bullet point patterns:
+        //  - A number followed by a period (e.g. "1.")
+        //  - A lowercase letter followed by a period (e.g. "a.")
+        //  - A dash followed by a space
+        if (/^\s*(?:\d+\.|[a-z]\.|-)\s+/.test(line)) {
+          return (
+            <p key={idx} className="border-l-4 border-gray-300 pl-2 my-1">
+              {line}
+            </p>
+          );
+        }
+        return (
+          <p key={idx} className="my-1">
+            {line}
+          </p>
+        );
+      })}
+      {/* Append the Citation link }
+      <p className="mt-4 text-right">
+        <a
+          href="https://opendata.vancouver.ca/pages/home/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-600 underline text-sm"
+        >
+          Citation
+        </a>
+      </p>
+    </div>
+  );
+}*/}
+const challenges = [
+  {
+    id: 'geospatial',
+    title: "Geospatial Analysis",
+    description:
+      "Perform complex GIS operations using plain language commands. Eliminate the need to juggle multiple tools like GIS softwares, Excel, Google Maps, and Python.",
+    icon: <Brain className="w-8 h-8 text-coral" />,
+    stats: [
+      { label: "Analysis Time", value: "-85%" },
+      { label: "Tools Unified", value: "5+" }
+    ]
+  },
+  {
+    id: 'standardization',
+    title: "Quick Data Collection",
+    description:
+      "Automatically collect and standardize data from diverse sources. Transform scattered information into consistent, actionable insights.",
+    icon: <Database className="w-8 h-8 text-coral" />,
+    stats: [
+      { label: "Fast Data Collection", value: "-80%" },
+      { label: "Consistency", value: "100%" }
+    ]
+  },
+  {
+    id: 'collaboration',
+    title: "Effortless Sharing",
+    description:
+      "Instantly share maps, reports, data, templates and insights with version control, enhancing teamwork and eliminating data silos.",
+    icon: <Share2 className="w-8 h-8 text-coral" />,
+    stats: [
+      { label: "Faster Sharing", value: "10x" },
+      { label: "Data Consistency", value: "100%" }
+    ]
+  }
+];
 const SponsorshipSection: React.FC = () => {
   return (
     <section className="py-10">
@@ -82,82 +148,9 @@ const SponsorshipSection: React.FC = () => {
   );
 };
 
-const challenges = [
-  {
-    id: 'geospatial',
-    title: "Advanced Geospatial Analysis",
-    description:
-      "Perform complex GIS operations using plain language commands. Eliminate the need to juggle multiple tools like GIS softwares, Excel, Google Maps, and Python.",
-    icon: <Brain className="w-8 h-8 text-coral" />,
-    stats: [
-      { label: "Analysis Time", value: "-85%" },
-      { label: "Tools Unified", value: "5+" }
-    ]
-  },
-  {
-    id: 'standardization',
-    title: "Automated Data Collection & Standardization",
-    description:
-      "Automatically collect and standardize data from diverse sources. Transform scattered information into consistent, actionable insights.",
-    icon: <Database className="w-8 h-8 text-coral" />,
-    stats: [
-      { label: "Data Collection Time", value: "-80%" },
-      { label: "Process Consistency", value: "100%" }
-    ]
-  },
-  {
-    id: 'collaboration',
-    title: "Seamless Collaboration & Sharing",
-    description:
-      "Share maps, data, templates, reports, and insights instantly with built-in version control. Experience real-time collaboration that unifies teams and eradicates data silos. ",
-    icon: <Share2 className="w-8 h-8 text-coral" />,
-    stats: [
-      { label: "Faster Sharing", value: "10x" },
-      { label: "Data Consistency", value: "100%" }
-    ]
-  }
-];
-function formatAssistantMessage(content: string): React.ReactNode {
-  // Split the content by newline
-  const lines = content.split("\n");
-  return (
-    <div>
-      {lines.map((line, idx) => {
-        // Check for common bullet point patterns:
-        //  - A number followed by a period (e.g. "1.")
-        //  - A lowercase letter followed by a period (e.g. "a.")
-        //  - A dash followed by a space
-        if (/^\s*(?:\d+\.|[a-z]\.|-)\s+/.test(line)) {
-          return (
-            <p key={idx} className="border-l-4 border-gray-300 pl-2 my-1">
-              {line}
-            </p>
-          );
-        }
-        return (
-          <p key={idx} className="my-1">
-            {line}
-          </p>
-        );
-      })}
-      {/* Append the Citation link */}
-      <p className="mt-4 text-right">
-        <a
-          href="https://opendata.vancouver.ca/pages/home/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-blue-600 underline text-sm"
-        >
-          Citation
-        </a>
-      </p>
-    </div>
-  );
-}
-
 const HomePage = () => {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
-  const [message, setMessage] = useState("");
+  {/*const [message, setMessage] = useState("");
   const [chatHistory, setChatHistory] = useState<ChatMessage[]>([]);
   const [mapContent, setMapContent] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -167,8 +160,7 @@ const HomePage = () => {
   const [isClientReady, setIsClientReady] = useState(false);
   const [, setStep] = useState(''); // Add this line to define setStep
 
-  // Initialize Gradio client using the working method from your Demo page
-  useEffect(() => {
+useEffect(() => {
     const initClient = async () => {
       try {
         const { Client } = await import("@gradio/client");
@@ -183,31 +175,6 @@ const HomePage = () => {
 
     initClient();
   }, []);
-  const websiteSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    name: 'NeuraCities',
-    url: 'https://neuracities.com',
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: 'https://neuracities.com/search?q={search_term_string}',
-      'query-input': 'required name=search_term_string',
-    },
-  };
-
-  const organizationSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: 'NeuraCities',
-    url: 'https://neuracities.com',
-    logo: 'https://neuracities.com/logo.png',
-    sameAs: [
-      'https://twitter.com/neuracities',
-      'https://www.linkedin.com/company/neuracities',
-      // add other social profiles as needed
-    ],
-  };
-
   const processMessage = async (userMessage: string) => {
     if (!client || !isClientReady) {
       console.error("Client not ready:", { client, isClientReady });
@@ -271,14 +238,37 @@ const HomePage = () => {
     await handleSubmit(undefined, query);
     // Optionally hide example buttons after a selection
     setShowExamples(false);
-  };
+  };*/}
   
   const getCardStyles = (id: string) => {
     return `bg-white border rounded-xl shadow-sm p-8 h-full transition-all duration-300 ${
       hoveredCard === id ? 'shadow-xl transform -translate-y-1' : ''
     }`;
   };
+  const websiteSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'NeuraCities',
+    url: 'https://neuracities.com',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: 'https://neuracities.com/search?q={search_term_string}',
+      'query-input': 'required name=search_term_string',
+    },
+  };
 
+  const organizationSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'NeuraCities',
+    url: 'https://neuracities.com',
+    logo: 'https://neuracities.com/logo.png',
+    sameAs: [
+      'https://twitter.com/neuracities',
+      'https://www.linkedin.com/company/neuracities',
+      // add other social profiles as needed
+    ],
+  };
   return (
     <div className="min-h-screen bg-gradient-to-b from-neutral-50 to-white">
       <JsonLd data={websiteSchema} />
@@ -287,20 +277,21 @@ const HomePage = () => {
       <header className="relative bg-transparent py-32 overflow-hidden">
         <div className="absolute inset-0 bg-transparent" />
         <div className="container mx-auto px-6 relative">
-          <div className="max-w-4xl">
-            <div className="inline-block bg-coral/5 font-bold text-coral px-4 py-2 rounded-full mb-6">
-              AI-Powered Geospatial Assistant
+          <div className="max-w-4xl text-center sm:text-left">
+            <div className="inline-block bg-coral/10 font-bold text-coral px-4 py-2 rounded-full mb-4">
+              Do More.
             </div>
-            <h1 className="text-5xl font-bold text-primary mb-6 leading-tight">
-              Your Team&apos;s <span className="text-coral">Geospatial Assistant</span>
+            <h1 className="text-5xl font-bold text-primary mb-4 leading-tight flex">
+              <Lottie 
+                animationData={animationData} 
+                loop={true}
+                autoplay={true}
+                className="h-12 sm:h-24 md:h-20 lg:h-24"
+              />
             </h1>
-            <p className="text-xl text-secondary leading-relaxed">
-              Unify GIS analysis, data management, and collaboration in one intelligent solution.
-            </p>
-            <p className="text-xl text-secondary mb-8 leading-relaxed">
-              Get from data to decisions in minutes, not weeks.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+            <p className="text-xl text-secondary mb-6 leading-relaxed">
+              Efficient data to decisions: plain language insights for geospatial clarity.            </p>
+            <div className="flex flex-col sm:flex-row gap-6 items-start sm:items-center">
               <Link href="/demo">
                 <Button size="lg" className="bg-coral text-white hover:bg-coral/90">
                   Try Demo <ArrowRight className="ml-2" />
@@ -321,238 +312,50 @@ const HomePage = () => {
         <div className="container mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-8">
             <h2 className="text-4xl font-bold text-primary mb-2">
-              Tailored Solutions for Your Needs
+              The All in One Solution
             </h2>
             <p className="text-xl text-secondary">
-              We enable your team to work on problems that matter with customized Geospatial AI.
+              Enabling you to work on problems that matter.
             </p>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {challenges.map((challenge) => (
-              <div
-                key={challenge.id}
-                className={getCardStyles(challenge.id)}
-                onMouseEnter={() => setHoveredCard(challenge.id)}
-                onMouseLeave={() => setHoveredCard(null)}
-              >
-                <div className="bg-coral/10 p-3 rounded-xl w-fit mb-6">
-                  {challenge.icon}
-                </div>
-                <h3 className="text-2xl font-semibold text-primary mb-4">
-                  {challenge.title}
-                </h3>
-                <p className="text-secondary mb-8">
-                  {challenge.description}
-                </p>
-                <div className="grid grid-cols-2 gap-4">
-                  {challenge.stats.map((stat, index) => (
-                    <div key={index} className="bg-neutral p-4 rounded-lg">
-                      <div className="text-2xl font-bold text-coral mb-1">
-                        {stat.value}
-                      </div>
-                      <div className="text-sm text-secondary">
-                        {stat.label}
-                      </div>
+              {challenges.map((challenge) => (
+                <div
+                  key={challenge.id}
+                  className={getCardStyles(challenge.id)}
+                  onMouseEnter={() => setHoveredCard(challenge.id)}
+                  onMouseLeave={() => setHoveredCard(null)}
+                >
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="bg-coral/10 p-3 rounded-xl w-fit flex-shrink-0">
+                      {challenge.icon}
                     </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Interactive Demo Section */}
-      <section className="py-20 bg-gradient-to-b from-transparent to-white">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-            <div>
-              <h2 className="text-4xl font-bold text-primary mb-8">
-                See it in action
-              </h2>
-              <div className="space-y-6 mb-8">
-                <div className="flex gap-4 items-start">
-                  <div className="bg-coral/10 p-2 rounded-lg">
-                    <Zap className="w-6 h-6 text-coral" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-primary mb-2">
-                      Natural Language Interface
+                    <h3 className="text-2xl font-semibold text-primary">
+                      {challenge.title}
                     </h3>
-                    <p className="text-secondary">
-                      Simply ask your questions in plain English—our AI handles the heavy lifting.
-                    </p>
                   </div>
-                </div>
-                <div className="flex gap-4 items-start">
-                  <div className="bg-coral/10 p-2 rounded-lg">
-                    <Target className="w-6 h-6 text-coral" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-primary mb-2">
-                      Precision Analysis
-                    </h3>
-                    <p className="text-secondary">
-                      Receive pinpoint insights with our advanced spatial analysis tools.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex gap-4 items-start">
-                  <div className="bg-coral/10 p-2 rounded-lg">
-                    <Clock className="w-6 h-6 text-coral" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-primary mb-2">
-                      Rapid Results
-                    </h3>
-                    <p className="text-secondary">
-                      Automate complex workflows and get your results in minutes.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex gap-4 items-start">
-                  <div className="bg-coral/10 p-2 rounded-lg">
-                    <Share2 className="w-6 h-6 text-coral" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-primary mb-2">
-                      Seamless Collaboration
-                    </h3>
-                    <p className="text-secondary">
-                      Experience instant updates and real-time data sharing across your team.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex gap-4 items-start">
-                  <div className="bg-coral/10 p-2 rounded-lg">
-                    <MapPin className="w-6 h-6 text-coral" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-primary mb-2">
-                      Free Demo (City of Vancouver)
-                    </h3>
-                    <p className="text-secondary">
-                      Access our live demo with Vancouver data—free for you to try!
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/demo">
-                  <Button className="w-full sm:w-auto bg-coral text-white px-8 py-4 rounded-lg font-semibold shadow-lg hover:bg-coral/90">
-                    Try Demo <ArrowRight className="w-5 h-5 ml-2" />
-                  </Button>
-                </Link>
-                <Link href="/contact">
-                  <Button variant="outline" className="w-full sm:w-auto bg-white text-primary border-2 border-primary/20 px-8 py-4 rounded-lg font-semibold hover:bg-primary hover:text-white">
-                    Contact Us <ArrowRight className="w-5 h-5 ml-2" />
-                  </Button>
-                </Link>
-              </div>
-            </div>
-            <Card className="shadow-xl">
-              <CardContent className="p-6">
-                {error && (
-                  <div className="mb-4 p-3 bg-red-50 text-red-700 rounded-lg">
-                    {error}
-                  </div>
-                )}
-                {showExamples ? (
-                  <div className="mb-6">
-                    <h3 className="text-lg font-semibold text-primary mb-3">
-                      Try these examples for City of Vancouver:
-                    </h3>
-                    <div className="grid grid-cols-1 gap-3">
-                      {[
-                        {
-                          icon: <Droplets className="w-5 h-5" />,
-                          text: "Show me some of the water infrastructure elements"
-                        },
-                        {
-                          icon: <CloudRainWind className="w-5 h-5" />,
-                          text: "Let's analyze the stormwater network in Vancouver"
-                        },
-                        {
-                          icon: <Castle className="w-5 h-5" />,
-                          text: "I want to look at cultural spaces in Vancouver"
-                        },
-                        {
-                          icon: <Milestone className="w-5 h-5" />,
-                          text: "Map the one way streets in Vancouver please!"
-                        },
-                        {
-                          icon: <TrainFront className="w-5 h-5" />,
-                          text: "Can you tell me the pros of the transit lines in Vancouver?"
-                        }
-                      ].map((example, idx) => (
-                        <button
-                          key={idx}
-                          onClick={() => handleExampleQuery(example.text)}
-                          disabled={!isClientReady || isLoading}
-                          className="text-left p-3 rounded-lg border border-coral/20 hover:border-coral hover:bg-coral/5 transition-all flex items-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
-                        >
-                          <span className="text-coral">{example.icon}</span>
-                          <span className="text-secondary">{example.text}</span>
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                ) : (
-                  <>
-                    <div className="bg-neutral rounded-lg p-4 mb-4 h-64 overflow-y-auto">
-                      {chatHistory.map((msg, idx) => (
-                        <div key={idx} className={`mb-4 ${msg.role === "user" ? "text-right" : "text-left"}`}>
-                          <div
-                            className={`inline-block max-w-[80%] rounded-lg p-3 ${
-                              msg.role === "user"
-                                ? "bg-coral text-white"
-                                : "bg-white border border-coral/20 text-secondary"
-                            }`}
-                          >
-                            {msg.role === "assistant"
-                              ? formatAssistantMessage(msg.content)
-                              : msg.content}
-                          </div>
+                  <p className="text-secondary mb-8">
+                    {challenge.description}
+                  </p>
+                  <div className="grid grid-cols-2 gap-4">
+                    {challenge.stats.map((stat, index) => (
+                      <div key={index} className="bg-neutral p-3 rounded-lg">
+                        <div className="text-2xl text-center font-bold text-coral mb-1">
+                          {stat.value}
                         </div>
-                      ))}
-                    </div>
-
-                    {mapContent ? (
-                      <div className="bg-neutral rounded-lg p-4 mb-4 h-50">
-                        <div className="w-full h-full" dangerouslySetInnerHTML={{ __html: mapContent }} />
+                        <div className="text-sm text-center text-secondary">
+                          {stat.label}
+                        </div>
                       </div>
-                    ) : (
-                      <div className="bg-neutral rounded-lg p-4 mb-4 h-50">
-                        Press Enter and see the magic!
-                      </div>
-                    )}
-                    <form onSubmit={handleSubmit} className="flex gap-2">
-                      <Input
-                        value={message}
-                        onChange={(e) => setMessage(e.target.value)}
-                        placeholder={isClientReady ? "Ask about Vancouver urban planning..." : "Initializing..."}
-                        disabled={isLoading || !isClientReady}
-                        className="flex-1"
-                      />
-                      <Button
-                        type="submit"
-                        disabled={isLoading || !isClientReady || !message.trim()}
-                        className="bg-coral hover:bg-coral/90"
-                      >
-                        {isLoading ? (
-                          <Loader2 className="h-4 w-4 animate-spin" />
-                        ) : (
-                          <Send className="h-4 w-4 text-white" />
-                        )}
-                      </Button>
-                    </form>
-                  </>
-                )}
-              </CardContent>
-            </Card>
-          </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
         </div>
       </section>
+      {/* Features Section */}
+        <FeatureSection />
 
       {/* Security Section */}
       <section className="py-3 bg-gradient-to-b from-white/80 to-transparent">

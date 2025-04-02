@@ -1,7 +1,7 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
 import { FileText, File, X, ArrowUpRight } from "lucide-react";
-
+import Image from 'next/image';
 
 
 export default function ChatSection({ chatHistory, onSend, isLoading,
@@ -370,7 +370,7 @@ useEffect(() => {
         }
       });
     };
-  }, []);
+  }, [filePreviewUrls]);
 
   useEffect(() => {
     if (chatHistory.length === 0) {
@@ -731,9 +731,6 @@ default:
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [chatHistory, typingText, showLoadingMessage]);
 
- 
-
-
   const startTypewriterEffect = (text) => {
     if (!text || text.length === 0) {
       console.error("Empty text provided to typewriter effect");
@@ -1009,12 +1006,14 @@ if (isLastAssistantMessage && isTyping) {
             {filePreviewUrls.map((preview, index) => (
               <div key={index} className="relative inline-block">
                 {preview.type === 'image' ? (
-                  <img
-                    src={preview.url}
-                    alt={preview.file.name}
-                    className="h-16 w-16 object-cover rounded-md border border-gray-200 shadow-sm cursor-pointer"
-                    onClick={() => handleViewFile(preview.file, preview.url, preview.type)}
-                  />
+                  <Image
+                  src={preview.url}
+                  alt={preview.file.name}
+                  width={64} // Set the width
+                  height={64} // Set the height
+                  className="object-cover rounded-md border border-gray-200 shadow-sm cursor-pointer"
+                  onClick={() => handleViewFile(preview.file, preview.url, preview.type)}
+                />
                 ) : (
                   <div
                     className="h-16 w-16 bg-transparent rounded-md border border-gray-200 shadow-sm flex flex-col items-center justify-center p-1 cursor-pointer"

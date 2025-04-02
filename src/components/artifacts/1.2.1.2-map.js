@@ -475,7 +475,7 @@ if (active) {
 
     initializeMap();
     return () => map?.remove();
-  }, []);
+  }, [COLORS.blue, COLORS.concern, COLORS.flood, COLORS.green, COLORS.lightblue, COLORS.primary, COLORS.red, COLORS.yellow, activeLayers.floodplain, map, onLayersReady]);
 
   return (
     <div className={`flex flex-col h-full ${isFullScreen ? 'fixed inset-0 z-50 bg-white' : ''}`}>

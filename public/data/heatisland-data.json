@@ -1,0 +1,70 @@
+{
+    "neighborhoods": {
+      "Downtown": {
+        "average_temperature_increase": 9.5,
+        "tree_canopy_coverage": 15.3,
+        "impervious_surface_percentage": 92.7,
+        "heat_related_emergency_calls_per_100k": 78.2,
+        "cooling_degree_days": 3250
+      },
+      "East Cesar Chavez": {
+        "average_temperature_increase": 8.7,
+        "tree_canopy_coverage": 22.1,
+        "impervious_surface_percentage": 78.5,
+        "heat_related_emergency_calls_per_100k": 65.3,
+        "cooling_degree_days": 3180
+      },
+      "Zilker": {
+        "average_temperature_increase": 6.2,
+        "tree_canopy_coverage": 38.7,
+        "impervious_surface_percentage": 62.3,
+        "heat_related_emergency_calls_per_100k": 42.1,
+        "cooling_degree_days": 3050
+      },
+      "Old West Austin": {
+        "average_temperature_increase": 5.8,
+        "tree_canopy_coverage": 45.2,
+        "impervious_surface_percentage": 55.8,
+        "heat_related_emergency_calls_per_100k": 35.7,
+        "cooling_degree_days": 3020
+      },
+      "UT": {
+        "average_temperature_increase": 8.1,
+        "tree_canopy_coverage": 25.3,
+        "impervious_surface_percentage": 82.7,
+        "heat_related_emergency_calls_per_100k": 58.9,
+        "cooling_degree_days": 3150
+      },
+      "Bouldin Creek": {
+        "average_temperature_increase": 7.3,
+        "tree_canopy_coverage": 32.5,
+        "impervious_surface_percentage": 68.9,
+        "heat_related_emergency_calls_per_100k": 51.2,
+        "cooling_degree_days": 3100
+      },
+      "Central East Austin": {
+        "average_temperature_increase": 9.2,
+        "tree_canopy_coverage": 18.7,
+        "impervious_surface_percentage": 85.3,
+        "heat_related_emergency_calls_per_100k": 72.8,
+        "cooling_degree_days": 3220
+      },
+      "West University": {
+        "average_temperature_increase": 7.8,
+        "tree_canopy_coverage": 28.9,
+        "impervious_surface_percentage": 76.2,
+        "heat_related_emergency_calls_per_100k": 55.6,
+        "cooling_degree_days": 3130
+      }
+    },
+    "methodology": {
+      "data_sources": ["Urban Heat Island Studies", "Tree Canopy Assessments", "Emergency Services Reports"],
+      "generation_techniques": [
+        "Statistical modeling based on demographic and environmental factors",
+        "Extrapolation from citywide heat mapping studies",
+        "Correlation analysis with socioeconomic indicators"
+      ],
+      "last_updated": "2025-03-28"
+    }
+  }
+  

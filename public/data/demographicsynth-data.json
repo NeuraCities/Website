@@ -1,0 +1,307 @@
+{
+    "neighborhoods": {
+      "Downtown": {
+        "population": 14200,
+        "median_age": 32.5,
+        "age_distribution": {
+          "0-17": 3.8,
+          "18-24": 15.2,
+          "25-34": 41.5,
+          "35-44": 18.7,
+          "45-64": 14.3,
+          "65+": 6.5
+        },
+        "income": {
+          "median_household": 98750,
+          "distribution": {
+            "<$25k": 12.5,
+            "$25k-$44k": 8.3,
+            "$45k-$74k": 15.2,
+            "$75k-$149k": 32.7,
+            "$150k+": 31.3
+          }
+        },
+        "race": {
+          "white": 65.7,
+          "hispanic": 18.3,
+          "black": 5.2,
+          "asian": 8.1,
+          "other": 2.7
+        },
+        "education": {
+          "graduate_degree": 35.2,
+          "bachelors": 45.8,
+          "some_college": 12.3,
+          "high_school": 5.1,
+          "less_than_hs": 1.6
+        }
+      },
+      "East Cesar Chavez": {
+        "population": 3502,
+        "median_age": 34.6,
+        "age_distribution": {
+          "0-17": 10,
+          "18-24": 3,
+          "25-34": 34,
+          "35-44": 26,
+          "45-64": 15,
+          "65+": 12
+        },
+        "income": {
+          "median_household": 81108,
+          "distribution": {
+            "<$25k": 23,
+            "$25k-$44k": 15,
+            "$45k-$74k": 11,
+            "$75k-$149k": 31,
+            "$150k+": 20
+          }
+        },
+        "race": {
+          "white": 60,
+          "hispanic": 18,
+          "black": 15,
+          "asian": 5,
+          "other": 2
+        },
+        "education": {
+          "graduate_degree": 30,
+          "bachelors": 38,
+          "some_college": 16,
+          "high_school": 7,
+          "less_than_hs": 9
+        }
+      },
+      "Zilker": {
+        "population": 5750,
+        "median_age": 36.8,
+        "age_distribution": {
+          "0-17": 15.3,
+          "18-24": 8.7,
+          "25-34": 28.5,
+          "35-44": 22.1,
+          "45-64": 18.9,
+          "65+": 6.5
+        },
+        "income": {
+          "median_household": 112500,
+          "distribution": {
+            "<$25k": 9.8,
+            "$25k-$44k": 11.2,
+            "$45k-$74k": 17.5,
+            "$75k-$149k": 33.7,
+            "$150k+": 27.8
+          }
+        },
+        "race": {
+          "white": 76.5,
+          "hispanic": 13.2,
+          "black": 2.8,
+          "asian": 5.1,
+          "other": 2.4
+        },
+        "education": {
+          "graduate_degree": 32.7,
+          "bachelors": 47.3,
+          "some_college": 13.5,
+          "high_school": 4.8,
+          "less_than_hs": 1.7
+        }
+      },
+      "Old West Austin": {
+        "population": 4200,
+        "median_age": 39.2,
+        "age_distribution": {
+          "0-17": 14.8,
+          "18-24": 7.2,
+          "25-34": 22.5,
+          "35-44": 24.3,
+          "45-64": 22.7,
+          "65+": 8.5
+        },
+        "income": {
+          "median_household": 128750,
+          "distribution": {
+            "<$25k": 7.5,
+            "$25k-$44k": 8.3,
+            "$45k-$74k": 14.2,
+            "$75k-$149k": 35.7,
+            "$150k+": 34.3
+          }
+        },
+        "race": {
+          "white": 82.3,
+          "hispanic": 9.7,
+          "black": 1.8,
+          "asian": 4.2,
+          "other": 2.0
+        },
+        "education": {
+          "graduate_degree": 38.5,
+          "bachelors": 45.2,
+          "some_college": 10.8,
+          "high_school": 4.1,
+          "less_than_hs": 1.4
+        }
+      },
+      "UT": {
+        "population": 4697,
+        "median_age": 21.4,
+        "age_distribution": {
+          "0-17": 1.5,
+          "18-24": 75.3,
+          "25-34": 15.2,
+          "35-44": 3.7,
+          "45-64": 3.1,
+          "65+": 1.2
+        },
+        "income": {
+          "median_household": 25000,
+          "distribution": {
+            "<$25k": 65.2,
+            "$25k-$44k": 18.7,
+            "$45k-$74k": 9.3,
+            "$75k-$149k": 5.1,
+            "$150k+": 1.7
+          }
+        },
+        "race": {
+          "white": 49.61,
+          "hispanic": 22.5,
+          "black": 4.2,
+          "asian": 18.7,
+          "other": 5.0
+        },
+        "education": {
+          "graduate_degree": 12.3,
+          "bachelors": 25.7,
+          "some_college": 58.2,
+          "high_school": 3.1,
+          "less_than_hs": 0.7
+        }
+      },
+      "Bouldin Creek": {
+        "population": 49854,
+        "median_age": 33.2,
+        "age_distribution": {
+          "0-17": 12.5,
+          "18-24": 10.8,
+          "25-34": 32.7,
+          "35-44": 20.3,
+          "45-64": 17.2,
+          "65+": 6.5
+        },
+        "income": {
+          "median_household": 68338,
+          "distribution": {
+            "<$25k": 18.2,
+            "$25k-$44k": 15.7,
+            "$45k-$74k": 22.3,
+            "$75k-$149k": 28.5,
+            "$150k+": 15.3
+          }
+        },
+        "race": {
+          "white": 70.5,
+          "hispanic": 16.8,
+          "black": 4.7,
+          "asian": 5.3,
+          "other": 2.7
+        },
+        "education": {
+          "graduate_degree": 28.7,
+          "bachelors": 42.5,
+          "some_college": 18.3,
+          "high_school": 7.2,
+          "less_than_hs": 3.3
+        }
+      },
+      "Central East Austin": {
+        "population": 6800,
+        "median_age": 35.7,
+        "age_distribution": {
+          "0-17": 16.2,
+          "18-24": 8.5,
+          "25-34": 28.3,
+          "35-44": 22.7,
+          "45-64": 17.8,
+          "65+": 6.5
+        },
+        "income": {
+          "median_household": 72500,
+          "distribution": {
+            "<$25k": 20.5,
+            "$25k-$44k": 17.3,
+            "$45k-$74k": 21.7,
+            "$75k-$149k": 27.2,
+            "$150k+": 13.3
+          }
+        },
+        "race": {
+          "white": 45.7,
+          "hispanic": 35.2,
+          "black": 12.8,
+          "asian": 3.7,
+          "other": 2.6
+        },
+        "education": {
+          "graduate_degree": 22.5,
+          "bachelors": 35.7,
+          "some_college": 23.8,
+          "high_school": 12.3,
+          "less_than_hs": 5.7
+        }
+      },
+      "West University": {
+        "population": 5200,
+        "median_age": 23.8,
+        "age_distribution": {
+          "0-17": 3.2,
+          "18-24": 65.7,
+          "25-34": 18.3,
+          "35-44": 5.7,
+          "45-64": 4.8,
+          "65+": 2.3
+        },
+        "income": {
+          "median_household": 35000,
+          "distribution": {
+            "<$25k": 48.3,
+            "$25k-$44k": 22.7,
+            "$45k-$74k": 15.2,
+            "$75k-$149k": 9.5,
+            "$150k+": 4.3
+          }
+        },
+        "race": {
+          "white": 62.5,
+          "hispanic": 18.7,
+          "black": 3.8,
+          "asian": 12.3,
+          "other": 2.7
+        },
+        "education": {
+          "graduate_degree": 15.7,
+          "bachelors": 32.5,
+          "some_college": 48.3,
+          "high_school": 2.8,
+          "less_than_hs": 0.7
+        }
+      }
+    },
+    "methodology": {
+      "base_data_sources": ["U.S. Census Bureau", "AreaVibes", "Point2Homes", "Niche"],
+      "synthetic_generation_techniques": [
+        "Statistical distribution modeling",
+        "Demographic pattern extrapolation",
+        "Neighborhood characteristic inference"
+      ],
+      "validation_checks": [
+        "Sum constraints (all percentages = 100%)",
+        "Income-age correlation maintenance",
+        "Education-income relationship preservation"
+      ],
+      "last_updated": "2025-03-27"
+    }
+  }
+  

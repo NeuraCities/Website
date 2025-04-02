@@ -1,0 +1,2175 @@
+[
+    {
+      "detector_id": "707",
+      "detector_type": "LOOP",
+      "detector_status": "REMOVED",
+      "detector_direction": "EASTBOUND",
+      "detector_movement": "LEFT TURN",
+      "location_name": " CONGRESS AVE / ELIZABETH ST",
+      "atd_location_id": "LOC16-001120",
+      "signal_id": "228",
+      "modified_date": "2022-08-01T19:34:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.749939,
+          30.248924
+        ]
+      },
+      ":@computed_region_8spj_utxs": "9",
+      ":@computed_region_jcrc_4uuy": "9",
+      ":@computed_region_q9nd_rr82": "10",
+      ":@computed_region_e9j2_6w3z": "30",
+      ":@computed_region_m2th_e4b7": "217",
+      ":@computed_region_rxpj_nzrk": "75",
+      "condition": 0.77
+    },
+    {
+      "detector_id": "1756",
+      "detector_type": "LOOP",
+      "detector_status": "OK",
+      "detector_direction": "NORTHBOUND",
+      "detector_movement": "THRU / RIGHT TURN",
+      "location_name": " 6TH ST / BAYLOR ST",
+      "atd_location_id": "LOC16-004645",
+      "signal_id": "951",
+      "created_date": "2017-06-28T00:00:00.000",
+      "modified_date": "2023-12-17T19:38:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.755386,
+          30.272099
+        ]
+      },
+      ":@computed_region_8spj_utxs": "9",
+      ":@computed_region_jcrc_4uuy": "26",
+      ":@computed_region_q9nd_rr82": "10",
+      ":@computed_region_e9j2_6w3z": "72",
+      ":@computed_region_m2th_e4b7": "217",
+      ":@computed_region_rxpj_nzrk": "69",
+      "condition": 0.8
+    },
+    {
+      "detector_id": "1748",
+      "detector_type": "LOOP",
+      "detector_status": "REMOVED",
+      "detector_direction": "NORTHBOUND",
+      "detector_movement": "THRU / RIGHT TURN",
+      "location_name": " 5TH ST / WALSH ST",
+      "atd_location_id": "LOC16-004660",
+      "signal_id": "954",
+      "created_date": "2017-06-28T00:00:00.000",
+      "modified_date": "2022-06-26T03:04:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.758171,
+          30.271654
+        ]
+      },
+      ":@computed_region_8spj_utxs": "9",
+      ":@computed_region_jcrc_4uuy": "26",
+      ":@computed_region_q9nd_rr82": "10",
+      ":@computed_region_e9j2_6w3z": "72",
+      ":@computed_region_m2th_e4b7": "217",
+      ":@computed_region_rxpj_nzrk": "69",
+      "condition": 0.63
+    },
+    {
+      "detector_id": "390",
+      "detector_type": "LOOP",
+      "detector_status": "REMOVED",
+      "detector_direction": "NORTHBOUND",
+      "detector_movement": "LEFT TURN",
+      "location_name": " 15TH ST / NUECES ST",
+      "atd_location_id": "LOC16-001070",
+      "signal_id": "218",
+      "modified_date": "2022-11-21T19:25:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.745148,
+          30.278534
+        ]
+      },
+      ":@computed_region_8spj_utxs": "9",
+      ":@computed_region_jcrc_4uuy": "52",
+      ":@computed_region_q9nd_rr82": "10",
+      ":@computed_region_e9j2_6w3z": "60",
+      ":@computed_region_m2th_e4b7": "217",
+      ":@computed_region_rxpj_nzrk": "24",
+      "condition": 0.75
+    },
+    {
+      "detector_id": "4868",
+      "detector_type": "LOOP",
+      "detector_status": "OK",
+      "detector_direction": "EASTBOUND",
+      "detector_movement": "LEFT TURN",
+      "location_name": " CONGRESS AVE / BARTON SPRINGS RD",
+      "atd_location_id": "LOC16-000655",
+      "signal_id": "132",
+      "created_date": "2017-06-15T00:00:00.000",
+      "modified_date": "2023-12-22T12:56:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.74614,
+          30.259111
+        ]
+      },
+      ":@computed_region_8spj_utxs": "9",
+      ":@computed_region_jcrc_4uuy": "9",
+      ":@computed_region_q9nd_rr82": "10",
+      ":@computed_region_e9j2_6w3z": "42",
+      ":@computed_region_m2th_e4b7": "217",
+      ":@computed_region_rxpj_nzrk": "75",
+      "condition": 0.32
+    },
+    {
+      "detector_id": "5865",
+      "detector_type": "VIDEO",
+      "detector_status": "OK",
+      "detector_direction": "WESTBOUND",
+      "detector_movement": "LEFT TURN, THRU / RIGHT TURN",
+      "location_name": " LAMAR BLVD / LAMAR SQUARE DR",
+      "atd_location_id": "LOC16-003810",
+      "signal_id": "774",
+      "created_date": "2017-09-11T00:00:00.000",
+      "modified_date": "2025-01-06T23:29:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.762589,
+          30.254248
+        ]
+      },
+      ":@computed_region_8spj_utxs": "5",
+      ":@computed_region_jcrc_4uuy": "9",
+      ":@computed_region_q9nd_rr82": "1",
+      ":@computed_region_e9j2_6w3z": "2",
+      ":@computed_region_m2th_e4b7": "217",
+      ":@computed_region_rxpj_nzrk": "75",
+      "condition": 0.59
+    },
+    {
+      "detector_id": "5867",
+      "detector_type": "VIDEO",
+      "detector_status": "OK - MINOR ISSUE",
+      "detector_direction": "SOUTHBOUND",
+      "detector_movement": "LEFT TURN, THRU / RIGHT TURN",
+      "location_name": " LAMAR BLVD / LAMAR SQUARE DR",
+      "atd_location_id": "LOC16-003810",
+      "signal_id": "774",
+      "created_date": "2017-09-11T00:00:00.000",
+      "modified_date": "2025-01-06T23:29:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.762589,
+          30.254248
+        ]
+      },
+      ":@computed_region_8spj_utxs": "5",
+      ":@computed_region_jcrc_4uuy": "9",
+      ":@computed_region_q9nd_rr82": "1",
+      ":@computed_region_e9j2_6w3z": "2",
+      ":@computed_region_m2th_e4b7": "217",
+      ":@computed_region_rxpj_nzrk": "75",
+      "condition": 0.83
+    },
+    {
+      "detector_id": "5482",
+      "detector_type": "NO DETECTORS",
+      "detector_status": "OK",
+      "detector_direction": "WESTBOUND",
+      "detector_movement": "LEFT TURN",
+      "location_name": " 24TH ST / NUECES ST",
+      "atd_location_id": "LOC16-000155",
+      "signal_id": "32",
+      "created_date": "2017-06-14T00:00:00.000",
+      "modified_date": "2017-06-14T05:00:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.74366,
+          30.287827
+        ]
+      },
+      ":@computed_region_8spj_utxs": "9",
+      ":@computed_region_jcrc_4uuy": "43",
+      ":@computed_region_q9nd_rr82": "10",
+      ":@computed_region_e9j2_6w3z": "44",
+      ":@computed_region_m2th_e4b7": "217",
+      ":@computed_region_rxpj_nzrk": "50",
+      "condition": 0.79
+    },
+    {
+      "detector_id": "6394",
+      "detector_type": "LOOP",
+      "detector_status": "OK",
+      "detector_direction": "WESTBOUND",
+      "detector_movement": "THRU / RIGHT TURN",
+      "location_name": " LAMAR BLVD / 34TH ST",
+      "atd_location_id": "LOC16-000520",
+      "signal_id": "105",
+      "created_date": "2018-05-25T00:00:00.000",
+      "modified_date": "2023-12-27T17:40:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.744713,
+          30.3027
+        ]
+      },
+      ":@computed_region_8spj_utxs": "10",
+      ":@computed_region_jcrc_4uuy": "43",
+      ":@computed_region_q9nd_rr82": "5",
+      ":@computed_region_e9j2_6w3z": "82",
+      ":@computed_region_m2th_e4b7": "217",
+      ":@computed_region_rxpj_nzrk": "50",
+      "condition": 0.79
+    },
+    {
+      "detector_id": "7812",
+      "detector_type": "RADAR - SmartMicro",
+      "detector_status": "OK",
+      "detector_direction": "NORTHBOUND",
+      "detector_movement": "LEFT TURN, RIGHT TURN, SETBACK, STOP BAR",
+      "location_name": " MARTIN LUTHER KING JR BLVD / RED RIVER ST",
+      "atd_location_id": "LOC16-000135",
+      "signal_id": "28",
+      "created_date": "2023-06-08T00:00:00.000",
+      "modified_date": "2023-12-10T18:33:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.732193,
+          30.278975
+        ]
+      },
+      ":@computed_region_8spj_utxs": "1",
+      ":@computed_region_jcrc_4uuy": "52",
+      ":@computed_region_q9nd_rr82": "8",
+      ":@computed_region_e9j2_6w3z": "60",
+      ":@computed_region_m2th_e4b7": "217",
+      ":@computed_region_rxpj_nzrk": "50",
+      "condition": 0.63
+    },
+    {
+      "detector_id": "7938",
+      "detector_type": "VIDEO",
+      "detector_status": "OK",
+      "detector_direction": "EASTBOUND",
+      "detector_movement": "THRU / LEFT TURN, THRU / RIGHT TURN",
+      "location_name": " LAMAR BLVD / 9TH ST",
+      "atd_location_id": "LOC16-000635",
+      "signal_id": "128",
+      "created_date": "2023-09-07T00:00:00.000",
+      "modified_date": "2023-12-22T13:08:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.752777,
+          30.273949
+        ]
+      },
+      ":@computed_region_8spj_utxs": "9",
+      ":@computed_region_jcrc_4uuy": "26",
+      ":@computed_region_q9nd_rr82": "10",
+      ":@computed_region_e9j2_6w3z": "60",
+      ":@computed_region_m2th_e4b7": "217",
+      ":@computed_region_rxpj_nzrk": "69",
+      "condition": 0.43
+    },
+    {
+      "detector_id": "7981",
+      "detector_type": "VIDEO",
+      "detector_status": "OK",
+      "detector_direction": "SOUTHBOUND",
+      "detector_movement": "THRU / LEFT TURN, THRU / RIGHT TURN",
+      "location_name": " 15TH ST / RED RIVER ST",
+      "atd_location_id": "LOC16-001105",
+      "signal_id": "225",
+      "created_date": "2023-09-08T00:00:00.000",
+      "modified_date": "2023-12-10T17:00:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.734848,
+          30.275618
+        ]
+      },
+      ":@computed_region_8spj_utxs": "1",
+      ":@computed_region_jcrc_4uuy": "52",
+      ":@computed_region_q9nd_rr82": "8",
+      ":@computed_region_e9j2_6w3z": "60",
+      ":@computed_region_m2th_e4b7": "217",
+      ":@computed_region_rxpj_nzrk": "24",
+      "condition": 0.37
+    },
+    {
+      "detector_id": "6797",
+      "detector_type": "VIDEO",
+      "detector_status": "OK",
+      "detector_direction": "WESTBOUND",
+      "detector_movement": "THRU / LEFT TURN",
+      "location_name": " LAMAR BLVD / MENCHACA RD (Barton Skwy)",
+      "atd_location_id": "LOC16-000620",
+      "signal_id": "125",
+      "created_date": "2019-04-02T00:00:00.000",
+      "modified_date": "2025-01-06T23:43:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.781395,
+          30.244257
+        ]
+      },
+      ":@computed_region_8spj_utxs": "5",
+      ":@computed_region_jcrc_4uuy": "9",
+      ":@computed_region_q9nd_rr82": "1",
+      ":@computed_region_e9j2_6w3z": "2",
+      ":@computed_region_m2th_e4b7": "441",
+      ":@computed_region_rxpj_nzrk": "75",
+      "condition": 0.68
+    },
+    {
+      "detector_id": "6801",
+      "detector_type": "VIDEO",
+      "detector_status": "REMOVED",
+      "detector_direction": "WESTBOUND",
+      "detector_movement": "LEFT TURN, THRU / RIGHT TURN",
+      "location_name": " 11TH ST / 35 SVRD",
+      "atd_location_id": "LOC16-001670",
+      "signal_id": "341",
+      "created_date": "2019-04-04T00:00:00.000",
+      "modified_date": "2022-07-13T15:22:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.732475,
+          30.270329
+        ]
+      },
+      ":@computed_region_8spj_utxs": "1",
+      ":@computed_region_jcrc_4uuy": "7",
+      ":@computed_region_q9nd_rr82": "8",
+      ":@computed_region_e9j2_6w3z": "56",
+      ":@computed_region_m2th_e4b7": "309",
+      ":@computed_region_rxpj_nzrk": "1",
+      "condition": 0.24
+    },
+    {
+      "detector_id": "6802",
+      "detector_type": "LOOP",
+      "detector_status": "REMOVED",
+      "detector_direction": "EASTBOUND",
+      "detector_movement": "LEFT TURN, THRU / RIGHT TURN",
+      "location_name": " 11TH ST / 35 SVRD",
+      "atd_location_id": "LOC16-001670",
+      "signal_id": "341",
+      "created_date": "2019-04-04T00:00:00.000",
+      "modified_date": "2022-07-13T15:23:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.732475,
+          30.270329
+        ]
+      },
+      ":@computed_region_8spj_utxs": "1",
+      ":@computed_region_jcrc_4uuy": "7",
+      ":@computed_region_q9nd_rr82": "8",
+      ":@computed_region_e9j2_6w3z": "56",
+      ":@computed_region_m2th_e4b7": "309",
+      ":@computed_region_rxpj_nzrk": "1",
+      "condition": 0.59
+    },
+    {
+      "detector_id": "6606",
+      "detector_type": "VIDEO",
+      "detector_status": "BROKEN",
+      "detector_direction": "EASTBOUND",
+      "detector_movement": "LEFT TURN, THRU / RIGHT TURN, THRU ONLY",
+      "location_name": "600 BLK E 15TH ST (East of Red River St)",
+      "atd_location_id": "LOC16-004955",
+      "signal_id": "1013",
+      "created_date": "2018-12-12T00:00:00.000",
+      "modified_date": "2024-11-18T20:15:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.733902,
+          30.275349
+        ]
+      },
+      ":@computed_region_8spj_utxs": "1",
+      ":@computed_region_jcrc_4uuy": "52",
+      ":@computed_region_q9nd_rr82": "8",
+      ":@computed_region_e9j2_6w3z": "60",
+      ":@computed_region_m2th_e4b7": "217",
+      ":@computed_region_rxpj_nzrk": "24",
+      "condition": 0.36
+    },
+    {
+      "detector_id": "7365",
+      "detector_type": "VIDEO",
+      "detector_status": "OK",
+      "detector_direction": "EASTBOUND",
+      "detector_movement": "THRU / LEFT TURN",
+      "location_name": " DEAN KEETON ST / RED RIVER ST",
+      "atd_location_id": "LOC16-000345",
+      "signal_id": "70",
+      "created_date": "2021-06-10T00:00:00.000",
+      "modified_date": "2025-02-25T20:50:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.726746,
+          30.287167
+        ]
+      },
+      ":@computed_region_8spj_utxs": "1",
+      ":@computed_region_jcrc_4uuy": "43",
+      ":@computed_region_q9nd_rr82": "8",
+      ":@computed_region_e9j2_6w3z": "79",
+      ":@computed_region_m2th_e4b7": "193",
+      ":@computed_region_rxpj_nzrk": "50",
+      "condition": 0.54
+    },
+    {
+      "detector_id": "7116",
+      "detector_type": "RADAR - Wavetronix",
+      "detector_status": "BROKEN",
+      "detector_direction": "SOUTHBOUND",
+      "detector_movement": "LEFT TURN",
+      "location_name": "400 BLK S CONGRESS AVE (Music Lane)",
+      "atd_location_id": "LOC17-007420",
+      "signal_id": "1068",
+      "created_date": "2020-03-02T00:00:00.000",
+      "modified_date": "2025-02-05T17:23:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.748178,
+          30.253627
+        ]
+      },
+      ":@computed_region_8spj_utxs": "9",
+      ":@computed_region_jcrc_4uuy": "9",
+      ":@computed_region_q9nd_rr82": "10",
+      ":@computed_region_e9j2_6w3z": "49",
+      ":@computed_region_m2th_e4b7": "217",
+      ":@computed_region_rxpj_nzrk": "75",
+      "condition": 0.42
+    },
+    {
+      "detector_id": "8435",
+      "detector_type": "VIDEO",
+      "detector_status": "OK",
+      "detector_direction": "EASTBOUND",
+      "detector_movement": "THRU / LEFT TURN",
+      "location_name": "100 BLK E RIVERSIDE DR (AUSTIN AMERICAN-STATESMAN)",
+      "atd_location_id": "LOC16-000885",
+      "signal_id": "179",
+      "created_date": "2023-09-27T00:00:00.000",
+      "modified_date": "2023-11-12T19:41:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.745018,
+          30.255238
+        ]
+      },
+      ":@computed_region_8spj_utxs": "9",
+      ":@computed_region_jcrc_4uuy": "9",
+      ":@computed_region_q9nd_rr82": "10",
+      ":@computed_region_e9j2_6w3z": "49",
+      ":@computed_region_m2th_e4b7": "217",
+      ":@computed_region_rxpj_nzrk": "75",
+      "condition": 0.49
+    },
+    {
+      "detector_id": "7618",
+      "detector_type": "VIDEO",
+      "detector_status": "OK",
+      "detector_direction": "SOUTHBOUND",
+      "detector_movement": "THRU / LEFT TURN",
+      "location_name": " CONGRESS AVE / ELIZABETH ST",
+      "atd_location_id": "LOC16-001120",
+      "signal_id": "228",
+      "created_date": "2022-08-01T00:00:00.000",
+      "modified_date": "2024-11-18T16:45:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.749939,
+          30.248924
+        ]
+      },
+      ":@computed_region_8spj_utxs": "9",
+      ":@computed_region_jcrc_4uuy": "9",
+      ":@computed_region_q9nd_rr82": "10",
+      ":@computed_region_e9j2_6w3z": "30",
+      ":@computed_region_m2th_e4b7": "217",
+      ":@computed_region_rxpj_nzrk": "75",
+      "condition": 0.52
+    },
+    {
+      "detector_id": "7631",
+      "detector_type": "VIDEO",
+      "detector_status": "OK",
+      "detector_direction": "EASTBOUND",
+      "detector_movement": "LEFT TURN",
+      "location_name": " CESAR CHAVEZ ST / SAN ANTONIO ST",
+      "atd_location_id": "LOC16-001365",
+      "signal_id": "280",
+      "created_date": "2022-08-17T00:00:00.000",
+      "modified_date": "2025-02-13T22:18:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.749115,
+          30.264656
+        ]
+      },
+      ":@computed_region_8spj_utxs": "9",
+      ":@computed_region_jcrc_4uuy": "52",
+      ":@computed_region_q9nd_rr82": "10",
+      ":@computed_region_e9j2_6w3z": "60",
+      ":@computed_region_m2th_e4b7": "217",
+      ":@computed_region_rxpj_nzrk": "24",
+      "condition": 0.88
+    },
+    {
+      "detector_id": "8702",
+      "detector_type": "RADAR - SmartMicro",
+      "detector_status": "BROKEN",
+      "detector_direction": "SOUTHBOUND",
+      "detector_movement": "LEFT TURN, THRU / RIGHT TURN",
+      "location_name": " CHICON ST / 6TH ST",
+      "atd_location_id": "LOC16-001750",
+      "signal_id": "357",
+      "created_date": "2024-05-13T00:00:00.000",
+      "modified_date": "2025-02-10T17:29:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.722511,
+          30.261694
+        ]
+      },
+      ":@computed_region_8spj_utxs": "3",
+      ":@computed_region_jcrc_4uuy": "7",
+      ":@computed_region_q9nd_rr82": "3",
+      ":@computed_region_e9j2_6w3z": "35",
+      ":@computed_region_m2th_e4b7": "309",
+      ":@computed_region_rxpj_nzrk": "1",
+      "condition": 0.61
+    },
+    {
+      "detector_id": "7733",
+      "detector_type": "RADAR - SmartMicro",
+      "detector_status": "OK",
+      "detector_direction": "WESTBOUND",
+      "detector_movement": "LEFT TURN, THRU ONLY",
+      "location_name": " GUADALUPE ST / 15TH ST",
+      "atd_location_id": "LOC16-001080",
+      "signal_id": "210",
+      "created_date": "2022-12-12T00:00:00.000",
+      "modified_date": "2025-03-24T15:42:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.743,
+          30.2779
+        ]
+      },
+      ":@computed_region_8spj_utxs": "9",
+      ":@computed_region_jcrc_4uuy": "52",
+      ":@computed_region_q9nd_rr82": "10",
+      ":@computed_region_e9j2_6w3z": "60",
+      ":@computed_region_m2th_e4b7": "217",
+      ":@computed_region_rxpj_nzrk": "24",
+      "condition": 0.64
+    },
+    {
+      "detector_id": "9142",
+      "detector_type": "RADAR - SmartMicro",
+      "detector_status": "OK",
+      "detector_direction": "WESTBOUND",
+      "detector_movement": "THRU / RIGHT TURN",
+      "location_name": " 12TH ST / 35 SVRD",
+      "atd_location_id": "LOC16-001615",
+      "signal_id": "330",
+      "created_date": "2024-10-19T00:00:00.000",
+      "modified_date": "2024-10-19T20:41:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.732788,
+          30.271833
+        ]
+      },
+      ":@computed_region_8spj_utxs": "1",
+      ":@computed_region_jcrc_4uuy": "52",
+      ":@computed_region_q9nd_rr82": "8",
+      ":@computed_region_e9j2_6w3z": "60",
+      ":@computed_region_m2th_e4b7": "159",
+      ":@computed_region_rxpj_nzrk": "24",
+      "condition": 0.53
+    },
+    {
+      "detector_id": "9143",
+      "detector_type": "RADAR - SmartMicro",
+      "detector_status": "OK",
+      "detector_direction": "WESTBOUND, EASTBOUND",
+      "detector_movement": "LEFT TURN, THRU ONLY",
+      "location_name": " 12TH ST / 35 SVRD",
+      "atd_location_id": "LOC16-001615",
+      "signal_id": "330",
+      "created_date": "2024-10-21T00:00:00.000",
+      "modified_date": "2024-11-14T19:35:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.732788,
+          30.271833
+        ]
+      },
+      ":@computed_region_8spj_utxs": "1",
+      ":@computed_region_jcrc_4uuy": "52",
+      ":@computed_region_q9nd_rr82": "8",
+      ":@computed_region_e9j2_6w3z": "60",
+      ":@computed_region_m2th_e4b7": "159",
+      ":@computed_region_rxpj_nzrk": "24",
+      "condition": 0.73
+    },
+    {
+      "detector_id": "9133",
+      "detector_type": "VIDEO",
+      "detector_status": "OK",
+      "detector_direction": "WESTBOUND, SOUTHBOUND",
+      "detector_movement": "THRU / LEFT TURN",
+      "location_name": " 11TH ST / NAVASOTA ST (Rosewood Ave)",
+      "atd_location_id": "LOC16-004135",
+      "signal_id": "840",
+      "created_date": "2024-10-11T00:00:00.000",
+      "modified_date": "2024-10-11T14:52:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.726914,
+          30.268389
+        ]
+      },
+      ":@computed_region_8spj_utxs": "1",
+      ":@computed_region_jcrc_4uuy": "7",
+      ":@computed_region_q9nd_rr82": "8",
+      ":@computed_region_e9j2_6w3z": "56",
+      ":@computed_region_m2th_e4b7": "309",
+      ":@computed_region_rxpj_nzrk": "1",
+      "condition": 0.39
+    },
+    {
+      "detector_id": "9141",
+      "detector_type": "RADAR - SmartMicro",
+      "detector_status": "OK",
+      "detector_direction": "SOUTHBOUND",
+      "detector_movement": "LEFT TURN, THRU / RIGHT TURN",
+      "location_name": " 12TH ST / 35 SVRD",
+      "atd_location_id": "LOC16-001615",
+      "signal_id": "330",
+      "created_date": "2024-10-19T00:00:00.000",
+      "modified_date": "2024-10-19T20:41:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.732788,
+          30.271833
+        ]
+      },
+      ":@computed_region_8spj_utxs": "1",
+      ":@computed_region_jcrc_4uuy": "52",
+      ":@computed_region_q9nd_rr82": "8",
+      ":@computed_region_e9j2_6w3z": "60",
+      ":@computed_region_m2th_e4b7": "159",
+      ":@computed_region_rxpj_nzrk": "24",
+      "condition": 0.64
+    },
+    {
+      "detector_id": "9144",
+      "detector_type": "RADAR - SmartMicro",
+      "detector_status": "REMOVED",
+      "detector_direction": "EASTBOUND",
+      "detector_movement": "LEFT TURN, THRU ONLY",
+      "location_name": " 12TH ST / 35 SVRD",
+      "atd_location_id": "LOC16-001615",
+      "signal_id": "330",
+      "created_date": "2024-10-21T00:00:00.000",
+      "modified_date": "2024-11-14T19:36:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.732788,
+          30.271833
+        ]
+      },
+      ":@computed_region_8spj_utxs": "1",
+      ":@computed_region_jcrc_4uuy": "52",
+      ":@computed_region_q9nd_rr82": "8",
+      ":@computed_region_e9j2_6w3z": "60",
+      ":@computed_region_m2th_e4b7": "159",
+      ":@computed_region_rxpj_nzrk": "24",
+      "condition": 0.68
+    },
+    {
+      "detector_id": "8920",
+      "detector_type": "RADAR - SmartMicro",
+      "detector_status": "OK",
+      "detector_direction": "SOUTHBOUND",
+      "detector_movement": "LEFT TURN, THRU / RIGHT TURN",
+      "location_name": " MARTIN LUTHER KING JR BLVD / SAN JACINTO BLVD",
+      "atd_location_id": "LOC16-000125",
+      "signal_id": "26",
+      "created_date": "2024-07-17T00:00:00.000",
+      "modified_date": "2025-02-25T20:35:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.73571,
+          30.279976
+        ]
+      },
+      ":@computed_region_8spj_utxs": "1",
+      ":@computed_region_jcrc_4uuy": "52",
+      ":@computed_region_q9nd_rr82": "8",
+      ":@computed_region_e9j2_6w3z": "60",
+      ":@computed_region_m2th_e4b7": "217",
+      ":@computed_region_rxpj_nzrk": "24",
+      "condition": 0.62
+    },
+    {
+      "detector_id": "8545",
+      "detector_type": "LOOP",
+      "detector_status": "OK",
+      "detector_direction": "WESTBOUND",
+      "detector_movement": "LEFT TURN",
+      "location_name": " BRAZOS ST / CESAR CHAVEZ ST",
+      "atd_location_id": "LOC16-000900",
+      "signal_id": "182",
+      "created_date": "2024-02-15T00:00:00.000",
+      "modified_date": "2024-06-21T14:42:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.74321,
+          30.263029
+        ]
+      },
+      ":@computed_region_8spj_utxs": "9",
+      ":@computed_region_jcrc_4uuy": "52",
+      ":@computed_region_q9nd_rr82": "10",
+      ":@computed_region_e9j2_6w3z": "60",
+      ":@computed_region_m2th_e4b7": "217",
+      ":@computed_region_rxpj_nzrk": "24",
+      "condition": 0.45
+    },
+    {
+      "detector_id": "8589",
+      "detector_type": "RADAR - Wavetronix",
+      "detector_status": "OK",
+      "detector_direction": "EASTBOUND",
+      "detector_movement": "THRU / RIGHT TURN",
+      "location_name": " MARTIN LUTHER KING JR BLVD / COLORADO ST",
+      "atd_location_id": "LOC18-012845",
+      "signal_id": "1050",
+      "created_date": "2024-03-26T00:00:00.000",
+      "modified_date": "2024-03-26T16:09:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.73946,
+          30.281042
+        ]
+      },
+      ":@computed_region_8spj_utxs": "9",
+      ":@computed_region_jcrc_4uuy": "52",
+      ":@computed_region_q9nd_rr82": "10",
+      ":@computed_region_e9j2_6w3z": "44",
+      ":@computed_region_m2th_e4b7": "217",
+      ":@computed_region_rxpj_nzrk": "50",
+      "condition": 0.43
+    },
+    {
+      "detector_id": "8990",
+      "detector_type": "RADAR - SmartMicro",
+      "detector_status": "BROKEN",
+      "detector_direction": "WESTBOUND",
+      "detector_movement": "BICYCLE, LEFT TURN, THRU / RIGHT TURN, THRU ONLY",
+      "location_name": " 7TH ST / ATTAYAC ST",
+      "atd_location_id": "LOC16-001715",
+      "signal_id": "350",
+      "created_date": "2024-08-06T00:00:00.000",
+      "modified_date": "2025-03-12T15:05:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.72908,
+          30.265019
+        ]
+      },
+      ":@computed_region_8spj_utxs": "1",
+      ":@computed_region_jcrc_4uuy": "7",
+      ":@computed_region_q9nd_rr82": "8",
+      ":@computed_region_e9j2_6w3z": "56",
+      ":@computed_region_m2th_e4b7": "309",
+      ":@computed_region_rxpj_nzrk": "1",
+      "condition": 0.42
+    },
+    {
+      "detector_id": "734",
+      "detector_type": "LOOP",
+      "detector_status": "REMOVED",
+      "detector_direction": "WESTBOUND",
+      "detector_movement": "LEFT TURN",
+      "location_name": " CONGRESS AVE / ELIZABETH ST",
+      "atd_location_id": "LOC16-001120",
+      "signal_id": "228",
+      "modified_date": "2022-08-01T19:35:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.749939,
+          30.248924
+        ]
+      },
+      ":@computed_region_8spj_utxs": "9",
+      ":@computed_region_jcrc_4uuy": "9",
+      ":@computed_region_q9nd_rr82": "10",
+      ":@computed_region_e9j2_6w3z": "30",
+      ":@computed_region_m2th_e4b7": "217",
+      ":@computed_region_rxpj_nzrk": "75",
+      "condition": 0.74
+    },
+    {
+      "detector_id": "770",
+      "detector_type": "LOOP",
+      "detector_status": "REMOVED",
+      "detector_direction": "NORTHBOUND",
+      "detector_movement": "LEFT TURN",
+      "location_name": " DEAN KEETON ST / UNIVERSITY AVE",
+      "atd_location_id": "LOC16-000305",
+      "signal_id": "62",
+      "modified_date": "2020-03-09T16:29:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.739075,
+          30.289627
+        ]
+      },
+      ":@computed_region_8spj_utxs": "9",
+      ":@computed_region_jcrc_4uuy": "18",
+      ":@computed_region_q9nd_rr82": "10",
+      ":@computed_region_e9j2_6w3z": "79",
+      ":@computed_region_m2th_e4b7": "217",
+      ":@computed_region_rxpj_nzrk": "25",
+      "condition": 0.85
+    },
+    {
+      "detector_id": "773",
+      "detector_type": "LOOP",
+      "detector_status": "REMOVED",
+      "detector_direction": "SOUTHBOUND",
+      "detector_movement": "LEFT TURN",
+      "location_name": " DEAN KEETON ST / UNIVERSITY AVE",
+      "atd_location_id": "LOC16-000305",
+      "signal_id": "62",
+      "modified_date": "2020-03-09T16:29:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.739075,
+          30.289627
+        ]
+      },
+      ":@computed_region_8spj_utxs": "9",
+      ":@computed_region_jcrc_4uuy": "18",
+      ":@computed_region_q9nd_rr82": "10",
+      ":@computed_region_e9j2_6w3z": "79",
+      ":@computed_region_m2th_e4b7": "217",
+      ":@computed_region_rxpj_nzrk": "25",
+      "condition": 0.55
+    },
+    {
+      "detector_id": "816",
+      "detector_type": "LOOP",
+      "detector_status": "OK",
+      "detector_direction": "NORTHBOUND",
+      "detector_movement": "THRU / LEFT TURN",
+      "location_name": " RIVERSIDE DR / TRAVIS HEIGHTS BLVD",
+      "atd_location_id": "LOC16-001860",
+      "signal_id": "379",
+      "modified_date": "2023-11-02T19:24:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.73877,
+          30.249842
+        ]
+      },
+      ":@computed_region_8spj_utxs": "9",
+      ":@computed_region_jcrc_4uuy": "9",
+      ":@computed_region_q9nd_rr82": "10",
+      ":@computed_region_e9j2_6w3z": "49",
+      ":@computed_region_m2th_e4b7": "217",
+      ":@computed_region_rxpj_nzrk": "75",
+      "condition": 0.5
+    },
+    {
+      "detector_id": "817",
+      "detector_type": "LOOP",
+      "detector_status": "OK",
+      "detector_direction": "SOUTHBOUND",
+      "detector_movement": "LEFT TURN",
+      "location_name": " RIVERSIDE DR / TRAVIS HEIGHTS BLVD",
+      "atd_location_id": "LOC16-001860",
+      "signal_id": "379",
+      "modified_date": "2023-11-02T19:24:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.73877,
+          30.249842
+        ]
+      },
+      ":@computed_region_8spj_utxs": "9",
+      ":@computed_region_jcrc_4uuy": "9",
+      ":@computed_region_q9nd_rr82": "10",
+      ":@computed_region_e9j2_6w3z": "49",
+      ":@computed_region_m2th_e4b7": "217",
+      ":@computed_region_rxpj_nzrk": "75",
+      "condition": 0.77
+    },
+    {
+      "detector_id": "985",
+      "detector_type": "LOOP",
+      "detector_status": "REMOVED",
+      "detector_direction": "WESTBOUND",
+      "detector_movement": "LEFT TURN",
+      "location_name": " CESAR CHAVEZ ST / TRINITY ST",
+      "atd_location_id": "LOC16-000905",
+      "signal_id": "183",
+      "modified_date": "2020-03-06T18:17:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.741074,
+          30.262396
+        ]
+      },
+      ":@computed_region_8spj_utxs": "9",
+      ":@computed_region_jcrc_4uuy": "52",
+      ":@computed_region_q9nd_rr82": "10",
+      ":@computed_region_e9j2_6w3z": "60",
+      ":@computed_region_m2th_e4b7": "217",
+      ":@computed_region_rxpj_nzrk": "24",
+      "condition": 0.75
+    },
+    {
+      "detector_id": "1096",
+      "detector_type": "LOOP",
+      "detector_status": "REMOVED",
+      "detector_direction": "EASTBOUND",
+      "detector_movement": "LEFT TURN",
+      "location_name": " RED RIVER ST / CLYDE LITTLEFIELD DR",
+      "atd_location_id": "LOC16-000350",
+      "signal_id": "71",
+      "modified_date": "2021-07-13T14:39:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.727966,
+          30.283228
+        ]
+      },
+      ":@computed_region_8spj_utxs": "1",
+      ":@computed_region_jcrc_4uuy": "43",
+      ":@computed_region_q9nd_rr82": "8",
+      ":@computed_region_e9j2_6w3z": "79",
+      ":@computed_region_m2th_e4b7": "318",
+      ":@computed_region_rxpj_nzrk": "50",
+      "condition": 0.75
+    },
+    {
+      "detector_id": "1097",
+      "detector_type": "LOOP",
+      "detector_status": "REMOVED",
+      "detector_direction": "EASTBOUND",
+      "detector_movement": "LEFT TURN",
+      "location_name": " 15TH ST / RED RIVER ST",
+      "atd_location_id": "LOC16-001105",
+      "signal_id": "225",
+      "modified_date": "2021-05-11T15:43:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.734848,
+          30.275618
+        ]
+      },
+      ":@computed_region_8spj_utxs": "1",
+      ":@computed_region_jcrc_4uuy": "52",
+      ":@computed_region_q9nd_rr82": "8",
+      ":@computed_region_e9j2_6w3z": "60",
+      ":@computed_region_m2th_e4b7": "217",
+      ":@computed_region_rxpj_nzrk": "24",
+      "condition": 0.8
+    },
+    {
+      "detector_id": "1099",
+      "detector_type": "LOOP",
+      "detector_status": "REMOVED",
+      "detector_direction": "EASTBOUND",
+      "detector_movement": "THRU / RIGHT TURN",
+      "location_name": " 15TH ST / RED RIVER ST",
+      "atd_location_id": "LOC16-001105",
+      "signal_id": "225",
+      "modified_date": "2021-05-11T15:43:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.734848,
+          30.275618
+        ]
+      },
+      ":@computed_region_8spj_utxs": "1",
+      ":@computed_region_jcrc_4uuy": "52",
+      ":@computed_region_q9nd_rr82": "8",
+      ":@computed_region_e9j2_6w3z": "60",
+      ":@computed_region_m2th_e4b7": "217",
+      ":@computed_region_rxpj_nzrk": "24",
+      "condition": 0.38
+    },
+    {
+      "detector_id": "1100",
+      "detector_type": "LOOP",
+      "detector_status": "REMOVED",
+      "detector_direction": "NORTHBOUND",
+      "detector_movement": "LEFT TURN",
+      "location_name": " 15TH ST / RED RIVER ST",
+      "atd_location_id": "LOC16-001105",
+      "signal_id": "225",
+      "modified_date": "2022-11-21T20:29:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.734848,
+          30.275618
+        ]
+      },
+      ":@computed_region_8spj_utxs": "1",
+      ":@computed_region_jcrc_4uuy": "52",
+      ":@computed_region_q9nd_rr82": "8",
+      ":@computed_region_e9j2_6w3z": "60",
+      ":@computed_region_m2th_e4b7": "217",
+      ":@computed_region_rxpj_nzrk": "24",
+      "condition": 0.72
+    },
+    {
+      "detector_id": "1105",
+      "detector_type": "LOOP",
+      "detector_status": "REMOVED",
+      "detector_direction": "SOUTHBOUND",
+      "detector_movement": "LEFT TURN",
+      "location_name": " 15TH ST / RED RIVER ST",
+      "atd_location_id": "LOC16-001105",
+      "signal_id": "225",
+      "modified_date": "2022-11-21T20:29:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.734848,
+          30.275618
+        ]
+      },
+      ":@computed_region_8spj_utxs": "1",
+      ":@computed_region_jcrc_4uuy": "52",
+      ":@computed_region_q9nd_rr82": "8",
+      ":@computed_region_e9j2_6w3z": "60",
+      ":@computed_region_m2th_e4b7": "217",
+      ":@computed_region_rxpj_nzrk": "24",
+      "condition": 0.78
+    },
+    {
+      "detector_id": "2853",
+      "detector_type": "LOOP",
+      "detector_status": "REMOVED",
+      "detector_direction": "SOUTHBOUND",
+      "detector_movement": "LEFT TURN",
+      "location_name": " MANOR RD / 35 SVRD",
+      "atd_location_id": "LOC16-003805",
+      "signal_id": "773",
+      "created_date": "2017-06-23T00:00:00.000",
+      "modified_date": "2020-12-25T14:59:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.727478,
+          30.283091
+        ]
+      },
+      ":@computed_region_8spj_utxs": "1",
+      ":@computed_region_jcrc_4uuy": "18",
+      ":@computed_region_q9nd_rr82": "8",
+      ":@computed_region_e9j2_6w3z": "79",
+      ":@computed_region_m2th_e4b7": "318",
+      ":@computed_region_rxpj_nzrk": "50",
+      "condition": 0.54
+    },
+    {
+      "detector_id": "2854",
+      "detector_type": "LOOP",
+      "detector_status": "REMOVED",
+      "detector_direction": "SOUTHBOUND",
+      "detector_movement": "THRU / RIGHT TURN",
+      "location_name": " MANOR RD / 35 SVRD",
+      "atd_location_id": "LOC16-003805",
+      "signal_id": "773",
+      "created_date": "2017-06-23T00:00:00.000",
+      "modified_date": "2020-12-25T14:59:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.727478,
+          30.283091
+        ]
+      },
+      ":@computed_region_8spj_utxs": "1",
+      ":@computed_region_jcrc_4uuy": "18",
+      ":@computed_region_q9nd_rr82": "8",
+      ":@computed_region_e9j2_6w3z": "79",
+      ":@computed_region_m2th_e4b7": "318",
+      ":@computed_region_rxpj_nzrk": "50",
+      "condition": 0.66
+    },
+    {
+      "detector_id": "2855",
+      "detector_type": "LOOP",
+      "detector_status": "REMOVED",
+      "detector_direction": "EASTBOUND",
+      "detector_movement": "LEFT TURN",
+      "location_name": " MANOR RD / 35 SVRD",
+      "atd_location_id": "LOC16-003805",
+      "signal_id": "773",
+      "created_date": "2017-06-23T00:00:00.000",
+      "modified_date": "2020-12-25T15:00:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.727478,
+          30.283091
+        ]
+      },
+      ":@computed_region_8spj_utxs": "1",
+      ":@computed_region_jcrc_4uuy": "18",
+      ":@computed_region_q9nd_rr82": "8",
+      ":@computed_region_e9j2_6w3z": "79",
+      ":@computed_region_m2th_e4b7": "318",
+      ":@computed_region_rxpj_nzrk": "50",
+      "condition": 0.68
+    },
+    {
+      "detector_id": "2856",
+      "detector_type": "LOOP",
+      "detector_status": "REMOVED",
+      "detector_direction": "EASTBOUND",
+      "detector_movement": "THRU / RIGHT TURN",
+      "location_name": " MANOR RD / 35 SVRD",
+      "atd_location_id": "LOC16-003805",
+      "signal_id": "773",
+      "created_date": "2017-06-23T00:00:00.000",
+      "modified_date": "2020-12-25T15:01:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.727478,
+          30.283091
+        ]
+      },
+      ":@computed_region_8spj_utxs": "1",
+      ":@computed_region_jcrc_4uuy": "18",
+      ":@computed_region_q9nd_rr82": "8",
+      ":@computed_region_e9j2_6w3z": "79",
+      ":@computed_region_m2th_e4b7": "318",
+      ":@computed_region_rxpj_nzrk": "50",
+      "condition": 0.73
+    },
+    {
+      "detector_id": "2857",
+      "detector_type": "LOOP",
+      "detector_status": "REMOVED",
+      "detector_direction": "WESTBOUND",
+      "detector_movement": "LEFT TURN",
+      "location_name": " MANOR RD / 35 SVRD",
+      "atd_location_id": "LOC16-003805",
+      "signal_id": "773",
+      "created_date": "2017-06-23T00:00:00.000",
+      "modified_date": "2020-12-25T15:02:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.727478,
+          30.283091
+        ]
+      },
+      ":@computed_region_8spj_utxs": "1",
+      ":@computed_region_jcrc_4uuy": "18",
+      ":@computed_region_q9nd_rr82": "8",
+      ":@computed_region_e9j2_6w3z": "79",
+      ":@computed_region_m2th_e4b7": "318",
+      ":@computed_region_rxpj_nzrk": "50",
+      "condition": 0.78
+    },
+    {
+      "detector_id": "2858",
+      "detector_type": "LOOP",
+      "detector_status": "REMOVED",
+      "detector_direction": "WESTBOUND",
+      "detector_movement": "THRU / RIGHT TURN",
+      "location_name": " MANOR RD / 35 SVRD",
+      "atd_location_id": "LOC16-003805",
+      "signal_id": "773",
+      "created_date": "2017-06-23T00:00:00.000",
+      "modified_date": "2020-12-25T15:03:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.727478,
+          30.283091
+        ]
+      },
+      ":@computed_region_8spj_utxs": "1",
+      ":@computed_region_jcrc_4uuy": "18",
+      ":@computed_region_q9nd_rr82": "8",
+      ":@computed_region_e9j2_6w3z": "79",
+      ":@computed_region_m2th_e4b7": "318",
+      ":@computed_region_rxpj_nzrk": "50",
+      "condition": 0.61
+    },
+    {
+      "detector_id": "2859",
+      "detector_type": "LOOP",
+      "detector_status": "REMOVED",
+      "detector_direction": "NORTHBOUND",
+      "detector_movement": "LEFT TURN",
+      "location_name": " MANOR RD / 35 SVRD",
+      "atd_location_id": "LOC16-003800",
+      "signal_id": "772",
+      "created_date": "2017-06-23T00:00:00.000",
+      "modified_date": "2019-02-08T14:11:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.726921,
+          30.282986
+        ]
+      },
+      ":@computed_region_8spj_utxs": "9",
+      ":@computed_region_jcrc_4uuy": "11",
+      ":@computed_region_q9nd_rr82": "10",
+      ":@computed_region_e9j2_6w3z": "79",
+      ":@computed_region_m2th_e4b7": "309",
+      ":@computed_region_rxpj_nzrk": "74",
+      "condition": 0.74
+    },
+    {
+      "detector_id": "2860",
+      "detector_type": "LOOP",
+      "detector_status": "REMOVED",
+      "detector_direction": "NORTHBOUND",
+      "detector_movement": "THRU / RIGHT TURN",
+      "location_name": " MANOR RD / 35 SVRD",
+      "atd_location_id": "LOC16-003800",
+      "signal_id": "772",
+      "created_date": "2017-06-23T00:00:00.000",
+      "modified_date": "2019-02-08T14:11:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.726921,
+          30.282986
+        ]
+      },
+      ":@computed_region_8spj_utxs": "9",
+      ":@computed_region_jcrc_4uuy": "11",
+      ":@computed_region_q9nd_rr82": "10",
+      ":@computed_region_e9j2_6w3z": "79",
+      ":@computed_region_m2th_e4b7": "309",
+      ":@computed_region_rxpj_nzrk": "74",
+      "condition": 0.6
+    },
+    {
+      "detector_id": "2861",
+      "detector_type": "LOOP",
+      "detector_status": "REMOVED",
+      "detector_direction": "EASTBOUND",
+      "detector_movement": "LEFT TURN",
+      "location_name": " MANOR RD / 35 SVRD",
+      "atd_location_id": "LOC16-003800",
+      "signal_id": "772",
+      "created_date": "2017-06-23T00:00:00.000",
+      "modified_date": "2019-02-08T14:11:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.726921,
+          30.282986
+        ]
+      },
+      ":@computed_region_8spj_utxs": "9",
+      ":@computed_region_jcrc_4uuy": "11",
+      ":@computed_region_q9nd_rr82": "10",
+      ":@computed_region_e9j2_6w3z": "79",
+      ":@computed_region_m2th_e4b7": "309",
+      ":@computed_region_rxpj_nzrk": "74",
+      "condition": 0.56
+    },
+    {
+      "detector_id": "2862",
+      "detector_type": "LOOP",
+      "detector_status": "REMOVED",
+      "detector_direction": "EASTBOUND",
+      "detector_movement": "THRU / RIGHT TURN",
+      "location_name": " MANOR RD / 35 SVRD",
+      "atd_location_id": "LOC16-003800",
+      "signal_id": "772",
+      "created_date": "2017-06-23T00:00:00.000",
+      "modified_date": "2019-02-08T14:11:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.726921,
+          30.282986
+        ]
+      },
+      ":@computed_region_8spj_utxs": "9",
+      ":@computed_region_jcrc_4uuy": "11",
+      ":@computed_region_q9nd_rr82": "10",
+      ":@computed_region_e9j2_6w3z": "79",
+      ":@computed_region_m2th_e4b7": "309",
+      ":@computed_region_rxpj_nzrk": "74",
+      "condition": 0.51
+    },
+    {
+      "detector_id": "2863",
+      "detector_type": "LOOP",
+      "detector_status": "REMOVED",
+      "detector_direction": "WESTBOUND",
+      "detector_movement": "LEFT TURN",
+      "location_name": " MANOR RD / 35 SVRD",
+      "atd_location_id": "LOC16-003800",
+      "signal_id": "772",
+      "created_date": "2017-06-23T00:00:00.000",
+      "modified_date": "2019-02-08T14:11:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.726921,
+          30.282986
+        ]
+      },
+      ":@computed_region_8spj_utxs": "9",
+      ":@computed_region_jcrc_4uuy": "11",
+      ":@computed_region_q9nd_rr82": "10",
+      ":@computed_region_e9j2_6w3z": "79",
+      ":@computed_region_m2th_e4b7": "309",
+      ":@computed_region_rxpj_nzrk": "74",
+      "condition": 0.65
+    },
+    {
+      "detector_id": "2864",
+      "detector_type": "LOOP",
+      "detector_status": "REMOVED",
+      "detector_direction": "WESTBOUND",
+      "detector_movement": "THRU / RIGHT TURN",
+      "location_name": " MANOR RD / 35 SVRD",
+      "atd_location_id": "LOC16-003800",
+      "signal_id": "772",
+      "created_date": "2017-06-23T00:00:00.000",
+      "modified_date": "2019-02-08T14:11:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.726921,
+          30.282986
+        ]
+      },
+      ":@computed_region_8spj_utxs": "9",
+      ":@computed_region_jcrc_4uuy": "11",
+      ":@computed_region_q9nd_rr82": "10",
+      ":@computed_region_e9j2_6w3z": "79",
+      ":@computed_region_m2th_e4b7": "309",
+      ":@computed_region_rxpj_nzrk": "74",
+      "condition": 0.42
+    },
+    {
+      "detector_id": "2877",
+      "detector_type": "LOOP",
+      "detector_status": "REMOVED",
+      "detector_direction": "SOUTHBOUND",
+      "detector_movement": "LEFT TURN",
+      "location_name": "IH 35 SVRD / RIVER ST",
+      "atd_location_id": "LOC16-003785",
+      "signal_id": "768",
+      "created_date": "2017-06-23T00:00:00.000",
+      "modified_date": "2021-02-25T12:23:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.737701,
+          30.25745
+        ]
+      },
+      ":@computed_region_8spj_utxs": "9",
+      ":@computed_region_jcrc_4uuy": "52",
+      ":@computed_region_q9nd_rr82": "10",
+      ":@computed_region_e9j2_6w3z": "60",
+      ":@computed_region_m2th_e4b7": "502",
+      ":@computed_region_rxpj_nzrk": "24",
+      "condition": 0.76
+    },
+    {
+      "detector_id": "2878",
+      "detector_type": "LOOP",
+      "detector_status": "REMOVED",
+      "detector_direction": "SOUTHBOUND",
+      "detector_movement": "THRU / RIGHT TURN",
+      "location_name": "IH 35 SVRD / RIVER ST",
+      "atd_location_id": "LOC16-003785",
+      "signal_id": "768",
+      "created_date": "2017-06-23T00:00:00.000",
+      "modified_date": "2021-02-25T12:24:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.737701,
+          30.25745
+        ]
+      },
+      ":@computed_region_8spj_utxs": "9",
+      ":@computed_region_jcrc_4uuy": "52",
+      ":@computed_region_q9nd_rr82": "10",
+      ":@computed_region_e9j2_6w3z": "60",
+      ":@computed_region_m2th_e4b7": "502",
+      ":@computed_region_rxpj_nzrk": "24",
+      "condition": 0.64
+    },
+    {
+      "detector_id": "2879",
+      "detector_type": "LOOP",
+      "detector_status": "REMOVED",
+      "detector_direction": "EASTBOUND",
+      "detector_movement": "LEFT TURN",
+      "location_name": "IH 35 SVRD / RIVER ST",
+      "atd_location_id": "LOC16-003785",
+      "signal_id": "768",
+      "created_date": "2017-06-23T00:00:00.000",
+      "modified_date": "2021-02-25T12:25:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.737701,
+          30.25745
+        ]
+      },
+      ":@computed_region_8spj_utxs": "9",
+      ":@computed_region_jcrc_4uuy": "52",
+      ":@computed_region_q9nd_rr82": "10",
+      ":@computed_region_e9j2_6w3z": "60",
+      ":@computed_region_m2th_e4b7": "502",
+      ":@computed_region_rxpj_nzrk": "24",
+      "condition": 0.73
+    },
+    {
+      "detector_id": "2880",
+      "detector_type": "LOOP",
+      "detector_status": "REMOVED",
+      "detector_direction": "EASTBOUND",
+      "detector_movement": "THRU / RIGHT TURN",
+      "location_name": "IH 35 SVRD / RIVER ST",
+      "atd_location_id": "LOC16-003785",
+      "signal_id": "768",
+      "created_date": "2017-06-23T00:00:00.000",
+      "modified_date": "2021-02-25T12:25:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.737701,
+          30.25745
+        ]
+      },
+      ":@computed_region_8spj_utxs": "9",
+      ":@computed_region_jcrc_4uuy": "52",
+      ":@computed_region_q9nd_rr82": "10",
+      ":@computed_region_e9j2_6w3z": "60",
+      ":@computed_region_m2th_e4b7": "502",
+      ":@computed_region_rxpj_nzrk": "24",
+      "condition": 0.52
+    },
+    {
+      "detector_id": "2881",
+      "detector_type": "LOOP",
+      "detector_status": "REMOVED",
+      "detector_direction": "WESTBOUND",
+      "detector_movement": "LEFT TURN",
+      "location_name": "IH 35 SVRD / RIVER ST",
+      "atd_location_id": "LOC16-003785",
+      "signal_id": "768",
+      "created_date": "2017-06-23T00:00:00.000",
+      "modified_date": "2021-02-25T12:26:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.737701,
+          30.25745
+        ]
+      },
+      ":@computed_region_8spj_utxs": "9",
+      ":@computed_region_jcrc_4uuy": "52",
+      ":@computed_region_q9nd_rr82": "10",
+      ":@computed_region_e9j2_6w3z": "60",
+      ":@computed_region_m2th_e4b7": "502",
+      ":@computed_region_rxpj_nzrk": "24",
+      "condition": 0.77
+    },
+    {
+      "detector_id": "2882",
+      "detector_type": "LOOP",
+      "detector_status": "REMOVED",
+      "detector_direction": "WESTBOUND",
+      "detector_movement": "THRU / RIGHT TURN",
+      "location_name": "IH 35 SVRD / RIVER ST",
+      "atd_location_id": "LOC16-003785",
+      "signal_id": "768",
+      "created_date": "2017-06-23T00:00:00.000",
+      "modified_date": "2021-02-25T12:26:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.737701,
+          30.25745
+        ]
+      },
+      ":@computed_region_8spj_utxs": "9",
+      ":@computed_region_jcrc_4uuy": "52",
+      ":@computed_region_q9nd_rr82": "10",
+      ":@computed_region_e9j2_6w3z": "60",
+      ":@computed_region_m2th_e4b7": "502",
+      ":@computed_region_rxpj_nzrk": "24",
+      "condition": 0.79
+    },
+    {
+      "detector_id": "11",
+      "detector_type": "LOOP",
+      "detector_status": "OK",
+      "detector_direction": "EASTBOUND",
+      "detector_movement": "THRU / RIGHT TURN",
+      "location_name": " 1ST ST / MARY ST",
+      "atd_location_id": "LOC16-000715",
+      "signal_id": "144",
+      "modified_date": "2023-12-19T16:32:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.75634,
+          30.246565
+        ]
+      },
+      ":@computed_region_8spj_utxs": "9",
+      ":@computed_region_jcrc_4uuy": "9",
+      ":@computed_region_q9nd_rr82": "10",
+      ":@computed_region_e9j2_6w3z": "42",
+      ":@computed_region_m2th_e4b7": "217",
+      ":@computed_region_rxpj_nzrk": "75",
+      "condition": 0.67
+    },
+    {
+      "detector_id": "13",
+      "detector_type": "VIDEO",
+      "detector_status": "OK",
+      "detector_direction": "EASTBOUND",
+      "detector_movement": "THRU / RIGHT TURN",
+      "location_name": " 1ST ST / ANNIE ST",
+      "atd_location_id": "LOC16-000985",
+      "signal_id": "199",
+      "modified_date": "2023-12-04T19:28:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.755821,
+          30.247448
+        ]
+      },
+      ":@computed_region_8spj_utxs": "9",
+      ":@computed_region_jcrc_4uuy": "9",
+      ":@computed_region_q9nd_rr82": "10",
+      ":@computed_region_e9j2_6w3z": "42",
+      ":@computed_region_m2th_e4b7": "217",
+      ":@computed_region_rxpj_nzrk": "75",
+      "condition": 0.8
+    },
+    {
+      "detector_id": "14",
+      "detector_type": "LOOP",
+      "detector_status": "OK",
+      "detector_direction": "WESTBOUND",
+      "detector_movement": "THRU / RIGHT TURN",
+      "location_name": " 1ST ST / MARY ST",
+      "atd_location_id": "LOC16-000715",
+      "signal_id": "144",
+      "modified_date": "2023-12-19T16:34:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.75634,
+          30.246565
+        ]
+      },
+      ":@computed_region_8spj_utxs": "9",
+      ":@computed_region_jcrc_4uuy": "9",
+      ":@computed_region_q9nd_rr82": "10",
+      ":@computed_region_e9j2_6w3z": "42",
+      ":@computed_region_m2th_e4b7": "217",
+      ":@computed_region_rxpj_nzrk": "75",
+      "condition": 0.4
+    },
+    {
+      "detector_id": "16",
+      "detector_type": "VIDEO",
+      "detector_status": "OK",
+      "detector_direction": "WESTBOUND",
+      "detector_movement": "THRU / RIGHT TURN",
+      "location_name": " 1ST ST / ANNIE ST",
+      "atd_location_id": "LOC16-000985",
+      "signal_id": "199",
+      "modified_date": "2023-12-04T19:29:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.755821,
+          30.247448
+        ]
+      },
+      ":@computed_region_8spj_utxs": "9",
+      ":@computed_region_jcrc_4uuy": "9",
+      ":@computed_region_q9nd_rr82": "10",
+      ":@computed_region_e9j2_6w3z": "42",
+      ":@computed_region_m2th_e4b7": "217",
+      ":@computed_region_rxpj_nzrk": "75",
+      "condition": 0.72
+    },
+    {
+      "detector_id": "42",
+      "detector_type": "LOOP",
+      "detector_status": "OK",
+      "detector_direction": "WESTBOUND",
+      "detector_movement": "LEFT TURN",
+      "location_name": " LAMAR BLVD / MARTIN LUTHER KING JR BLVD",
+      "atd_location_id": "LOC16-000545",
+      "signal_id": "110",
+      "modified_date": "2023-12-22T14:36:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.752075,
+          30.283602
+        ]
+      },
+      ":@computed_region_8spj_utxs": "9",
+      ":@computed_region_jcrc_4uuy": "52",
+      ":@computed_region_q9nd_rr82": "10",
+      ":@computed_region_e9j2_6w3z": "60",
+      ":@computed_region_m2th_e4b7": "217",
+      ":@computed_region_rxpj_nzrk": "24",
+      "condition": 0.39
+    },
+    {
+      "detector_id": "44",
+      "detector_type": "LOOP",
+      "detector_status": "OK",
+      "detector_direction": "WESTBOUND",
+      "detector_movement": "THRU / RIGHT TURN",
+      "location_name": " LAMAR BLVD / MARTIN LUTHER KING JR BLVD",
+      "atd_location_id": "LOC16-000545",
+      "signal_id": "110",
+      "modified_date": "2023-12-22T14:37:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.752075,
+          30.283602
+        ]
+      },
+      ":@computed_region_8spj_utxs": "9",
+      ":@computed_region_jcrc_4uuy": "52",
+      ":@computed_region_q9nd_rr82": "10",
+      ":@computed_region_e9j2_6w3z": "60",
+      ":@computed_region_m2th_e4b7": "217",
+      ":@computed_region_rxpj_nzrk": "24",
+      "condition": 0.56
+    },
+    {
+      "detector_id": "99",
+      "detector_type": "VIDEO",
+      "detector_status": "BROKEN",
+      "detector_direction": "EASTBOUND",
+      "detector_movement": "LEFT TURN",
+      "location_name": " 1ST ST / RIVERSIDE DR",
+      "atd_location_id": "LOC16-000680",
+      "signal_id": "137",
+      "modified_date": "2025-01-24T16:30:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.749275,
+          30.259758
+        ]
+      },
+      ":@computed_region_8spj_utxs": "9",
+      ":@computed_region_jcrc_4uuy": "9",
+      ":@computed_region_q9nd_rr82": "10",
+      ":@computed_region_e9j2_6w3z": "42",
+      ":@computed_region_m2th_e4b7": "217",
+      ":@computed_region_rxpj_nzrk": "75",
+      "condition": 0.66
+    },
+    {
+      "detector_id": "101",
+      "detector_type": "VIDEO",
+      "detector_status": "BROKEN",
+      "detector_direction": "EASTBOUND",
+      "detector_movement": "THRU / RIGHT TURN",
+      "location_name": " 1ST ST / RIVERSIDE DR",
+      "atd_location_id": "LOC16-000680",
+      "signal_id": "137",
+      "modified_date": "2025-01-24T16:31:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.749275,
+          30.259758
+        ]
+      },
+      ":@computed_region_8spj_utxs": "9",
+      ":@computed_region_jcrc_4uuy": "9",
+      ":@computed_region_q9nd_rr82": "10",
+      ":@computed_region_e9j2_6w3z": "42",
+      ":@computed_region_m2th_e4b7": "217",
+      ":@computed_region_rxpj_nzrk": "75",
+      "condition": 0.54
+    },
+    {
+      "detector_id": "108",
+      "detector_type": "LOOP",
+      "detector_status": "BROKEN",
+      "detector_direction": "SOUTHBOUND",
+      "detector_movement": "LEFT TURN",
+      "location_name": " 1ST ST / RIVERSIDE DR",
+      "atd_location_id": "LOC16-000680",
+      "signal_id": "137",
+      "modified_date": "2025-01-24T16:47:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.749275,
+          30.259758
+        ]
+      },
+      ":@computed_region_8spj_utxs": "9",
+      ":@computed_region_jcrc_4uuy": "9",
+      ":@computed_region_q9nd_rr82": "10",
+      ":@computed_region_e9j2_6w3z": "42",
+      ":@computed_region_m2th_e4b7": "217",
+      ":@computed_region_rxpj_nzrk": "75",
+      "condition": 0.75
+    },
+    {
+      "detector_id": "110",
+      "detector_type": "LOOP",
+      "detector_status": "BROKEN",
+      "detector_direction": "SOUTHBOUND",
+      "detector_movement": "THRU / RIGHT TURN",
+      "location_name": " 1ST ST / RIVERSIDE DR",
+      "atd_location_id": "LOC16-000680",
+      "signal_id": "137",
+      "modified_date": "2025-01-24T16:47:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.749275,
+          30.259758
+        ]
+      },
+      ":@computed_region_8spj_utxs": "9",
+      ":@computed_region_jcrc_4uuy": "9",
+      ":@computed_region_q9nd_rr82": "10",
+      ":@computed_region_e9j2_6w3z": "42",
+      ":@computed_region_m2th_e4b7": "217",
+      ":@computed_region_rxpj_nzrk": "75",
+      "condition": 0.72
+    },
+    {
+      "detector_id": "112",
+      "detector_type": "VIDEO",
+      "detector_status": "BROKEN",
+      "detector_direction": "WESTBOUND",
+      "detector_movement": "LEFT TURN",
+      "location_name": " 1ST ST / RIVERSIDE DR",
+      "atd_location_id": "LOC16-000680",
+      "signal_id": "137",
+      "modified_date": "2025-01-24T16:31:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.749275,
+          30.259758
+        ]
+      },
+      ":@computed_region_8spj_utxs": "9",
+      ":@computed_region_jcrc_4uuy": "9",
+      ":@computed_region_q9nd_rr82": "10",
+      ":@computed_region_e9j2_6w3z": "42",
+      ":@computed_region_m2th_e4b7": "217",
+      ":@computed_region_rxpj_nzrk": "75",
+      "condition": 0.56
+    },
+    {
+      "detector_id": "115",
+      "detector_type": "VIDEO",
+      "detector_status": "BROKEN",
+      "detector_direction": "WESTBOUND",
+      "detector_movement": "THRU / RIGHT TURN",
+      "location_name": " 1ST ST / RIVERSIDE DR",
+      "atd_location_id": "LOC16-000680",
+      "signal_id": "137",
+      "modified_date": "2025-01-24T16:32:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.749275,
+          30.259758
+        ]
+      },
+      ":@computed_region_8spj_utxs": "9",
+      ":@computed_region_jcrc_4uuy": "9",
+      ":@computed_region_q9nd_rr82": "10",
+      ":@computed_region_e9j2_6w3z": "42",
+      ":@computed_region_m2th_e4b7": "217",
+      ":@computed_region_rxpj_nzrk": "75",
+      "condition": 0.72
+    },
+    {
+      "detector_id": "227",
+      "detector_type": "LOOP",
+      "detector_status": "BROKEN",
+      "detector_direction": "EASTBOUND",
+      "detector_movement": "LEFT TURN",
+      "location_name": " 15TH ST / CONGRESS AVE",
+      "atd_location_id": "LOC16-001090",
+      "signal_id": "222",
+      "modified_date": "2024-11-18T20:01:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.739494,
+          30.276918
+        ]
+      },
+      ":@computed_region_8spj_utxs": "1",
+      ":@computed_region_jcrc_4uuy": "52",
+      ":@computed_region_q9nd_rr82": "8",
+      ":@computed_region_e9j2_6w3z": "60",
+      ":@computed_region_m2th_e4b7": "217",
+      ":@computed_region_rxpj_nzrk": "24",
+      "condition": 0.67
+    },
+    {
+      "detector_id": "228",
+      "detector_type": "LOOP",
+      "detector_status": "OK",
+      "detector_direction": "NORTHBOUND",
+      "detector_movement": "THRU / RIGHT TURN",
+      "location_name": " 15TH ST / CONGRESS AVE",
+      "atd_location_id": "LOC16-001090",
+      "signal_id": "222",
+      "modified_date": "2023-12-10T16:45:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.739494,
+          30.276918
+        ]
+      },
+      ":@computed_region_8spj_utxs": "1",
+      ":@computed_region_jcrc_4uuy": "52",
+      ":@computed_region_q9nd_rr82": "8",
+      ":@computed_region_e9j2_6w3z": "60",
+      ":@computed_region_m2th_e4b7": "217",
+      ":@computed_region_rxpj_nzrk": "24",
+      "condition": 0.59
+    },
+    {
+      "detector_id": "230",
+      "detector_type": "LOOP",
+      "detector_status": "BROKEN",
+      "detector_direction": "WESTBOUND",
+      "detector_movement": "LEFT TURN",
+      "location_name": " 15TH ST / CONGRESS AVE",
+      "atd_location_id": "LOC16-001090",
+      "signal_id": "222",
+      "modified_date": "2024-11-18T20:02:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.739494,
+          30.276918
+        ]
+      },
+      ":@computed_region_8spj_utxs": "1",
+      ":@computed_region_jcrc_4uuy": "52",
+      ":@computed_region_q9nd_rr82": "8",
+      ":@computed_region_e9j2_6w3z": "60",
+      ":@computed_region_m2th_e4b7": "217",
+      ":@computed_region_rxpj_nzrk": "24",
+      "condition": 0.76
+    },
+    {
+      "detector_id": "268",
+      "detector_type": "VIDEO",
+      "detector_status": "OK",
+      "detector_direction": "EASTBOUND",
+      "detector_movement": "LEFT TURN",
+      "location_name": " MARTIN LUTHER KING JR BLVD / BRAZOS ST",
+      "atd_location_id": "LOC16-000375",
+      "signal_id": "76",
+      "modified_date": "2023-12-21T14:07:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.736771,
+          30.280294
+        ]
+      },
+      ":@computed_region_8spj_utxs": "1",
+      ":@computed_region_jcrc_4uuy": "52",
+      ":@computed_region_q9nd_rr82": "8",
+      ":@computed_region_e9j2_6w3z": "60",
+      ":@computed_region_m2th_e4b7": "217",
+      ":@computed_region_rxpj_nzrk": "24",
+      "condition": 0.55
+    },
+    {
+      "detector_id": "271",
+      "detector_type": "VIDEO",
+      "detector_status": "OK",
+      "detector_direction": "EASTBOUND",
+      "detector_movement": "THRU / RIGHT TURN",
+      "location_name": " MARTIN LUTHER KING JR BLVD / BRAZOS ST",
+      "atd_location_id": "LOC16-000375",
+      "signal_id": "76",
+      "modified_date": "2023-12-21T14:07:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.736771,
+          30.280294
+        ]
+      },
+      ":@computed_region_8spj_utxs": "1",
+      ":@computed_region_jcrc_4uuy": "52",
+      ":@computed_region_q9nd_rr82": "8",
+      ":@computed_region_e9j2_6w3z": "60",
+      ":@computed_region_m2th_e4b7": "217",
+      ":@computed_region_rxpj_nzrk": "24",
+      "condition": 0.77
+    },
+    {
+      "detector_id": "273",
+      "detector_type": "LOOP",
+      "detector_status": "REMOVED",
+      "detector_direction": "NORTHBOUND",
+      "detector_movement": "LEFT TURN",
+      "location_name": " MARTIN LUTHER KING JR BLVD / NUECES ST",
+      "atd_location_id": "LOC16-000100",
+      "signal_id": "21",
+      "modified_date": "2021-04-20T14:02:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.743744,
+          30.282238
+        ]
+      },
+      ":@computed_region_8spj_utxs": "9",
+      ":@computed_region_jcrc_4uuy": "52",
+      ":@computed_region_q9nd_rr82": "10",
+      ":@computed_region_e9j2_6w3z": "60",
+      ":@computed_region_m2th_e4b7": "217",
+      ":@computed_region_rxpj_nzrk": "24",
+      "condition": 0.45
+    },
+    {
+      "detector_id": "274",
+      "detector_type": "VIDEO",
+      "detector_status": "OK",
+      "detector_direction": "NORTHBOUND",
+      "detector_movement": "THRU / LEFT TURN",
+      "location_name": " MARTIN LUTHER KING JR BLVD / BRAZOS ST",
+      "atd_location_id": "LOC16-000375",
+      "signal_id": "76",
+      "modified_date": "2023-12-21T13:44:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.736771,
+          30.280294
+        ]
+      },
+      ":@computed_region_8spj_utxs": "1",
+      ":@computed_region_jcrc_4uuy": "52",
+      ":@computed_region_q9nd_rr82": "8",
+      ":@computed_region_e9j2_6w3z": "60",
+      ":@computed_region_m2th_e4b7": "217",
+      ":@computed_region_rxpj_nzrk": "24",
+      "condition": 0.26
+    },
+    {
+      "detector_id": "276",
+      "detector_type": "VIDEO",
+      "detector_status": "OK",
+      "detector_direction": "SOUTHBOUND",
+      "detector_movement": "LEFT TURN",
+      "location_name": " MARTIN LUTHER KING JR BLVD / NUECES ST",
+      "atd_location_id": "LOC16-000100",
+      "signal_id": "21",
+      "modified_date": "2024-08-14T16:56:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.743744,
+          30.282238
+        ]
+      },
+      ":@computed_region_8spj_utxs": "9",
+      ":@computed_region_jcrc_4uuy": "52",
+      ":@computed_region_q9nd_rr82": "10",
+      ":@computed_region_e9j2_6w3z": "60",
+      ":@computed_region_m2th_e4b7": "217",
+      ":@computed_region_rxpj_nzrk": "24",
+      "condition": 0.78
+    },
+    {
+      "detector_id": "277",
+      "detector_type": "VIDEO",
+      "detector_status": "OK",
+      "detector_direction": "SOUTHBOUND",
+      "detector_movement": "LEFT TURN",
+      "location_name": " MARTIN LUTHER KING JR BLVD / BRAZOS ST",
+      "atd_location_id": "LOC16-000375",
+      "signal_id": "76",
+      "modified_date": "2023-12-21T13:40:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.736771,
+          30.280294
+        ]
+      },
+      ":@computed_region_8spj_utxs": "1",
+      ":@computed_region_jcrc_4uuy": "52",
+      ":@computed_region_q9nd_rr82": "8",
+      ":@computed_region_e9j2_6w3z": "60",
+      ":@computed_region_m2th_e4b7": "217",
+      ":@computed_region_rxpj_nzrk": "24",
+      "condition": 0.4
+    },
+    {
+      "detector_id": "281",
+      "detector_type": "VIDEO",
+      "detector_status": "OK",
+      "detector_direction": "SOUTHBOUND",
+      "detector_movement": "THRU / RIGHT TURN",
+      "location_name": " MARTIN LUTHER KING JR BLVD / BRAZOS ST",
+      "atd_location_id": "LOC16-000375",
+      "signal_id": "76",
+      "modified_date": "2023-12-21T13:41:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.736771,
+          30.280294
+        ]
+      },
+      ":@computed_region_8spj_utxs": "1",
+      ":@computed_region_jcrc_4uuy": "52",
+      ":@computed_region_q9nd_rr82": "8",
+      ":@computed_region_e9j2_6w3z": "60",
+      ":@computed_region_m2th_e4b7": "217",
+      ":@computed_region_rxpj_nzrk": "24",
+      "condition": 0.48
+    },
+    {
+      "detector_id": "283",
+      "detector_type": "VIDEO",
+      "detector_status": "OK",
+      "detector_direction": "WESTBOUND",
+      "detector_movement": "LEFT TURN",
+      "location_name": " MARTIN LUTHER KING JR BLVD / BRAZOS ST",
+      "atd_location_id": "LOC16-000375",
+      "signal_id": "76",
+      "modified_date": "2023-12-21T14:09:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.736771,
+          30.280294
+        ]
+      },
+      ":@computed_region_8spj_utxs": "1",
+      ":@computed_region_jcrc_4uuy": "52",
+      ":@computed_region_q9nd_rr82": "8",
+      ":@computed_region_e9j2_6w3z": "60",
+      ":@computed_region_m2th_e4b7": "217",
+      ":@computed_region_rxpj_nzrk": "24",
+      "condition": 0.62
+    },
+    {
+      "detector_id": "1184",
+      "detector_type": "LOOP",
+      "detector_status": "BROKEN",
+      "detector_direction": "NORTHBOUND",
+      "detector_movement": "LEFT TURN",
+      "location_name": " ENFIELD RD / WEST LYNN ST",
+      "atd_location_id": "LOC16-001050",
+      "signal_id": "214",
+      "modified_date": "2025-02-27T17:42:00.000Z",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -97.75782,
+          30.282774
+        ]
+      },
+      ":@computed_region_8spj_utxs": "9",
+      ":@computed_region_jcrc_4uuy": "26",
+      ":@computed_region_q9nd_rr82": "10",
+      ":@computed_region_e9j2_6w3z": "72",
+      ":@computed_region_m2th_e4b7": "126",
+      ":@computed_region_rxpj_nzrk": "69",
+      "condition": 0.67
+    }
+  ]

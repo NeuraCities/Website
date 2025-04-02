@@ -1,0 +1,6995 @@
+[
+  {
+    "street_name": "1ST",
+    "segment_seq": "195",
+    "segment_id": "2024314",
+    "maximo_id": "401521552",
+    "from_limit_street": "NORMANDY ST",
+    "to_limit_street": "RADAM LN",
+    "left_from_address": "4109",
+    "full_street_name_from_gis": "S 1ST ST",
+    "functional_class": "Arterial",
+    "left_to_address": "4123",
+    "main_agency": "Austin",
+    "right_from_address": "4110",
+    "right_to_address": "4128",
+    "minimum_address_in_range": "4109",
+    "maximum_address_in_range": "4128",
+    "segment_width": "41",
+    "segment_length": "293",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.23",
+    "final_grade": "C",
+    "year": "2017-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.757685541393,
+            30.244470200304
+          ],
+          [
+            -97.758445249879,
+            30.24330283146
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "2ND",
+    "segment_seq": "1",
+    "segment_id": "3264436",
+    "maximo_id": "401500288",
+    "from_limit_street": "SAN ANTONIO ST",
+    "to_limit_street": "NUECES ST",
+    "left_from_address": "501",
+    "full_street_name_from_gis": "W 2ND ST",
+    "functional_class": "Collector",
+    "left_to_address": "517",
+    "main_agency": "Austin",
+    "right_from_address": "500",
+    "right_to_address": "516",
+    "minimum_address_in_range": "500",
+    "maximum_address_in_range": "517",
+    "segment_width": "30",
+    "segment_length": "353",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.2",
+    "final_grade": "A",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.750898718786,
+            30.266196057877
+          ],
+          [
+            -97.75140618798,
+            30.266349532164
+          ],
+          [
+            -97.751480217905,
+            30.266358184876
+          ],
+          [
+            -97.751525575849,
+            30.266359098843
+          ],
+          [
+            -97.75157083597,
+            30.266363593111
+          ],
+          [
+            -97.752025350914,
+            30.266496450511
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "2ND",
+    "segment_seq": "1",
+    "segment_id": "5002534",
+    "maximo_id": "401481434",
+    "from_limit_street": "NUECES ST",
+    "to_limit_street": "700",
+    "left_from_address": "601",
+    "full_street_name_from_gis": "W 2ND ST",
+    "functional_class": "Collector",
+    "left_to_address": "617",
+    "main_agency": "Austin",
+    "right_from_address": "600",
+    "right_to_address": "616",
+    "minimum_address_in_range": "600",
+    "maximum_address_in_range": "617",
+    "segment_width": "30",
+    "segment_length": "361",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.04",
+    "final_grade": "B",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.750898718786,
+            30.266196057877
+          ],
+          [
+            -97.75140618798,
+            30.266349532164
+          ],
+          [
+            -97.751480217905,
+            30.266358184876
+          ],
+          [
+            -97.751525575849,
+            30.266359098843
+          ],
+          [
+            -97.75157083597,
+            30.266363593111
+          ],
+          [
+            -97.752025350914,
+            30.266496450511
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "30TH",
+    "segment_seq": "5",
+    "segment_id": "2016990",
+    "maximo_id": "401486741",
+    "from_limit_street": "UNIVERSITY AVE",
+    "to_limit_street": "CEDAR ST",
+    "left_from_address": "101",
+    "full_street_name_from_gis": "W 30TH ST",
+    "functional_class": "Collector",
+    "left_to_address": "115",
+    "main_agency": "Austin",
+    "right_from_address": "100",
+    "right_to_address": "114",
+    "minimum_address_in_range": "100",
+    "maximum_address_in_range": "115",
+    "segment_width": "36",
+    "segment_length": "331",
+    "pavement_type": "Rigid",
+    "lane_miles": "0.23",
+    "final_grade": "C",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.744370393495,
+            30.297827951897
+          ],
+          [
+            -97.744895725751,
+            30.298094343819
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "BOB HARRISON",
+    "segment_seq": "5",
+    "segment_id": "2018308",
+    "maximo_id": "401517068",
+    "from_limit_street": "NAVASOTA ST",
+    "to_limit_street": "SAN BERNARD ST",
+    "left_from_address": "1200",
+    "full_street_name_from_gis": "BOB HARRISON",
+    "functional_class": "Residential",
+    "left_to_address": "1218",
+    "main_agency": "Austin",
+    "right_from_address": "1201",
+    "right_to_address": "1219",
+    "minimum_address_in_range": "1200",
+    "maximum_address_in_range": "1219",
+    "segment_width": "37",
+    "segment_length": "396",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.28",
+    "final_grade": "B",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.728060906178,
+            30.274050707196
+          ],
+          [
+            -97.726826965885,
+            30.274245641147
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "BOB HARRISON",
+    "segment_seq": "10",
+    "segment_id": "2018287",
+    "maximo_id": "401505711",
+    "from_limit_street": "SAN BERNARD ST",
+    "to_limit_street": "ANGELINA ST",
+    "left_from_address": "1300",
+    "full_street_name_from_gis": "BOB HARRISON",
+    "functional_class": "Residential",
+    "left_to_address": "1320",
+    "main_agency": "Austin",
+    "right_from_address": "1301",
+    "right_to_address": "1321",
+    "minimum_address_in_range": "1300",
+    "maximum_address_in_range": "1321",
+    "segment_width": "37",
+    "segment_length": "487",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.34",
+    "final_grade": "B",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.728060906178,
+            30.274050707196
+          ],
+          [
+            -97.726826965885,
+            30.274245641147
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "BOB HARRISON",
+    "segment_seq": "15",
+    "segment_id": "2018271",
+    "maximo_id": "401519153",
+    "from_limit_street": "ANGELINA ST",
+    "to_limit_street": "COMAL ST",
+    "left_from_address": "1400",
+    "full_street_name_from_gis": "BOB HARRISON",
+    "functional_class": "Residential",
+    "left_to_address": "1416",
+    "main_agency": "Austin",
+    "right_from_address": "1401",
+    "right_to_address": "1417",
+    "minimum_address_in_range": "1400",
+    "maximum_address_in_range": "1417",
+    "segment_width": "37",
+    "segment_length": "361",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.25",
+    "final_grade": "C",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.728060906178,
+            30.274050707196
+          ],
+          [
+            -97.726826965885,
+            30.274245641147
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "BONHAM",
+    "segment_seq": "15",
+    "segment_id": "2041365",
+    "maximo_id": "401481582",
+    "from_limit_street": "KENWOOD AVE",
+    "to_limit_street": "KENWOOD AVE",
+    "left_from_address": "1301",
+    "full_street_name_from_gis": "BONHAM TER",
+    "functional_class": "Residential",
+    "left_to_address": "1345",
+    "main_agency": "Austin",
+    "right_from_address": "1300",
+    "right_to_address": "1344",
+    "minimum_address_in_range": "1300",
+    "maximum_address_in_range": "1345",
+    "segment_width": "24",
+    "segment_length": "1082",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.49",
+    "final_grade": "B",
+    "year": "2017-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.741128481732,
+            30.245621409882
+          ],
+          [
+            -97.740880058692,
+            30.245553125033
+          ],
+          [
+            -97.740624948671,
+            30.245586466694
+          ],
+          [
+            -97.739857170658,
+            30.245895465376
+          ],
+          [
+            -97.738688285972,
+            30.246012062713
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "BONNIEVIEW",
+    "segment_seq": "5",
+    "segment_id": "2019584",
+    "maximo_id": "401495842",
+    "from_limit_street": "MELISSA LN",
+    "to_limit_street": "HILLSIDE AVE",
+    "left_from_address": "206",
+    "full_street_name_from_gis": "BONNIEVIEW",
+    "functional_class": "Residential",
+    "left_to_address": "220",
+    "main_agency": "Austin",
+    "right_from_address": "207",
+    "right_to_address": "213",
+    "minimum_address_in_range": "206",
+    "maximum_address_in_range": "220",
+    "segment_width": "27",
+    "segment_length": "348",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.18",
+    "final_grade": "C",
+    "year": "2017-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.745753793806,
+            30.253795411231
+          ],
+          [
+            -97.744789706211,
+            30.253330380553
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "BRANCH",
+    "segment_seq": "15",
+    "segment_id": "2018492",
+    "maximo_id": "401492052",
+    "from_limit_street": "OLIVE ST",
+    "to_limit_street": "CATALPA ST",
+    "left_from_address": "1180",
+    "full_street_name_from_gis": "BRANCH ST",
+    "functional_class": "Residential",
+    "left_to_address": "1184",
+    "main_agency": "Austin",
+    "right_from_address": "1181",
+    "right_to_address": "1185",
+    "minimum_address_in_range": "1180",
+    "maximum_address_in_range": "1185",
+    "segment_width": "27",
+    "segment_length": "122",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.06",
+    "final_grade": "F",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "0",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.731509323948,
+            30.270039470301
+          ],
+          [
+            -97.731170734215,
+            30.270661958674
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "BRANCH",
+    "segment_seq": "20",
+    "segment_id": "2018474",
+    "maximo_id": "401535573",
+    "from_limit_street": "CATALPA ST",
+    "to_limit_street": "12TH ST E",
+    "left_from_address": "1186",
+    "full_street_name_from_gis": "BRANCH ST",
+    "functional_class": "Residential",
+    "left_to_address": "1202",
+    "main_agency": "Austin",
+    "right_from_address": "1187",
+    "right_to_address": "1203",
+    "minimum_address_in_range": "1186",
+    "maximum_address_in_range": "1203",
+    "segment_width": "27",
+    "segment_length": "246",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.13",
+    "final_grade": "C",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.731509323948,
+            30.270039470301
+          ],
+          [
+            -97.731170734215,
+            30.270661958674
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "CONGRESS",
+    "segment_seq": "55",
+    "segment_id": "2018452",
+    "maximo_id": "401537647",
+    "from_limit_street": "10TH ST W",
+    "to_limit_street": "11TH ST W",
+    "left_from_address": "1000",
+    "full_street_name_from_gis": "CONGRESS AVE",
+    "functional_class": "Arterial",
+    "left_to_address": "1024",
+    "main_agency": "Austin",
+    "right_from_address": "1001",
+    "right_to_address": "1099",
+    "minimum_address_in_range": "1000",
+    "maximum_address_in_range": "1099",
+    "segment_width": "61",
+    "segment_length": "360",
+    "pavement_type": "Composite",
+    "lane_miles": "0.42",
+    "final_grade": "D",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "0",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.743504013505,
+            30.266214493541
+          ],
+          [
+            -97.743178613505,
+            30.267123779715
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "CONGRESS",
+    "segment_seq": "30",
+    "segment_id": "2019708",
+    "maximo_id": "401496075",
+    "from_limit_street": "THE CIRCLE",
+    "to_limit_street": "GIBSON ST W",
+    "left_from_address": "1301",
+    "full_street_name_from_gis": "S CONGRESS AVE",
+    "functional_class": "Arterial",
+    "left_to_address": "1329",
+    "main_agency": "Austin",
+    "right_from_address": "1300",
+    "right_to_address": "1324",
+    "minimum_address_in_range": "1300",
+    "maximum_address_in_range": "1329",
+    "segment_width": "87",
+    "segment_length": "429",
+    "pavement_type": "Composite",
+    "lane_miles": "0.71",
+    "final_grade": "C",
+    "year": "2017-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.743504013505,
+            30.266214493541
+          ],
+          [
+            -97.743178613505,
+            30.267123779715
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "CONGRESS",
+    "segment_seq": "35",
+    "segment_id": "2019711",
+    "maximo_id": "401496078",
+    "from_limit_street": "GIBSON ST W",
+    "to_limit_street": "GIBSON ST E",
+    "left_from_address": "1331",
+    "full_street_name_from_gis": "S CONGRESS AVE",
+    "functional_class": "Arterial",
+    "left_to_address": "1333",
+    "main_agency": "Austin",
+    "right_from_address": "1400",
+    "right_to_address": "1402",
+    "minimum_address_in_range": "1331",
+    "maximum_address_in_range": "1402",
+    "segment_width": "87",
+    "segment_length": "66",
+    "pavement_type": "Composite",
+    "lane_miles": "0.11",
+    "final_grade": "B",
+    "year": "2017-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.743504013505,
+            30.266214493541
+          ],
+          [
+            -97.743178613505,
+            30.267123779715
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "CONGRESS",
+    "segment_seq": "40",
+    "segment_id": "2036098",
+    "maximo_id": "401492033",
+    "from_limit_street": "GIBSON ST E",
+    "to_limit_street": "ELIZABETH ST W",
+    "left_from_address": "1401",
+    "full_street_name_from_gis": "S CONGRESS AVE",
+    "functional_class": "Arterial",
+    "left_to_address": "1423",
+    "main_agency": "Austin",
+    "right_from_address": "1404",
+    "right_to_address": "1422",
+    "minimum_address_in_range": "1401",
+    "maximum_address_in_range": "1423",
+    "segment_width": "27.1",
+    "segment_length": "344",
+    "pavement_type": "Composite",
+    "lane_miles": "0.18",
+    "final_grade": "C",
+    "year": "2017-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.743504013505,
+            30.266214493541
+          ],
+          [
+            -97.743178613505,
+            30.267123779715
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "CORONADO",
+    "segment_seq": "5",
+    "segment_id": "2019130",
+    "maximo_id": "401486297",
+    "from_limit_street": "WEBBERVILLE RD",
+    "to_limit_street": "NORTHWESTERN AVE",
+    "left_from_address": "2300",
+    "full_street_name_from_gis": "CORONADO ST",
+    "functional_class": "Residential",
+    "left_to_address": "2324",
+    "main_agency": "Austin",
+    "right_from_address": "2301",
+    "right_to_address": "2327",
+    "minimum_address_in_range": "2300",
+    "maximum_address_in_range": "2327",
+    "segment_width": "24",
+    "segment_length": "404",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.18",
+    "final_grade": "C",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.715361808403,
+            30.262438406689
+          ],
+          [
+            -97.714172178936,
+            30.262026293706
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "CROMWELL HILL",
+    "segment_seq": "5",
+    "segment_id": "2020561",
+    "maximo_id": "401505102",
+    "from_limit_street": "WOODLAWN BLVD",
+    "to_limit_street": "HARTFORD RD",
+    "left_from_address": "1701",
+    "full_street_name_from_gis": "CROMWELL HILL",
+    "functional_class": "Residential",
+    "left_to_address": "1725",
+    "main_agency": "Austin",
+    "right_from_address": "1700",
+    "right_to_address": "1724",
+    "minimum_address_in_range": "1700",
+    "maximum_address_in_range": "1725",
+    "segment_width": "38",
+    "segment_length": "537",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.37",
+    "final_grade": "D",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "0",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.759213584603,
+            30.285570936607
+          ],
+          [
+            -97.760716292737,
+            30.286264628996
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "DURWOOD",
+    "segment_seq": "5",
+    "segment_id": "2034246",
+    "maximo_id": "401525665",
+    "from_limit_street": "2301",
+    "to_limit_street": "OLTORF ST W",
+    "left_from_address": "2301",
+    "full_street_name_from_gis": "DURWOOD ST",
+    "street_end_type": "Parking Lot",
+    "functional_class": "Residential",
+    "left_to_address": "2319",
+    "main_agency": "Austin",
+    "right_from_address": "2300",
+    "right_to_address": "2318",
+    "minimum_address_in_range": "2300",
+    "maximum_address_in_range": "2319",
+    "segment_width": "30",
+    "segment_length": "179",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.09",
+    "final_grade": "F",
+    "year": "2017-01-01T00:00:00.000",
+    "street_condition": "0",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.757731697766,
+            30.24178955785
+          ],
+          [
+            -97.757983394712,
+            30.241349065182
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "DURWOOD",
+    "segment_seq": "10",
+    "segment_id": "2034267",
+    "maximo_id": "401528128",
+    "from_limit_street": "OLTORF ST W",
+    "to_limit_street": "2525",
+    "left_from_address": "2401",
+    "full_street_name_from_gis": "DURWOOD ST",
+    "functional_class": "Residential",
+    "left_to_address": "2525",
+    "main_agency": "Austin",
+    "right_from_address": "2400",
+    "right_to_address": "2526",
+    "minimum_address_in_range": "2400",
+    "maximum_address_in_range": "2526",
+    "segment_width": "18",
+    "segment_length": "1087",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.37",
+    "final_grade": "C",
+    "year": "2017-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.757731697766,
+            30.24178955785
+          ],
+          [
+            -97.757983394712,
+            30.241349065182
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "HARWOOD",
+    "segment_seq": "5",
+    "segment_id": "2041347",
+    "maximo_id": "401501613",
+    "from_limit_street": "TRAVIS HEIGHTS BLVD",
+    "to_limit_street": "KENWOOD AVE",
+    "left_from_address": "1000",
+    "full_street_name_from_gis": "HARWOOD PL",
+    "functional_class": "Residential",
+    "left_to_address": "1028",
+    "main_agency": "Austin",
+    "right_from_address": "1001",
+    "right_to_address": "1029",
+    "minimum_address_in_range": "1000",
+    "maximum_address_in_range": "1029",
+    "segment_width": "27",
+    "segment_length": "677",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.35",
+    "final_grade": "C",
+    "year": "2017-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.739242728773,
+            30.248721375115
+          ],
+          [
+            -97.738241525153,
+            30.248404582662
+          ],
+          [
+            -97.738195986678,
+            30.248388308636
+          ],
+          [
+            -97.738139804338,
+            30.248373352949
+          ],
+          [
+            -97.738090483525,
+            30.248366214261
+          ],
+          [
+            -97.738041081321,
+            30.248362142767
+          ],
+          [
+            -97.737981117704,
+            30.248356321503
+          ],
+          [
+            -97.737926661097,
+            30.248342936468
+          ],
+          [
+            -97.737879354752,
+            30.248326625609
+          ],
+          [
+            -97.737730988745,
+            30.24825453636
+          ],
+          [
+            -97.73764598247,
+            30.248212103964
+          ],
+          [
+            -97.737593144225,
+            30.248185728087
+          ],
+          [
+            -97.737552992387,
+            30.248166492308
+          ],
+          [
+            -97.737257408774,
+            30.248045361173
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "KENWOOD",
+    "segment_seq": "5",
+    "segment_id": "2022405",
+    "maximo_id": "401520421",
+    "from_limit_street": "RIVERSIDE DR E",
+    "to_limit_street": "HARWOOD PL",
+    "left_from_address": "1101",
+    "full_street_name_from_gis": "KENWOOD AVE",
+    "functional_class": "Residential",
+    "left_to_address": "1111",
+    "main_agency": "Austin",
+    "right_from_address": "1100",
+    "right_to_address": "1110",
+    "minimum_address_in_range": "1100",
+    "maximum_address_in_range": "1111",
+    "segment_width": "27",
+    "segment_length": "235",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.11",
+    "final_grade": "B",
+    "year": "2017-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.740342917316,
+            30.243820541227
+          ],
+          [
+            -97.740882720057,
+            30.242976111399
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "KENWOOD",
+    "segment_seq": "10",
+    "segment_id": "2022415",
+    "maximo_id": "401515984",
+    "from_limit_street": "HARWOOD PL",
+    "to_limit_street": "AVONDALE RD",
+    "left_from_address": "1201",
+    "full_street_name_from_gis": "KENWOOD AVE",
+    "functional_class": "Residential",
+    "left_to_address": "1211",
+    "main_agency": "Austin",
+    "right_from_address": "1200",
+    "right_to_address": "1210",
+    "minimum_address_in_range": "1200",
+    "maximum_address_in_range": "1211",
+    "segment_width": "27",
+    "segment_length": "231",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.11",
+    "final_grade": "B",
+    "year": "2017-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.740342917316,
+            30.243820541227
+          ],
+          [
+            -97.740882720057,
+            30.242976111399
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "LAMAR",
+    "segment_seq": "110",
+    "segment_id": "2026536",
+    "maximo_id": "401501760",
+    "from_limit_street": "KINNEY RD",
+    "to_limit_street": "GOODRICH AVE",
+    "left_from_address": "2201",
+    "full_street_name_from_gis": "S LAMAR BLVD",
+    "functional_class": "Arterial",
+    "left_to_address": "2235",
+    "main_agency": "Austin",
+    "right_from_address": "2200",
+    "right_to_address": "2240",
+    "minimum_address_in_range": "2200",
+    "maximum_address_in_range": "2240",
+    "segment_width": "59",
+    "segment_length": "455",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.51",
+    "final_grade": "C",
+    "year": "2017-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.767451970977,
+            30.249416664336
+          ],
+          [
+            -97.767712892222,
+            30.249273097655
+          ],
+          [
+            -97.768091243666,
+            30.249086693894
+          ],
+          [
+            -97.7683358518,
+            30.248979983666
+          ],
+          [
+            -97.768540151379,
+            30.248894000218
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "LAMAR",
+    "segment_seq": "115",
+    "segment_id": "2026534",
+    "maximo_id": "401521567",
+    "from_limit_street": "GOODRICH AVE",
+    "to_limit_street": "DEL CURTO RD",
+    "left_from_address": "2237",
+    "full_street_name_from_gis": "S LAMAR BLVD",
+    "functional_class": "Arterial",
+    "left_to_address": "2257",
+    "main_agency": "Austin",
+    "right_from_address": "2300",
+    "right_to_address": "2312",
+    "minimum_address_in_range": "2237",
+    "maximum_address_in_range": "2312",
+    "segment_width": "59",
+    "segment_length": "318",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.36",
+    "final_grade": "C",
+    "year": "2017-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.767451970977,
+            30.249416664336
+          ],
+          [
+            -97.767712892222,
+            30.249273097655
+          ],
+          [
+            -97.768091243666,
+            30.249086693894
+          ],
+          [
+            -97.7683358518,
+            30.248979983666
+          ],
+          [
+            -97.768540151379,
+            30.248894000218
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "MARTIN LUTHER KING JR",
+    "segment_seq": "35",
+    "segment_id": "2017982",
+    "maximo_id": "401486415",
+    "from_limit_street": "1112",
+    "to_limit_street": "1498",
+    "left_from_address": "1112",
+    "full_street_name_from_gis": "E MARTIN LUTHER KING JR BLVD",
+    "functional_class": "Arterial",
+    "left_to_address": "1498",
+    "main_agency": "Austin",
+    "right_from_address": "1113",
+    "right_to_address": "1411",
+    "minimum_address_in_range": "1112",
+    "maximum_address_in_range": "1498",
+    "segment_width": "37",
+    "segment_length": "1075",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.75",
+    "final_grade": "F",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "0",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.749821803585,
+            30.28393153282
+          ],
+          [
+            -97.74997200613,
+            30.283936401526
+          ],
+          [
+            -97.750085501185,
+            30.283937015512
+          ],
+          [
+            -97.750170490093,
+            30.283934846778
+          ],
+          [
+            -97.751331243209,
+            30.283808398643
+          ],
+          [
+            -97.751732184944,
+            30.283760011245
+          ],
+          [
+            -97.751792611272,
+            30.283750777591
+          ],
+          [
+            -97.751849108724,
+            30.283737998876
+          ],
+          [
+            -97.751901800771,
+            30.283718185534
+          ],
+          [
+            -97.751950564361,
+            30.283694772107
+          ],
+          [
+            -97.752085283715,
+            30.283606971902
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "MEDINA",
+    "segment_seq": "20",
+    "segment_id": "2041206",
+    "maximo_id": "401487263",
+    "from_limit_street": "4TH ST E",
+    "to_limit_street": "5TH ST E",
+    "left_from_address": "400",
+    "full_street_name_from_gis": "MEDINA",
+    "functional_class": "Collector",
+    "left_to_address": "416",
+    "main_agency": "Austin",
+    "right_from_address": "401",
+    "right_to_address": "417",
+    "minimum_address_in_range": "400",
+    "maximum_address_in_range": "417",
+    "segment_width": "27",
+    "segment_length": "349",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.18",
+    "final_grade": "B",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.733192836754,
+            30.261162301762
+          ],
+          [
+            -97.732785914572,
+            30.26203690432
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "MEDINA",
+    "segment_seq": "5",
+    "segment_id": "2019236",
+    "maximo_id": "401518422",
+    "from_limit_street": "CESAR CHAVEZ ST E",
+    "to_limit_street": "2ND ST E",
+    "left_from_address": "100",
+    "full_street_name_from_gis": "MEDINA",
+    "functional_class": "Collector",
+    "left_to_address": "116",
+    "main_agency": "Austin",
+    "right_from_address": "101",
+    "right_to_address": "117",
+    "minimum_address_in_range": "100",
+    "maximum_address_in_range": "117",
+    "segment_width": "27",
+    "segment_length": "359",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.18",
+    "final_grade": "A",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.733192836754,
+            30.261162301762
+          ],
+          [
+            -97.732785914572,
+            30.26203690432
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "MEDINA",
+    "segment_seq": "10",
+    "segment_id": "2019183",
+    "maximo_id": "401516828",
+    "from_limit_street": "2ND ST E",
+    "to_limit_street": "3RD ST E",
+    "left_from_address": "200",
+    "full_street_name_from_gis": "MEDINA",
+    "functional_class": "Collector",
+    "left_to_address": "216",
+    "main_agency": "Austin",
+    "right_from_address": "201",
+    "right_to_address": "217",
+    "minimum_address_in_range": "200",
+    "maximum_address_in_range": "217",
+    "segment_width": "27",
+    "segment_length": "343",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.18",
+    "final_grade": "B",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.733192836754,
+            30.261162301762
+          ],
+          [
+            -97.732785914572,
+            30.26203690432
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "MEDINA",
+    "segment_seq": "15",
+    "segment_id": "2019142",
+    "maximo_id": "401485448",
+    "from_limit_street": "3RD ST E",
+    "to_limit_street": "4TH ST E",
+    "left_from_address": "300",
+    "full_street_name_from_gis": "MEDINA",
+    "functional_class": "Collector",
+    "left_to_address": "316",
+    "main_agency": "Austin",
+    "right_from_address": "301",
+    "right_to_address": "317",
+    "minimum_address_in_range": "300",
+    "maximum_address_in_range": "317",
+    "segment_width": "27",
+    "segment_length": "359",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.18",
+    "final_grade": "D",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "0",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.733192836754,
+            30.261162301762
+          ],
+          [
+            -97.732785914572,
+            30.26203690432
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "MEDINA",
+    "segment_seq": "30",
+    "segment_id": "3190725",
+    "maximo_id": "401484483",
+    "from_limit_street": "506",
+    "to_limit_street": "517",
+    "left_from_address": "506",
+    "full_street_name_from_gis": "MEDINA",
+    "street_end_type": "Dead End",
+    "functional_class": "Collector",
+    "left_to_address": "516",
+    "main_agency": "Austin",
+    "right_from_address": "507",
+    "right_to_address": "517",
+    "minimum_address_in_range": "506",
+    "maximum_address_in_range": "517",
+    "segment_width": "34",
+    "segment_length": "173",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.11",
+    "final_grade": "B",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.733192836754,
+            30.261162301762
+          ],
+          [
+            -97.732785914572,
+            30.26203690432
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "MEDINA",
+    "segment_seq": "35",
+    "segment_id": "2018957",
+    "maximo_id": "401485911",
+    "from_limit_street": "6TH ST E",
+    "to_limit_street": "7TH ST E",
+    "left_from_address": "600",
+    "full_street_name_from_gis": "MEDINA",
+    "functional_class": "Collector",
+    "left_to_address": "616",
+    "main_agency": "Austin",
+    "right_from_address": "601",
+    "right_to_address": "617",
+    "minimum_address_in_range": "600",
+    "maximum_address_in_range": "617",
+    "segment_width": "27",
+    "segment_length": "368",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.18",
+    "final_grade": "B",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.733192836754,
+            30.261162301762
+          ],
+          [
+            -97.732785914572,
+            30.26203690432
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "MISSION RIDGE",
+    "segment_seq": "5",
+    "segment_id": "2022544",
+    "maximo_id": "401482821",
+    "from_limit_street": "KENWOOD AVE",
+    "to_limit_street": "CHELSEA LN",
+    "left_from_address": "1100",
+    "full_street_name_from_gis": "MISSION RIDGE",
+    "functional_class": "Residential",
+    "left_to_address": "1122",
+    "main_agency": "Austin",
+    "right_from_address": "1101",
+    "right_to_address": "1123",
+    "minimum_address_in_range": "1100",
+    "maximum_address_in_range": "1123",
+    "segment_width": "27",
+    "segment_length": "536",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.27",
+    "final_grade": "B",
+    "year": "2017-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.740342917316,
+            30.243820541227
+          ],
+          [
+            -97.738851614503,
+            30.243116512966
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "NELSON",
+    "segment_seq": "5",
+    "segment_id": "2012441",
+    "maximo_id": "401511900",
+    "from_limit_street": "PRAIRIE TRL",
+    "to_limit_street": "KRAMER LN",
+    "left_from_address": "11000",
+    "full_street_name_from_gis": "NELSON RD",
+    "functional_class": "Residential",
+    "left_to_address": "11012",
+    "main_agency": "Austin",
+    "right_from_address": "11001",
+    "right_to_address": "11011",
+    "minimum_address_in_range": "11000",
+    "maximum_address_in_range": "11012",
+    "segment_width": "27",
+    "segment_length": "428",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.22",
+    "final_grade": "C",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.757313115544,
+            30.274966645663
+          ],
+          [
+            -97.756868466951,
+            30.275747052644
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "NUECES",
+    "segment_seq": "5",
+    "segment_id": "2018901",
+    "maximo_id": "401525771",
+    "from_limit_street": "200",
+    "to_limit_street": "3RD ST W",
+    "left_from_address": "200",
+    "full_street_name_from_gis": "NUECES ST",
+    "functional_class": "Collector",
+    "left_to_address": "220",
+    "main_agency": "Austin",
+    "right_from_address": "201",
+    "right_to_address": "221",
+    "minimum_address_in_range": "200",
+    "maximum_address_in_range": "221",
+    "segment_width": "57",
+    "segment_length": "356",
+    "pavement_type": "Composite",
+    "lane_miles": "0.2",
+    "final_grade": "D",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "0",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.748431317825,
+            30.269633650982
+          ],
+          [
+            -97.748073254274,
+            30.270580794838
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "PARKWAY",
+    "segment_seq": "5",
+    "segment_id": "2018114",
+    "maximo_id": "401521058",
+    "from_limit_street": "LAMAR BLVD N",
+    "to_limit_street": "BAYLOR ST",
+    "left_from_address": "1200",
+    "full_street_name_from_gis": "PARKWAY",
+    "functional_class": "Collector",
+    "left_to_address": "1222",
+    "main_agency": "Austin",
+    "right_from_address": "1201",
+    "right_to_address": "1239",
+    "minimum_address_in_range": "1200",
+    "maximum_address_in_range": "1239",
+    "segment_width": "37",
+    "segment_length": "493",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.35",
+    "final_grade": "F",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "0",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.754311832204,
+            30.282606350112
+          ],
+          [
+            -97.75450625009,
+            30.283273810119
+          ],
+          [
+            -97.754545569059,
+            30.283425139641
+          ],
+          [
+            -97.754585407551,
+            30.283623459943
+          ],
+          [
+            -97.754597785169,
+            30.283663938041
+          ],
+          [
+            -97.754618148479,
+            30.283704466741
+          ],
+          [
+            -97.754667270725,
+            30.283805492215
+          ],
+          [
+            -97.754940449752,
+            30.284214583839
+          ],
+          [
+            -97.754997148471,
+            30.284315434063
+          ],
+          [
+            -97.755031178095,
+            30.28440068692
+          ],
+          [
+            -97.755054175663,
+            30.284470903198
+          ],
+          [
+            -97.755064837527,
+            30.284525180505
+          ],
+          [
+            -97.75507381139,
+            30.284577921454
+          ],
+          [
+            -97.755082595649,
+            30.284671431728
+          ],
+          [
+            -97.755079442821,
+            30.284719324968
+          ],
+          [
+            -97.75505487145,
+            30.285092643073
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "PARKWAY",
+    "segment_seq": "10",
+    "segment_id": "2018020",
+    "maximo_id": "401533989",
+    "from_limit_street": "BAYLOR ST",
+    "to_limit_street": "ENFIELD RD",
+    "left_from_address": "1300",
+    "full_street_name_from_gis": "PARKWAY",
+    "functional_class": "Collector",
+    "left_to_address": "1404",
+    "main_agency": "Austin",
+    "right_from_address": "1301",
+    "right_to_address": "1405",
+    "minimum_address_in_range": "1300",
+    "maximum_address_in_range": "1405",
+    "segment_width": "37",
+    "segment_length": "122",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.09",
+    "final_grade": "F",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "0",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.754311832204,
+            30.282606350112
+          ],
+          [
+            -97.75450625009,
+            30.283273810119
+          ],
+          [
+            -97.754545569059,
+            30.283425139641
+          ],
+          [
+            -97.754585407551,
+            30.283623459943
+          ],
+          [
+            -97.754597785169,
+            30.283663938041
+          ],
+          [
+            -97.754618148479,
+            30.283704466741
+          ],
+          [
+            -97.754667270725,
+            30.283805492215
+          ],
+          [
+            -97.754940449752,
+            30.284214583839
+          ],
+          [
+            -97.754997148471,
+            30.284315434063
+          ],
+          [
+            -97.755031178095,
+            30.28440068692
+          ],
+          [
+            -97.755054175663,
+            30.284470903198
+          ],
+          [
+            -97.755064837527,
+            30.284525180505
+          ],
+          [
+            -97.75507381139,
+            30.284577921454
+          ],
+          [
+            -97.755082595649,
+            30.284671431728
+          ],
+          [
+            -97.755079442821,
+            30.284719324968
+          ],
+          [
+            -97.75505487145,
+            30.285092643073
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "PARKWAY",
+    "segment_seq": "15",
+    "segment_id": "2047429",
+    "maximo_id": "401495717",
+    "from_limit_street": "ENFIELD RD",
+    "to_limit_street": "KINGSBURY ST",
+    "left_from_address": "1500",
+    "full_street_name_from_gis": "PARKWAY",
+    "functional_class": "Residential",
+    "left_to_address": "1522",
+    "main_agency": "Austin",
+    "right_from_address": "1501",
+    "right_to_address": "1523",
+    "minimum_address_in_range": "1500",
+    "maximum_address_in_range": "1523",
+    "segment_width": "37",
+    "segment_length": "710",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.19",
+    "final_grade": "D",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "0",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.754311832204,
+            30.282606350112
+          ],
+          [
+            -97.75450625009,
+            30.283273810119
+          ],
+          [
+            -97.754545569059,
+            30.283425139641
+          ],
+          [
+            -97.754585407551,
+            30.283623459943
+          ],
+          [
+            -97.754597785169,
+            30.283663938041
+          ],
+          [
+            -97.754618148479,
+            30.283704466741
+          ],
+          [
+            -97.754667270725,
+            30.283805492215
+          ],
+          [
+            -97.754940449752,
+            30.284214583839
+          ],
+          [
+            -97.754997148471,
+            30.284315434063
+          ],
+          [
+            -97.755031178095,
+            30.28440068692
+          ],
+          [
+            -97.755054175663,
+            30.284470903198
+          ],
+          [
+            -97.755064837527,
+            30.284525180505
+          ],
+          [
+            -97.75507381139,
+            30.284577921454
+          ],
+          [
+            -97.755082595649,
+            30.284671431728
+          ],
+          [
+            -97.755079442821,
+            30.284719324968
+          ],
+          [
+            -97.75505487145,
+            30.285092643073
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "PARKWAY",
+    "segment_seq": "20",
+    "segment_id": "2047053",
+    "maximo_id": "401493550",
+    "from_limit_street": "KINGSBURY ST",
+    "to_limit_street": "RAINBOW BND",
+    "left_from_address": "1600",
+    "full_street_name_from_gis": "PARKWAY",
+    "functional_class": "Residential",
+    "left_to_address": "2006",
+    "main_agency": "Austin",
+    "right_from_address": "1601",
+    "right_to_address": "2007",
+    "minimum_address_in_range": "1600",
+    "maximum_address_in_range": "2007",
+    "segment_width": "27",
+    "segment_length": "950",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.51",
+    "final_grade": "D",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "0",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.754311832204,
+            30.282606350112
+          ],
+          [
+            -97.75450625009,
+            30.283273810119
+          ],
+          [
+            -97.754545569059,
+            30.283425139641
+          ],
+          [
+            -97.754585407551,
+            30.283623459943
+          ],
+          [
+            -97.754597785169,
+            30.283663938041
+          ],
+          [
+            -97.754618148479,
+            30.283704466741
+          ],
+          [
+            -97.754667270725,
+            30.283805492215
+          ],
+          [
+            -97.754940449752,
+            30.284214583839
+          ],
+          [
+            -97.754997148471,
+            30.284315434063
+          ],
+          [
+            -97.755031178095,
+            30.28440068692
+          ],
+          [
+            -97.755054175663,
+            30.284470903198
+          ],
+          [
+            -97.755064837527,
+            30.284525180505
+          ],
+          [
+            -97.75507381139,
+            30.284577921454
+          ],
+          [
+            -97.755082595649,
+            30.284671431728
+          ],
+          [
+            -97.755079442821,
+            30.284719324968
+          ],
+          [
+            -97.75505487145,
+            30.285092643073
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "PARKWAY",
+    "segment_seq": "25",
+    "segment_id": "2047096",
+    "maximo_id": "401528585",
+    "from_limit_street": "RAINBOW BND",
+    "to_limit_street": "WINDSOR RD E",
+    "left_from_address": "2100",
+    "full_street_name_from_gis": "PARKWAY",
+    "functional_class": "Residential",
+    "left_to_address": "2224",
+    "main_agency": "Austin",
+    "right_from_address": "2101",
+    "right_to_address": "2225",
+    "minimum_address_in_range": "2100",
+    "maximum_address_in_range": "2225",
+    "segment_width": "37",
+    "segment_length": "1160",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.8",
+    "final_grade": "C",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.754311832204,
+            30.282606350112
+          ],
+          [
+            -97.75450625009,
+            30.283273810119
+          ],
+          [
+            -97.754545569059,
+            30.283425139641
+          ],
+          [
+            -97.754585407551,
+            30.283623459943
+          ],
+          [
+            -97.754597785169,
+            30.283663938041
+          ],
+          [
+            -97.754618148479,
+            30.283704466741
+          ],
+          [
+            -97.754667270725,
+            30.283805492215
+          ],
+          [
+            -97.754940449752,
+            30.284214583839
+          ],
+          [
+            -97.754997148471,
+            30.284315434063
+          ],
+          [
+            -97.755031178095,
+            30.28440068692
+          ],
+          [
+            -97.755054175663,
+            30.284470903198
+          ],
+          [
+            -97.755064837527,
+            30.284525180505
+          ],
+          [
+            -97.75507381139,
+            30.284577921454
+          ],
+          [
+            -97.755082595649,
+            30.284671431728
+          ],
+          [
+            -97.755079442821,
+            30.284719324968
+          ],
+          [
+            -97.75505487145,
+            30.285092643073
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "PARKWAY",
+    "segment_seq": "30",
+    "segment_id": "2019783",
+    "maximo_id": "401519932",
+    "from_limit_street": "WINDSOR RD E",
+    "to_limit_street": "24TH ST W",
+    "left_from_address": "2226",
+    "full_street_name_from_gis": "PARKWAY",
+    "functional_class": "Residential",
+    "left_to_address": "2238",
+    "main_agency": "Austin",
+    "right_from_address": "2227",
+    "right_to_address": "2239",
+    "minimum_address_in_range": "2226",
+    "maximum_address_in_range": "2239",
+    "segment_width": "37",
+    "segment_length": "274",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.17",
+    "final_grade": "D",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "0",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.754311832204,
+            30.282606350112
+          ],
+          [
+            -97.75450625009,
+            30.283273810119
+          ],
+          [
+            -97.754545569059,
+            30.283425139641
+          ],
+          [
+            -97.754585407551,
+            30.283623459943
+          ],
+          [
+            -97.754597785169,
+            30.283663938041
+          ],
+          [
+            -97.754618148479,
+            30.283704466741
+          ],
+          [
+            -97.754667270725,
+            30.283805492215
+          ],
+          [
+            -97.754940449752,
+            30.284214583839
+          ],
+          [
+            -97.754997148471,
+            30.284315434063
+          ],
+          [
+            -97.755031178095,
+            30.28440068692
+          ],
+          [
+            -97.755054175663,
+            30.284470903198
+          ],
+          [
+            -97.755064837527,
+            30.284525180505
+          ],
+          [
+            -97.75507381139,
+            30.284577921454
+          ],
+          [
+            -97.755082595649,
+            30.284671431728
+          ],
+          [
+            -97.755079442821,
+            30.284719324968
+          ],
+          [
+            -97.75505487145,
+            30.285092643073
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "SHORT HACKBERRY",
+    "segment_seq": "5",
+    "segment_id": "2018532",
+    "maximo_id": "401493078",
+    "from_limit_street": "1200",
+    "to_limit_street": "1208",
+    "left_from_address": "1200",
+    "full_street_name_from_gis": "SHORT HACKBERRY",
+    "functional_class": "Residential",
+    "left_to_address": "1208",
+    "main_agency": "Austin",
+    "right_from_address": "1201",
+    "right_to_address": "1209",
+    "minimum_address_in_range": "1200",
+    "maximum_address_in_range": "1209",
+    "segment_width": "27",
+    "segment_length": "195",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.1",
+    "final_grade": "C",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.727328293793,
+            30.270329738079
+          ],
+          [
+            -97.72671914695,
+            30.270415892855
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "SPEEDWAY",
+    "segment_seq": "5",
+    "segment_id": "2040859",
+    "maximo_id": "401516321",
+    "from_limit_street": "27TH ST E",
+    "to_limit_street": "SAN JACINTO BLVD",
+    "left_from_address": "2700",
+    "full_street_name_from_gis": "SPEEDWAY",
+    "functional_class": "Collector",
+    "left_to_address": "2910",
+    "main_agency": "Austin",
+    "right_from_address": "2701",
+    "right_to_address": "2911",
+    "minimum_address_in_range": "2700",
+    "maximum_address_in_range": "2911",
+    "segment_width": "48",
+    "segment_length": "613",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.56",
+    "final_grade": "F",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "0",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.737635510049,
+            30.281670951726
+          ],
+          [
+            -97.737588269504,
+            30.282017534157
+          ],
+          [
+            -97.737536813733,
+            30.282395044741
+          ],
+          [
+            -97.737441248848,
+            30.283473995364
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "SPEEDWAY",
+    "segment_seq": "10",
+    "segment_id": "2017043",
+    "maximo_id": "401512193",
+    "from_limit_street": "SAN JACINTO BLVD",
+    "to_limit_street": "31ST ST E",
+    "left_from_address": "3000",
+    "full_street_name_from_gis": "SPEEDWAY",
+    "functional_class": "Collector",
+    "left_to_address": "3016",
+    "main_agency": "Austin",
+    "right_from_address": "3001",
+    "right_to_address": "3017",
+    "minimum_address_in_range": "3000",
+    "maximum_address_in_range": "3017",
+    "segment_width": "27",
+    "segment_length": "375",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.19",
+    "final_grade": "D",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "0",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.737635510049,
+            30.281670951726
+          ],
+          [
+            -97.737588269504,
+            30.282017534157
+          ],
+          [
+            -97.737536813733,
+            30.282395044741
+          ],
+          [
+            -97.737441248848,
+            30.283473995364
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "SPEEDWAY",
+    "segment_seq": "15",
+    "segment_id": "2016930",
+    "maximo_id": "401538027",
+    "from_limit_street": "UNIVERSITY AVE",
+    "to_limit_street": "LAUREL LN",
+    "left_from_address": "3100",
+    "full_street_name_from_gis": "SPEEDWAY",
+    "functional_class": "Collector",
+    "left_to_address": "3110",
+    "main_agency": "Austin",
+    "right_from_address": "3101",
+    "right_to_address": "3119",
+    "minimum_address_in_range": "3100",
+    "maximum_address_in_range": "3119",
+    "segment_width": "37",
+    "segment_length": "303",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.21",
+    "final_grade": "D",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "0",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.737635510049,
+            30.281670951726
+          ],
+          [
+            -97.737588269504,
+            30.282017534157
+          ],
+          [
+            -97.737536813733,
+            30.282395044741
+          ],
+          [
+            -97.737441248848,
+            30.283473995364
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "SPEEDWAY",
+    "segment_seq": "20",
+    "segment_id": "2016882",
+    "maximo_id": "401486307",
+    "from_limit_street": "LAUREL LN",
+    "to_limit_street": "32ND ST E",
+    "left_from_address": "3112",
+    "full_street_name_from_gis": "SPEEDWAY",
+    "functional_class": "Collector",
+    "left_to_address": "3116",
+    "main_agency": "Austin",
+    "right_from_address": "3121",
+    "right_to_address": "3127",
+    "minimum_address_in_range": "3112",
+    "maximum_address_in_range": "3127",
+    "segment_width": "37",
+    "segment_length": "132",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.09",
+    "final_grade": "D",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "0",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.737635510049,
+            30.281670951726
+          ],
+          [
+            -97.737588269504,
+            30.282017534157
+          ],
+          [
+            -97.737536813733,
+            30.282395044741
+          ],
+          [
+            -97.737441248848,
+            30.283473995364
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "SPEEDWAY",
+    "segment_seq": "25",
+    "segment_id": "2016861",
+    "maximo_id": "401486117",
+    "from_limit_street": "32ND ST E",
+    "to_limit_street": "32ND ST W",
+    "left_from_address": "3118",
+    "full_street_name_from_gis": "SPEEDWAY",
+    "functional_class": "Collector",
+    "left_to_address": "3128",
+    "main_agency": "Austin",
+    "right_from_address": "3201",
+    "right_to_address": "3205",
+    "minimum_address_in_range": "3118",
+    "maximum_address_in_range": "3205",
+    "segment_width": "37",
+    "segment_length": "193",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.14",
+    "final_grade": "B",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.737635510049,
+            30.281670951726
+          ],
+          [
+            -97.737588269504,
+            30.282017534157
+          ],
+          [
+            -97.737536813733,
+            30.282395044741
+          ],
+          [
+            -97.737441248848,
+            30.283473995364
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "SPEEDWAY",
+    "segment_seq": "30",
+    "segment_id": "2016825",
+    "maximo_id": "401519036",
+    "from_limit_street": "32ND ST W",
+    "to_limit_street": "33RD ST E",
+    "left_from_address": "3200",
+    "full_street_name_from_gis": "SPEEDWAY",
+    "functional_class": "Collector",
+    "left_to_address": "3206",
+    "main_agency": "Austin",
+    "right_from_address": "3207",
+    "right_to_address": "3217",
+    "minimum_address_in_range": "3200",
+    "maximum_address_in_range": "3217",
+    "segment_width": "37",
+    "segment_length": "218",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.15",
+    "final_grade": "B",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.737635510049,
+            30.281670951726
+          ],
+          [
+            -97.737588269504,
+            30.282017534157
+          ],
+          [
+            -97.737536813733,
+            30.282395044741
+          ],
+          [
+            -97.737441248848,
+            30.283473995364
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "SPEEDWAY",
+    "segment_seq": "35",
+    "segment_id": "2016796",
+    "maximo_id": "401487542",
+    "from_limit_street": "33RD ST E",
+    "to_limit_street": "33RD ST W",
+    "left_from_address": "3208",
+    "full_street_name_from_gis": "SPEEDWAY",
+    "functional_class": "Collector",
+    "left_to_address": "3214",
+    "main_agency": "Austin",
+    "right_from_address": "3301",
+    "right_to_address": "3303",
+    "minimum_address_in_range": "3208",
+    "maximum_address_in_range": "3303",
+    "segment_width": "37",
+    "segment_length": "129",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.09",
+    "final_grade": "C",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.737635510049,
+            30.281670951726
+          ],
+          [
+            -97.737588269504,
+            30.282017534157
+          ],
+          [
+            -97.737536813733,
+            30.282395044741
+          ],
+          [
+            -97.737441248848,
+            30.283473995364
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "SPEEDWAY",
+    "segment_seq": "40",
+    "segment_id": "2016783",
+    "maximo_id": "401519581",
+    "from_limit_street": "33RD ST W",
+    "to_limit_street": "34TH ST W",
+    "left_from_address": "3300",
+    "full_street_name_from_gis": "SPEEDWAY",
+    "functional_class": "Collector",
+    "left_to_address": "3304",
+    "main_agency": "Austin",
+    "right_from_address": "3305",
+    "right_to_address": "3309",
+    "minimum_address_in_range": "3300",
+    "maximum_address_in_range": "3309",
+    "segment_width": "37",
+    "segment_length": "209",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.15",
+    "final_grade": "C",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.737635510049,
+            30.281670951726
+          ],
+          [
+            -97.737588269504,
+            30.282017534157
+          ],
+          [
+            -97.737536813733,
+            30.282395044741
+          ],
+          [
+            -97.737441248848,
+            30.283473995364
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "SPEEDWAY",
+    "segment_seq": "45",
+    "segment_id": "2016757",
+    "maximo_id": "401495701",
+    "from_limit_street": "34TH ST W",
+    "to_limit_street": "34TH ST E",
+    "left_from_address": "3306",
+    "full_street_name_from_gis": "SPEEDWAY",
+    "functional_class": "Collector",
+    "left_to_address": "3400",
+    "main_agency": "Austin",
+    "right_from_address": "3311",
+    "right_to_address": "3319",
+    "minimum_address_in_range": "3306",
+    "maximum_address_in_range": "3400",
+    "segment_width": "37",
+    "segment_length": "95",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.07",
+    "final_grade": "C",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.737635510049,
+            30.281670951726
+          ],
+          [
+            -97.737588269504,
+            30.282017534157
+          ],
+          [
+            -97.737536813733,
+            30.282395044741
+          ],
+          [
+            -97.737441248848,
+            30.283473995364
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "SPEEDWAY",
+    "segment_seq": "50",
+    "segment_id": "2016739",
+    "maximo_id": "401505265",
+    "from_limit_street": "34TH ST E",
+    "to_limit_street": "35TH ST W",
+    "left_from_address": "3402",
+    "full_street_name_from_gis": "SPEEDWAY",
+    "functional_class": "Collector",
+    "left_to_address": "3420",
+    "main_agency": "Austin",
+    "right_from_address": "3401",
+    "right_to_address": "3419",
+    "minimum_address_in_range": "3401",
+    "maximum_address_in_range": "3420",
+    "segment_width": "37",
+    "segment_length": "399",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.28",
+    "final_grade": "A",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.737635510049,
+            30.281670951726
+          ],
+          [
+            -97.737588269504,
+            30.282017534157
+          ],
+          [
+            -97.737536813733,
+            30.282395044741
+          ],
+          [
+            -97.737441248848,
+            30.283473995364
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "SPEEDWAY",
+    "segment_seq": "55",
+    "segment_id": "2016687",
+    "maximo_id": "401535435",
+    "from_limit_street": "35TH ST W",
+    "to_limit_street": "37TH ST E",
+    "left_from_address": "3500",
+    "full_street_name_from_gis": "SPEEDWAY",
+    "functional_class": "Collector",
+    "left_to_address": "3648",
+    "main_agency": "Austin",
+    "right_from_address": "3501",
+    "right_to_address": "3651",
+    "minimum_address_in_range": "3500",
+    "maximum_address_in_range": "3651",
+    "segment_width": "37",
+    "segment_length": "248",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.17",
+    "final_grade": "B",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.737635510049,
+            30.281670951726
+          ],
+          [
+            -97.737588269504,
+            30.282017534157
+          ],
+          [
+            -97.737536813733,
+            30.282395044741
+          ],
+          [
+            -97.737441248848,
+            30.283473995364
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "SPEEDWAY",
+    "segment_seq": "60",
+    "segment_id": "2016651",
+    "maximo_id": "401481817",
+    "from_limit_street": "37TH ST E",
+    "to_limit_street": "38TH ST W",
+    "left_from_address": "3650",
+    "full_street_name_from_gis": "SPEEDWAY",
+    "functional_class": "Collector",
+    "left_to_address": "3712",
+    "main_agency": "Austin",
+    "right_from_address": "3653",
+    "right_to_address": "3713",
+    "minimum_address_in_range": "3650",
+    "maximum_address_in_range": "3713",
+    "segment_width": "37",
+    "segment_length": "252",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.18",
+    "final_grade": "C",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.737635510049,
+            30.281670951726
+          ],
+          [
+            -97.737588269504,
+            30.282017534157
+          ],
+          [
+            -97.737536813733,
+            30.282395044741
+          ],
+          [
+            -97.737441248848,
+            30.283473995364
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "SPEEDWAY",
+    "segment_seq": "65",
+    "segment_id": "2016610",
+    "maximo_id": "401519254",
+    "from_limit_street": "38TH ST W",
+    "to_limit_street": "38TH 1/2 ST W",
+    "left_from_address": "3800",
+    "full_street_name_from_gis": "SPEEDWAY",
+    "functional_class": "Collector",
+    "left_to_address": "3810",
+    "main_agency": "Austin",
+    "right_from_address": "3801",
+    "right_to_address": "3809",
+    "minimum_address_in_range": "3800",
+    "maximum_address_in_range": "3810",
+    "segment_width": "37",
+    "segment_length": "313",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.22",
+    "final_grade": "F",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "0",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.737635510049,
+            30.281670951726
+          ],
+          [
+            -97.737588269504,
+            30.282017534157
+          ],
+          [
+            -97.737536813733,
+            30.282395044741
+          ],
+          [
+            -97.737441248848,
+            30.283473995364
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "SPEEDWAY",
+    "segment_seq": "70",
+    "segment_id": "2016555",
+    "maximo_id": "401520028",
+    "from_limit_street": "38TH 1/2 ST W",
+    "to_limit_street": "39TH ST W",
+    "left_from_address": "3812",
+    "full_street_name_from_gis": "SPEEDWAY",
+    "functional_class": "Collector",
+    "left_to_address": "3822",
+    "main_agency": "Austin",
+    "right_from_address": "3811",
+    "right_to_address": "3825",
+    "minimum_address_in_range": "3811",
+    "maximum_address_in_range": "3825",
+    "segment_width": "37",
+    "segment_length": "243",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.17",
+    "final_grade": "D",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "0",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.737635510049,
+            30.281670951726
+          ],
+          [
+            -97.737588269504,
+            30.282017534157
+          ],
+          [
+            -97.737536813733,
+            30.282395044741
+          ],
+          [
+            -97.737441248848,
+            30.283473995364
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "SPEEDWAY",
+    "segment_seq": "75",
+    "segment_id": "2016507",
+    "maximo_id": "401512717",
+    "from_limit_street": "39TH ST W",
+    "to_limit_street": "40TH ST W",
+    "left_from_address": "3900",
+    "full_street_name_from_gis": "SPEEDWAY",
+    "functional_class": "Collector",
+    "left_to_address": "3922",
+    "main_agency": "Austin",
+    "right_from_address": "3901",
+    "right_to_address": "3923",
+    "minimum_address_in_range": "3900",
+    "maximum_address_in_range": "3923",
+    "segment_width": "37",
+    "segment_length": "488",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.34",
+    "final_grade": "B",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.737635510049,
+            30.281670951726
+          ],
+          [
+            -97.737588269504,
+            30.282017534157
+          ],
+          [
+            -97.737536813733,
+            30.282395044741
+          ],
+          [
+            -97.737441248848,
+            30.283473995364
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "SPEEDWAY",
+    "segment_seq": "80",
+    "segment_id": "2016431",
+    "maximo_id": "401486906",
+    "from_limit_street": "40TH ST W",
+    "to_limit_street": "41ST ST W",
+    "left_from_address": "4000",
+    "full_street_name_from_gis": "SPEEDWAY",
+    "functional_class": "Collector",
+    "left_to_address": "4020",
+    "main_agency": "Austin",
+    "right_from_address": "4001",
+    "right_to_address": "4021",
+    "minimum_address_in_range": "4000",
+    "maximum_address_in_range": "4021",
+    "segment_width": "37",
+    "segment_length": "478",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.33",
+    "final_grade": "F",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "0",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.737635510049,
+            30.281670951726
+          ],
+          [
+            -97.737588269504,
+            30.282017534157
+          ],
+          [
+            -97.737536813733,
+            30.282395044741
+          ],
+          [
+            -97.737441248848,
+            30.283473995364
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "SPEEDWAY",
+    "segment_seq": "85",
+    "segment_id": "2016354",
+    "maximo_id": "401495870",
+    "from_limit_street": "41ST ST W",
+    "to_limit_street": "42ND ST W",
+    "left_from_address": "4100",
+    "full_street_name_from_gis": "SPEEDWAY",
+    "functional_class": "Collector",
+    "left_to_address": "4120",
+    "main_agency": "Austin",
+    "right_from_address": "4101",
+    "right_to_address": "4121",
+    "minimum_address_in_range": "4100",
+    "maximum_address_in_range": "4121",
+    "segment_width": "37",
+    "segment_length": "452",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.32",
+    "final_grade": "B",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.737635510049,
+            30.281670951726
+          ],
+          [
+            -97.737588269504,
+            30.282017534157
+          ],
+          [
+            -97.737536813733,
+            30.282395044741
+          ],
+          [
+            -97.737441248848,
+            30.283473995364
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "SPEEDWAY",
+    "segment_seq": "90",
+    "segment_id": "2016288",
+    "maximo_id": "401521047",
+    "from_limit_street": "42ND ST W",
+    "to_limit_street": "43RD ST W",
+    "left_from_address": "4200",
+    "full_street_name_from_gis": "SPEEDWAY",
+    "functional_class": "Collector",
+    "left_to_address": "4220",
+    "main_agency": "Austin",
+    "right_from_address": "4201",
+    "right_to_address": "4221",
+    "minimum_address_in_range": "4200",
+    "maximum_address_in_range": "4221",
+    "segment_width": "37",
+    "segment_length": "484",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.34",
+    "final_grade": "F",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "0",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.737635510049,
+            30.281670951726
+          ],
+          [
+            -97.737588269504,
+            30.282017534157
+          ],
+          [
+            -97.737536813733,
+            30.282395044741
+          ],
+          [
+            -97.737441248848,
+            30.283473995364
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "SPEEDWAY",
+    "segment_seq": "95",
+    "segment_id": "2016216",
+    "maximo_id": "401487199",
+    "from_limit_street": "43RD ST W",
+    "to_limit_street": "44TH ST W",
+    "left_from_address": "4300",
+    "full_street_name_from_gis": "SPEEDWAY",
+    "functional_class": "Collector",
+    "left_to_address": "4320",
+    "main_agency": "Austin",
+    "right_from_address": "4301",
+    "right_to_address": "4321",
+    "minimum_address_in_range": "4300",
+    "maximum_address_in_range": "4321",
+    "segment_width": "37",
+    "segment_length": "465",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.33",
+    "final_grade": "F",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "0",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.737635510049,
+            30.281670951726
+          ],
+          [
+            -97.737588269504,
+            30.282017534157
+          ],
+          [
+            -97.737536813733,
+            30.282395044741
+          ],
+          [
+            -97.737441248848,
+            30.283473995364
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "SPEEDWAY",
+    "segment_seq": "100",
+    "segment_id": "2016138",
+    "maximo_id": "401505842",
+    "from_limit_street": "44TH ST W",
+    "to_limit_street": "45TH ST W",
+    "left_from_address": "4400",
+    "full_street_name_from_gis": "SPEEDWAY",
+    "functional_class": "Collector",
+    "left_to_address": "4420",
+    "main_agency": "Austin",
+    "right_from_address": "4401",
+    "right_to_address": "4421",
+    "minimum_address_in_range": "4400",
+    "maximum_address_in_range": "4421",
+    "segment_width": "37",
+    "segment_length": "444",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.31",
+    "final_grade": "F",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "0",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.737635510049,
+            30.281670951726
+          ],
+          [
+            -97.737588269504,
+            30.282017534157
+          ],
+          [
+            -97.737536813733,
+            30.282395044741
+          ],
+          [
+            -97.737441248848,
+            30.283473995364
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "SPEEDWAY",
+    "segment_seq": "105",
+    "segment_id": "2040626",
+    "maximo_id": "401486976",
+    "from_limit_street": "45TH ST W",
+    "to_limit_street": "46TH ST W",
+    "left_from_address": "4500",
+    "full_street_name_from_gis": "SPEEDWAY",
+    "functional_class": "Residential",
+    "left_to_address": "4534",
+    "main_agency": "Austin",
+    "right_from_address": "4501",
+    "right_to_address": "4535",
+    "minimum_address_in_range": "4500",
+    "maximum_address_in_range": "4535",
+    "segment_width": "27",
+    "segment_length": "825",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.42",
+    "final_grade": "D",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "0",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.737635510049,
+            30.281670951726
+          ],
+          [
+            -97.737588269504,
+            30.282017534157
+          ],
+          [
+            -97.737536813733,
+            30.282395044741
+          ],
+          [
+            -97.737441248848,
+            30.283473995364
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "SPEEDWAY",
+    "segment_seq": "110",
+    "segment_id": "2033053",
+    "maximo_id": "401535027",
+    "from_limit_street": "46TH ST W",
+    "to_limit_street": "4616",
+    "left_from_address": "4600",
+    "full_street_name_from_gis": "SPEEDWAY",
+    "street_end_type": "Driveway",
+    "functional_class": "Residential",
+    "left_to_address": "4616",
+    "main_agency": "Austin",
+    "right_from_address": "4601",
+    "right_to_address": "4617",
+    "minimum_address_in_range": "4600",
+    "maximum_address_in_range": "4617",
+    "segment_width": "27",
+    "segment_length": "379",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.19",
+    "final_grade": "C",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.737635510049,
+            30.281670951726
+          ],
+          [
+            -97.737588269504,
+            30.282017534157
+          ],
+          [
+            -97.737536813733,
+            30.282395044741
+          ],
+          [
+            -97.737441248848,
+            30.283473995364
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "THE CIRCLE",
+    "segment_seq": "5",
+    "segment_id": "2019712",
+    "maximo_id": "401496079",
+    "from_limit_street": "CONGRESS AVE S",
+    "to_limit_street": "PARK LN",
+    "left_from_address": "100",
+    "full_street_name_from_gis": "THE CIRCLE",
+    "functional_class": "Collector",
+    "left_to_address": "120",
+    "main_agency": "Austin",
+    "right_from_address": "101",
+    "right_to_address": "121",
+    "minimum_address_in_range": "100",
+    "maximum_address_in_range": "121",
+    "segment_width": "27",
+    "segment_length": "599",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.31",
+    "final_grade": "A",
+    "year": "2017-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.746796383762,
+            30.250077876738
+          ],
+          [
+            -97.746812375701,
+            30.249814360058
+          ],
+          [
+            -97.746824871202,
+            30.249764171565
+          ],
+          [
+            -97.746857150049,
+            30.249727583723
+          ],
+          [
+            -97.747114278553,
+            30.249603866631
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "THE CIRCLE",
+    "segment_seq": "10",
+    "segment_id": "2019713",
+    "maximo_id": "401494916",
+    "from_limit_street": "PARK LN",
+    "to_limit_street": "DRAKE AVE",
+    "left_from_address": "200",
+    "full_street_name_from_gis": "THE CIRCLE",
+    "functional_class": "Collector",
+    "left_to_address": "214",
+    "main_agency": "Austin",
+    "right_from_address": "201",
+    "right_to_address": "211",
+    "minimum_address_in_range": "200",
+    "maximum_address_in_range": "214",
+    "segment_width": "27",
+    "segment_length": "387",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.2",
+    "final_grade": "C",
+    "year": "2017-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.746796383762,
+            30.250077876738
+          ],
+          [
+            -97.746812375701,
+            30.249814360058
+          ],
+          [
+            -97.746824871202,
+            30.249764171565
+          ],
+          [
+            -97.746857150049,
+            30.249727583723
+          ],
+          [
+            -97.747114278553,
+            30.249603866631
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "THE CIRCLE",
+    "segment_seq": "15",
+    "segment_id": "2041327",
+    "maximo_id": "401519245",
+    "from_limit_street": "ACADEMY DR",
+    "to_limit_street": "DRAKE AVE",
+    "left_from_address": "1201",
+    "full_street_name_from_gis": "THE CIRCLE",
+    "street_end_type": "Dead End",
+    "functional_class": "Collector",
+    "left_to_address": "1319",
+    "main_agency": "Austin",
+    "right_from_address": "1200",
+    "right_to_address": "1318",
+    "minimum_address_in_range": "1200",
+    "maximum_address_in_range": "1319",
+    "segment_width": "25",
+    "segment_length": "224",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.38",
+    "final_grade": "F",
+    "year": "2017-01-01T00:00:00.000",
+    "street_condition": "0",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.746796383762,
+            30.250077876738
+          ],
+          [
+            -97.746812375701,
+            30.249814360058
+          ],
+          [
+            -97.746824871202,
+            30.249764171565
+          ],
+          [
+            -97.746857150049,
+            30.249727583723
+          ],
+          [
+            -97.747114278553,
+            30.249603866631
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "UNNAMED ST 248",
+    "segment_seq": "5",
+    "segment_id": "2019531",
+    "maximo_id": "401519615",
+    "from_limit_street": "1ST ST S",
+    "to_limit_street": "2ND ST S",
+    "left_from_address": "601",
+    "full_street_name_from_gis": "UNNAMED ST 248",
+    "functional_class": "Residential",
+    "left_to_address": "615",
+    "main_agency": "Austin",
+    "right_from_address": "600",
+    "right_to_address": "614",
+    "minimum_address_in_range": "600",
+    "maximum_address_in_range": "615",
+    "segment_width": "27",
+    "segment_length": "300",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.15",
+    "final_grade": "F",
+    "year": "2017-01-01T00:00:00.000",
+    "street_condition": "0",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.75229986187,
+            30.254764842545
+          ],
+          [
+            -97.753138252363,
+            30.255179205005
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "WEBBERVILLE",
+    "segment_seq": "100",
+    "segment_id": "2019091",
+    "maximo_id": "401520673",
+    "from_limit_street": "SWENSON AVE",
+    "to_limit_street": "HARVARD ST",
+    "left_from_address": "2400",
+    "full_street_name_from_gis": "WEBBERVILLE RD",
+    "functional_class": "Collector",
+    "left_to_address": "2434",
+    "main_agency": "Austin",
+    "right_from_address": "2401",
+    "right_to_address": "2505",
+    "minimum_address_in_range": "2400",
+    "maximum_address_in_range": "2505",
+    "segment_width": "37",
+    "segment_length": "408",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.29",
+    "final_grade": "B",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.715361808403,
+            30.262438406689
+          ],
+          [
+            -97.714821542896,
+            30.262732656212
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "WEST",
+    "segment_seq": "125",
+    "segment_id": "5076963",
+    "maximo_id": "401329251",
+    "from_limit_street": "CESAR CHAVEZ ST W",
+    "to_limit_street": "2ND ST W",
+    "left_from_address": "100",
+    "full_street_name_from_gis": "WEST AVE",
+    "functional_class": "Residential",
+    "left_to_address": "124",
+    "main_agency": "Austin",
+    "right_from_address": "101",
+    "right_to_address": "125",
+    "minimum_address_in_range": "100",
+    "maximum_address_in_range": "125",
+    "segment_width": "31",
+    "segment_length": "328",
+    "pavement_type": "Rigid",
+    "lane_miles": "0.19",
+    "final_grade": "B",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.744143302218,
+            30.299322303327
+          ],
+          [
+            -97.743439485154,
+            30.300509985914
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "WEST",
+    "segment_seq": "120",
+    "segment_id": "3504330",
+    "maximo_id": "401536795",
+    "from_limit_street": "2ND ST W",
+    "to_limit_street": "POWER PLANT DR",
+    "left_from_address": "200",
+    "full_street_name_from_gis": "WEST AVE",
+    "functional_class": "Residential",
+    "left_to_address": "224",
+    "main_agency": "Austin",
+    "right_from_address": "201",
+    "right_to_address": "225",
+    "minimum_address_in_range": "200",
+    "maximum_address_in_range": "225",
+    "segment_width": "31",
+    "segment_length": "382",
+    "pavement_type": "Rigid",
+    "lane_miles": "0.22",
+    "final_grade": "C",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.744143302218,
+            30.299322303327
+          ],
+          [
+            -97.743439485154,
+            30.300509985914
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "WEST",
+    "segment_seq": "5",
+    "segment_id": "2042759",
+    "maximo_id": "401514223",
+    "from_limit_street": "RUNDBERG LN W",
+    "to_limit_street": "RUNDBERG LN W",
+    "left_from_address": "1901",
+    "full_street_name_from_gis": "WEST LOOP",
+    "functional_class": "Residential",
+    "left_to_address": "2019",
+    "main_agency": "Austin",
+    "right_from_address": "1900",
+    "right_to_address": "2018",
+    "minimum_address_in_range": "1900",
+    "maximum_address_in_range": "2019",
+    "segment_width": "27",
+    "segment_length": "1283",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.64",
+    "final_grade": "A",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.744143302218,
+            30.299322303327
+          ],
+          [
+            -97.743439485154,
+            30.300509985914
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "WILLOW",
+    "segment_seq": "65",
+    "segment_id": "2019589",
+    "maximo_id": "401516929",
+    "from_limit_street": "SAN SABA ST",
+    "to_limit_street": "LLANO ST",
+    "left_from_address": "2600",
+    "full_street_name_from_gis": "WILLOW ST",
+    "functional_class": "Residential",
+    "left_to_address": "2614",
+    "main_agency": "Austin",
+    "right_from_address": "2601",
+    "right_to_address": "2619",
+    "minimum_address_in_range": "2600",
+    "maximum_address_in_range": "2619",
+    "segment_width": "27",
+    "segment_length": "451",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.23",
+    "final_grade": "C",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.735029049154,
+            30.259684112145
+          ],
+          [
+            -97.733267800385,
+            30.259084561012
+          ],
+          [
+            -97.732989370136,
+            30.259070659229
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "1ST",
+    "segment_seq": "195",
+    "segment_id": "2024314",
+    "maximo_id": "401521552",
+    "from_limit_street": "NORMANDY ST",
+    "to_limit_street": "RADAM LN",
+    "left_from_address": "4109",
+    "full_street_name_from_gis": "S 1ST ST",
+    "functional_class": "Arterial",
+    "left_to_address": "4123",
+    "main_agency": "Austin",
+    "right_from_address": "4110",
+    "right_to_address": "4128",
+    "minimum_address_in_range": "4109",
+    "maximum_address_in_range": "4128",
+    "segment_width": "41",
+    "segment_length": "293",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.23",
+    "final_grade": "C",
+    "year": "2019-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.757685541393,
+            30.244470200304
+          ],
+          [
+            -97.758445249879,
+            30.24330283146
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "2ND",
+    "segment_seq": "1",
+    "segment_id": "3264436",
+    "maximo_id": "401500288",
+    "from_limit_street": "SAN ANTONIO ST",
+    "to_limit_street": "NUECES ST",
+    "left_from_address": "501",
+    "full_street_name_from_gis": "W 2ND ST",
+    "functional_class": "Collector",
+    "left_to_address": "517",
+    "main_agency": "Austin",
+    "right_from_address": "500",
+    "right_to_address": "516",
+    "minimum_address_in_range": "500",
+    "maximum_address_in_range": "517",
+    "segment_width": "30",
+    "segment_length": "353",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.2",
+    "final_grade": "A",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.750898718786,
+            30.266196057877
+          ],
+          [
+            -97.75140618798,
+            30.266349532164
+          ],
+          [
+            -97.751480217905,
+            30.266358184876
+          ],
+          [
+            -97.751525575849,
+            30.266359098843
+          ],
+          [
+            -97.75157083597,
+            30.266363593111
+          ],
+          [
+            -97.752025350914,
+            30.266496450511
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "2ND",
+    "segment_seq": "1",
+    "segment_id": "5002534",
+    "maximo_id": "401481434",
+    "from_limit_street": "NUECES ST",
+    "to_limit_street": "700",
+    "left_from_address": "601",
+    "full_street_name_from_gis": "W 2ND ST",
+    "functional_class": "Collector",
+    "left_to_address": "617",
+    "main_agency": "Austin",
+    "right_from_address": "600",
+    "right_to_address": "616",
+    "minimum_address_in_range": "600",
+    "maximum_address_in_range": "617",
+    "segment_width": "30",
+    "segment_length": "361",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.04",
+    "final_grade": "B",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.750898718786,
+            30.266196057877
+          ],
+          [
+            -97.75140618798,
+            30.266349532164
+          ],
+          [
+            -97.751480217905,
+            30.266358184876
+          ],
+          [
+            -97.751525575849,
+            30.266359098843
+          ],
+          [
+            -97.75157083597,
+            30.266363593111
+          ],
+          [
+            -97.752025350914,
+            30.266496450511
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "30TH",
+    "segment_seq": "5",
+    "segment_id": "2016990",
+    "maximo_id": "401486741",
+    "from_limit_street": "UNIVERSITY AVE",
+    "to_limit_street": "CEDAR ST",
+    "left_from_address": "101",
+    "full_street_name_from_gis": "W 30TH ST",
+    "functional_class": "Collector",
+    "left_to_address": "115",
+    "main_agency": "Austin",
+    "right_from_address": "100",
+    "right_to_address": "114",
+    "minimum_address_in_range": "100",
+    "maximum_address_in_range": "115",
+    "segment_width": "36",
+    "segment_length": "331",
+    "pavement_type": "Rigid",
+    "lane_miles": "0.23",
+    "final_grade": "C",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.744370393495,
+            30.297827951897
+          ],
+          [
+            -97.744895725751,
+            30.298094343819
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "BOB HARRISON",
+    "segment_seq": "5",
+    "segment_id": "2018308",
+    "maximo_id": "401517068",
+    "from_limit_street": "NAVASOTA ST",
+    "to_limit_street": "SAN BERNARD ST",
+    "left_from_address": "1200",
+    "full_street_name_from_gis": "BOB HARRISON",
+    "functional_class": "Residential",
+    "left_to_address": "1218",
+    "main_agency": "Austin",
+    "right_from_address": "1201",
+    "right_to_address": "1219",
+    "minimum_address_in_range": "1200",
+    "maximum_address_in_range": "1219",
+    "segment_width": "37",
+    "segment_length": "396",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.28",
+    "final_grade": "B",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.728060906178,
+            30.274050707196
+          ],
+          [
+            -97.726826965885,
+            30.274245641147
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "BOB HARRISON",
+    "segment_seq": "10",
+    "segment_id": "2018287",
+    "maximo_id": "401505711",
+    "from_limit_street": "SAN BERNARD ST",
+    "to_limit_street": "ANGELINA ST",
+    "left_from_address": "1300",
+    "full_street_name_from_gis": "BOB HARRISON",
+    "functional_class": "Residential",
+    "left_to_address": "1320",
+    "main_agency": "Austin",
+    "right_from_address": "1301",
+    "right_to_address": "1321",
+    "minimum_address_in_range": "1300",
+    "maximum_address_in_range": "1321",
+    "segment_width": "37",
+    "segment_length": "487",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.34",
+    "final_grade": "B",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.728060906178,
+            30.274050707196
+          ],
+          [
+            -97.726826965885,
+            30.274245641147
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "BOB HARRISON",
+    "segment_seq": "15",
+    "segment_id": "2018271",
+    "maximo_id": "401519153",
+    "from_limit_street": "ANGELINA ST",
+    "to_limit_street": "COMAL ST",
+    "left_from_address": "1400",
+    "full_street_name_from_gis": "BOB HARRISON",
+    "functional_class": "Residential",
+    "left_to_address": "1416",
+    "main_agency": "Austin",
+    "right_from_address": "1401",
+    "right_to_address": "1417",
+    "minimum_address_in_range": "1400",
+    "maximum_address_in_range": "1417",
+    "segment_width": "37",
+    "segment_length": "361",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.25",
+    "final_grade": "C",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.728060906178,
+            30.274050707196
+          ],
+          [
+            -97.726826965885,
+            30.274245641147
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "BONHAM",
+    "segment_seq": "15",
+    "segment_id": "2041365",
+    "maximo_id": "401481582",
+    "from_limit_street": "KENWOOD AVE",
+    "to_limit_street": "KENWOOD AVE",
+    "left_from_address": "1301",
+    "full_street_name_from_gis": "BONHAM TER",
+    "functional_class": "Residential",
+    "left_to_address": "1345",
+    "main_agency": "Austin",
+    "right_from_address": "1300",
+    "right_to_address": "1344",
+    "minimum_address_in_range": "1300",
+    "maximum_address_in_range": "1345",
+    "segment_width": "24",
+    "segment_length": "1082",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.49",
+    "final_grade": "B",
+    "year": "2019-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.741128481732,
+            30.245621409882
+          ],
+          [
+            -97.740880058692,
+            30.245553125033
+          ],
+          [
+            -97.740624948671,
+            30.245586466694
+          ],
+          [
+            -97.739857170658,
+            30.245895465376
+          ],
+          [
+            -97.738688285972,
+            30.246012062713
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "BONNIEVIEW",
+    "segment_seq": "5",
+    "segment_id": "2019584",
+    "maximo_id": "401495842",
+    "from_limit_street": "MELISSA LN",
+    "to_limit_street": "HILLSIDE AVE",
+    "left_from_address": "206",
+    "full_street_name_from_gis": "BONNIEVIEW",
+    "functional_class": "Residential",
+    "left_to_address": "220",
+    "main_agency": "Austin",
+    "right_from_address": "207",
+    "right_to_address": "213",
+    "minimum_address_in_range": "206",
+    "maximum_address_in_range": "220",
+    "segment_width": "27",
+    "segment_length": "348",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.18",
+    "final_grade": "C",
+    "year": "2019-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.745753793806,
+            30.253795411231
+          ],
+          [
+            -97.744789706211,
+            30.253330380553
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "BRANCH",
+    "segment_seq": "15",
+    "segment_id": "2018492",
+    "maximo_id": "401492052",
+    "from_limit_street": "OLIVE ST",
+    "to_limit_street": "CATALPA ST",
+    "left_from_address": "1180",
+    "full_street_name_from_gis": "BRANCH ST",
+    "functional_class": "Residential",
+    "left_to_address": "1184",
+    "main_agency": "Austin",
+    "right_from_address": "1181",
+    "right_to_address": "1185",
+    "minimum_address_in_range": "1180",
+    "maximum_address_in_range": "1185",
+    "segment_width": "27",
+    "segment_length": "122",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.06",
+    "final_grade": "F",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "0",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.731509323948,
+            30.270039470301
+          ],
+          [
+            -97.731170734215,
+            30.270661958674
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "BRANCH",
+    "segment_seq": "20",
+    "segment_id": "2018474",
+    "maximo_id": "401535573",
+    "from_limit_street": "CATALPA ST",
+    "to_limit_street": "12TH ST E",
+    "left_from_address": "1186",
+    "full_street_name_from_gis": "BRANCH ST",
+    "functional_class": "Residential",
+    "left_to_address": "1202",
+    "main_agency": "Austin",
+    "right_from_address": "1187",
+    "right_to_address": "1203",
+    "minimum_address_in_range": "1186",
+    "maximum_address_in_range": "1203",
+    "segment_width": "27",
+    "segment_length": "246",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.13",
+    "final_grade": "C",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.731509323948,
+            30.270039470301
+          ],
+          [
+            -97.731170734215,
+            30.270661958674
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "CONGRESS",
+    "segment_seq": "55",
+    "segment_id": "2018452",
+    "maximo_id": "401537647",
+    "from_limit_street": "10TH ST W",
+    "to_limit_street": "11TH ST W",
+    "left_from_address": "1000",
+    "full_street_name_from_gis": "CONGRESS AVE",
+    "functional_class": "Arterial",
+    "left_to_address": "1024",
+    "main_agency": "Austin",
+    "right_from_address": "1001",
+    "right_to_address": "1099",
+    "minimum_address_in_range": "1000",
+    "maximum_address_in_range": "1099",
+    "segment_width": "61",
+    "segment_length": "360",
+    "pavement_type": "Composite",
+    "lane_miles": "0.42",
+    "final_grade": "D",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "0",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.743504013505,
+            30.266214493541
+          ],
+          [
+            -97.743178613505,
+            30.267123779715
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "CONGRESS",
+    "segment_seq": "30",
+    "segment_id": "2019708",
+    "maximo_id": "401496075",
+    "from_limit_street": "THE CIRCLE",
+    "to_limit_street": "GIBSON ST W",
+    "left_from_address": "1301",
+    "full_street_name_from_gis": "S CONGRESS AVE",
+    "functional_class": "Arterial",
+    "left_to_address": "1329",
+    "main_agency": "Austin",
+    "right_from_address": "1300",
+    "right_to_address": "1324",
+    "minimum_address_in_range": "1300",
+    "maximum_address_in_range": "1329",
+    "segment_width": "87",
+    "segment_length": "429",
+    "pavement_type": "Composite",
+    "lane_miles": "0.71",
+    "final_grade": "C",
+    "year": "2019-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.743504013505,
+            30.266214493541
+          ],
+          [
+            -97.743178613505,
+            30.267123779715
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "CONGRESS",
+    "segment_seq": "35",
+    "segment_id": "2019711",
+    "maximo_id": "401496078",
+    "from_limit_street": "GIBSON ST W",
+    "to_limit_street": "GIBSON ST E",
+    "left_from_address": "1331",
+    "full_street_name_from_gis": "S CONGRESS AVE",
+    "functional_class": "Arterial",
+    "left_to_address": "1333",
+    "main_agency": "Austin",
+    "right_from_address": "1400",
+    "right_to_address": "1402",
+    "minimum_address_in_range": "1331",
+    "maximum_address_in_range": "1402",
+    "segment_width": "87",
+    "segment_length": "66",
+    "pavement_type": "Composite",
+    "lane_miles": "0.11",
+    "final_grade": "C",
+    "year": "2019-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.743504013505,
+            30.266214493541
+          ],
+          [
+            -97.743178613505,
+            30.267123779715
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "CONGRESS",
+    "segment_seq": "40",
+    "segment_id": "2036098",
+    "maximo_id": "401492033",
+    "from_limit_street": "GIBSON ST E",
+    "to_limit_street": "ELIZABETH ST W",
+    "left_from_address": "1401",
+    "full_street_name_from_gis": "S CONGRESS AVE",
+    "functional_class": "Arterial",
+    "left_to_address": "1423",
+    "main_agency": "Austin",
+    "right_from_address": "1404",
+    "right_to_address": "1422",
+    "minimum_address_in_range": "1401",
+    "maximum_address_in_range": "1423",
+    "segment_width": "27.1",
+    "segment_length": "344",
+    "pavement_type": "Composite",
+    "lane_miles": "0.18",
+    "final_grade": "C",
+    "year": "2019-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.743504013505,
+            30.266214493541
+          ],
+          [
+            -97.743178613505,
+            30.267123779715
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "CORONADO",
+    "segment_seq": "5",
+    "segment_id": "2019130",
+    "maximo_id": "401486297",
+    "from_limit_street": "WEBBERVILLE RD",
+    "to_limit_street": "NORTHWESTERN AVE",
+    "left_from_address": "2300",
+    "full_street_name_from_gis": "CORONADO ST",
+    "functional_class": "Residential",
+    "left_to_address": "2324",
+    "main_agency": "Austin",
+    "right_from_address": "2301",
+    "right_to_address": "2327",
+    "minimum_address_in_range": "2300",
+    "maximum_address_in_range": "2327",
+    "segment_width": "24",
+    "segment_length": "404",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.18",
+    "final_grade": "C",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.715361808403,
+            30.262438406689
+          ],
+          [
+            -97.714172178936,
+            30.262026293706
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "CROMWELL HILL",
+    "segment_seq": "5",
+    "segment_id": "2020561",
+    "maximo_id": "401505102",
+    "from_limit_street": "WOODLAWN BLVD",
+    "to_limit_street": "HARTFORD RD",
+    "left_from_address": "1701",
+    "full_street_name_from_gis": "CROMWELL HILL",
+    "functional_class": "Residential",
+    "left_to_address": "1725",
+    "main_agency": "Austin",
+    "right_from_address": "1700",
+    "right_to_address": "1724",
+    "minimum_address_in_range": "1700",
+    "maximum_address_in_range": "1725",
+    "segment_width": "38",
+    "segment_length": "537",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.37",
+    "final_grade": "D",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "0",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.759213584603,
+            30.285570936607
+          ],
+          [
+            -97.760716292737,
+            30.286264628996
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "DURWOOD",
+    "segment_seq": "5",
+    "segment_id": "2034246",
+    "maximo_id": "401525665",
+    "from_limit_street": "2301",
+    "to_limit_street": "OLTORF ST W",
+    "left_from_address": "2301",
+    "full_street_name_from_gis": "DURWOOD ST",
+    "street_end_type": "Parking Lot",
+    "functional_class": "Residential",
+    "left_to_address": "2319",
+    "main_agency": "Austin",
+    "right_from_address": "2300",
+    "right_to_address": "2318",
+    "minimum_address_in_range": "2300",
+    "maximum_address_in_range": "2319",
+    "segment_width": "30",
+    "segment_length": "179",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.09",
+    "final_grade": "C",
+    "year": "2019-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.757731697766,
+            30.24178955785
+          ],
+          [
+            -97.757983394712,
+            30.241349065182
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "DURWOOD",
+    "segment_seq": "10",
+    "segment_id": "2034267",
+    "maximo_id": "401528128",
+    "from_limit_street": "OLTORF ST W",
+    "to_limit_street": "2525",
+    "left_from_address": "2401",
+    "full_street_name_from_gis": "DURWOOD ST",
+    "functional_class": "Residential",
+    "left_to_address": "2525",
+    "main_agency": "Austin",
+    "right_from_address": "2400",
+    "right_to_address": "2526",
+    "minimum_address_in_range": "2400",
+    "maximum_address_in_range": "2526",
+    "segment_width": "18",
+    "segment_length": "1087",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.37",
+    "final_grade": "C",
+    "year": "2019-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.757731697766,
+            30.24178955785
+          ],
+          [
+            -97.757983394712,
+            30.241349065182
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "HARWOOD",
+    "segment_seq": "5",
+    "segment_id": "2041347",
+    "maximo_id": "401501613",
+    "from_limit_street": "TRAVIS HEIGHTS BLVD",
+    "to_limit_street": "KENWOOD AVE",
+    "left_from_address": "1000",
+    "full_street_name_from_gis": "HARWOOD PL",
+    "functional_class": "Residential",
+    "left_to_address": "1028",
+    "main_agency": "Austin",
+    "right_from_address": "1001",
+    "right_to_address": "1029",
+    "minimum_address_in_range": "1000",
+    "maximum_address_in_range": "1029",
+    "segment_width": "27",
+    "segment_length": "677",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.35",
+    "final_grade": "C",
+    "year": "2019-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.739242728773,
+            30.248721375115
+          ],
+          [
+            -97.738241525153,
+            30.248404582662
+          ],
+          [
+            -97.738195986678,
+            30.248388308636
+          ],
+          [
+            -97.738139804338,
+            30.248373352949
+          ],
+          [
+            -97.738090483525,
+            30.248366214261
+          ],
+          [
+            -97.738041081321,
+            30.248362142767
+          ],
+          [
+            -97.737981117704,
+            30.248356321503
+          ],
+          [
+            -97.737926661097,
+            30.248342936468
+          ],
+          [
+            -97.737879354752,
+            30.248326625609
+          ],
+          [
+            -97.737730988745,
+            30.24825453636
+          ],
+          [
+            -97.73764598247,
+            30.248212103964
+          ],
+          [
+            -97.737593144225,
+            30.248185728087
+          ],
+          [
+            -97.737552992387,
+            30.248166492308
+          ],
+          [
+            -97.737257408774,
+            30.248045361173
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "KENWOOD",
+    "segment_seq": "5",
+    "segment_id": "2022405",
+    "maximo_id": "401520421",
+    "from_limit_street": "RIVERSIDE DR E",
+    "to_limit_street": "HARWOOD PL",
+    "left_from_address": "1101",
+    "full_street_name_from_gis": "KENWOOD AVE",
+    "functional_class": "Residential",
+    "left_to_address": "1111",
+    "main_agency": "Austin",
+    "right_from_address": "1100",
+    "right_to_address": "1110",
+    "minimum_address_in_range": "1100",
+    "maximum_address_in_range": "1111",
+    "segment_width": "27",
+    "segment_length": "235",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.11",
+    "final_grade": "B",
+    "year": "2019-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.740342917316,
+            30.243820541227
+          ],
+          [
+            -97.740882720057,
+            30.242976111399
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "KENWOOD",
+    "segment_seq": "10",
+    "segment_id": "2022415",
+    "maximo_id": "401515984",
+    "from_limit_street": "HARWOOD PL",
+    "to_limit_street": "AVONDALE RD",
+    "left_from_address": "1201",
+    "full_street_name_from_gis": "KENWOOD AVE",
+    "functional_class": "Residential",
+    "left_to_address": "1211",
+    "main_agency": "Austin",
+    "right_from_address": "1200",
+    "right_to_address": "1210",
+    "minimum_address_in_range": "1200",
+    "maximum_address_in_range": "1211",
+    "segment_width": "27",
+    "segment_length": "231",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.11",
+    "final_grade": "B",
+    "year": "2019-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.740342917316,
+            30.243820541227
+          ],
+          [
+            -97.740882720057,
+            30.242976111399
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "LAMAR",
+    "segment_seq": "110",
+    "segment_id": "2026536",
+    "maximo_id": "401501760",
+    "from_limit_street": "KINNEY RD",
+    "to_limit_street": "GOODRICH AVE",
+    "left_from_address": "2201",
+    "full_street_name_from_gis": "S LAMAR BLVD",
+    "functional_class": "Arterial",
+    "left_to_address": "2235",
+    "main_agency": "Austin",
+    "right_from_address": "2200",
+    "right_to_address": "2240",
+    "minimum_address_in_range": "2200",
+    "maximum_address_in_range": "2240",
+    "segment_width": "59",
+    "segment_length": "455",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.51",
+    "final_grade": "C",
+    "year": "2019-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.767451970977,
+            30.249416664336
+          ],
+          [
+            -97.767712892222,
+            30.249273097655
+          ],
+          [
+            -97.768091243666,
+            30.249086693894
+          ],
+          [
+            -97.7683358518,
+            30.248979983666
+          ],
+          [
+            -97.768540151379,
+            30.248894000218
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "LAMAR",
+    "segment_seq": "115",
+    "segment_id": "2026534",
+    "maximo_id": "401521567",
+    "from_limit_street": "GOODRICH AVE",
+    "to_limit_street": "DEL CURTO RD",
+    "left_from_address": "2237",
+    "full_street_name_from_gis": "S LAMAR BLVD",
+    "functional_class": "Arterial",
+    "left_to_address": "2257",
+    "main_agency": "Austin",
+    "right_from_address": "2300",
+    "right_to_address": "2312",
+    "minimum_address_in_range": "2237",
+    "maximum_address_in_range": "2312",
+    "segment_width": "59",
+    "segment_length": "318",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.36",
+    "final_grade": "C",
+    "year": "2019-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.767451970977,
+            30.249416664336
+          ],
+          [
+            -97.767712892222,
+            30.249273097655
+          ],
+          [
+            -97.768091243666,
+            30.249086693894
+          ],
+          [
+            -97.7683358518,
+            30.248979983666
+          ],
+          [
+            -97.768540151379,
+            30.248894000218
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "MARTIN LUTHER KING JR",
+    "segment_seq": "35",
+    "segment_id": "2017982",
+    "maximo_id": "401486415",
+    "from_limit_street": "1112",
+    "to_limit_street": "1498",
+    "left_from_address": "1112",
+    "full_street_name_from_gis": "E MARTIN LUTHER KING JR BLVD",
+    "functional_class": "Arterial",
+    "left_to_address": "1498",
+    "main_agency": "Austin",
+    "right_from_address": "1113",
+    "right_to_address": "1411",
+    "minimum_address_in_range": "1112",
+    "maximum_address_in_range": "1498",
+    "segment_width": "37",
+    "segment_length": "1075",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.75",
+    "final_grade": "F",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "0",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.749821803585,
+            30.28393153282
+          ],
+          [
+            -97.74997200613,
+            30.283936401526
+          ],
+          [
+            -97.750085501185,
+            30.283937015512
+          ],
+          [
+            -97.750170490093,
+            30.283934846778
+          ],
+          [
+            -97.751331243209,
+            30.283808398643
+          ],
+          [
+            -97.751732184944,
+            30.283760011245
+          ],
+          [
+            -97.751792611272,
+            30.283750777591
+          ],
+          [
+            -97.751849108724,
+            30.283737998876
+          ],
+          [
+            -97.751901800771,
+            30.283718185534
+          ],
+          [
+            -97.751950564361,
+            30.283694772107
+          ],
+          [
+            -97.752085283715,
+            30.283606971902
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "MEDINA",
+    "segment_seq": "5",
+    "segment_id": "2019236",
+    "maximo_id": "401518422",
+    "from_limit_street": "CESAR CHAVEZ ST E",
+    "to_limit_street": "2ND ST E",
+    "left_from_address": "100",
+    "full_street_name_from_gis": "MEDINA",
+    "functional_class": "Collector",
+    "left_to_address": "116",
+    "main_agency": "Austin",
+    "right_from_address": "101",
+    "right_to_address": "117",
+    "minimum_address_in_range": "100",
+    "maximum_address_in_range": "117",
+    "segment_width": "27",
+    "segment_length": "359",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.18",
+    "final_grade": "A",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.733192836754,
+            30.261162301762
+          ],
+          [
+            -97.732785914572,
+            30.26203690432
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "MEDINA",
+    "segment_seq": "10",
+    "segment_id": "2019183",
+    "maximo_id": "401516828",
+    "from_limit_street": "2ND ST E",
+    "to_limit_street": "3RD ST E",
+    "left_from_address": "200",
+    "full_street_name_from_gis": "MEDINA",
+    "functional_class": "Collector",
+    "left_to_address": "216",
+    "main_agency": "Austin",
+    "right_from_address": "201",
+    "right_to_address": "217",
+    "minimum_address_in_range": "200",
+    "maximum_address_in_range": "217",
+    "segment_width": "27",
+    "segment_length": "343",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.18",
+    "final_grade": "B",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.733192836754,
+            30.261162301762
+          ],
+          [
+            -97.732785914572,
+            30.26203690432
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "MEDINA",
+    "segment_seq": "15",
+    "segment_id": "2019142",
+    "maximo_id": "401485448",
+    "from_limit_street": "3RD ST E",
+    "to_limit_street": "4TH ST E",
+    "left_from_address": "300",
+    "full_street_name_from_gis": "MEDINA",
+    "functional_class": "Collector",
+    "left_to_address": "316",
+    "main_agency": "Austin",
+    "right_from_address": "301",
+    "right_to_address": "317",
+    "minimum_address_in_range": "300",
+    "maximum_address_in_range": "317",
+    "segment_width": "27",
+    "segment_length": "359",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.18",
+    "final_grade": "D",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "0",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.733192836754,
+            30.261162301762
+          ],
+          [
+            -97.732785914572,
+            30.26203690432
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "MEDINA",
+    "segment_seq": "20",
+    "segment_id": "2041206",
+    "maximo_id": "401487263",
+    "from_limit_street": "4TH ST E",
+    "to_limit_street": "5TH ST E",
+    "left_from_address": "400",
+    "full_street_name_from_gis": "MEDINA",
+    "functional_class": "Collector",
+    "left_to_address": "416",
+    "main_agency": "Austin",
+    "right_from_address": "401",
+    "right_to_address": "417",
+    "minimum_address_in_range": "400",
+    "maximum_address_in_range": "417",
+    "segment_width": "27",
+    "segment_length": "349",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.18",
+    "final_grade": "B",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.733192836754,
+            30.261162301762
+          ],
+          [
+            -97.732785914572,
+            30.26203690432
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "MEDINA",
+    "segment_seq": "30",
+    "segment_id": "3190725",
+    "maximo_id": "401484483",
+    "from_limit_street": "506",
+    "to_limit_street": "517",
+    "left_from_address": "506",
+    "full_street_name_from_gis": "MEDINA",
+    "street_end_type": "Dead End",
+    "functional_class": "Collector",
+    "left_to_address": "516",
+    "main_agency": "Austin",
+    "right_from_address": "507",
+    "right_to_address": "517",
+    "minimum_address_in_range": "506",
+    "maximum_address_in_range": "517",
+    "segment_width": "34",
+    "segment_length": "173",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.11",
+    "final_grade": "B",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.733192836754,
+            30.261162301762
+          ],
+          [
+            -97.732785914572,
+            30.26203690432
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "MEDINA",
+    "segment_seq": "35",
+    "segment_id": "2018957",
+    "maximo_id": "401485911",
+    "from_limit_street": "6TH ST E",
+    "to_limit_street": "7TH ST E",
+    "left_from_address": "600",
+    "full_street_name_from_gis": "MEDINA",
+    "functional_class": "Collector",
+    "left_to_address": "616",
+    "main_agency": "Austin",
+    "right_from_address": "601",
+    "right_to_address": "617",
+    "minimum_address_in_range": "600",
+    "maximum_address_in_range": "617",
+    "segment_width": "27",
+    "segment_length": "368",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.18",
+    "final_grade": "B",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.733192836754,
+            30.261162301762
+          ],
+          [
+            -97.732785914572,
+            30.26203690432
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "MISSION RIDGE",
+    "segment_seq": "5",
+    "segment_id": "2022544",
+    "maximo_id": "401482821",
+    "from_limit_street": "KENWOOD AVE",
+    "to_limit_street": "CHELSEA LN",
+    "left_from_address": "1100",
+    "full_street_name_from_gis": "MISSION RIDGE",
+    "functional_class": "Residential",
+    "left_to_address": "1122",
+    "main_agency": "Austin",
+    "right_from_address": "1101",
+    "right_to_address": "1123",
+    "minimum_address_in_range": "1100",
+    "maximum_address_in_range": "1123",
+    "segment_width": "27",
+    "segment_length": "536",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.27",
+    "final_grade": "B",
+    "year": "2019-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.740342917316,
+            30.243820541227
+          ],
+          [
+            -97.738851614503,
+            30.243116512966
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "NELSON",
+    "segment_seq": "5",
+    "segment_id": "2012441",
+    "maximo_id": "401511900",
+    "from_limit_street": "PRAIRIE TRL",
+    "to_limit_street": "KRAMER LN",
+    "left_from_address": "11000",
+    "full_street_name_from_gis": "NELSON RD",
+    "functional_class": "Residential",
+    "left_to_address": "11012",
+    "main_agency": "Austin",
+    "right_from_address": "11001",
+    "right_to_address": "11011",
+    "minimum_address_in_range": "11000",
+    "maximum_address_in_range": "11012",
+    "segment_width": "27",
+    "segment_length": "428",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.22",
+    "final_grade": "C",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.757313115544,
+            30.274966645663
+          ],
+          [
+            -97.756868466951,
+            30.275747052644
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "NUECES",
+    "segment_seq": "5",
+    "segment_id": "2018901",
+    "maximo_id": "401525771",
+    "from_limit_street": "200",
+    "to_limit_street": "3RD ST W",
+    "left_from_address": "200",
+    "full_street_name_from_gis": "NUECES ST",
+    "functional_class": "Collector",
+    "left_to_address": "220",
+    "main_agency": "Austin",
+    "right_from_address": "201",
+    "right_to_address": "221",
+    "minimum_address_in_range": "200",
+    "maximum_address_in_range": "221",
+    "segment_width": "57",
+    "segment_length": "356",
+    "pavement_type": "Composite",
+    "lane_miles": "0.2",
+    "final_grade": "D",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "0",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.748431317825,
+            30.269633650982
+          ],
+          [
+            -97.748073254274,
+            30.270580794838
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "PARKWAY",
+    "segment_seq": "5",
+    "segment_id": "2018114",
+    "maximo_id": "401521058",
+    "from_limit_street": "LAMAR BLVD N",
+    "to_limit_street": "BAYLOR ST",
+    "left_from_address": "1200",
+    "full_street_name_from_gis": "PARKWAY",
+    "functional_class": "Collector",
+    "left_to_address": "1222",
+    "main_agency": "Austin",
+    "right_from_address": "1201",
+    "right_to_address": "1239",
+    "minimum_address_in_range": "1200",
+    "maximum_address_in_range": "1239",
+    "segment_width": "37",
+    "segment_length": "493",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.35",
+    "final_grade": "F",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "0",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.754311832204,
+            30.282606350112
+          ],
+          [
+            -97.75450625009,
+            30.283273810119
+          ],
+          [
+            -97.754545569059,
+            30.283425139641
+          ],
+          [
+            -97.754585407551,
+            30.283623459943
+          ],
+          [
+            -97.754597785169,
+            30.283663938041
+          ],
+          [
+            -97.754618148479,
+            30.283704466741
+          ],
+          [
+            -97.754667270725,
+            30.283805492215
+          ],
+          [
+            -97.754940449752,
+            30.284214583839
+          ],
+          [
+            -97.754997148471,
+            30.284315434063
+          ],
+          [
+            -97.755031178095,
+            30.28440068692
+          ],
+          [
+            -97.755054175663,
+            30.284470903198
+          ],
+          [
+            -97.755064837527,
+            30.284525180505
+          ],
+          [
+            -97.75507381139,
+            30.284577921454
+          ],
+          [
+            -97.755082595649,
+            30.284671431728
+          ],
+          [
+            -97.755079442821,
+            30.284719324968
+          ],
+          [
+            -97.75505487145,
+            30.285092643073
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "PARKWAY",
+    "segment_seq": "10",
+    "segment_id": "2018020",
+    "maximo_id": "401533989",
+    "from_limit_street": "BAYLOR ST",
+    "to_limit_street": "ENFIELD RD",
+    "left_from_address": "1300",
+    "full_street_name_from_gis": "PARKWAY",
+    "functional_class": "Collector",
+    "left_to_address": "1404",
+    "main_agency": "Austin",
+    "right_from_address": "1301",
+    "right_to_address": "1405",
+    "minimum_address_in_range": "1300",
+    "maximum_address_in_range": "1405",
+    "segment_width": "37",
+    "segment_length": "122",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.09",
+    "final_grade": "F",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "0",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.754311832204,
+            30.282606350112
+          ],
+          [
+            -97.75450625009,
+            30.283273810119
+          ],
+          [
+            -97.754545569059,
+            30.283425139641
+          ],
+          [
+            -97.754585407551,
+            30.283623459943
+          ],
+          [
+            -97.754597785169,
+            30.283663938041
+          ],
+          [
+            -97.754618148479,
+            30.283704466741
+          ],
+          [
+            -97.754667270725,
+            30.283805492215
+          ],
+          [
+            -97.754940449752,
+            30.284214583839
+          ],
+          [
+            -97.754997148471,
+            30.284315434063
+          ],
+          [
+            -97.755031178095,
+            30.28440068692
+          ],
+          [
+            -97.755054175663,
+            30.284470903198
+          ],
+          [
+            -97.755064837527,
+            30.284525180505
+          ],
+          [
+            -97.75507381139,
+            30.284577921454
+          ],
+          [
+            -97.755082595649,
+            30.284671431728
+          ],
+          [
+            -97.755079442821,
+            30.284719324968
+          ],
+          [
+            -97.75505487145,
+            30.285092643073
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "PARKWAY",
+    "segment_seq": "15",
+    "segment_id": "2047429",
+    "maximo_id": "401495717",
+    "from_limit_street": "ENFIELD RD",
+    "to_limit_street": "KINGSBURY ST",
+    "left_from_address": "1500",
+    "full_street_name_from_gis": "PARKWAY",
+    "functional_class": "Residential",
+    "left_to_address": "1522",
+    "main_agency": "Austin",
+    "right_from_address": "1501",
+    "right_to_address": "1523",
+    "minimum_address_in_range": "1500",
+    "maximum_address_in_range": "1523",
+    "segment_width": "37",
+    "segment_length": "710",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.19",
+    "final_grade": "D",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "0",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.754311832204,
+            30.282606350112
+          ],
+          [
+            -97.75450625009,
+            30.283273810119
+          ],
+          [
+            -97.754545569059,
+            30.283425139641
+          ],
+          [
+            -97.754585407551,
+            30.283623459943
+          ],
+          [
+            -97.754597785169,
+            30.283663938041
+          ],
+          [
+            -97.754618148479,
+            30.283704466741
+          ],
+          [
+            -97.754667270725,
+            30.283805492215
+          ],
+          [
+            -97.754940449752,
+            30.284214583839
+          ],
+          [
+            -97.754997148471,
+            30.284315434063
+          ],
+          [
+            -97.755031178095,
+            30.28440068692
+          ],
+          [
+            -97.755054175663,
+            30.284470903198
+          ],
+          [
+            -97.755064837527,
+            30.284525180505
+          ],
+          [
+            -97.75507381139,
+            30.284577921454
+          ],
+          [
+            -97.755082595649,
+            30.284671431728
+          ],
+          [
+            -97.755079442821,
+            30.284719324968
+          ],
+          [
+            -97.75505487145,
+            30.285092643073
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "PARKWAY",
+    "segment_seq": "20",
+    "segment_id": "2047053",
+    "maximo_id": "401493550",
+    "from_limit_street": "KINGSBURY ST",
+    "to_limit_street": "RAINBOW BND",
+    "left_from_address": "1600",
+    "full_street_name_from_gis": "PARKWAY",
+    "functional_class": "Residential",
+    "left_to_address": "2006",
+    "main_agency": "Austin",
+    "right_from_address": "1601",
+    "right_to_address": "2007",
+    "minimum_address_in_range": "1600",
+    "maximum_address_in_range": "2007",
+    "segment_width": "27",
+    "segment_length": "950",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.51",
+    "final_grade": "D",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "0",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.754311832204,
+            30.282606350112
+          ],
+          [
+            -97.75450625009,
+            30.283273810119
+          ],
+          [
+            -97.754545569059,
+            30.283425139641
+          ],
+          [
+            -97.754585407551,
+            30.283623459943
+          ],
+          [
+            -97.754597785169,
+            30.283663938041
+          ],
+          [
+            -97.754618148479,
+            30.283704466741
+          ],
+          [
+            -97.754667270725,
+            30.283805492215
+          ],
+          [
+            -97.754940449752,
+            30.284214583839
+          ],
+          [
+            -97.754997148471,
+            30.284315434063
+          ],
+          [
+            -97.755031178095,
+            30.28440068692
+          ],
+          [
+            -97.755054175663,
+            30.284470903198
+          ],
+          [
+            -97.755064837527,
+            30.284525180505
+          ],
+          [
+            -97.75507381139,
+            30.284577921454
+          ],
+          [
+            -97.755082595649,
+            30.284671431728
+          ],
+          [
+            -97.755079442821,
+            30.284719324968
+          ],
+          [
+            -97.75505487145,
+            30.285092643073
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "PARKWAY",
+    "segment_seq": "25",
+    "segment_id": "2047096",
+    "maximo_id": "401528585",
+    "from_limit_street": "RAINBOW BND",
+    "to_limit_street": "WINDSOR RD E",
+    "left_from_address": "2100",
+    "full_street_name_from_gis": "PARKWAY",
+    "functional_class": "Residential",
+    "left_to_address": "2224",
+    "main_agency": "Austin",
+    "right_from_address": "2101",
+    "right_to_address": "2225",
+    "minimum_address_in_range": "2100",
+    "maximum_address_in_range": "2225",
+    "segment_width": "37",
+    "segment_length": "1160",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.8",
+    "final_grade": "C",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.754311832204,
+            30.282606350112
+          ],
+          [
+            -97.75450625009,
+            30.283273810119
+          ],
+          [
+            -97.754545569059,
+            30.283425139641
+          ],
+          [
+            -97.754585407551,
+            30.283623459943
+          ],
+          [
+            -97.754597785169,
+            30.283663938041
+          ],
+          [
+            -97.754618148479,
+            30.283704466741
+          ],
+          [
+            -97.754667270725,
+            30.283805492215
+          ],
+          [
+            -97.754940449752,
+            30.284214583839
+          ],
+          [
+            -97.754997148471,
+            30.284315434063
+          ],
+          [
+            -97.755031178095,
+            30.28440068692
+          ],
+          [
+            -97.755054175663,
+            30.284470903198
+          ],
+          [
+            -97.755064837527,
+            30.284525180505
+          ],
+          [
+            -97.75507381139,
+            30.284577921454
+          ],
+          [
+            -97.755082595649,
+            30.284671431728
+          ],
+          [
+            -97.755079442821,
+            30.284719324968
+          ],
+          [
+            -97.75505487145,
+            30.285092643073
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "PARKWAY",
+    "segment_seq": "30",
+    "segment_id": "2019783",
+    "maximo_id": "401519932",
+    "from_limit_street": "WINDSOR RD E",
+    "to_limit_street": "24TH ST W",
+    "left_from_address": "2226",
+    "full_street_name_from_gis": "PARKWAY",
+    "functional_class": "Residential",
+    "left_to_address": "2238",
+    "main_agency": "Austin",
+    "right_from_address": "2227",
+    "right_to_address": "2239",
+    "minimum_address_in_range": "2226",
+    "maximum_address_in_range": "2239",
+    "segment_width": "37",
+    "segment_length": "274",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.17",
+    "final_grade": "D",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "0",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.754311832204,
+            30.282606350112
+          ],
+          [
+            -97.75450625009,
+            30.283273810119
+          ],
+          [
+            -97.754545569059,
+            30.283425139641
+          ],
+          [
+            -97.754585407551,
+            30.283623459943
+          ],
+          [
+            -97.754597785169,
+            30.283663938041
+          ],
+          [
+            -97.754618148479,
+            30.283704466741
+          ],
+          [
+            -97.754667270725,
+            30.283805492215
+          ],
+          [
+            -97.754940449752,
+            30.284214583839
+          ],
+          [
+            -97.754997148471,
+            30.284315434063
+          ],
+          [
+            -97.755031178095,
+            30.28440068692
+          ],
+          [
+            -97.755054175663,
+            30.284470903198
+          ],
+          [
+            -97.755064837527,
+            30.284525180505
+          ],
+          [
+            -97.75507381139,
+            30.284577921454
+          ],
+          [
+            -97.755082595649,
+            30.284671431728
+          ],
+          [
+            -97.755079442821,
+            30.284719324968
+          ],
+          [
+            -97.75505487145,
+            30.285092643073
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "SHORT HACKBERRY",
+    "segment_seq": "5",
+    "segment_id": "2018532",
+    "maximo_id": "401493078",
+    "from_limit_street": "1200",
+    "to_limit_street": "1208",
+    "left_from_address": "1200",
+    "full_street_name_from_gis": "SHORT HACKBERRY",
+    "functional_class": "Residential",
+    "left_to_address": "1208",
+    "main_agency": "Austin",
+    "right_from_address": "1201",
+    "right_to_address": "1209",
+    "minimum_address_in_range": "1200",
+    "maximum_address_in_range": "1209",
+    "segment_width": "27",
+    "segment_length": "195",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.1",
+    "final_grade": "C",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.727328293793,
+            30.270329738079
+          ],
+          [
+            -97.72671914695,
+            30.270415892855
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "SPEEDWAY",
+    "segment_seq": "5",
+    "segment_id": "2040859",
+    "maximo_id": "401516321",
+    "from_limit_street": "27TH ST E",
+    "to_limit_street": "SAN JACINTO BLVD",
+    "left_from_address": "2700",
+    "full_street_name_from_gis": "SPEEDWAY",
+    "functional_class": "Collector",
+    "left_to_address": "2910",
+    "main_agency": "Austin",
+    "right_from_address": "2701",
+    "right_to_address": "2911",
+    "minimum_address_in_range": "2700",
+    "maximum_address_in_range": "2911",
+    "segment_width": "48",
+    "segment_length": "613",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.56",
+    "final_grade": "F",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "0",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.737635510049,
+            30.281670951726
+          ],
+          [
+            -97.737588269504,
+            30.282017534157
+          ],
+          [
+            -97.737536813733,
+            30.282395044741
+          ],
+          [
+            -97.737441248848,
+            30.283473995364
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "SPEEDWAY",
+    "segment_seq": "10",
+    "segment_id": "2017043",
+    "maximo_id": "401512193",
+    "from_limit_street": "SAN JACINTO BLVD",
+    "to_limit_street": "31ST ST E",
+    "left_from_address": "3000",
+    "full_street_name_from_gis": "SPEEDWAY",
+    "functional_class": "Collector",
+    "left_to_address": "3016",
+    "main_agency": "Austin",
+    "right_from_address": "3001",
+    "right_to_address": "3017",
+    "minimum_address_in_range": "3000",
+    "maximum_address_in_range": "3017",
+    "segment_width": "27",
+    "segment_length": "375",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.19",
+    "final_grade": "D",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "0",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.737635510049,
+            30.281670951726
+          ],
+          [
+            -97.737588269504,
+            30.282017534157
+          ],
+          [
+            -97.737536813733,
+            30.282395044741
+          ],
+          [
+            -97.737441248848,
+            30.283473995364
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "SPEEDWAY",
+    "segment_seq": "15",
+    "segment_id": "2016930",
+    "maximo_id": "401538027",
+    "from_limit_street": "UNIVERSITY AVE",
+    "to_limit_street": "LAUREL LN",
+    "left_from_address": "3100",
+    "full_street_name_from_gis": "SPEEDWAY",
+    "functional_class": "Collector",
+    "left_to_address": "3110",
+    "main_agency": "Austin",
+    "right_from_address": "3101",
+    "right_to_address": "3119",
+    "minimum_address_in_range": "3100",
+    "maximum_address_in_range": "3119",
+    "segment_width": "37",
+    "segment_length": "303",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.21",
+    "final_grade": "D",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "0",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.737635510049,
+            30.281670951726
+          ],
+          [
+            -97.737588269504,
+            30.282017534157
+          ],
+          [
+            -97.737536813733,
+            30.282395044741
+          ],
+          [
+            -97.737441248848,
+            30.283473995364
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "SPEEDWAY",
+    "segment_seq": "20",
+    "segment_id": "2016882",
+    "maximo_id": "401486307",
+    "from_limit_street": "LAUREL LN",
+    "to_limit_street": "32ND ST E",
+    "left_from_address": "3112",
+    "full_street_name_from_gis": "SPEEDWAY",
+    "functional_class": "Collector",
+    "left_to_address": "3116",
+    "main_agency": "Austin",
+    "right_from_address": "3121",
+    "right_to_address": "3127",
+    "minimum_address_in_range": "3112",
+    "maximum_address_in_range": "3127",
+    "segment_width": "37",
+    "segment_length": "132",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.09",
+    "final_grade": "D",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "0",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.737635510049,
+            30.281670951726
+          ],
+          [
+            -97.737588269504,
+            30.282017534157
+          ],
+          [
+            -97.737536813733,
+            30.282395044741
+          ],
+          [
+            -97.737441248848,
+            30.283473995364
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "SPEEDWAY",
+    "segment_seq": "25",
+    "segment_id": "2016861",
+    "maximo_id": "401486117",
+    "from_limit_street": "32ND ST E",
+    "to_limit_street": "32ND ST W",
+    "left_from_address": "3118",
+    "full_street_name_from_gis": "SPEEDWAY",
+    "functional_class": "Collector",
+    "left_to_address": "3128",
+    "main_agency": "Austin",
+    "right_from_address": "3201",
+    "right_to_address": "3205",
+    "minimum_address_in_range": "3118",
+    "maximum_address_in_range": "3205",
+    "segment_width": "37",
+    "segment_length": "193",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.14",
+    "final_grade": "B",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.737635510049,
+            30.281670951726
+          ],
+          [
+            -97.737588269504,
+            30.282017534157
+          ],
+          [
+            -97.737536813733,
+            30.282395044741
+          ],
+          [
+            -97.737441248848,
+            30.283473995364
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "SPEEDWAY",
+    "segment_seq": "30",
+    "segment_id": "2016825",
+    "maximo_id": "401519036",
+    "from_limit_street": "32ND ST W",
+    "to_limit_street": "33RD ST E",
+    "left_from_address": "3200",
+    "full_street_name_from_gis": "SPEEDWAY",
+    "functional_class": "Collector",
+    "left_to_address": "3206",
+    "main_agency": "Austin",
+    "right_from_address": "3207",
+    "right_to_address": "3217",
+    "minimum_address_in_range": "3200",
+    "maximum_address_in_range": "3217",
+    "segment_width": "37",
+    "segment_length": "218",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.15",
+    "final_grade": "B",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.737635510049,
+            30.281670951726
+          ],
+          [
+            -97.737588269504,
+            30.282017534157
+          ],
+          [
+            -97.737536813733,
+            30.282395044741
+          ],
+          [
+            -97.737441248848,
+            30.283473995364
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "SPEEDWAY",
+    "segment_seq": "35",
+    "segment_id": "2016796",
+    "maximo_id": "401487542",
+    "from_limit_street": "33RD ST E",
+    "to_limit_street": "33RD ST W",
+    "left_from_address": "3208",
+    "full_street_name_from_gis": "SPEEDWAY",
+    "functional_class": "Collector",
+    "left_to_address": "3214",
+    "main_agency": "Austin",
+    "right_from_address": "3301",
+    "right_to_address": "3303",
+    "minimum_address_in_range": "3208",
+    "maximum_address_in_range": "3303",
+    "segment_width": "37",
+    "segment_length": "129",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.09",
+    "final_grade": "C",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.737635510049,
+            30.281670951726
+          ],
+          [
+            -97.737588269504,
+            30.282017534157
+          ],
+          [
+            -97.737536813733,
+            30.282395044741
+          ],
+          [
+            -97.737441248848,
+            30.283473995364
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "SPEEDWAY",
+    "segment_seq": "40",
+    "segment_id": "2016783",
+    "maximo_id": "401519581",
+    "from_limit_street": "33RD ST W",
+    "to_limit_street": "34TH ST W",
+    "left_from_address": "3300",
+    "full_street_name_from_gis": "SPEEDWAY",
+    "functional_class": "Collector",
+    "left_to_address": "3304",
+    "main_agency": "Austin",
+    "right_from_address": "3305",
+    "right_to_address": "3309",
+    "minimum_address_in_range": "3300",
+    "maximum_address_in_range": "3309",
+    "segment_width": "37",
+    "segment_length": "209",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.15",
+    "final_grade": "C",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.737635510049,
+            30.281670951726
+          ],
+          [
+            -97.737588269504,
+            30.282017534157
+          ],
+          [
+            -97.737536813733,
+            30.282395044741
+          ],
+          [
+            -97.737441248848,
+            30.283473995364
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "SPEEDWAY",
+    "segment_seq": "45",
+    "segment_id": "2016757",
+    "maximo_id": "401495701",
+    "from_limit_street": "34TH ST W",
+    "to_limit_street": "34TH ST E",
+    "left_from_address": "3306",
+    "full_street_name_from_gis": "SPEEDWAY",
+    "functional_class": "Collector",
+    "left_to_address": "3400",
+    "main_agency": "Austin",
+    "right_from_address": "3311",
+    "right_to_address": "3319",
+    "minimum_address_in_range": "3306",
+    "maximum_address_in_range": "3400",
+    "segment_width": "37",
+    "segment_length": "95",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.07",
+    "final_grade": "C",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.737635510049,
+            30.281670951726
+          ],
+          [
+            -97.737588269504,
+            30.282017534157
+          ],
+          [
+            -97.737536813733,
+            30.282395044741
+          ],
+          [
+            -97.737441248848,
+            30.283473995364
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "SPEEDWAY",
+    "segment_seq": "50",
+    "segment_id": "2016739",
+    "maximo_id": "401505265",
+    "from_limit_street": "34TH ST E",
+    "to_limit_street": "35TH ST W",
+    "left_from_address": "3402",
+    "full_street_name_from_gis": "SPEEDWAY",
+    "functional_class": "Collector",
+    "left_to_address": "3420",
+    "main_agency": "Austin",
+    "right_from_address": "3401",
+    "right_to_address": "3419",
+    "minimum_address_in_range": "3401",
+    "maximum_address_in_range": "3420",
+    "segment_width": "37",
+    "segment_length": "399",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.28",
+    "final_grade": "A",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.737635510049,
+            30.281670951726
+          ],
+          [
+            -97.737588269504,
+            30.282017534157
+          ],
+          [
+            -97.737536813733,
+            30.282395044741
+          ],
+          [
+            -97.737441248848,
+            30.283473995364
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "SPEEDWAY",
+    "segment_seq": "55",
+    "segment_id": "2016687",
+    "maximo_id": "401535435",
+    "from_limit_street": "35TH ST W",
+    "to_limit_street": "37TH ST E",
+    "left_from_address": "3500",
+    "full_street_name_from_gis": "SPEEDWAY",
+    "functional_class": "Collector",
+    "left_to_address": "3648",
+    "main_agency": "Austin",
+    "right_from_address": "3501",
+    "right_to_address": "3651",
+    "minimum_address_in_range": "3500",
+    "maximum_address_in_range": "3651",
+    "segment_width": "37",
+    "segment_length": "248",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.17",
+    "final_grade": "B",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.737635510049,
+            30.281670951726
+          ],
+          [
+            -97.737588269504,
+            30.282017534157
+          ],
+          [
+            -97.737536813733,
+            30.282395044741
+          ],
+          [
+            -97.737441248848,
+            30.283473995364
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "SPEEDWAY",
+    "segment_seq": "60",
+    "segment_id": "2016651",
+    "maximo_id": "401481817",
+    "from_limit_street": "37TH ST E",
+    "to_limit_street": "38TH ST W",
+    "left_from_address": "3650",
+    "full_street_name_from_gis": "SPEEDWAY",
+    "functional_class": "Collector",
+    "left_to_address": "3712",
+    "main_agency": "Austin",
+    "right_from_address": "3653",
+    "right_to_address": "3713",
+    "minimum_address_in_range": "3650",
+    "maximum_address_in_range": "3713",
+    "segment_width": "37",
+    "segment_length": "252",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.18",
+    "final_grade": "C",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.737635510049,
+            30.281670951726
+          ],
+          [
+            -97.737588269504,
+            30.282017534157
+          ],
+          [
+            -97.737536813733,
+            30.282395044741
+          ],
+          [
+            -97.737441248848,
+            30.283473995364
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "SPEEDWAY",
+    "segment_seq": "65",
+    "segment_id": "2016610",
+    "maximo_id": "401519254",
+    "from_limit_street": "38TH ST W",
+    "to_limit_street": "38TH 1/2 ST W",
+    "left_from_address": "3800",
+    "full_street_name_from_gis": "SPEEDWAY",
+    "functional_class": "Collector",
+    "left_to_address": "3810",
+    "main_agency": "Austin",
+    "right_from_address": "3801",
+    "right_to_address": "3809",
+    "minimum_address_in_range": "3800",
+    "maximum_address_in_range": "3810",
+    "segment_width": "37",
+    "segment_length": "313",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.22",
+    "final_grade": "F",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "0",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.737635510049,
+            30.281670951726
+          ],
+          [
+            -97.737588269504,
+            30.282017534157
+          ],
+          [
+            -97.737536813733,
+            30.282395044741
+          ],
+          [
+            -97.737441248848,
+            30.283473995364
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "SPEEDWAY",
+    "segment_seq": "70",
+    "segment_id": "2016555",
+    "maximo_id": "401520028",
+    "from_limit_street": "38TH 1/2 ST W",
+    "to_limit_street": "39TH ST W",
+    "left_from_address": "3812",
+    "full_street_name_from_gis": "SPEEDWAY",
+    "functional_class": "Collector",
+    "left_to_address": "3822",
+    "main_agency": "Austin",
+    "right_from_address": "3811",
+    "right_to_address": "3825",
+    "minimum_address_in_range": "3811",
+    "maximum_address_in_range": "3825",
+    "segment_width": "37",
+    "segment_length": "243",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.17",
+    "final_grade": "D",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "0",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.737635510049,
+            30.281670951726
+          ],
+          [
+            -97.737588269504,
+            30.282017534157
+          ],
+          [
+            -97.737536813733,
+            30.282395044741
+          ],
+          [
+            -97.737441248848,
+            30.283473995364
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "SPEEDWAY",
+    "segment_seq": "75",
+    "segment_id": "2016507",
+    "maximo_id": "401512717",
+    "from_limit_street": "39TH ST W",
+    "to_limit_street": "40TH ST W",
+    "left_from_address": "3900",
+    "full_street_name_from_gis": "SPEEDWAY",
+    "functional_class": "Collector",
+    "left_to_address": "3922",
+    "main_agency": "Austin",
+    "right_from_address": "3901",
+    "right_to_address": "3923",
+    "minimum_address_in_range": "3900",
+    "maximum_address_in_range": "3923",
+    "segment_width": "37",
+    "segment_length": "488",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.34",
+    "final_grade": "B",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.737635510049,
+            30.281670951726
+          ],
+          [
+            -97.737588269504,
+            30.282017534157
+          ],
+          [
+            -97.737536813733,
+            30.282395044741
+          ],
+          [
+            -97.737441248848,
+            30.283473995364
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "SPEEDWAY",
+    "segment_seq": "80",
+    "segment_id": "2016431",
+    "maximo_id": "401486906",
+    "from_limit_street": "40TH ST W",
+    "to_limit_street": "41ST ST W",
+    "left_from_address": "4000",
+    "full_street_name_from_gis": "SPEEDWAY",
+    "functional_class": "Collector",
+    "left_to_address": "4020",
+    "main_agency": "Austin",
+    "right_from_address": "4001",
+    "right_to_address": "4021",
+    "minimum_address_in_range": "4000",
+    "maximum_address_in_range": "4021",
+    "segment_width": "37",
+    "segment_length": "478",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.33",
+    "final_grade": "F",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "0",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.737635510049,
+            30.281670951726
+          ],
+          [
+            -97.737588269504,
+            30.282017534157
+          ],
+          [
+            -97.737536813733,
+            30.282395044741
+          ],
+          [
+            -97.737441248848,
+            30.283473995364
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "SPEEDWAY",
+    "segment_seq": "85",
+    "segment_id": "2016354",
+    "maximo_id": "401495870",
+    "from_limit_street": "41ST ST W",
+    "to_limit_street": "42ND ST W",
+    "left_from_address": "4100",
+    "full_street_name_from_gis": "SPEEDWAY",
+    "functional_class": "Collector",
+    "left_to_address": "4120",
+    "main_agency": "Austin",
+    "right_from_address": "4101",
+    "right_to_address": "4121",
+    "minimum_address_in_range": "4100",
+    "maximum_address_in_range": "4121",
+    "segment_width": "37",
+    "segment_length": "452",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.32",
+    "final_grade": "B",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.737635510049,
+            30.281670951726
+          ],
+          [
+            -97.737588269504,
+            30.282017534157
+          ],
+          [
+            -97.737536813733,
+            30.282395044741
+          ],
+          [
+            -97.737441248848,
+            30.283473995364
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "SPEEDWAY",
+    "segment_seq": "90",
+    "segment_id": "2016288",
+    "maximo_id": "401521047",
+    "from_limit_street": "42ND ST W",
+    "to_limit_street": "43RD ST W",
+    "left_from_address": "4200",
+    "full_street_name_from_gis": "SPEEDWAY",
+    "functional_class": "Collector",
+    "left_to_address": "4220",
+    "main_agency": "Austin",
+    "right_from_address": "4201",
+    "right_to_address": "4221",
+    "minimum_address_in_range": "4200",
+    "maximum_address_in_range": "4221",
+    "segment_width": "37",
+    "segment_length": "484",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.34",
+    "final_grade": "F",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "0",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.737635510049,
+            30.281670951726
+          ],
+          [
+            -97.737588269504,
+            30.282017534157
+          ],
+          [
+            -97.737536813733,
+            30.282395044741
+          ],
+          [
+            -97.737441248848,
+            30.283473995364
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "SPEEDWAY",
+    "segment_seq": "95",
+    "segment_id": "2016216",
+    "maximo_id": "401487199",
+    "from_limit_street": "43RD ST W",
+    "to_limit_street": "44TH ST W",
+    "left_from_address": "4300",
+    "full_street_name_from_gis": "SPEEDWAY",
+    "functional_class": "Collector",
+    "left_to_address": "4320",
+    "main_agency": "Austin",
+    "right_from_address": "4301",
+    "right_to_address": "4321",
+    "minimum_address_in_range": "4300",
+    "maximum_address_in_range": "4321",
+    "segment_width": "37",
+    "segment_length": "465",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.33",
+    "final_grade": "F",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "0",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.737635510049,
+            30.281670951726
+          ],
+          [
+            -97.737588269504,
+            30.282017534157
+          ],
+          [
+            -97.737536813733,
+            30.282395044741
+          ],
+          [
+            -97.737441248848,
+            30.283473995364
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "SPEEDWAY",
+    "segment_seq": "100",
+    "segment_id": "2016138",
+    "maximo_id": "401505842",
+    "from_limit_street": "44TH ST W",
+    "to_limit_street": "45TH ST W",
+    "left_from_address": "4400",
+    "full_street_name_from_gis": "SPEEDWAY",
+    "functional_class": "Collector",
+    "left_to_address": "4420",
+    "main_agency": "Austin",
+    "right_from_address": "4401",
+    "right_to_address": "4421",
+    "minimum_address_in_range": "4400",
+    "maximum_address_in_range": "4421",
+    "segment_width": "37",
+    "segment_length": "444",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.31",
+    "final_grade": "F",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "0",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.737635510049,
+            30.281670951726
+          ],
+          [
+            -97.737588269504,
+            30.282017534157
+          ],
+          [
+            -97.737536813733,
+            30.282395044741
+          ],
+          [
+            -97.737441248848,
+            30.283473995364
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "SPEEDWAY",
+    "segment_seq": "105",
+    "segment_id": "2040626",
+    "maximo_id": "401486976",
+    "from_limit_street": "45TH ST W",
+    "to_limit_street": "46TH ST W",
+    "left_from_address": "4500",
+    "full_street_name_from_gis": "SPEEDWAY",
+    "functional_class": "Residential",
+    "left_to_address": "4534",
+    "main_agency": "Austin",
+    "right_from_address": "4501",
+    "right_to_address": "4535",
+    "minimum_address_in_range": "4500",
+    "maximum_address_in_range": "4535",
+    "segment_width": "27",
+    "segment_length": "825",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.42",
+    "final_grade": "D",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "0",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.737635510049,
+            30.281670951726
+          ],
+          [
+            -97.737588269504,
+            30.282017534157
+          ],
+          [
+            -97.737536813733,
+            30.282395044741
+          ],
+          [
+            -97.737441248848,
+            30.283473995364
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "SPEEDWAY",
+    "segment_seq": "110",
+    "segment_id": "2033053",
+    "maximo_id": "401535027",
+    "from_limit_street": "46TH ST W",
+    "to_limit_street": "4616",
+    "left_from_address": "4600",
+    "full_street_name_from_gis": "SPEEDWAY",
+    "street_end_type": "Driveway",
+    "functional_class": "Residential",
+    "left_to_address": "4616",
+    "main_agency": "Austin",
+    "right_from_address": "4601",
+    "right_to_address": "4617",
+    "minimum_address_in_range": "4600",
+    "maximum_address_in_range": "4617",
+    "segment_width": "27",
+    "segment_length": "379",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.19",
+    "final_grade": "C",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.737635510049,
+            30.281670951726
+          ],
+          [
+            -97.737588269504,
+            30.282017534157
+          ],
+          [
+            -97.737536813733,
+            30.282395044741
+          ],
+          [
+            -97.737441248848,
+            30.283473995364
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "THE CIRCLE",
+    "segment_seq": "5",
+    "segment_id": "2019712",
+    "maximo_id": "401496079",
+    "from_limit_street": "CONGRESS AVE S",
+    "to_limit_street": "PARK LN",
+    "left_from_address": "100",
+    "full_street_name_from_gis": "THE CIRCLE",
+    "functional_class": "Collector",
+    "left_to_address": "120",
+    "main_agency": "Austin",
+    "right_from_address": "101",
+    "right_to_address": "121",
+    "minimum_address_in_range": "100",
+    "maximum_address_in_range": "121",
+    "segment_width": "27",
+    "segment_length": "599",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.31",
+    "final_grade": "A",
+    "year": "2019-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.746796383762,
+            30.250077876738
+          ],
+          [
+            -97.746812375701,
+            30.249814360058
+          ],
+          [
+            -97.746824871202,
+            30.249764171565
+          ],
+          [
+            -97.746857150049,
+            30.249727583723
+          ],
+          [
+            -97.747114278553,
+            30.249603866631
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "THE CIRCLE",
+    "segment_seq": "10",
+    "segment_id": "2019713",
+    "maximo_id": "401494916",
+    "from_limit_street": "PARK LN",
+    "to_limit_street": "DRAKE AVE",
+    "left_from_address": "200",
+    "full_street_name_from_gis": "THE CIRCLE",
+    "functional_class": "Collector",
+    "left_to_address": "214",
+    "main_agency": "Austin",
+    "right_from_address": "201",
+    "right_to_address": "211",
+    "minimum_address_in_range": "200",
+    "maximum_address_in_range": "214",
+    "segment_width": "27",
+    "segment_length": "387",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.2",
+    "final_grade": "C",
+    "year": "2019-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.746796383762,
+            30.250077876738
+          ],
+          [
+            -97.746812375701,
+            30.249814360058
+          ],
+          [
+            -97.746824871202,
+            30.249764171565
+          ],
+          [
+            -97.746857150049,
+            30.249727583723
+          ],
+          [
+            -97.747114278553,
+            30.249603866631
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "THE CIRCLE",
+    "segment_seq": "15",
+    "segment_id": "2041327",
+    "maximo_id": "401519245",
+    "from_limit_street": "ACADEMY DR",
+    "to_limit_street": "DRAKE AVE",
+    "left_from_address": "1201",
+    "full_street_name_from_gis": "THE CIRCLE",
+    "street_end_type": "Dead End",
+    "functional_class": "Collector",
+    "left_to_address": "1319",
+    "main_agency": "Austin",
+    "right_from_address": "1200",
+    "right_to_address": "1318",
+    "minimum_address_in_range": "1200",
+    "maximum_address_in_range": "1319",
+    "segment_width": "25",
+    "segment_length": "224",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.38",
+    "final_grade": "F",
+    "year": "2019-01-01T00:00:00.000",
+    "street_condition": "0",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.746796383762,
+            30.250077876738
+          ],
+          [
+            -97.746812375701,
+            30.249814360058
+          ],
+          [
+            -97.746824871202,
+            30.249764171565
+          ],
+          [
+            -97.746857150049,
+            30.249727583723
+          ],
+          [
+            -97.747114278553,
+            30.249603866631
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "WEBBERVILLE",
+    "segment_seq": "100",
+    "segment_id": "2019091",
+    "maximo_id": "401520673",
+    "from_limit_street": "SWENSON AVE",
+    "to_limit_street": "HARVARD ST",
+    "left_from_address": "2400",
+    "full_street_name_from_gis": "WEBBERVILLE RD",
+    "functional_class": "Collector",
+    "left_to_address": "2434",
+    "main_agency": "Austin",
+    "right_from_address": "2401",
+    "right_to_address": "2505",
+    "minimum_address_in_range": "2400",
+    "maximum_address_in_range": "2505",
+    "segment_width": "37",
+    "segment_length": "408",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.29",
+    "final_grade": "B",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.715361808403,
+            30.262438406689
+          ],
+          [
+            -97.714821542896,
+            30.262732656212
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "WEST",
+    "segment_seq": "125",
+    "segment_id": "5076963",
+    "maximo_id": "401329251",
+    "from_limit_street": "CESAR CHAVEZ ST W",
+    "to_limit_street": "2ND ST W",
+    "left_from_address": "100",
+    "full_street_name_from_gis": "WEST AVE",
+    "functional_class": "Residential",
+    "left_to_address": "124",
+    "main_agency": "Austin",
+    "right_from_address": "101",
+    "right_to_address": "125",
+    "minimum_address_in_range": "100",
+    "maximum_address_in_range": "125",
+    "segment_width": "31",
+    "segment_length": "328",
+    "pavement_type": "Rigid",
+    "lane_miles": "0.19",
+    "final_grade": "B",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.744143302218,
+            30.299322303327
+          ],
+          [
+            -97.743439485154,
+            30.300509985914
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "WEST",
+    "segment_seq": "120",
+    "segment_id": "3504330",
+    "maximo_id": "401536795",
+    "from_limit_street": "2ND ST W",
+    "to_limit_street": "POWER PLANT DR",
+    "left_from_address": "200",
+    "full_street_name_from_gis": "WEST AVE",
+    "functional_class": "Residential",
+    "left_to_address": "224",
+    "main_agency": "Austin",
+    "right_from_address": "201",
+    "right_to_address": "225",
+    "minimum_address_in_range": "200",
+    "maximum_address_in_range": "225",
+    "segment_width": "31",
+    "segment_length": "382",
+    "pavement_type": "Rigid",
+    "lane_miles": "0.22",
+    "final_grade": "C",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.744143302218,
+            30.299322303327
+          ],
+          [
+            -97.743439485154,
+            30.300509985914
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "WEST",
+    "segment_seq": "5",
+    "segment_id": "2042759",
+    "maximo_id": "401514223",
+    "from_limit_street": "RUNDBERG LN W",
+    "to_limit_street": "RUNDBERG LN W",
+    "left_from_address": "1901",
+    "full_street_name_from_gis": "WEST LOOP",
+    "functional_class": "Residential",
+    "left_to_address": "2019",
+    "main_agency": "Austin",
+    "right_from_address": "1900",
+    "right_to_address": "2018",
+    "minimum_address_in_range": "1900",
+    "maximum_address_in_range": "2019",
+    "segment_width": "27",
+    "segment_length": "1283",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.64",
+    "final_grade": "A",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.744143302218,
+            30.299322303327
+          ],
+          [
+            -97.743439485154,
+            30.300509985914
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "street_name": "WILLOW",
+    "segment_seq": "65",
+    "segment_id": "2019589",
+    "maximo_id": "401516929",
+    "from_limit_street": "SAN SABA ST",
+    "to_limit_street": "LLANO ST",
+    "left_from_address": "2600",
+    "full_street_name_from_gis": "WILLOW ST",
+    "functional_class": "Residential",
+    "left_to_address": "2614",
+    "main_agency": "Austin",
+    "right_from_address": "2601",
+    "right_to_address": "2619",
+    "minimum_address_in_range": "2600",
+    "maximum_address_in_range": "2619",
+    "segment_width": "27",
+    "segment_length": "451",
+    "pavement_type": "Flexible",
+    "lane_miles": "0.23",
+    "final_grade": "C",
+    "year": "2018-01-01T00:00:00.000",
+    "street_condition": "1",
+    "the_geom": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [
+            -97.735029049154,
+            30.259684112145
+          ],
+          [
+            -97.733267800385,
+            30.259084561012
+          ],
+          [
+            -97.732989370136,
+            30.259070659229
+          ]
+        ]
+      ]
+    }
+  }
+]

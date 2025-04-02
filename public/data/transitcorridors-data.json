@@ -1,0 +1,7224 @@
+[
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.728526496489,
+              30.263724354945
+            ],
+            [
+              -97.727546882489,
+              30.263393645768
+            ]
+          ]
+        ]
+      },
+      "objectid": "405",
+      "gis_id": "405",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E 6TH ST",
+      "shape_length": "331.83285421677465"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.751766437883,
+              30.262045271205
+            ],
+            [
+              -97.752153169402,
+              30.262285630876
+            ],
+            [
+              -97.75271939751,
+              30.262619348733
+            ],
+            [
+              -97.75323552158,
+              30.262920453347
+            ],
+            [
+              -97.753716645663,
+              30.263170300318
+            ],
+            [
+              -97.754169514489,
+              30.263387975851
+            ],
+            [
+              -97.754421140165,
+              30.263506794161
+            ]
+          ]
+        ]
+      },
+      "objectid": "723",
+      "gis_id": "723",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W RIVERSIDE DR",
+      "shape_length": "993.4149240500617"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.757943726138,
+              30.273065088583
+            ],
+            [
+              -97.759405835323,
+              30.273608778585
+            ]
+          ]
+        ]
+      },
+      "objectid": "521",
+      "gis_id": "589",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W 6TH ST",
+      "shape_length": "502.12023037413212"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.759253841051,
+              30.272060038287
+            ],
+            [
+              -97.760838706236,
+              30.272728237265
+            ]
+          ]
+        ]
+      },
+      "objectid": "527",
+      "gis_id": "595",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W 5TH ST",
+      "shape_length": "556.2015180232105"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.742087419554,
+              30.281807804287
+            ],
+            [
+              -97.741998325201,
+              30.282647608496
+            ]
+          ]
+        ]
+      },
+      "objectid": "580",
+      "gis_id": "436",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "GUADALUPE ST",
+      "shape_length": "306.71980543483642"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.760838706236,
+              30.272728237265
+            ],
+            [
+              -97.761417275094,
+              30.272962491469
+            ]
+          ]
+        ]
+      },
+      "objectid": "525",
+      "gis_id": "593",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W 5TH ST",
+      "shape_length": "201.53248779406033"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.731945231434,
+              30.263840568098
+            ],
+            [
+              -97.730949549025,
+              30.263517809975
+            ]
+          ]
+        ]
+      },
+      "objectid": "404",
+      "gis_id": "404",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E 5TH ST",
+      "shape_length": "335.54290014070529"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.72414259157,
+              30.26324185449
+            ],
+            [
+              -97.722119211876,
+              30.262581803639
+            ]
+          ]
+        ]
+      },
+      "objectid": "410",
+      "gis_id": "410",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E 7TH ST",
+      "shape_length": "682.4098372522825"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.740434661368,
+              30.2990960636
+            ],
+            [
+              -97.73998875998,
+              30.299766378199
+            ]
+          ]
+        ]
+      },
+      "objectid": "392",
+      "gis_id": "392",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "GUADALUPE ST",
+      "shape_length": "281.48522824399953"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.741778639452,
+              30.293309009562
+            ],
+            [
+              -97.742293518351,
+              30.294317795377
+            ]
+          ]
+        ]
+      },
+      "objectid": "557",
+      "gis_id": "625",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "GUADALUPE ST",
+      "shape_length": "401.26044476754981"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.745461967082,
+              30.301498330348
+            ],
+            [
+              -97.745195940564,
+              30.301909636599
+            ],
+            [
+              -97.744718156114,
+              30.302705839287
+            ]
+          ]
+        ]
+      },
+      "objectid": "383",
+      "gis_id": "383",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "N LAMAR BLVD",
+      "shape_length": "498.00894895584941"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.741438789859,
+              30.304430046147
+            ],
+            [
+              -97.743056800934,
+              30.305202597356
+            ]
+          ]
+        ]
+      },
+      "objectid": "361",
+      "gis_id": "361",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W 38TH ST",
+      "shape_length": "582.79500008732919"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.743566894969,
+              30.304479028428
+            ],
+            [
+              -97.743056800934,
+              30.305202597356
+            ]
+          ]
+        ]
+      },
+      "objectid": "360",
+      "gis_id": "360",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "N LAMAR BLVD",
+      "shape_length": "308.48232912644869"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.742479482183,
+              30.268971626583
+            ],
+            [
+              -97.741117244856,
+              30.268608532785
+            ]
+          ]
+        ]
+      },
+      "objectid": "480",
+      "gis_id": "548",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E 7TH ST",
+      "shape_length": "449.85900336675843"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.750973900651,
+              30.246098041242
+            ],
+            [
+              -97.751311265629,
+              30.245150475247
+            ]
+          ]
+        ]
+      },
+      "objectid": "447",
+      "gis_id": "515",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S CONGRESS AVE",
+      "shape_length": "360.70959596245967"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.743748967394,
+              30.282242941001
+            ],
+            [
+              -97.744195108059,
+              30.282386722121
+            ]
+          ]
+        ]
+      },
+      "objectid": "575",
+      "gis_id": "431",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W MARTIN LUTHER KING BLVD",
+      "shape_length": "150.21652010872836"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.749113021015,
+              30.251121131004
+            ],
+            [
+              -97.749520902029,
+              30.24999621968
+            ]
+          ]
+        ]
+      },
+      "objectid": "509",
+      "gis_id": "577",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S CONGRESS AVE",
+      "shape_length": "428.91099036924663"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.747713753682,
+              30.268387020912
+            ],
+            [
+              -97.748786282151,
+              30.268683693482
+            ]
+          ]
+        ]
+      },
+      "objectid": "434",
+      "gis_id": "502",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W 5TH ST",
+      "shape_length": "355.3603917098232"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.742998385495,
+              30.277902112177
+            ],
+            [
+              -97.742609997558,
+              30.278867250742
+            ]
+          ]
+        ]
+      },
+      "objectid": "620",
+      "gis_id": "476",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "GUADALUPE ST",
+      "shape_length": "371.80442951589913"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.749599868423,
+              30.249827291915
+            ],
+            [
+              -97.749715952407,
+              30.249524978196
+            ],
+            [
+              -97.749944644156,
+              30.248929385004
+            ]
+          ]
+        ]
+      },
+      "objectid": "708",
+      "gis_id": "708",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S CONGRESS AVE",
+      "shape_length": "344.22752174469258"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.761474594042,
+              30.26198687669
+            ],
+            [
+              -97.761603664339,
+              30.261958581361
+            ],
+            [
+              -97.761794917944,
+              30.262080573962
+            ],
+            [
+              -97.761936802189,
+              30.262186174364
+            ],
+            [
+              -97.762091289244,
+              30.262314689726
+            ],
+            [
+              -97.762196016755,
+              30.262418855671
+            ],
+            [
+              -97.762363045553,
+              30.262579663471
+            ],
+            [
+              -97.762490991058,
+              30.262695984837
+            ],
+            [
+              -97.762681440638,
+              30.262860177595
+            ],
+            [
+              -97.762807274933,
+              30.262974888012
+            ],
+            [
+              -97.76302617895,
+              30.263161626625
+            ],
+            [
+              -97.763213265641,
+              30.263318903261
+            ],
+            [
+              -97.763436470081,
+              30.263490545586
+            ],
+            [
+              -97.763696776985,
+              30.263696705199
+            ],
+            [
+              -97.763695251884,
+              30.263801654331
+            ]
+          ]
+        ]
+      },
+      "objectid": "540",
+      "gis_id": "608",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "BARTON SPRINGS RD",
+      "shape_length": "996.05776027295042"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.731556322738,
+              30.264751287557
+            ],
+            [
+              -97.730535817567,
+              30.264408769902
+            ]
+          ]
+        ]
+      },
+      "objectid": "186",
+      "gis_id": "257",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E 6TH ST",
+      "shape_length": "345.41862431840497"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.745164001456,
+              30.261704472816
+            ],
+            [
+              -97.744872952703,
+              30.262515444247
+            ],
+            [
+              -97.744574734844,
+              30.263386777677
+            ]
+          ]
+        ]
+      },
+      "objectid": "85",
+      "gis_id": "156",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "CONGRESS AVE",
+      "shape_length": "639.50919185497446"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.736824470979,
+              30.267407724492
+            ],
+            [
+              -97.735795958387,
+              30.267125595738
+            ]
+          ]
+        ]
+      },
+      "objectid": "481",
+      "gis_id": "549",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E 7TH ST",
+      "shape_length": "340.52013937792924"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.749520902029,
+              30.24999621968
+            ],
+            [
+              -97.749599868423,
+              30.249827291915
+            ]
+          ]
+        ]
+      },
+      "objectid": "511",
+      "gis_id": "579",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S CONGRESS AVE",
+      "shape_length": "66.304090492378563"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.742695086014,
+              30.281954856721
+            ],
+            [
+              -97.7432234989,
+              30.282103055675
+            ]
+          ]
+        ]
+      },
+      "objectid": "578",
+      "gis_id": "434",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W MARTIN LUTHER KING BLVD",
+      "shape_length": "175.28268639729924"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.728889478263,
+              30.264950138062
+            ],
+            [
+              -97.728000572694,
+              30.264662532473
+            ]
+          ]
+        ]
+      },
+      "objectid": "184",
+      "gis_id": "255",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E 7TH ST",
+      "shape_length": "299.48760729619818"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.744840346439,
+              30.282551026273
+            ],
+            [
+              -97.745182633036,
+              30.282667953094
+            ]
+          ]
+        ]
+      },
+      "objectid": "601",
+      "gis_id": "457",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W MARTIN LUTHER KING BLVD",
+      "shape_length": "116.10778439017389"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.738917513815,
+              30.301532426776
+            ],
+            [
+              -97.738595085794,
+              30.301971456887
+            ]
+          ]
+        ]
+      },
+      "objectid": "377",
+      "gis_id": "377",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "GUADALUPE ST",
+      "shape_length": "189.33575259661325"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.753489817818,
+              30.259589610447
+            ],
+            [
+              -97.754734442029,
+              30.260015059961
+            ],
+            [
+              -97.75571264967,
+              30.260349437064
+            ]
+          ]
+        ]
+      },
+      "objectid": "705",
+      "gis_id": "705",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "BARTON SPRINGS RD",
+      "shape_length": "754.23099152866757"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.757129893624,
+              30.272754691248
+            ],
+            [
+              -97.757557853925,
+              30.272919816123
+            ]
+          ]
+        ]
+      },
+      "objectid": "551",
+      "gis_id": "619",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W 6TH ST",
+      "shape_length": "147.8424853245329"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.752367033598,
+              30.254657649847
+            ],
+            [
+              -97.753222706433,
+              30.253294025638
+            ]
+          ]
+        ]
+      },
+      "objectid": "117",
+      "gis_id": "188",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S 1ST ST",
+      "shape_length": "564.75034485172"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.759140027408,
+              30.261152325373
+            ],
+            [
+              -97.759289560182,
+              30.261140835376
+            ],
+            [
+              -97.759506133947,
+              30.261247031311
+            ],
+            [
+              -97.759735974733,
+              30.261338063387
+            ],
+            [
+              -97.759926238189,
+              30.261404372834
+            ],
+            [
+              -97.759982339092,
+              30.261491502345
+            ]
+          ]
+        ]
+      },
+      "objectid": "542",
+      "gis_id": "610",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "BARTON SPRINGS RD",
+      "shape_length": "306.71294844945737"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.75286523412,
+              30.239833191632
+            ],
+            [
+              -97.752925342404,
+              30.23969850864
+            ],
+            [
+              -97.75298956958,
+              30.239555519563
+            ],
+            [
+              -97.753065750257,
+              30.239417997584
+            ],
+            [
+              -97.753526659646,
+              30.238764836308
+            ]
+          ]
+        ]
+      },
+      "objectid": "456",
+      "gis_id": "524",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S CONGRESS AVE",
+      "shape_length": "442.44293233396672"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.733181429017,
+              30.266369357159
+            ],
+            [
+              -97.732116607266,
+              30.266031508913
+            ]
+          ]
+        ]
+      },
+      "objectid": "483",
+      "gis_id": "551",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E 7TH ST",
+      "shape_length": "357.91158424989607"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.724104647628,
+              30.2793003958
+            ],
+            [
+              -97.723186359951,
+              30.279479721093
+            ]
+          ]
+        ]
+      },
+      "objectid": "611",
+      "gis_id": "467",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E MARTIN LUTHER KING BLVD",
+      "shape_length": "297.10626875541561"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.759405835323,
+              30.273608778585
+            ],
+            [
+              -97.760218982864,
+              30.273891892306
+            ]
+          ]
+        ]
+      },
+      "objectid": "519",
+      "gis_id": "587",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W 6TH ST",
+      "shape_length": "276.5684320166153"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.7432234989,
+              30.282103055675
+            ],
+            [
+              -97.743748967394,
+              30.282242941001
+            ]
+          ]
+        ]
+      },
+      "objectid": "576",
+      "gis_id": "432",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W MARTIN LUTHER KING BLVD",
+      "shape_length": "173.48772056970304"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.732965735624,
+              30.264183073614
+            ],
+            [
+              -97.731945231434,
+              30.263840568098
+            ]
+          ]
+        ]
+      },
+      "objectid": "401",
+      "gis_id": "401",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E 5TH ST",
+      "shape_length": "345.41851319176664"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.754750749921,
+              30.270355134652
+            ],
+            [
+              -97.756044359022,
+              30.270859635818
+            ]
+          ]
+        ]
+      },
+      "objectid": "532",
+      "gis_id": "600",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W 5TH ST",
+      "shape_length": "447.69408260968652"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.747710762181,
+              30.263648126955
+            ],
+            [
+              -97.747767454131,
+              30.264045319859
+            ],
+            [
+              -97.748008217642,
+              30.264371967132
+            ]
+          ]
+        ]
+      },
+      "objectid": "107",
+      "gis_id": "178",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "GUADALUPE ST",
+      "shape_length": "286.59318573839721"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.753178087905,
+              30.269743073106
+            ],
+            [
+              -97.754460341449,
+              30.270241503926
+            ]
+          ]
+        ]
+      },
+      "objectid": "425",
+      "gis_id": "493",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W 5TH ST",
+      "shape_length": "443.52211930418042"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.751637804084,
+              30.244252197158
+            ],
+            [
+              -97.751919985097,
+              30.243531796681
+            ]
+          ]
+        ]
+      },
+      "objectid": "450",
+      "gis_id": "518",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S CONGRESS AVE",
+      "shape_length": "276.7398080341062"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.74128744746,
+              30.290474469164
+            ],
+            [
+              -97.741254526718,
+              30.290869551154
+            ]
+          ]
+        ]
+      },
+      "objectid": "562",
+      "gis_id": "630",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "GUADALUPE ST",
+      "shape_length": "144.06223408328262"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.76513732378,
+              30.251212340953
+            ],
+            [
+              -97.765925452214,
+              30.250493801597
+            ],
+            [
+              -97.767330147512,
+              30.249535320416
+            ],
+            [
+              -97.76743300609,
+              30.249465129717
+            ]
+          ]
+        ]
+      },
+      "objectid": "709",
+      "gis_id": "709",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S LAMAR BLVD",
+      "shape_length": "966.28717364165709"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.728953279765,
+              30.262819914816
+            ],
+            [
+              -97.727980377594,
+              30.262475593527
+            ]
+          ]
+        ]
+      },
+      "objectid": "411",
+      "gis_id": "411",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E 5TH ST",
+      "shape_length": "331.69872498312179"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.745242028159,
+              30.271824552298
+            ],
+            [
+              -97.744899686298,
+              30.272774756099
+            ]
+          ]
+        ]
+      },
+      "objectid": "628",
+      "gis_id": "484",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "GUADALUPE ST",
+      "shape_length": "362.08276992577953"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.739446495,
+              30.281025535244
+            ],
+            [
+              -97.739901944632,
+              30.281168006734
+            ]
+          ]
+        ]
+      },
+      "objectid": "589",
+      "gis_id": "445",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W MARTIN LUTHER KING BLVD",
+      "shape_length": "152.81401850512927"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.727546882489,
+              30.263393645768
+            ],
+            [
+              -97.726544811911,
+              30.263073473462
+            ]
+          ]
+        ]
+      },
+      "objectid": "408",
+      "gis_id": "408",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E 6TH ST",
+      "shape_length": "337.10834398646483"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.753222706433,
+              30.253294025638
+            ],
+            [
+              -97.754020528834,
+              30.2519983751
+            ],
+            [
+              -97.754288630702,
+              30.251508711978
+            ]
+          ]
+        ]
+      },
+      "objectid": "505",
+      "gis_id": "573",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S 1ST ST",
+      "shape_length": "731.50263972985158"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.749572597197,
+              30.260163878887
+            ],
+            [
+              -97.749719543656,
+              30.260276305011
+            ],
+            [
+              -97.75000039558,
+              30.260731566084
+            ],
+            [
+              -97.750105719186,
+              30.260869748956
+            ],
+            [
+              -97.750228711516,
+              30.260984634932
+            ],
+            [
+              -97.750355599279,
+              30.261081832251
+            ],
+            [
+              -97.751057834906,
+              30.26151601839
+            ],
+            [
+              -97.751195108074,
+              30.261543620989
+            ],
+            [
+              -97.751336623743,
+              30.261539376949
+            ],
+            [
+              -97.751473975694,
+              30.261564037404
+            ],
+            [
+              -97.751578442727,
+              30.261607562593
+            ],
+            [
+              -97.751661537716,
+              30.261686136136
+            ],
+            [
+              -97.751716735801,
+              30.261787828514
+            ],
+            [
+              -97.751747852199,
+              30.261897891203
+            ],
+            [
+              -97.751766437883,
+              30.262045271205
+            ]
+          ]
+        ]
+      },
+      "objectid": "722",
+      "gis_id": "722",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W RIVERSIDE DR",
+      "shape_length": "1037.4492691761184"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.730340339731,
+              30.265430678624
+            ],
+            [
+              -97.730077004425,
+              30.265326316195
+            ]
+          ]
+        ]
+      },
+      "objectid": "178",
+      "gis_id": "249",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E 7TH ST",
+      "shape_length": "91.389094481126662"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.741468774122,
+              30.288767421327
+            ],
+            [
+              -97.741422993595,
+              30.289085535047
+            ]
+          ]
+        ]
+      },
+      "objectid": "565",
+      "gis_id": "633",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "GUADALUPE ST",
+      "shape_length": "116.59334511330975"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.756346586967,
+              30.246569276213
+            ],
+            [
+              -97.75690281373,
+              30.245727861946
+            ]
+          ]
+        ]
+      },
+      "objectid": "639",
+      "gis_id": "639",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S 1ST ST",
+      "shape_length": "352.83462048724977"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.747679405071,
+              30.265292196113
+            ],
+            [
+              -97.747312070891,
+              30.266230899301
+            ]
+          ]
+        ]
+      },
+      "objectid": "182",
+      "gis_id": "253",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "GUADALUPE ST",
+      "shape_length": "360.55503248108243"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.743716387836,
+              30.276015504357
+            ],
+            [
+              -97.743342861391,
+              30.276945822299
+            ]
+          ]
+        ]
+      },
+      "objectid": "623",
+      "gis_id": "479",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "GUADALUPE ST",
+      "shape_length": "358.30285233041838"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.749944644156,
+              30.248929385004
+            ],
+            [
+              -97.750278089766,
+              30.247951489377
+            ]
+          ]
+        ]
+      },
+      "objectid": "443",
+      "gis_id": "511",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S CONGRESS AVE",
+      "shape_length": "370.90832177781346"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.751833800633,
+              30.275964764857
+            ],
+            [
+              -97.751405498514,
+              30.276902252227
+            ]
+          ]
+        ]
+      },
+      "objectid": "624",
+      "gis_id": "480",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "N LAMAR BLVD",
+      "shape_length": "366.78135084589428"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.728000572694,
+              30.264662532473
+            ],
+            [
+              -97.727118969405,
+              30.264339313763
+            ]
+          ]
+        ]
+      },
+      "objectid": "187",
+      "gis_id": "258",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E 7TH ST",
+      "shape_length": "302.12923802829386"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.754985599733,
+              30.271943971357
+            ],
+            [
+              -97.755396432714,
+              30.272103505535
+            ]
+          ]
+        ]
+      },
+      "objectid": "528",
+      "gis_id": "596",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W 6TH ST",
+      "shape_length": "142.07746202222867"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.745737452526,
+              30.301094694978
+            ],
+            [
+              -97.745461967082,
+              30.301498330348
+            ]
+          ]
+        ]
+      },
+      "objectid": "104",
+      "gis_id": "175",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "N LAMAR BLVD",
+      "shape_length": "170.61000634130033"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.746267542145,
+              30.269028912767
+            ],
+            [
+              -97.745941348288,
+              30.269968443457
+            ]
+          ]
+        ]
+      },
+      "objectid": "429",
+      "gis_id": "497",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "GUADALUPE ST",
+      "shape_length": "356.87673549257977"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.748008217642,
+              30.264371967132
+            ],
+            [
+              -97.747679405071,
+              30.265292196113
+            ]
+          ]
+        ]
+      },
+      "objectid": "400",
+      "gis_id": "400",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "GUADALUPE ST",
+      "shape_length": "350.40692645116388"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.752707075268,
+              30.240811130793
+            ],
+            [
+              -97.75286523412,
+              30.239833191632
+            ]
+          ]
+        ]
+      },
+      "objectid": "455",
+      "gis_id": "523",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S CONGRESS AVE",
+      "shape_length": "359.1566064478593"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.747312070891,
+              30.266230899301
+            ],
+            [
+              -97.746969547246,
+              30.267189355693
+            ]
+          ]
+        ]
+      },
+      "objectid": "485",
+      "gis_id": "553",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "GUADALUPE ST",
+      "shape_length": "364.96742834080942"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.741161172811,
+              30.291990107486
+            ],
+            [
+              -97.741163924008,
+              30.292182687064
+            ]
+          ]
+        ]
+      },
+      "objectid": "559",
+      "gis_id": "627",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "GUADALUPE ST",
+      "shape_length": "70.044488544698183"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.756120077702,
+              30.264221576891
+            ],
+            [
+              -97.756224970449,
+              30.264193570257
+            ],
+            [
+              -97.75660736608,
+              30.264308661919
+            ],
+            [
+              -97.756990343351,
+              30.264412624748
+            ],
+            [
+              -97.757113139792,
+              30.264530607604
+            ]
+          ]
+        ]
+      },
+      "objectid": "535",
+      "gis_id": "603",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W RIVERSIDE DR",
+      "shape_length": "346.9283162032994"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.778689629586,
+              30.246161438157
+            ],
+            [
+              -97.779850752851,
+              30.245356330179
+            ]
+          ]
+        ]
+      },
+      "objectid": "641",
+      "gis_id": "641",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S LAMAR BLVD",
+      "shape_length": "469.21408040508192"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.728494401142,
+              30.278573837523
+            ],
+            [
+              -97.725145238728,
+              30.279109802482
+            ]
+          ]
+        ]
+      },
+      "objectid": "615",
+      "gis_id": "471",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E MARTIN LUTHER KING BLVD",
+      "shape_length": "1074.9973297284625"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.741362106861,
+              30.289818646601
+            ],
+            [
+              -97.74128744746,
+              30.290474469164
+            ]
+          ]
+        ]
+      },
+      "objectid": "563",
+      "gis_id": "631",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "GUADALUPE ST",
+      "shape_length": "239.67673823895592"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.772824370307,
+              30.247651296324
+            ],
+            [
+              -97.774236570352,
+              30.247409516602
+            ]
+          ]
+        ]
+      },
+      "objectid": "464",
+      "gis_id": "532",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S LAMAR BLVD",
+      "shape_length": "454.49885635148632"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.75804878879,
+              30.262143535919
+            ],
+            [
+              -97.75816753719,
+              30.262097242449
+            ],
+            [
+              -97.758547944416,
+              30.261077225679
+            ],
+            [
+              -97.75853331584,
+              30.260867768844
+            ]
+          ]
+        ]
+      },
+      "objectid": "543",
+      "gis_id": "611",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S LAMAR BLVD",
+      "shape_length": "507.34015015487921"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.739673550108,
+              30.250124163437
+            ],
+            [
+              -97.739477340688,
+              30.250048213837
+            ],
+            [
+              -97.738891282767,
+              30.249836754845
+            ],
+            [
+              -97.738774160785,
+              30.249847474001
+            ]
+          ]
+        ]
+      },
+      "objectid": "510",
+      "gis_id": "578",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E RIVERSIDE DR",
+      "shape_length": "305.40945359437922"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.735716196669,
+              30.279981851849
+            ],
+            [
+              -97.734517931685,
+              30.279644017632
+            ]
+          ]
+        ]
+      },
+      "objectid": "609",
+      "gis_id": "465",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E MARTIN LUTHER KING BLVD",
+      "shape_length": "397.68941068940137"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.739902259496,
+              30.299918647263
+            ],
+            [
+              -97.739656240453,
+              30.300345474086
+            ]
+          ]
+        ]
+      },
+      "objectid": "389",
+      "gis_id": "389",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "GUADALUPE ST",
+      "shape_length": "173.56549921539818"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.781404704695,
+              30.244262829556
+            ],
+            [
+              -97.782367839784,
+              30.243657691598
+            ]
+          ]
+        ]
+      },
+      "objectid": "645",
+      "gis_id": "645",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S LAMAR BLVD",
+      "shape_length": "375.40641658596536"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.749283281787,
+              30.259763370637
+            ],
+            [
+              -97.750074926319,
+              30.258387664625
+            ]
+          ]
+        ]
+      },
+      "objectid": "103",
+      "gis_id": "174",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S 1ST ST",
+      "shape_length": "559.28447147921281"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.756957620998,
+              30.245632702884
+            ],
+            [
+              -97.757685541393,
+              30.244470200304
+            ]
+          ]
+        ]
+      },
+      "objectid": "642",
+      "gis_id": "642",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S 1ST ST",
+      "shape_length": "481.23167398483389"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.727118969405,
+              30.264339313763
+            ],
+            [
+              -97.726145440146,
+              30.263959211437
+            ]
+          ]
+        ]
+      },
+      "objectid": "196",
+      "gis_id": "267",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E 7TH ST",
+      "shape_length": "337.00339634690562"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.748786282151,
+              30.268683693482
+            ],
+            [
+              -97.749877229796,
+              30.269002730082
+            ]
+          ]
+        ]
+      },
+      "objectid": "432",
+      "gis_id": "500",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W 5TH ST",
+      "shape_length": "363.4183912320018"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.740563376823,
+              30.298906142468
+            ],
+            [
+              -97.740434661368,
+              30.2990960636
+            ]
+          ]
+        ]
+      },
+      "objectid": "393",
+      "gis_id": "393",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "GUADALUPE ST",
+      "shape_length": "80.131428530661609"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.738114959256,
+              30.280693287648
+            ],
+            [
+              -97.739446495,
+              30.281025535244
+            ]
+          ]
+        ]
+      },
+      "objectid": "591",
+      "gis_id": "447",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W MARTIN LUTHER KING BLVD",
+      "shape_length": "437.32123542929588"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.739791836613,
+              30.303585380366
+            ],
+            [
+              -97.741438789859,
+              30.304430046147
+            ]
+          ]
+        ]
+      },
+      "objectid": "365",
+      "gis_id": "365",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W 38TH ST",
+      "shape_length": "603.73063583806231"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.757839799343,
+              30.260731605414
+            ],
+            [
+              -97.758184084133,
+              30.260773647394
+            ],
+            [
+              -97.75853331584,
+              30.260867768844
+            ]
+          ]
+        ]
+      },
+      "objectid": "545",
+      "gis_id": "613",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "BARTON SPRINGS RD",
+      "shape_length": "225.21406065407629"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.722520123833,
+              30.261698859393
+            ],
+            [
+              -97.718631785764,
+              30.260324149977
+            ]
+          ]
+        ]
+      },
+      "objectid": "90",
+      "gis_id": "161",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E 6TH ST",
+      "shape_length": "1325.5044678012284"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.75252928664,
+              30.270967575872
+            ],
+            [
+              -97.75294803624,
+              30.271138857228
+            ]
+          ]
+        ]
+      },
+      "objectid": "631",
+      "gis_id": "487",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W 6TH ST",
+      "shape_length": "146.13295185483153"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.757557853925,
+              30.272919816123
+            ],
+            [
+              -97.757943726138,
+              30.273065088583
+            ]
+          ]
+        ]
+      },
+      "objectid": "523",
+      "gis_id": "591",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W 6TH ST",
+      "shape_length": "132.77428286548582"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.750074926319,
+              30.258387664625
+            ],
+            [
+              -97.750940716037,
+              30.25693368927
+            ],
+            [
+              -97.752367033598,
+              30.254657649847
+            ]
+          ]
+        ]
+      },
+      "objectid": "115",
+      "gis_id": "186",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S 1ST ST",
+      "shape_length": "1537.6100128398057"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.762594872185,
+              30.254252716382
+            ],
+            [
+              -97.763152392535,
+              30.253392048413
+            ],
+            [
+              -97.763553996393,
+              30.252943550353
+            ],
+            [
+              -97.764153630879,
+              30.252345004621
+            ]
+          ]
+        ]
+      },
+      "objectid": "502",
+      "gis_id": "570",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S LAMAR BLVD",
+      "shape_length": "854.22087581591586"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.745164001456,
+              30.261704472816
+            ],
+            [
+              -97.745510498989,
+              30.260834113495
+            ],
+            [
+              -97.746148980609,
+              30.259117045679
+            ]
+          ]
+        ]
+      },
+      "objectid": "97",
+      "gis_id": "168",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S CONGRESS AVE",
+      "shape_length": "991.11902362964884"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.749877229796,
+              30.269002730082
+            ],
+            [
+              -97.75096199798,
+              30.269316132956
+            ]
+          ]
+        ]
+      },
+      "objectid": "431",
+      "gis_id": "499",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W 5TH ST",
+      "shape_length": "360.91688970240028"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.779850752851,
+              30.245356330179
+            ],
+            [
+              -97.781404704695,
+              30.244262829556
+            ]
+          ]
+        ]
+      },
+      "objectid": "643",
+      "gis_id": "643",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S LAMAR BLVD",
+      "shape_length": "631.61135787489081"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.759629913089,
+              30.242116494111
+            ],
+            [
+              -97.761167767131,
+              30.239680340706
+            ]
+          ]
+        ]
+      },
+      "objectid": "649",
+      "gis_id": "649",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S 1ST ST",
+      "shape_length": "1010.3631896122948"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.757749949034,
+              30.262935868205
+            ],
+            [
+              -97.757860407054,
+              30.262898676257
+            ],
+            [
+              -97.758107260707,
+              30.262254587099
+            ],
+            [
+              -97.75804878879,
+              30.262143535919
+            ]
+          ]
+        ]
+      },
+      "objectid": "539",
+      "gis_id": "607",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S LAMAR BLVD",
+      "shape_length": "328.68332537402978"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.729085745795,
+              30.278515117214
+            ],
+            [
+              -97.728494401142,
+              30.278573837523
+            ]
+          ]
+        ]
+      },
+      "objectid": "617",
+      "gis_id": "473",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E MARTIN LUTHER KING BLVD",
+      "shape_length": "187.87869665284236"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.75067317347,
+              30.278851099662
+            ],
+            [
+              -97.750713411421,
+              30.279231567712
+            ],
+            [
+              -97.750726784385,
+              30.279672165913
+            ],
+            [
+              -97.750703132072,
+              30.27983844269
+            ]
+          ]
+        ]
+      },
+      "objectid": "619",
+      "gis_id": "475",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "N LAMAR BLVD",
+      "shape_length": "360.18266416891822"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.755837252846,
+              30.267657875457
+            ],
+            [
+              -97.755698272742,
+              30.267969140548
+            ]
+          ]
+        ]
+      },
+      "objectid": "552",
+      "gis_id": "620",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "N LAMAR BLVD",
+      "shape_length": "121.4088697966949"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.754288630702,
+              30.251508711978
+            ],
+            [
+              -97.754640109858,
+              30.250654934155
+            ]
+          ]
+        ]
+      },
+      "objectid": "507",
+      "gis_id": "575",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S 1ST ST",
+      "shape_length": "329.74672253602881"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.761849819055,
+              30.273128298415
+            ],
+            [
+              -97.762597564521,
+              30.27343412186
+            ]
+          ]
+        ]
+      },
+      "objectid": "522",
+      "gis_id": "590",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W 5TH ST",
+      "shape_length": "260.93497563263031"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.730535817567,
+              30.264408769902
+            ],
+            [
+              -97.729537932139,
+              30.264050201602
+            ]
+          ]
+        ]
+      },
+      "objectid": "195",
+      "gis_id": "266",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E 6TH ST",
+      "shape_length": "340.95868423477322"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.746882875957,
+              30.257148869229
+            ],
+            [
+              -97.747376613565,
+              30.255866177229
+            ],
+            [
+              -97.748660710015,
+              30.252278147999
+            ]
+          ]
+        ]
+      },
+      "objectid": "504",
+      "gis_id": "572",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S CONGRESS AVE",
+      "shape_length": "1858.3216897202772"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.735795958387,
+              30.267125595738
+            ],
+            [
+              -97.73467371106,
+              30.266826429798
+            ]
+          ]
+        ]
+      },
+      "objectid": "473",
+      "gis_id": "541",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E 7TH ST",
+      "shape_length": "370.61640304306172"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.744899686298,
+              30.272774756099
+            ],
+            [
+              -97.744589375147,
+              30.273711854605
+            ]
+          ]
+        ]
+      },
+      "objectid": "627",
+      "gis_id": "483",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "GUADALUPE ST",
+      "shape_length": "354.61106326647291"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.74197280051,
+              30.296701363014
+            ],
+            [
+              -97.741205546375,
+              30.297890501065
+            ]
+          ]
+        ]
+      },
+      "objectid": "397",
+      "gis_id": "397",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "GUADALUPE ST",
+      "shape_length": "495.64910143789513"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.748433286405,
+              30.258643339604
+            ],
+            [
+              -97.749283281787,
+              30.259763370637
+            ]
+          ]
+        ]
+      },
+      "objectid": "101",
+      "gis_id": "172",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W RIVERSIDE DR",
+      "shape_length": "487.79690364496"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.735777589402,
+              30.248038247265
+            ],
+            [
+              -97.73489077814,
+              30.247848558717
+            ]
+          ]
+        ]
+      },
+      "objectid": "442",
+      "gis_id": "510",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E RIVERSIDE DR",
+      "shape_length": "288.3884274127023"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.755831992747,
+              30.247452780853
+            ],
+            [
+              -97.756346586967,
+              30.246569276213
+            ]
+          ]
+        ]
+      },
+      "objectid": "466",
+      "gis_id": "534",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S 1ST ST",
+      "shape_length": "360.06945110326404"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.739901944632,
+              30.281168006734
+            ],
+            [
+              -97.740515676946,
+              30.281333207674
+            ]
+          ]
+        ]
+      },
+      "objectid": "587",
+      "gis_id": "443",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W MARTIN LUTHER KING BLVD",
+      "shape_length": "202.82547826991919"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.74701513936,
+              30.292928388156
+            ],
+            [
+              -97.747058401628,
+              30.292985120651
+            ],
+            [
+              -97.747053372713,
+              30.293067556402
+            ],
+            [
+              -97.747055428387,
+              30.293164685381
+            ],
+            [
+              -97.747080232847,
+              30.293305866461
+            ],
+            [
+              -97.747122188866,
+              30.293420824169
+            ],
+            [
+              -97.747190113334,
+              30.293542495024
+            ],
+            [
+              -97.747408399823,
+              30.293875592883
+            ],
+            [
+              -97.747402480204,
+              30.293939199551
+            ]
+          ]
+        ]
+      },
+      "objectid": "598",
+      "gis_id": "454",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "N LAMAR BLVD",
+      "shape_length": "397.63149213996491"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.729090293965,
+              30.265022979376
+            ],
+            [
+              -97.728889478263,
+              30.264950138062
+            ]
+          ]
+        ]
+      },
+      "objectid": "181",
+      "gis_id": "252",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E 7TH ST",
+      "shape_length": "68.709821104906979"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.740045036144,
+              30.26830080066
+            ],
+            [
+              -97.738956483152,
+              30.268011981775
+            ]
+          ]
+        ]
+      },
+      "objectid": "435",
+      "gis_id": "503",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E 7TH ST",
+      "shape_length": "359.33958530195105"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.740513164878,
+              30.250717053086
+            ],
+            [
+              -97.740406738914,
+              30.250610193253
+            ],
+            [
+              -97.740255628008,
+              30.250482792118
+            ],
+            [
+              -97.740133692607,
+              30.250391982971
+            ],
+            [
+              -97.739933807425,
+              30.250257047653
+            ],
+            [
+              -97.739673550108,
+              30.250124163437
+            ]
+          ]
+        ]
+      },
+      "objectid": "508",
+      "gis_id": "576",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E RIVERSIDE DR",
+      "shape_length": "343.892093936921"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.743056800934,
+              30.305202597356
+            ],
+            [
+              -97.742388149701,
+              30.306258968937
+            ]
+          ]
+        ]
+      },
+      "objectid": "358",
+      "gis_id": "358",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "N LAMAR BLVD",
+      "shape_length": "438.32066696939438"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.741557796683,
+              30.287724089367
+            ],
+            [
+              -97.741468774122,
+              30.288767421327
+            ]
+          ]
+        ]
+      },
+      "objectid": "416",
+      "gis_id": "416",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "GUADALUPE ST",
+      "shape_length": "380.48749183880079"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.746655614407,
+              30.299514012039
+            ],
+            [
+              -97.746236522107,
+              30.300248778951
+            ]
+          ]
+        ]
+      },
+      "objectid": "391",
+      "gis_id": "391",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "N LAMAR BLVD",
+      "shape_length": "298.1654416777256"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.75294803624,
+              30.271138857228
+            ],
+            [
+              -97.753971460515,
+              30.271543602144
+            ]
+          ]
+        ]
+      },
+      "objectid": "629",
+      "gis_id": "485",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W 6TH ST",
+      "shape_length": "355.02764290676515"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.75853331584,
+              30.260867768844
+            ],
+            [
+              -97.758758434244,
+              30.260954060765
+            ],
+            [
+              -97.759002878376,
+              30.261068902556
+            ],
+            [
+              -97.759140027408,
+              30.261152325373
+            ]
+          ]
+        ]
+      },
+      "objectid": "544",
+      "gis_id": "612",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "BARTON SPRINGS RD",
+      "shape_length": "218.31605517920747"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.738114959256,
+              30.280693287648
+            ],
+            [
+              -97.736781891139,
+              30.280300487458
+            ]
+          ]
+        ]
+      },
+      "objectid": "604",
+      "gis_id": "460",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E MARTIN LUTHER KING BLVD",
+      "shape_length": "444.37048962039574"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.734517931685,
+              30.279644017632
+            ],
+            [
+              -97.732200898951,
+              30.278980185721
+            ]
+          ]
+        ]
+      },
+      "objectid": "476",
+      "gis_id": "544",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E MARTIN LUTHER KING BLVD",
+      "shape_length": "770.19537522992607"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.752285202462,
+              30.275022240898
+            ],
+            [
+              -97.751833800633,
+              30.275964764857
+            ]
+          ]
+        ]
+      },
+      "objectid": "625",
+      "gis_id": "481",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "N LAMAR BLVD",
+      "shape_length": "371.22263009406265"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.768061019146,
+              30.249048656186
+            ],
+            [
+              -97.769954983509,
+              30.248418156614
+            ]
+          ]
+        ]
+      },
+      "objectid": "460",
+      "gis_id": "528",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S LAMAR BLVD",
+      "shape_length": "640.47987784000725"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.756259479274,
+              30.266518681693
+            ],
+            [
+              -97.756397434793,
+              30.266217186774
+            ],
+            [
+              -97.756574931717,
+              30.265820692856
+            ],
+            [
+              -97.756860377986,
+              30.26509759428
+            ],
+            [
+              -97.757113139792,
+              30.264530607604
+            ]
+          ]
+        ]
+      },
+      "objectid": "534",
+      "gis_id": "602",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S LAMAR BLVD",
+      "shape_length": "771.79189237139281"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.74953184919,
+              30.269950134255
+            ],
+            [
+              -97.750593429181,
+              30.270301576246
+            ]
+          ]
+        ]
+      },
+      "objectid": "479",
+      "gis_id": "547",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W 6TH ST",
+      "shape_length": "358.66966556025375"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.752179581471,
+              30.242915452132
+            ],
+            [
+              -97.752474042621,
+              30.242068287734
+            ],
+            [
+              -97.752534449871,
+              30.241857316414
+            ]
+          ]
+        ]
+      },
+      "objectid": "453",
+      "gis_id": "521",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S CONGRESS AVE",
+      "shape_length": "400.89427055953894"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.75096199798,
+              30.269316132956
+            ],
+            [
+              -97.752383637505,
+              30.269592307096
+            ],
+            [
+              -97.753178087905,
+              30.269743073106
+            ]
+          ]
+        ]
+      },
+      "objectid": "428",
+      "gis_id": "496",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W 5TH ST",
+      "shape_length": "716.61198845673084"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.717467797586,
+              30.261480291955
+            ],
+            [
+              -97.717206868471,
+              30.261444683417
+            ]
+          ]
+        ]
+      },
+      "objectid": "720",
+      "gis_id": "720",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E 7TH ST",
+      "shape_length": "83.3899380747384"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.744589375147,
+              30.273711854605
+            ],
+            [
+              -97.744133717783,
+              30.274858892588
+            ]
+          ]
+        ]
+      },
+      "objectid": "549",
+      "gis_id": "617",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "GUADALUPE ST",
+      "shape_length": "441.26674635575489"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.721244343414,
+              30.279811448874
+            ],
+            [
+              -97.720218855576,
+              30.279999568467
+            ]
+          ]
+        ]
+      },
+      "objectid": "475",
+      "gis_id": "543",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E MARTIN LUTHER KING BLVD",
+      "shape_length": "330.84737377711514"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.741998325201,
+              30.282647608496
+            ],
+            [
+              -97.741913486638,
+              30.283801038444
+            ]
+          ]
+        ]
+      },
+      "objectid": "571",
+      "gis_id": "427",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "GUADALUPE ST",
+      "shape_length": "420.34404956915063"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.764166775992,
+              30.264096677233
+            ],
+            [
+              -97.764593802184,
+              30.264406619707
+            ],
+            [
+              -97.764923268383,
+              30.264658471606
+            ],
+            [
+              -97.764995189037,
+              30.264774106744
+            ]
+          ]
+        ]
+      },
+      "objectid": "536",
+      "gis_id": "604",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "BARTON SPRINGS RD",
+      "shape_length": "362.11771872354359"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.740948047422,
+              30.298273092437
+            ],
+            [
+              -97.740563376823,
+              30.298906142468
+            ]
+          ]
+        ]
+      },
+      "objectid": "394",
+      "gis_id": "394",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "GUADALUPE ST",
+      "shape_length": "260.27846991989259"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.718043389847,
+              30.261577303282
+            ],
+            [
+              -97.717467797586,
+              30.261480291955
+            ]
+          ]
+        ]
+      },
+      "objectid": "415",
+      "gis_id": "415",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E 7TH ST",
+      "shape_length": "185.11410718539105"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.764848000016,
+              30.274862117096
+            ],
+            [
+              -97.765508450392,
+              30.275347310407
+            ]
+          ]
+        ]
+      },
+      "objectid": "550",
+      "gis_id": "618",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W 5TH ST",
+      "shape_length": "273.13510602795594"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.746148980609,
+              30.259117045679
+            ],
+            [
+              -97.746882875957,
+              30.257148869229
+            ]
+          ]
+        ]
+      },
+      "objectid": "113",
+      "gis_id": "184",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S CONGRESS AVE",
+      "shape_length": "752.37383220067181"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.753971460515,
+              30.271543602144
+            ],
+            [
+              -97.752781371721,
+              30.273953963811
+            ]
+          ]
+        ]
+      },
+      "objectid": "478",
+      "gis_id": "546",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "N LAMAR BLVD",
+      "shape_length": "953.73183878091743"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.74174230349,
+              30.285897025796
+            ],
+            [
+              -97.741692220661,
+              30.286494653326
+            ]
+          ]
+        ]
+      },
+      "objectid": "419",
+      "gis_id": "419",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "GUADALUPE ST",
+      "shape_length": "217.92481535307692"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.763695251884,
+              30.263801654331
+            ],
+            [
+              -97.763802373904,
+              30.263786173702
+            ],
+            [
+              -97.764166775992,
+              30.264096677233
+            ]
+          ]
+        ]
+      },
+      "objectid": "537",
+      "gis_id": "605",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "BARTON SPRINGS RD",
+      "shape_length": "195.49015483758231"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.744133717783,
+              30.274858892588
+            ],
+            [
+              -97.743716387836,
+              30.276015504357
+            ]
+          ]
+        ]
+      },
+      "objectid": "512",
+      "gis_id": "580",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "GUADALUPE ST",
+      "shape_length": "440.79354350263969"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.748714313878,
+              30.252169216249
+            ],
+            [
+              -97.749113021015,
+              30.251121131004
+            ]
+          ]
+        ]
+      },
+      "objectid": "506",
+      "gis_id": "574",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S CONGRESS AVE",
+      "shape_length": "401.4286189700735"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.759362050994,
+              30.258613087606
+            ],
+            [
+              -97.759631536318,
+              30.258071185766
+            ],
+            [
+              -97.760158413489,
+              30.257589459739
+            ]
+          ]
+        ]
+      },
+      "objectid": "554",
+      "gis_id": "622",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S LAMAR BLVD",
+      "shape_length": "456.2559844979906"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.731736510494,
+              30.265901263499
+            ],
+            [
+              -97.731094891867,
+              30.265680445181
+            ]
+          ]
+        ]
+      },
+      "objectid": "486",
+      "gis_id": "554",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E 7TH ST",
+      "shape_length": "217.89660081889866"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.738956483152,
+              30.268011981775
+            ],
+            [
+              -97.737925456219,
+              30.267705065489
+            ]
+          ]
+        ]
+      },
+      "objectid": "438",
+      "gis_id": "506",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E 7TH ST",
+      "shape_length": "344.09304713396995"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.761417275094,
+              30.272962491469
+            ],
+            [
+              -97.761849819055,
+              30.273128298415
+            ]
+          ]
+        ]
+      },
+      "objectid": "524",
+      "gis_id": "592",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W 5TH ST",
+      "shape_length": "149.26560610752742"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.755396432714,
+              30.272103505535
+            ],
+            [
+              -97.756411851547,
+              30.272481253806
+            ],
+            [
+              -97.757129893624,
+              30.272754691248
+            ]
+          ]
+        ]
+      },
+      "objectid": "526",
+      "gis_id": "594",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W 6TH ST",
+      "shape_length": "596.26662998281256"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.742293518351,
+              30.294317795377
+            ],
+            [
+              -97.742490119156,
+              30.294668313681
+            ]
+          ]
+        ]
+      },
+      "objectid": "555",
+      "gis_id": "623",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "GUADALUPE ST",
+      "shape_length": "141.77800349074138"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.754609208895,
+              30.270295794358
+            ],
+            [
+              -97.753971460515,
+              30.271543602144
+            ]
+          ]
+        ]
+      },
+      "objectid": "634",
+      "gis_id": "490",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "N LAMAR BLVD",
+      "shape_length": "496.46692680618696"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.722119211876,
+              30.262581803639
+            ],
+            [
+              -97.718043389847,
+              30.261577303282
+            ]
+          ]
+        ]
+      },
+      "objectid": "108",
+      "gis_id": "179",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E 7TH ST",
+      "shape_length": "1337.6285286032617"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.746267542145,
+              30.269028912767
+            ],
+            [
+              -97.747371741818,
+              30.26932623568
+            ]
+          ]
+        ]
+      },
+      "objectid": "430",
+      "gis_id": "498",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W 6TH ST",
+      "shape_length": "364.96702292469212"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.742609997558,
+              30.278867250742
+            ],
+            [
+              -97.742295008289,
+              30.279740992538
+            ]
+          ]
+        ]
+      },
+      "objectid": "614",
+      "gis_id": "470",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "GUADALUPE ST",
+      "shape_length": "332.96242504445661"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.757685541393,
+              30.244470200304
+            ],
+            [
+              -97.758445249879,
+              30.24330283146
+            ]
+          ]
+        ]
+      },
+      "objectid": "644",
+      "gis_id": "644",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S 1ST ST",
+      "shape_length": "487.64746095427904"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.736781891139,
+              30.280300487458
+            ],
+            [
+              -97.735716196669,
+              30.279981851849
+            ]
+          ]
+        ]
+      },
+      "objectid": "606",
+      "gis_id": "462",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E MARTIN LUTHER KING BLVD",
+      "shape_length": "355.7878713641432"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.742824536764,
+              30.295434168496
+            ],
+            [
+              -97.742107917959,
+              30.296508820481
+            ]
+          ]
+        ]
+      },
+      "objectid": "106",
+      "gis_id": "177",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "GUADALUPE ST",
+      "shape_length": "451.55868798019316"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.752776335272,
+              30.288538881972
+            ],
+            [
+              -97.75273594679,
+              30.28878474613
+            ],
+            [
+              -97.752617304206,
+              30.289082997216
+            ],
+            [
+              -97.752509896908,
+              30.289298798385
+            ],
+            [
+              -97.75225217653,
+              30.289745571902
+            ],
+            [
+              -97.752147720446,
+              30.289779883048
+            ]
+          ]
+        ]
+      },
+      "objectid": "566",
+      "gis_id": "634",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "N LAMAR BLVD",
+      "shape_length": "507.52790661017428"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.752899625453,
+              30.284772436503
+            ],
+            [
+              -97.752955211353,
+              30.284790194893
+            ],
+            [
+              -97.752982095084,
+              30.284836061659
+            ],
+            [
+              -97.753020549981,
+              30.284899544085
+            ],
+            [
+              -97.753066552362,
+              30.284980642358
+            ],
+            [
+              -97.75312612878,
+              30.285153792765
+            ],
+            [
+              -97.753205582806,
+              30.285447643372
+            ],
+            [
+              -97.753247725489,
+              30.285737140619
+            ],
+            [
+              -97.753242946796,
+              30.286227759749
+            ],
+            [
+              -97.753240368642,
+              30.286532857762
+            ],
+            [
+              -97.753219923653,
+              30.286721532524
+            ],
+            [
+              -97.753164933615,
+              30.286983742849
+            ],
+            [
+              -97.753090451628,
+              30.287055154219
+            ]
+          ]
+        ]
+      },
+      "objectid": "600",
+      "gis_id": "456",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "N LAMAR BLVD",
+      "shape_length": "868.27366418524127"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.731094891867,
+              30.265680445181
+            ],
+            [
+              -97.730340339731,
+              30.265430678624
+            ]
+          ]
+        ]
+      },
+      "objectid": "487",
+      "gis_id": "555",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E 7TH ST",
+      "shape_length": "254.94238367219879"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.726544811911,
+              30.263073473462
+            ],
+            [
+              -97.72448215922,
+              30.262371406854
+            ]
+          ]
+        ]
+      },
+      "objectid": "412",
+      "gis_id": "412",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E 6TH ST",
+      "shape_length": "699.46331205168053"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.734209685712,
+              30.265641245172
+            ],
+            [
+              -97.733572095145,
+              30.265433034744
+            ]
+          ]
+        ]
+      },
+      "objectid": "469",
+      "gis_id": "537",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E 6TH ST",
+      "shape_length": "215.05842925948855"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.752781371721,
+              30.273953963811
+            ],
+            [
+              -97.752285202462,
+              30.275022240898
+            ]
+          ]
+        ]
+      },
+      "objectid": "626",
+      "gis_id": "482",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "N LAMAR BLVD",
+      "shape_length": "418.90349282370977"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.741692220661,
+              30.286494653326
+            ],
+            [
+              -97.741557796683,
+              30.287724089367
+            ]
+          ]
+        ]
+      },
+      "objectid": "418",
+      "gis_id": "418",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "GUADALUPE ST",
+      "shape_length": "449.14115933924018"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.754914177262,
+              30.250030624008
+            ],
+            [
+              -97.755123179852,
+              30.249521096028
+            ]
+          ]
+        ]
+      },
+      "objectid": "697",
+      "gis_id": "697",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S 1ST ST",
+      "shape_length": "196.71024035919081"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.775232172622,
+              30.247270157471
+            ],
+            [
+              -97.775827303057,
+              30.247197550066
+            ],
+            [
+              -97.776218095747,
+              30.247140967077
+            ],
+            [
+              -97.776590577362,
+              30.247075985779
+            ],
+            [
+              -97.777190743017,
+              30.246929131118
+            ]
+          ]
+        ]
+      },
+      "objectid": "467",
+      "gis_id": "535",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S LAMAR BLVD",
+      "shape_length": "631.71794402055036"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.736319053477,
+              30.301862103954
+            ],
+            [
+              -97.738154269236,
+              30.302746382707
+            ]
+          ]
+        ]
+      },
+      "objectid": "375",
+      "gis_id": "375",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W 38TH ST",
+      "shape_length": "662.45456699344572"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.742087419554,
+              30.281807804287
+            ],
+            [
+              -97.742695086014,
+              30.281954856721
+            ]
+          ]
+        ]
+      },
+      "objectid": "602",
+      "gis_id": "458",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W MARTIN LUTHER KING BLVD",
+      "shape_length": "199.12299726072598"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.730077004425,
+              30.265326316195
+            ],
+            [
+              -97.729090293965,
+              30.265022979376
+            ]
+          ]
+        ]
+      },
+      "objectid": "179",
+      "gis_id": "250",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E 7TH ST",
+      "shape_length": "330.461760649908"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.732200898951,
+              30.278980185721
+            ],
+            [
+              -97.730494010046,
+              30.278563971312
+            ]
+          ]
+        ]
+      },
+      "objectid": "616",
+      "gis_id": "472",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E MARTIN LUTHER KING BLVD",
+      "shape_length": "559.64738472576732"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.742490119156,
+              30.294668313681
+            ],
+            [
+              -97.742824536764,
+              30.295434168496
+            ]
+          ]
+        ]
+      },
+      "objectid": "399",
+      "gis_id": "399",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "GUADALUPE ST",
+      "shape_length": "297.8588587088056"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.741117244856,
+              30.268608532785
+            ],
+            [
+              -97.740045036144,
+              30.26830080066
+            ]
+          ]
+        ]
+      },
+      "objectid": "433",
+      "gis_id": "501",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E 7TH ST",
+      "shape_length": "356.50667226104275"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.746882875957,
+              30.257148869229
+            ],
+            [
+              -97.745631213564,
+              30.25591289578
+            ],
+            [
+              -97.744835215828,
+              30.255035024778
+            ],
+            [
+              -97.744610151922,
+              30.254786961809
+            ],
+            [
+              -97.744510986598,
+              30.254664245633
+            ],
+            [
+              -97.744454715919,
+              30.254580543516
+            ],
+            [
+              -97.74439892568,
+              30.254477763878
+            ],
+            [
+              -97.744314842011,
+              30.254338437942
+            ],
+            [
+              -97.744229204013,
+              30.254167313646
+            ]
+          ]
+        ]
+      },
+      "objectid": "116",
+      "gis_id": "187",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E RIVERSIDE DR",
+      "shape_length": "1375.83610108851"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.751311265629,
+              30.245150475247
+            ],
+            [
+              -97.751637804084,
+              30.244252197158
+            ]
+          ]
+        ]
+      },
+      "objectid": "449",
+      "gis_id": "517",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S CONGRESS AVE",
+      "shape_length": "342.58031901778696"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.753526659646,
+              30.238764836308
+            ],
+            [
+              -97.754721054347,
+              30.237408826063
+            ],
+            [
+              -97.754895356439,
+              30.237210955726
+            ]
+          ]
+        ]
+      },
+      "objectid": "710",
+      "gis_id": "710",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S CONGRESS AVE",
+      "shape_length": "711.4674497833447"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.745941348288,
+              30.269968443457
+            ],
+            [
+              -97.745600125134,
+              30.270877416294
+            ]
+          ]
+        ]
+      },
+      "objectid": "636",
+      "gis_id": "492",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "GUADALUPE ST",
+      "shape_length": "347.69088779027385"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.744718156114,
+              30.302705839287
+            ],
+            [
+              -97.744225187637,
+              30.303476981509
+            ]
+          ]
+        ]
+      },
+      "objectid": "373",
+      "gis_id": "373",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "N LAMAR BLVD",
+      "shape_length": "320.7133596183113"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.732116607266,
+              30.266031508913
+            ],
+            [
+              -97.731736510494,
+              30.265901263499
+            ]
+          ]
+        ]
+      },
+      "objectid": "484",
+      "gis_id": "552",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E 7TH ST",
+      "shape_length": "129.0063921227692"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.742295008289,
+              30.279740992538
+            ],
+            [
+              -97.741998425234,
+              30.280637108641
+            ]
+          ]
+        ]
+      },
+      "objectid": "610",
+      "gis_id": "466",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "GUADALUPE ST",
+      "shape_length": "339.0870492254316"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.76743300609,
+              30.249465129717
+            ],
+            [
+              -97.768061019146,
+              30.249048656186
+            ]
+          ]
+        ]
+      },
+      "objectid": "459",
+      "gis_id": "527",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S LAMAR BLVD",
+      "shape_length": "249.52663904351519"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.734470143565,
+              30.264675655304
+            ],
+            [
+              -97.734001932428,
+              30.264531390808
+            ]
+          ]
+        ]
+      },
+      "objectid": "185",
+      "gis_id": "256",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E 5TH ST",
+      "shape_length": "156.85024500461859"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.750593429181,
+              30.270301576246
+            ],
+            [
+              -97.751327865335,
+              30.270563908514
+            ],
+            [
+              -97.751910148192,
+              30.270733812591
+            ]
+          ]
+        ]
+      },
+      "objectid": "633",
+      "gis_id": "489",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W 6TH ST",
+      "shape_length": "444.63511890226044"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.757113139792,
+              30.264530607604
+            ],
+            [
+              -97.757226447138,
+              30.264441327305
+            ],
+            [
+              -97.757551225905,
+              30.263678258725
+            ],
+            [
+              -97.75780297028,
+              30.263050495107
+            ],
+            [
+              -97.757749949034,
+              30.262935868205
+            ]
+          ]
+        ]
+      },
+      "objectid": "538",
+      "gis_id": "606",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S LAMAR BLVD",
+      "shape_length": "630.83904798015408"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.739109327033,
+              30.30120626687
+            ],
+            [
+              -97.738917513815,
+              30.301532426776
+            ]
+          ]
+        ]
+      },
+      "objectid": "384",
+      "gis_id": "384",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "GUADALUPE ST",
+      "shape_length": "133.17308400295346"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.741817815572,
+              30.285003754632
+            ],
+            [
+              -97.74174230349,
+              30.285897025796
+            ]
+          ]
+        ]
+      },
+      "objectid": "420",
+      "gis_id": "420",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "GUADALUPE ST",
+      "shape_length": "325.74629046062233"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.738154269236,
+              30.302746382707
+            ],
+            [
+              -97.739265253265,
+              30.30333544361
+            ]
+          ]
+        ]
+      },
+      "objectid": "372",
+      "gis_id": "372",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W 38TH ST",
+      "shape_length": "410.87245763271"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.746641010826,
+              30.268098586818
+            ],
+            [
+              -97.746267542145,
+              30.269028912767
+            ]
+          ]
+        ]
+      },
+      "objectid": "436",
+      "gis_id": "504",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "GUADALUPE ST",
+      "shape_length": "358.30295303732123"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.755698272742,
+              30.267969140548
+            ],
+            [
+              -97.755211099828,
+              30.269099188376
+            ],
+            [
+              -97.755206255598,
+              30.2691097349
+            ],
+            [
+              -97.754698801605,
+              30.270224025145
+            ],
+            [
+              -97.754609208895,
+              30.270295794358
+            ]
+          ]
+        ]
+      },
+      "objectid": "703",
+      "gis_id": "703",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "N LAMAR BLVD",
+      "shape_length": "917.20502202448858"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.727980377594,
+              30.262475593527
+            ],
+            [
+              -97.726972773554,
+              30.262155311903
+            ]
+          ]
+        ]
+      },
+      "objectid": "413",
+      "gis_id": "413",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E 5TH ST",
+      "shape_length": "338.76480914056611"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.739265253265,
+              30.30333544361
+            ],
+            [
+              -97.739791836613,
+              30.303585380366
+            ]
+          ]
+        ]
+      },
+      "objectid": "369",
+      "gis_id": "369",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W 38TH ST",
+      "shape_length": "189.41247710107484"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.750632219985,
+              30.247029016672
+            ],
+            [
+              -97.750973900651,
+              30.246098041242
+            ]
+          ]
+        ]
+      },
+      "objectid": "446",
+      "gis_id": "514",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S CONGRESS AVE",
+      "shape_length": "355.36039172412222"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.765508450392,
+              30.275347310407
+            ],
+            [
+              -97.765928263922,
+              30.27563738337
+            ],
+            [
+              -97.766626638453,
+              30.276017139872
+            ],
+            [
+              -97.766940746116,
+              30.276163065074
+            ],
+            [
+              -97.767022598389,
+              30.276201092005
+            ],
+            [
+              -97.767187050326,
+              30.276274106261
+            ],
+            [
+              -97.767249655834,
+              30.276301900406
+            ],
+            [
+              -97.767765281483,
+              30.276491436221
+            ]
+          ]
+        ]
+      },
+      "objectid": "517",
+      "gis_id": "585",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W 5TH ST",
+      "shape_length": "828.56102097508733"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.744229204013,
+              30.254167313646
+            ],
+            [
+              -97.74422478346,
+              30.25405924576
+            ],
+            [
+              -97.744173415953,
+              30.253973497739
+            ],
+            [
+              -97.744086781431,
+              30.253838354774
+            ],
+            [
+              -97.744016281971,
+              30.25373951326
+            ],
+            [
+              -97.743940873491,
+              30.253640599556
+            ],
+            [
+              -97.743873554158,
+              30.253557828851
+            ]
+          ]
+        ]
+      },
+      "objectid": "711",
+      "gis_id": "711",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E RIVERSIDE DR",
+      "shape_length": "252.99925652675665"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.744225187637,
+              30.303476981509
+            ],
+            [
+              -97.743753417901,
+              30.304224429765
+            ]
+          ]
+        ]
+      },
+      "objectid": "368",
+      "gis_id": "368",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "N LAMAR BLVD",
+      "shape_length": "309.93671105776605"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.754421140165,
+              30.263506794161
+            ],
+            [
+              -97.754579946107,
+              30.263531470671
+            ],
+            [
+              -97.755099584926,
+              30.263731013311
+            ],
+            [
+              -97.755290951928,
+              30.263820097081
+            ],
+            [
+              -97.755670962388,
+              30.263990013008
+            ],
+            [
+              -97.756048961517,
+              30.264134390844
+            ],
+            [
+              -97.756120077702,
+              30.264221576891
+            ]
+          ]
+        ]
+      },
+      "objectid": "704",
+      "gis_id": "704",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W RIVERSIDE DR",
+      "shape_length": "603.05391054501922"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.734001932428,
+              30.264531390808
+            ],
+            [
+              -97.732965735624,
+              30.264183073614
+            ]
+          ]
+        ]
+      },
+      "objectid": "188",
+      "gis_id": "259",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E 5TH ST",
+      "shape_length": "350.80054006646395"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.73467371106,
+              30.266826429798
+            ],
+            [
+              -97.73437577548,
+              30.266746457946
+            ],
+            [
+              -97.734202003774,
+              30.266699807412
+            ],
+            [
+              -97.733866384929,
+              30.266576713964
+            ]
+          ]
+        ]
+      },
+      "objectid": "474",
+      "gis_id": "542",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E 7TH ST",
+      "shape_length": "270.89551354508325"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.723186359951,
+              30.279479721093
+            ],
+            [
+              -97.722207100835,
+              30.279657796634
+            ]
+          ]
+        ]
+      },
+      "objectid": "608",
+      "gis_id": "464",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E MARTIN LUTHER KING BLVD",
+      "shape_length": "315.81680541739973"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.752534449871,
+              30.241857316414
+            ],
+            [
+              -97.752707075268,
+              30.240811130793
+            ]
+          ]
+        ]
+      },
+      "objectid": "454",
+      "gis_id": "522",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S CONGRESS AVE",
+      "shape_length": "384.37267901737977"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.758445249879,
+              30.24330283146
+            ],
+            [
+              -97.758860612385,
+              30.242634599616
+            ],
+            [
+              -97.759629913089,
+              30.242116494111
+            ]
+          ]
+        ]
+      },
+      "objectid": "646",
+      "gis_id": "646",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S 1ST ST",
+      "shape_length": "583.60159586923783"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.760158413489,
+              30.257589459739
+            ],
+            [
+              -97.760920260148,
+              30.25693917839
+            ],
+            [
+              -97.761262019713,
+              30.256478483994
+            ],
+            [
+              -97.761498186836,
+              30.256056923982
+            ]
+          ]
+        ]
+      },
+      "objectid": "597",
+      "gis_id": "453",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S LAMAR BLVD",
+      "shape_length": "707.10275146666015"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.741422993595,
+              30.289085535047
+            ],
+            [
+              -97.741362106861,
+              30.289818646601
+            ]
+          ]
+        ]
+      },
+      "objectid": "564",
+      "gis_id": "632",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "GUADALUPE ST",
+      "shape_length": "267.31641281003965"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.75732435621,
+              30.27133918008
+            ],
+            [
+              -97.758181654083,
+              30.271658949031
+            ]
+          ]
+        ]
+      },
+      "objectid": "530",
+      "gis_id": "598",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W 5TH ST",
+      "shape_length": "294.56008930820411"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.746742635022,
+              30.283109250601
+            ],
+            [
+              -97.747192392298,
+              30.2832365921
+            ]
+          ]
+        ]
+      },
+      "objectid": "488",
+      "gis_id": "556",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W MARTIN LUTHER KING JR BLVD",
+      "shape_length": "149.324849938412"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.748480105635,
+              30.298140111935
+            ],
+            [
+              -97.748444126843,
+              30.298233778545
+            ],
+            [
+              -97.748313659898,
+              30.298347734421
+            ],
+            [
+              -97.748153784486,
+              30.298457989351
+            ],
+            [
+              -97.747968111253,
+              30.298555099055
+            ],
+            [
+              -97.74779182367,
+              30.298627205336
+            ],
+            [
+              -97.747624855643,
+              30.298676781118
+            ],
+            [
+              -97.747420266502,
+              30.298742869411
+            ],
+            [
+              -97.747284009343,
+              30.298816167927
+            ],
+            [
+              -97.747153316276,
+              30.298921949201
+            ],
+            [
+              -97.747064483831,
+              30.299019746499
+            ],
+            [
+              -97.746985847474,
+              30.299056417268
+            ]
+          ]
+        ]
+      },
+      "objectid": "395",
+      "gis_id": "395",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "N LAMAR BLVD",
+      "shape_length": "593.744735006"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.751978151878,
+              30.283435805612
+            ],
+            [
+              -97.7521449673,
+              30.283550857358
+            ],
+            [
+              -97.752360030439,
+              30.283785061938
+            ],
+            [
+              -97.752555377749,
+              30.284078716837
+            ],
+            [
+              -97.752915283243,
+              30.284715434206
+            ],
+            [
+              -97.752899625453,
+              30.284772436503
+            ]
+          ]
+        ]
+      },
+      "objectid": "422",
+      "gis_id": "422",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "N LAMAR BLVD",
+      "shape_length": "578.73636539808274"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.756044359022,
+              30.270859635818
+            ],
+            [
+              -97.75732435621,
+              30.27133918008
+            ]
+          ]
+        ]
+      },
+      "objectid": "531",
+      "gis_id": "599",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W 5TH ST",
+      "shape_length": "440.10097584222592"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.746969547246,
+              30.267189355693
+            ],
+            [
+              -97.746641010826,
+              30.268098586818
+            ]
+          ]
+        ]
+      },
+      "objectid": "472",
+      "gis_id": "540",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "GUADALUPE ST",
+      "shape_length": "346.56162020423875"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.745600125134,
+              30.270877416294
+            ],
+            [
+              -97.745242028159,
+              30.271824552298
+            ]
+          ]
+        ]
+      },
+      "objectid": "630",
+      "gis_id": "486",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "GUADALUPE ST",
+      "shape_length": "362.53827182700883"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.739656240453,
+              30.300345474086
+            ],
+            [
+              -97.739109327033,
+              30.30120626687
+            ]
+          ]
+        ]
+      },
+      "objectid": "387",
+      "gis_id": "387",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "GUADALUPE ST",
+      "shape_length": "357.486469317989"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.746985847474,
+              30.299056417268
+            ],
+            [
+              -97.746655614407,
+              30.299514012039
+            ]
+          ]
+        ]
+      },
+      "objectid": "105",
+      "gis_id": "176",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "N LAMAR BLVD",
+      "shape_length": "196.36091137821921"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.733866384929,
+              30.266576713964
+            ],
+            [
+              -97.733181429017,
+              30.266369357159
+            ]
+          ]
+        ]
+      },
+      "objectid": "482",
+      "gis_id": "550",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E 7TH ST",
+      "shape_length": "229.01005109766731"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.748431317825,
+              30.269633650982
+            ],
+            [
+              -97.74953184919,
+              30.269950134255
+            ]
+          ]
+        ]
+      },
+      "objectid": "426",
+      "gis_id": "494",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W 6TH ST",
+      "shape_length": "365.99042846280508"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.762597564521,
+              30.27343412186
+            ],
+            [
+              -97.763325931447,
+              30.273712214061
+            ]
+          ]
+        ]
+      },
+      "objectid": "520",
+      "gis_id": "588",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W 5TH ST",
+      "shape_length": "251.18614340588357"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.738154269236,
+              30.302746382707
+            ],
+            [
+              -97.737650677801,
+              30.303498032314
+            ]
+          ]
+        ]
+      },
+      "objectid": "371",
+      "gis_id": "371",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "GUADALUPE ST",
+      "shape_length": "316.20425658470663"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.762164943986,
+              30.254931671267
+            ],
+            [
+              -97.762594872185,
+              30.254252716382
+            ]
+          ]
+        ]
+      },
+      "objectid": "471",
+      "gis_id": "539",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S LAMAR BLVD",
+      "shape_length": "281.7802260472684"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.756259479274,
+              30.266518681693
+            ],
+            [
+              -97.756257286822,
+              30.266532003941
+            ],
+            [
+              -97.756223653073,
+              30.266737932371
+            ],
+            [
+              -97.755837252846,
+              30.267657875457
+            ]
+          ]
+        ]
+      },
+      "objectid": "533",
+      "gis_id": "601",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "N LAMAR BLVD",
+      "shape_length": "436.65483646425656"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.754609208895,
+              30.270295794358
+            ],
+            [
+              -97.754750749921,
+              30.270355134652
+            ]
+          ]
+        ]
+      },
+      "objectid": "692",
+      "gis_id": "692",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W 5TH ST",
+      "shape_length": "49.620929317888987"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.743342861391,
+              30.276945822299
+            ],
+            [
+              -97.742998385495,
+              30.277902112177
+            ]
+          ]
+        ]
+      },
+      "objectid": "621",
+      "gis_id": "477",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "GUADALUPE ST",
+      "shape_length": "364.39455514497752"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.778122324319,
+              30.246493721438
+            ],
+            [
+              -97.778689629586,
+              30.246161438157
+            ]
+          ]
+        ]
+      },
+      "objectid": "693",
+      "gis_id": "693",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S LAMAR BLVD",
+      "shape_length": "216.08511120402611"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.738595085794,
+              30.301971456887
+            ],
+            [
+              -97.738154269236,
+              30.302746382707
+            ]
+          ]
+        ]
+      },
+      "objectid": "374",
+      "gis_id": "374",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "GUADALUPE ST",
+      "shape_length": "314.29495037244277"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.740515676946,
+              30.281333207674
+            ],
+            [
+              -97.741024710538,
+              30.281494774523
+            ]
+          ]
+        ]
+      },
+      "objectid": "585",
+      "gis_id": "441",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W MARTIN LUTHER KING BLVD",
+      "shape_length": "171.08182025813466"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.759982339092,
+              30.261491502345
+            ],
+            [
+              -97.760077173323,
+              30.261460321026
+            ],
+            [
+              -97.760568724335,
+              30.261606966112
+            ],
+            [
+              -97.760906515567,
+              30.261708579786
+            ],
+            [
+              -97.761136815176,
+              30.261765817853
+            ],
+            [
+              -97.761280727297,
+              30.261811914459
+            ],
+            [
+              -97.761443177165,
+              30.261878157744
+            ],
+            [
+              -97.761474594042,
+              30.26198687669
+            ]
+          ]
+        ]
+      },
+      "objectid": "541",
+      "gis_id": "609",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "BARTON SPRINGS RD",
+      "shape_length": "530.46554244705044"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.741254526718,
+              30.290869551154
+            ],
+            [
+              -97.741161172811,
+              30.291990107486
+            ]
+          ]
+        ]
+      },
+      "objectid": "561",
+      "gis_id": "629",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "GUADALUPE ST",
+      "shape_length": "408.5979029782967"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.73664614383,
+              30.248415737414
+            ],
+            [
+              -97.736507457751,
+              30.248295459399
+            ],
+            [
+              -97.736362791724,
+              30.248194889856
+            ],
+            [
+              -97.736174505003,
+              30.248091977621
+            ]
+          ]
+        ]
+      },
+      "objectid": "440",
+      "gis_id": "508",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E RIVERSIDE DR",
+      "shape_length": "190.66730712513422"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.763325931447,
+              30.273712214061
+            ],
+            [
+              -97.764848000016,
+              30.274862117096
+            ]
+          ]
+        ]
+      },
+      "objectid": "518",
+      "gis_id": "586",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W 5TH ST",
+      "shape_length": "636.98441327600824"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.741913486638,
+              30.283801038444
+            ],
+            [
+              -97.741817815572,
+              30.285003754632
+            ]
+          ]
+        ]
+      },
+      "objectid": "421",
+      "gis_id": "421",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "GUADALUPE ST",
+      "shape_length": "438.45616181808941"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.761498186836,
+              30.256056923982
+            ],
+            [
+              -97.762164943986,
+              30.254931671267
+            ]
+          ]
+        ]
+      },
+      "objectid": "501",
+      "gis_id": "569",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S LAMAR BLVD",
+      "shape_length": "460.21389374794342"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.746148980609,
+              30.259117045679
+            ],
+            [
+              -97.748433286405,
+              30.258643339604
+            ]
+          ]
+        ]
+      },
+      "objectid": "100",
+      "gis_id": "171",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "BARTON SPRINGS RD",
+      "shape_length": "741.49192653994112"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.743873554158,
+              30.253557828851
+            ],
+            [
+              -97.743713151895,
+              30.253383130256
+            ],
+            [
+              -97.743484954898,
+              30.253178925997
+            ],
+            [
+              -97.743233273369,
+              30.253006947336
+            ],
+            [
+              -97.742522364274,
+              30.252531203196
+            ],
+            [
+              -97.742100202818,
+              30.252251095776
+            ],
+            [
+              -97.741888655573,
+              30.2521290198
+            ],
+            [
+              -97.741665456207,
+              30.252019771831
+            ],
+            [
+              -97.741520558819,
+              30.251941591599
+            ],
+            [
+              -97.741376189562,
+              30.251843784244
+            ],
+            [
+              -97.741291284687,
+              30.251776607906
+            ],
+            [
+              -97.741188274195,
+              30.25168290992
+            ],
+            [
+              -97.741096742718,
+              30.251582898541
+            ],
+            [
+              -97.741009155855,
+              30.251476420431
+            ],
+            [
+              -97.740925655983,
+              30.251356933802
+            ],
+            [
+              -97.740781910124,
+              30.251095520532
+            ],
+            [
+              -97.740698970056,
+              30.250956407434
+            ],
+            [
+              -97.740611646652,
+              30.250840115999
+            ],
+            [
+              -97.740513164878,
+              30.250717053086
+            ]
+          ]
+        ]
+      },
+      "objectid": "548",
+      "gis_id": "616",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E RIVERSIDE DR",
+      "shape_length": "1505.3756600103784"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.749856638948,
+              30.291714928522
+            ],
+            [
+              -97.749789261901,
+              30.291775232748
+            ],
+            [
+              -97.748120256717,
+              30.292096592392
+            ],
+            [
+              -97.747951085219,
+              30.292123543699
+            ],
+            [
+              -97.747784681862,
+              30.292164302319
+            ],
+            [
+              -97.747646617516,
+              30.29221668886
+            ],
+            [
+              -97.747537051188,
+              30.292272400563
+            ],
+            [
+              -97.747420453323,
+              30.292352805461
+            ],
+            [
+              -97.747309704602,
+              30.292452636593
+            ],
+            [
+              -97.74722446479,
+              30.292550231117
+            ],
+            [
+              -97.747154842927,
+              30.292656392654
+            ],
+            [
+              -97.747109566372,
+              30.29274577279
+            ],
+            [
+              -97.747082108427,
+              30.292830203999
+            ],
+            [
+              -97.74701513936,
+              30.292928388156
+            ]
+          ]
+        ]
+      },
+      "objectid": "560",
+      "gis_id": "628",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "N LAMAR BLVD",
+      "shape_length": "1061.8809975126417"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.747925001187,
+              30.2581325214
+            ],
+            [
+              -97.748433286405,
+              30.258643339604
+            ]
+          ]
+        ]
+      },
+      "objectid": "111",
+      "gis_id": "182",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W RIVERSIDE DR",
+      "shape_length": "245.4927053548727"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.749283281787,
+              30.259763370637
+            ],
+            [
+              -97.749572597197,
+              30.260163878887
+            ]
+          ]
+        ]
+      },
+      "objectid": "94",
+      "gis_id": "165",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W RIVERSIDE DR",
+      "shape_length": "171.93120942949497"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.729903725953,
+              30.263174772767
+            ],
+            [
+              -97.729892809871,
+              30.263170700659
+            ],
+            [
+              -97.728953279765,
+              30.262819914816
+            ]
+          ]
+        ]
+      },
+      "objectid": "409",
+      "gis_id": "409",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E 5TH ST",
+      "shape_length": "326.63889997270206"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.75117209333,
+              30.277365106815
+            ],
+            [
+              -97.750872061706,
+              30.278070132989
+            ],
+            [
+              -97.750771678374,
+              30.278406319834
+            ],
+            [
+              -97.75067317347,
+              30.278851099662
+            ]
+          ]
+        ]
+      },
+      "objectid": "477",
+      "gis_id": "545",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "N LAMAR BLVD",
+      "shape_length": "564.37189747478817"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.747402480204,
+              30.293939199551
+            ],
+            [
+              -97.747465496952,
+              30.293960135726
+            ],
+            [
+              -97.74856834549,
+              30.295639436268
+            ],
+            [
+              -97.74871637743,
+              30.295871882571
+            ],
+            [
+              -97.748844892478,
+              30.296126570389
+            ],
+            [
+              -97.748911904296,
+              30.296327404174
+            ],
+            [
+              -97.748963674093,
+              30.296542342791
+            ],
+            [
+              -97.748983918416,
+              30.296684723662
+            ],
+            [
+              -97.748990290754,
+              30.296847974817
+            ],
+            [
+              -97.748975537563,
+              30.296997708833
+            ],
+            [
+              -97.748961475228,
+              30.297140552962
+            ],
+            [
+              -97.748932522188,
+              30.297281996885
+            ],
+            [
+              -97.748876532102,
+              30.297492121501
+            ],
+            [
+              -97.748816392549,
+              30.29764179304
+            ],
+            [
+              -97.748673051647,
+              30.297937067042
+            ],
+            [
+              -97.74856130318,
+              30.298108360966
+            ],
+            [
+              -97.748480105635,
+              30.298140111935
+            ]
+          ]
+        ]
+      },
+      "objectid": "556",
+      "gis_id": "624",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "N LAMAR BLVD",
+      "shape_length": "1700.7942082363279"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.753971460515,
+              30.271543602144
+            ],
+            [
+              -97.754753114183,
+              30.271860990823
+            ],
+            [
+              -97.754985599733,
+              30.271943971357
+            ]
+          ]
+        ]
+      },
+      "objectid": "702",
+      "gis_id": "702",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W 6TH ST",
+      "shape_length": "351.76848361646682"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.754460341449,
+              30.270241503926
+            ],
+            [
+              -97.754609208895,
+              30.270295794358
+            ]
+          ]
+        ]
+      },
+      "objectid": "635",
+      "gis_id": "491",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W 5TH ST",
+      "shape_length": "50.974226446664595"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.741163924008,
+              30.292182687064
+            ],
+            [
+              -97.741778639452,
+              30.293309009562
+            ]
+          ]
+        ]
+      },
+      "objectid": "558",
+      "gis_id": "626",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "GUADALUPE ST",
+      "shape_length": "453.25212913025013"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.741205546375,
+              30.297890501065
+            ],
+            [
+              -97.740948047422,
+              30.298273092437
+            ]
+          ]
+        ]
+      },
+      "objectid": "396",
+      "gis_id": "396",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "GUADALUPE ST",
+      "shape_length": "161.13671165030965"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.738774160785,
+              30.249847474001
+            ],
+            [
+              -97.738687096872,
+              30.249757039425
+            ],
+            [
+              -97.738414364136,
+              30.249660589108
+            ],
+            [
+              -97.73818415723,
+              30.249568410528
+            ],
+            [
+              -97.737881784995,
+              30.249420861813
+            ],
+            [
+              -97.737518381301,
+              30.249235084234
+            ],
+            [
+              -97.7373165775,
+              30.249096310599
+            ],
+            [
+              -97.737149666605,
+              30.248958243772
+            ],
+            [
+              -97.736960839857,
+              30.248769264598
+            ],
+            [
+              -97.73664614383,
+              30.248415737414
+            ]
+          ]
+        ]
+      },
+      "objectid": "707",
+      "gis_id": "707",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E RIVERSIDE DR",
+      "shape_length": "866.14213242586425"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.729537932139,
+              30.264050201602
+            ],
+            [
+              -97.728526496489,
+              30.263724354945
+            ]
+          ]
+        ]
+      },
+      "objectid": "402",
+      "gis_id": "402",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E 6TH ST",
+      "shape_length": "340.59500665279978"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.747710762181,
+              30.263648126955
+            ],
+            [
+              -97.74798154038,
+              30.262883496059
+            ],
+            [
+              -97.748243624792,
+              30.262206699946
+            ],
+            [
+              -97.749283281787,
+              30.259763370637
+            ]
+          ]
+        ]
+      },
+      "objectid": "93",
+      "gis_id": "164",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S 1ST ST",
+      "shape_length": "1497.9073667565335"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.745934089258,
+              30.282889402653
+            ],
+            [
+              -97.746742635022,
+              30.283109250601
+            ]
+          ]
+        ]
+      },
+      "objectid": "424",
+      "gis_id": "424",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W MARTIN LUTHER KING BLVD",
+      "shape_length": "267.44176884082549"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.748433286405,
+              30.258643339604
+            ],
+            [
+              -97.749815477394,
+              30.258353499605
+            ],
+            [
+              -97.750074926319,
+              30.258387664625
+            ]
+          ]
+        ]
+      },
+      "objectid": "102",
+      "gis_id": "173",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "BARTON SPRINGS RD",
+      "shape_length": "531.78784464849446"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.751919985097,
+              30.243531796681
+            ],
+            [
+              -97.752179581471,
+              30.242915452132
+            ]
+          ]
+        ]
+      },
+      "objectid": "451",
+      "gis_id": "519",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S CONGRESS AVE",
+      "shape_length": "238.67683427384173"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.751405498514,
+              30.276902252227
+            ],
+            [
+              -97.75117209333,
+              30.277365106815
+            ]
+          ]
+        ]
+      },
+      "objectid": "622",
+      "gis_id": "478",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "N LAMAR BLVD",
+      "shape_length": "183.75265709121282"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.730494010046,
+              30.278563971312
+            ],
+            [
+              -97.73027142115,
+              30.278525428897
+            ],
+            [
+              -97.730189995895,
+              30.278520198863
+            ],
+            [
+              -97.730055646404,
+              30.27851155656
+            ],
+            [
+              -97.729958593855,
+              30.278505294253
+            ],
+            [
+              -97.729816441091,
+              30.278499298558
+            ],
+            [
+              -97.729722875227,
+              30.278495361869
+            ],
+            [
+              -97.729520239185,
+              30.278494847692
+            ],
+            [
+              -97.729433354897,
+              30.278494622547
+            ],
+            [
+              -97.729085745795,
+              30.278515117214
+            ]
+          ]
+        ]
+      },
+      "objectid": "618",
+      "gis_id": "474",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E MARTIN LUTHER KING BLVD",
+      "shape_length": "446.52273434323314"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.741998425234,
+              30.280637108641
+            ],
+            [
+              -97.741635171615,
+              30.281655641186
+            ]
+          ]
+        ]
+      },
+      "objectid": "593",
+      "gis_id": "449",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "GUADALUPE ST",
+      "shape_length": "387.76911691924857"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.753090451628,
+              30.287055154219
+            ],
+            [
+              -97.752832990999,
+              30.2883341871
+            ],
+            [
+              -97.752776335272,
+              30.288538881972
+            ]
+          ]
+        ]
+      },
+      "objectid": "417",
+      "gis_id": "417",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "N LAMAR BLVD",
+      "shape_length": "548.77780312012692"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.755174432517,
+              30.249389534353
+            ],
+            [
+              -97.755831992747,
+              30.247452780853
+            ]
+          ]
+        ]
+      },
+      "objectid": "638",
+      "gis_id": "638",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S 1ST ST",
+      "shape_length": "734.34178491276066"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.751910148192,
+              30.270733812591
+            ],
+            [
+              -97.75252928664,
+              30.270967575872
+            ]
+          ]
+        ]
+      },
+      "objectid": "632",
+      "gis_id": "488",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W 6TH ST",
+      "shape_length": "213.13979835319219"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.726972773554,
+              30.262155311903
+            ],
+            [
+              -97.725795715149,
+              30.261716059144
+            ],
+            [
+              -97.72529935426,
+              30.261529934242
+            ],
+            [
+              -97.722964348928,
+              30.260737036514
+            ]
+          ]
+        ]
+      },
+      "objectid": "88",
+      "gis_id": "159",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E 5TH ST",
+      "shape_length": "1366.7770647113771"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.75690281373,
+              30.245727861946
+            ],
+            [
+              -97.756957620998,
+              30.245632702884
+            ]
+          ]
+        ]
+      },
+      "objectid": "640",
+      "gis_id": "640",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S 1ST ST",
+      "shape_length": "38.694237451390087"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.725145238728,
+              30.279109802482
+            ],
+            [
+              -97.724104647628,
+              30.2793003958
+            ]
+          ]
+        ]
+      },
+      "objectid": "613",
+      "gis_id": "469",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E MARTIN LUTHER KING BLVD",
+      "shape_length": "335.70007525553262"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.737925456219,
+              30.267705065489
+            ],
+            [
+              -97.736824470979,
+              30.267407724492
+            ]
+          ]
+        ]
+      },
+      "objectid": "439",
+      "gis_id": "507",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E 7TH ST",
+      "shape_length": "364.00548749663523"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.726145440146,
+              30.263959211437
+            ],
+            [
+              -97.725121821069,
+              30.263586333859
+            ]
+          ]
+        ]
+      },
+      "objectid": "403",
+      "gis_id": "403",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E 7TH ST",
+      "shape_length": "350.46112388598311"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.755123179852,
+              30.249521096028
+            ],
+            [
+              -97.755174432517,
+              30.249389534353
+            ]
+          ]
+        ]
+      },
+      "objectid": "698",
+      "gis_id": "698",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S 1ST ST",
+      "shape_length": "50.51032274538786"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.746641010826,
+              30.268098586818
+            ],
+            [
+              -97.747713753682,
+              30.268387020912
+            ]
+          ]
+        ]
+      },
+      "objectid": "437",
+      "gis_id": "505",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W 5TH ST",
+      "shape_length": "354.52777712010305"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.752147720446,
+              30.289779883048
+            ],
+            [
+              -97.752167681707,
+              30.289870138377
+            ],
+            [
+              -97.75167558516,
+              30.290486617318
+            ],
+            [
+              -97.75129980761,
+              30.290937940918
+            ],
+            [
+              -97.751158394948,
+              30.291100195032
+            ],
+            [
+              -97.750965580202,
+              30.291300248268
+            ],
+            [
+              -97.750827727542,
+              30.291443156292
+            ],
+            [
+              -97.750744091073,
+              30.29151297972
+            ],
+            [
+              -97.750617703273,
+              30.291587470234
+            ],
+            [
+              -97.750528218717,
+              30.29162356617
+            ],
+            [
+              -97.750419310891,
+              30.2916547607
+            ],
+            [
+              -97.750318018191,
+              30.291674969212
+            ],
+            [
+              -97.750126519676,
+              30.291710852316
+            ],
+            [
+              -97.749967836852,
+              30.291741455584
+            ],
+            [
+              -97.749856638948,
+              30.291714928522
+            ]
+          ]
+        ]
+      },
+      "objectid": "599",
+      "gis_id": "455",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "N LAMAR BLVD",
+      "shape_length": "1079.8239912189672"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.747371741818,
+              30.26932623568
+            ],
+            [
+              -97.748431317825,
+              30.269633650982
+            ]
+          ]
+        ]
+      },
+      "objectid": "427",
+      "gis_id": "495",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W 6TH ST",
+      "shape_length": "352.68259521349842"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.741024710538,
+              30.281494774523
+            ],
+            [
+              -97.741635171615,
+              30.281655641186
+            ]
+          ]
+        ]
+      },
+      "objectid": "584",
+      "gis_id": "440",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W MARTIN LUTHER KING BLVD",
+      "shape_length": "201.3752728617944"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.764153630879,
+              30.252345004621
+            ],
+            [
+              -97.76513732378,
+              30.251212340953
+            ]
+          ]
+        ]
+      },
+      "objectid": "503",
+      "gis_id": "571",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S LAMAR BLVD",
+      "shape_length": "515.90886565941742"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.772023929432,
+              30.247857576141
+            ],
+            [
+              -97.772824370307,
+              30.247651296324
+            ]
+          ]
+        ]
+      },
+      "objectid": "463",
+      "gis_id": "531",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S LAMAR BLVD",
+      "shape_length": "263.64324633724914"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.754640109858,
+              30.250654934155
+            ],
+            [
+              -97.754719436063,
+              30.250484085049
+            ],
+            [
+              -97.754860272082,
+              30.250180806998
+            ],
+            [
+              -97.754914177262,
+              30.250030624008
+            ]
+          ]
+        ]
+      },
+      "objectid": "706",
+      "gis_id": "706",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S 1ST ST",
+      "shape_length": "243.13093836502756"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.75853331584,
+              30.260867768844
+            ],
+            [
+              -97.758705276293,
+              30.260401358175
+            ],
+            [
+              -97.759362050994,
+              30.258613087606
+            ]
+          ]
+        ]
+      },
+      "objectid": "553",
+      "gis_id": "621",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S LAMAR BLVD",
+      "shape_length": "860.73604477364552"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.758181654083,
+              30.271658949031
+            ],
+            [
+              -97.759253841051,
+              30.272060038287
+            ]
+          ]
+        ]
+      },
+      "objectid": "529",
+      "gis_id": "597",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W 5TH ST",
+      "shape_length": "368.56079307866548"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.736174505003,
+              30.248091977621
+            ],
+            [
+              -97.736021853915,
+              30.2480398441
+            ],
+            [
+              -97.735852198551,
+              30.248002740609
+            ],
+            [
+              -97.735777589402,
+              30.248038247265
+            ]
+          ]
+        ]
+      },
+      "objectid": "441",
+      "gis_id": "509",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E RIVERSIDE DR",
+      "shape_length": "133.90376041674543"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.75571264967,
+              30.260349437064
+            ],
+            [
+              -97.756791067585,
+              30.260541648926
+            ],
+            [
+              -97.757096390957,
+              30.260616546794
+            ],
+            [
+              -97.757839799343,
+              30.260731605414
+            ]
+          ]
+        ]
+      },
+      "objectid": "546",
+      "gis_id": "614",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "BARTON SPRINGS RD",
+      "shape_length": "686.14936402581941"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.750550656509,
+              30.280498861694
+            ],
+            [
+              -97.750541236578,
+              30.280653102942
+            ],
+            [
+              -97.750537106737,
+              30.280807451714
+            ],
+            [
+              -97.750564130088,
+              30.280987785944
+            ],
+            [
+              -97.750634108433,
+              30.281351086367
+            ],
+            [
+              -97.750674093873,
+              30.281543233573
+            ],
+            [
+              -97.750717943147,
+              30.281691617507
+            ],
+            [
+              -97.75077234055,
+              30.281842552864
+            ],
+            [
+              -97.750847220165,
+              30.282021540555
+            ],
+            [
+              -97.750907647995,
+              30.2821449289
+            ],
+            [
+              -97.750966123973,
+              30.282242919401
+            ],
+            [
+              -97.751047434577,
+              30.282380562269
+            ],
+            [
+              -97.751149842074,
+              30.282523250159
+            ],
+            [
+              -97.751237090493,
+              30.282637936984
+            ],
+            [
+              -97.751399640293,
+              30.282816408726
+            ],
+            [
+              -97.751598850486,
+              30.283014046415
+            ],
+            [
+              -97.751872924284,
+              30.283285937632
+            ],
+            [
+              -97.751978151878,
+              30.283435805612
+            ]
+          ]
+        ]
+      },
+      "objectid": "605",
+      "gis_id": "461",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "N LAMAR BLVD",
+      "shape_length": "1195.6392599579565"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.730949549025,
+              30.263517809975
+            ],
+            [
+              -97.729903725953,
+              30.263174772767
+            ]
+          ]
+        ]
+      },
+      "objectid": "407",
+      "gis_id": "407",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E 5TH ST",
+      "shape_length": "352.95610982976706"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.722207100835,
+              30.279657796634
+            ],
+            [
+              -97.721244343414,
+              30.279811448874
+            ]
+          ]
+        ]
+      },
+      "objectid": "607",
+      "gis_id": "463",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E MARTIN LUTHER KING BLVD",
+      "shape_length": "308.99078693792279"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.750703132072,
+              30.27983844269
+            ],
+            [
+              -97.750671342388,
+              30.279976034284
+            ],
+            [
+              -97.750550656509,
+              30.280498861694
+            ]
+          ]
+        ]
+      },
+      "objectid": "612",
+      "gis_id": "468",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "N LAMAR BLVD",
+      "shape_length": "244.96200929412811"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.750074926319,
+              30.258387664625
+            ],
+            [
+              -97.753489817818,
+              30.259589610447
+            ]
+          ]
+        ]
+      },
+      "objectid": "109",
+      "gis_id": "180",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "BARTON SPRINGS RD",
+      "shape_length": "1163.394778305963"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.72448215922,
+              30.262371406854
+            ],
+            [
+              -97.722520123833,
+              30.261698859393
+            ]
+          ]
+        ]
+      },
+      "objectid": "414",
+      "gis_id": "414",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E 6TH ST",
+      "shape_length": "665.9768525665371"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.733572095145,
+              30.265433034744
+            ],
+            [
+              -97.732551575594,
+              30.265090534027
+            ]
+          ]
+        ]
+      },
+      "objectid": "180",
+      "gis_id": "251",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E 6TH ST",
+      "shape_length": "345.41851319176664"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.750278089766,
+              30.247951489377
+            ],
+            [
+              -97.750632219985,
+              30.247029016672
+            ]
+          ]
+        ]
+      },
+      "objectid": "567",
+      "gis_id": "635",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "S CONGRESS AVE",
+      "shape_length": "353.63815309936535"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.725121821069,
+              30.263586333859
+            ],
+            [
+              -97.72414259157,
+              30.26324185449
+            ]
+          ]
+        ]
+      },
+      "objectid": "406",
+      "gis_id": "406",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E 7TH ST",
+      "shape_length": "333.56864632057051"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.746882875957,
+              30.257148869229
+            ],
+            [
+              -97.747925001187,
+              30.2581325214
+            ]
+          ]
+        ]
+      },
+      "objectid": "114",
+      "gis_id": "185",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W RIVERSIDE DR",
+      "shape_length": "486.04271360694838"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.745182633036,
+              30.282667953094
+            ],
+            [
+              -97.745934089258,
+              30.282889402653
+            ]
+          ]
+        ]
+      },
+      "objectid": "572",
+      "gis_id": "428",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W MARTIN LUTHER KING BLVD",
+      "shape_length": "250.49132888358804"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.743056800934,
+              30.305202597356
+            ],
+            [
+              -97.744155356974,
+              30.305725355428
+            ]
+          ]
+        ]
+      },
+      "objectid": "359",
+      "gis_id": "359",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W 38TH ST",
+      "shape_length": "395.37950724747549"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.744195108059,
+              30.282386722121
+            ],
+            [
+              -97.744840346439,
+              30.282551026273
+            ]
+          ]
+        ]
+      },
+      "objectid": "574",
+      "gis_id": "430",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W MARTIN LUTHER KING BLVD",
+      "shape_length": "212.24983016459294"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.732551575594,
+              30.265090534027
+            ],
+            [
+              -97.731556322738,
+              30.264751287557
+            ]
+          ]
+        ]
+      },
+      "objectid": "183",
+      "gis_id": "254",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "E 6TH ST",
+      "shape_length": "337.55745635281426"
+    },
+    {
+      "the_geom": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -97.741635171615,
+              30.281655641186
+            ],
+            [
+              -97.742087419554,
+              30.281807804287
+            ]
+          ]
+        ]
+      },
+      "objectid": "582",
+      "gis_id": "438",
+      "corridor_type": "Core Transit Corridor",
+      "street_name": "W MARTIN LUTHER KING BLVD",
+      "shape_length": "153.10127605196115"
+    }
+  ]

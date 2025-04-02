@@ -1,0 +1,989 @@
+"use client";
+import { useState, useEffect, useRef, useMemo, useCallback} from "react";
+import ChatSection from "./ChatSection";
+import CombinedVisualizationPanel from "./CombinedVisualizationPanel";
+import TableAndToolsComponent from "./TableAndToolsComponent";
+import ExtractsComponent from "./ExtractsComponent";
+import ReportComponent from "./ReportComponent";
+import ChartsComponent from "./ChartsComponent";
+import CodeComponent from "./CodeComponent";
+import { GripVertical } from "lucide-react";
+import ArtifactNavigation from "./ArtifactNavigation";
+import ArtifactGallery from "./ArtifactGallery";
+import Chart1_0 from './artifacts/1.0-chart';
+import Map1_0 from './artifacts/1.0-map';
+import SocioEconomicDashboard from './artifacts/1.1-chart';
+import CrashTrafficMap from './artifacts/1.2-map.js';
+import ClimateVulnerabilityDashboard from './artifacts/1.3-chart';
+import FloodplainsMap from './artifacts/1.3-map'
+import TransportAndPlansMap from './artifacts/1.2.1-map'
+import TransportMap from './artifacts/1.2.2-map'
+import SidewalkConditionDashboard from './artifacts/1.2.2-chart'
+import EmergencyResponsivenessDashboard from './artifacts/1.1.2-chart'
+import DisasterHistoryDashboard from './artifacts/1.3.1-chart1'
+import LandUseZoningMap from './artifacts/1.1.1.1-map'
+import EmergencyTemporalTrends from './artifacts/1.3.2-chart'
+import PoliciesComponent from './artifacts/1.1.1-extracts'
+import UpdatedFloodInfraIntersectionMap from './artifacts/1.3.1.1-map'
+import GrantsComponent from './artifacts/1.3.1.1.1-extracts'
+import ConcernAreasMap from './artifacts/1.3.2.1-map'
+import BudgetStudyDashboard from './artifacts/1.3.2.1.1-chart'
+import HighPriorityInfrastructureMap from './artifacts/1.1.2.1-map'
+import BudgetStudyDashboard2 from './artifacts/1.1.2.1.1-chart'
+import CombinedTransportPlanningMap from './artifacts/1.2.2.1-map'
+import BudgetDashboard from './artifacts/1.2.1.1-chart'
+import CombinedTransportPlanningFloodMap from './artifacts/1.2.2.1.1-map'
+import FemaComponent from "./artifacts/1.2.2.1.1-extract";
+import ConcernMap from './artifacts/1.2.1.1-map';
+import FloodplainsConcernMap from './artifacts/1.2.1.2-map';
+import ReportComponent1 from './artifacts/1.1.1.1.1-report';
+import ReportComponent2 from './artifacts/1.2.1.2.1-report';
+import ReportComponent3 from './artifacts/1.2.1.1.1-report';
+import ReportComponent4 from './artifacts/1.2.2.1.1.1-report';
+import ReportComponent5 from './artifacts/1.3.1.1.1.1-report';
+import ReportComponent6 from './artifacts/1.3.2.1.1.1-report';
+import ReportComponent7 from './artifacts/1.1.2.1.1.1-report'
+import DraggableArtifactPanel from "./DraggableArtifactPanel";
+
+
+export default function ResizablePanels({
+  chatHistory,
+  onSend,
+  isLoading,
+  mapContent,
+  tableContent,
+  activeTab,
+  setActiveTab,
+  onSaveMap,
+  savedMaps = [],
+  showVisualization = true, 
+  showArtifactGallery,
+  onShowArtifactGallery,
+  artifacts,
+  currentArtifactId,
+  onSelectArtifact,
+  setLayersVisibility,
+  onLayersReady,
+  responseReady,
+  setResponseReady,
+  setChartReady,
+  setCustomChartReady,
+  showTutorial,
+  setShowTutorial,
+})  {
+  // References for direct DOM manipulation
+  const containerRef = useRef(null);
+  const chatPanelRef = useRef(null);
+  const visualPanelRef = useRef(null);
+  const dividerRef = useRef(null);
+  
+  const [showCreatedPrompt, setShowCreatedPrompt] = useState(false);
+const [showMobileArtifactPanel, setShowMobileArtifactPanel] = useState(false);
+const [mobileArtifactComponent, setMobileArtifactComponent] = useState(null);
+const [mobileArtifactTitle, setMobileArtifactTitle] = useState("");
+const artifactComponentMap = useMemo(() => ({
+  "1.0": {
+    "map": Map1_0,
+    "charts": Chart1_0,
+  },
+  "1.1": {
+    "charts1": SocioEconomicDashboard,
+  },
+  "1.2": {
+    "map1.2": CrashTrafficMap,
+  },
+  "1.3": {
+    "map1.3": FloodplainsMap,
+    "chart1.3": ClimateVulnerabilityDashboard,
+  },
+  "1.2.1": {
+    "map1.2.1": TransportAndPlansMap,
+  },
+  "1.2.2": {
+    "map1.2.2": TransportMap,
+    "charts1.2.2": SidewalkConditionDashboard,
+  },
+  "1.1.2": {
+    "charts1.1.2": EmergencyResponsivenessDashboard,
+  },
+  "1.3.1": {
+    "charts1.3.1part1": DisasterHistoryDashboard,
+  },
+  "1.3.2": {
+    "chart1.3.2": EmergencyTemporalTrends,
+  },
+  "1.1.1": {
+    "extract1.1.1": PoliciesComponent,
+  },
+  "1.1.1.1": {
+    "map1.1.1.1": LandUseZoningMap,
+  },
+  "1.3.1.1": {
+    "map1.3.1.1": UpdatedFloodInfraIntersectionMap,
+  },
+  "1.3.1.1.1": {
+    "extract1.3.1.1.1": GrantsComponent,
+  },
+  "1.3.2.1": {
+    "map1.3.2.1": ConcernAreasMap,
+  },
+  "1.3.2.1.1": {
+    "chart1.3.2.1.1": BudgetStudyDashboard,
+  },
+  "1.1.2.1": {
+    "map1.1.2.1": HighPriorityInfrastructureMap,
+  },
+  "1.1.2.1.1": {
+    "map1.1.2.1.1": CombinedTransportPlanningFloodMap,
+    "chart1.1.2.1.1": BudgetStudyDashboard2,
+  },
+  "1.2.2.1": {
+    "map1.2.2.1": CombinedTransportPlanningMap,
+  },
+  "1.2.2.1.1": {
+    "map1.2.2.1.1": CombinedTransportPlanningFloodMap,
+    "extract1.2.2.1.1": FemaComponent,
+  },
+  "1.2.1.1": {
+    "map1.2.1.1": ConcernMap,
+    "chart1.2.1.1": BudgetDashboard,
+  },
+  "1.2.1.2": {
+    "map1.2.1.2": FloodplainsConcernMap,
+    "extract1.2.1.2": FemaComponent,
+  },
+  "1.1.1.1.1": {
+    "report1.1.1.1.1": ReportComponent1,
+  },
+  "1.2.1.2.1": {
+    "report1.2.1.2.1": ReportComponent2,
+  },
+  "1.2.1.1.1": {
+    "report1.2.1.1.1": ReportComponent3,
+  },
+  "1.2.2.1.1.1": {
+    "report1.2.2.1.1.1": ReportComponent4,
+  },
+  "1.3.1.1.1.1": {
+    "report1.3.1.1.1.1": ReportComponent5,
+  },
+  "1.3.2.1.1.1": {
+    "report1.3.2.1.1.1": ReportComponent6,
+  },
+  "1.1.2.1.1.1": {
+    "report1.1.2.1.1.1": ReportComponent7,
+  },
+}), []);
+useEffect(() => {
+  console.log("showArtifactGallery updated:", showArtifactGallery);
+}, [showArtifactGallery]);
+useEffect(() => {
+  const checkMobile = () => {
+    setIsMobile(window.innerWidth < 768);
+  };
+
+  checkMobile(); // Run on mount
+
+  window.addEventListener("resize", checkMobile);
+  return () => window.removeEventListener("resize", checkMobile);
+}, []);
+
+  // Function to open mobile artifact panel
+  const openMobileArtifactPanel = useCallback((artifactId) => {
+    const artifact = artifacts.find(a => a.id === artifactId);
+    if (!artifact) return;
+  
+  // Extract button ID and artifact type from the artifact
+  let buttonId = null;
+  let artifactType = artifact.type;
+  
+  // Check if buttonId is directly stored in the artifact
+  if (artifact.buttonId) {
+    buttonId = artifact.buttonId;
+  } else if (artifact.id) {
+    const idMatch = artifact.id.match(/^(\d+\.\d+(?:\.\d+)*)/);
+    if (idMatch) {
+      buttonId = idMatch[1];
+    } else if (artifact.title) {
+      const titleMatch = artifact.title.match(/^(\d+\.\d+(?:\.\d+)*)/);
+      if (titleMatch) {
+        buttonId = titleMatch[1];
+      } else if (artifact.title.includes("Socio-Economic")) {
+        buttonId = "1.1";
+      } else if (artifact.title.includes("Infrastructure Condition")) {
+        buttonId = "1.0";
+      }
+    }
+  }
+  
+  // If no type property, try to extract from ID
+  if (!artifactType && artifact.id && artifact.id.includes('-')) {
+    artifactType = artifact.id.split('-')[1];
+  }
+  
+  // If we have a specific component for this button and artifact type, use it
+  const ComponentToRender = buttonId && 
+    artifactComponentMap[buttonId] && 
+    artifactComponentMap[buttonId][artifactType] ? 
+    artifactComponentMap[buttonId][artifactType] : null;
+  
+  // Set the component to render in the mobile panel
+  if (ComponentToRender) {
+    setMobileArtifactComponent(<ComponentToRender />);
+  } else {
+    // Default rendering based on artifact type
+    switch (artifactType) {
+      case "map":
+        setMobileArtifactComponent(
+          <CombinedVisualizationPanel
+            mapContent={artifact.content || mapContent}
+            tableContent={tableContent}
+            hideHeader={true}
+            onSaveMap={onSaveMap}
+            savedMaps={savedMaps}
+            onShowArtifactGallery={onShowArtifactGallery}
+            isMobilePanel={true}
+          />
+        );
+        break;
+      case "charts":
+        // Render appropriate chart component
+        setMobileArtifactComponent(<div className="h-full">Charts Component</div>);
+        break;
+      // Add other cases as needed for your different artifact types
+      default:
+        setMobileArtifactComponent(
+          <div className="h-full p-4 flex items-center justify-center">
+            <p>Artifact content not available for mobile view</p>
+          </div>
+        );
+    }
+  }
+  
+  // Set the title for the draggable panel
+  setMobileArtifactTitle(artifact.title || "Artifact");
+  
+  // Show the panel
+  setShowMobileArtifactPanel(true);
+}, [artifacts, artifactComponentMap, mapContent, onSaveMap, onShowArtifactGallery, savedMaps, tableContent]);
+useEffect(() => {
+  window.openMobileArtifactPanel = openMobileArtifactPanel;
+  return () => {
+    delete window.openMobileArtifactPanel;
+  };
+}, [openMobileArtifactPanel]);
+
+
+
+// Function to close mobile artifact panel
+const closeMobileArtifactPanel = () => {
+  setShowMobileArtifactPanel(false);
+};
+
+const handleSelectArtifactDisplay = (artifactId) => {
+  const artifact = artifacts.find(a => a.id === artifactId);
+  if (!artifact) return;
+  
+  // Set current artifact ID
+  onSelectArtifact(artifactId);
+  
+  if (isMobile) {
+    // For mobile, always use split view and NEVER open the panel
+    setActiveTab("chat"); // This triggers split view
+    openMobileArtifactPanel(artifactId);
+  } else {
+    // Desktop behavior - unchanged
+    setShowArtifactGallery(false);
+    setActiveTab(artifact.type);
+  }
+};
+// Add near the top of your useEffect hooks in ResizablePanels
+useEffect(() => {
+  // Make openMobileArtifactPanel available globally
+  window.openMobileArtifactPanel = openMobileArtifactPanel;
+  
+  return () => {
+    // Clean up
+    delete window.openMobileArtifactPanel;
+  };
+}, [openMobileArtifactPanel]);
+  useEffect(() => {
+    const handler = () => {
+      setShowCreatedPrompt(true);
+      setShowPreviousPrompt(true);
+      const timer = setTimeout(() => {
+        setShowCreatedPrompt(false);
+        setShowPreviousPrompt(false);
+      }, 3000);
+      return () => clearTimeout(timer);
+    };
+  
+    window.addEventListener('show-two-artifact-prompt', handler);
+    return () => {
+      window.removeEventListener('show-two-artifact-prompt', handler);
+    };
+  }, []);
+  const [isMobile, setIsMobile] = useState(false);
+  // Add this useEffect after your isMobile state definition
+  // Add this near your other useEffect hooks
+useEffect(() => {
+  if (isMobile && chatPanelRef.current) {
+    // Force full width immediately on mount and when isMobile changes
+    chatPanelRef.current.style.width = "100vw";
+    chatPanelRef.current.style.maxWidth = "100vw";
+    
+    // Apply these styles with timeout to ensure they take effect
+    setTimeout(() => {
+      if (chatPanelRef.current) {
+        chatPanelRef.current.style.width = "100vw";
+        chatPanelRef.current.style.maxWidth = "100vw";
+      }
+    }, 0);
+  }
+}, [isMobile]);
+useEffect(() => {
+  if (isMobile) {
+    // Force immediate size adjustment for mobile
+    if (chatPanelRef.current) {
+      chatPanelRef.current.style.width = "100%";
+    }
+    if (visualPanelRef.current) {
+      visualPanelRef.current.style.width = "100%";
+    }
+    
+    // Also apply a slight delay to ensure the DOM has updated
+    setTimeout(() => {
+      if (chatPanelRef.current) {
+        chatPanelRef.current.style.width = "100%";
+      }
+    }, 50);
+  }
+}, [isMobile]);
+
+useEffect(() => {
+  const checkMobile = () => {
+    setIsMobile(window.innerWidth < 768);
+  };
+
+  checkMobile(); // Run on mount
+
+  window.addEventListener("resize", checkMobile);
+  return () => window.removeEventListener("resize", checkMobile);
+}, []);
+
+  
+  // Track initial position and whether dragging
+  const dragState = useRef({
+    isDragging: false,
+    startX: 0,
+    startWidths: {
+      container: 0,
+      chat: 0,
+      visual: 0
+    }
+  });
+  const [showPreviousPrompt, setShowPreviousPrompt] = useState(false);
+
+  useEffect(() => {
+    if (artifacts.length === 2) {
+      setShowPreviousPrompt(true);
+  
+      const timer = setTimeout(() => {
+        setShowPreviousPrompt(false);
+      }, 3000); // Prompt disappears after 3 seconds
+  
+      return () => clearTimeout(timer);
+    }
+  }, [artifacts]);
+  
+  
+
+  // Add a state to track whether visualization is in transition
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  // Previously calculated widths to use during transitions
+  const widthsRef = useRef({
+    chat: '60%',
+    visual: '40%'
+  });
+
+  useEffect(() => {
+    if (visualPanelRef.current && chatPanelRef.current) {
+      setIsTransitioning(true);
+  
+      // Store the previous widths before transition starts
+      if (chatPanelRef.current.style.width) {
+        widthsRef.current.chat = chatPanelRef.current.style.width;
+      }
+      if (visualPanelRef.current.style.width) {
+        widthsRef.current.visual = visualPanelRef.current.style.width;
+      }
+  
+      // Copy the current visualPanel element to ensure it doesn't change during cleanup
+      const visualPanelCurrent = visualPanelRef.current;
+  
+      const transitionEndHandler = () => {
+        setIsTransitioning(false);
+      };
+  
+      visualPanelCurrent.addEventListener('transitionend', transitionEndHandler);
+  
+      return () => {
+        visualPanelCurrent.removeEventListener('transitionend', transitionEndHandler);
+      };
+    }
+  }, [showVisualization]);
+  
+
+  useEffect(() => {
+    const container = containerRef.current;
+    const divider = dividerRef.current;
+
+    if (!container || !divider) return;
+
+    // Initial setup - visual panel takes 40% of the container width
+    const setInitialWidths = () => {
+      const containerWidth = container.clientWidth;
+
+      // If visualization is hidden, chat takes full width
+      if (!showVisualization) {
+        if (chatPanelRef.current) {
+          chatPanelRef.current.style.width = '100%';
+        }
+        return;
+      }
+
+      const visualWidth = containerWidth * 0.4;
+      const chatWidth = containerWidth - visualWidth - divider.clientWidth;
+
+      if (chatPanelRef.current && visualPanelRef.current) {
+        chatPanelRef.current.style.width = `${chatWidth}px`;
+        visualPanelRef.current.style.width = `${visualWidth}px`;
+
+        // Store these values for transitions
+        widthsRef.current = {
+          chat: `${chatWidth}px`,
+          visual: `${visualWidth}px`
+        };
+      }
+    };
+
+    // Set initial widths when component mounts
+    setInitialWidths();
+
+    // Handle window resize
+    window.addEventListener('resize', setInitialWidths);
+
+    // Clean up event listener
+    return () => {
+      window.removeEventListener('resize', setInitialWidths);
+    };
+  }, [showVisualization]);
+
+  useEffect(() => {
+    if (isMobile) {
+      // Force immediate size adjustment for mobile
+      if (chatPanelRef.current) {
+        chatPanelRef.current.style.width = "100%";
+      }
+      if (visualPanelRef.current) {
+        visualPanelRef.current.style.width = "100%";
+      }
+      
+      // Also apply a slight delay to ensure the DOM has updated
+      setTimeout(() => {
+        if (chatPanelRef.current) {
+          chatPanelRef.current.style.width = "100%";
+        }
+      }, 50);
+    }
+  }, [isMobile]);
+
+  useEffect(() => {
+    if (isMobile) {
+      // Force reflow after a slight delay
+      setTimeout(() => {
+        if (chatPanelRef.current) {
+          chatPanelRef.current.style.width = "100%";
+        }
+        if (visualPanelRef.current) {
+          visualPanelRef.current.style.width = "100%";
+        }
+      }, 100); // Give it a beat to render
+    }
+  }, [isMobile, activeTab]);
+  const handleMouseDown = (e) => {
+    // Prevent drag on mobile
+    if (window.innerWidth < 768) return;
+  
+    e.preventDefault();
+    const container = containerRef.current;
+    const chatPanel = chatPanelRef.current;
+    const visualPanel = visualPanelRef.current;
+  
+    if (!container || !chatPanel || !visualPanel) return;
+  
+    dragState.current = {
+      isDragging: true,
+      startX: e.clientX,
+      startWidths: {
+        container: container.clientWidth,
+        chat: chatPanel.clientWidth,
+        visual: visualPanel.clientWidth,
+      }
+    };
+  
+    document.body.classList.add('resizing');
+    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mouseup', handleMouseUp);
+  };
+  
+
+  // Handle mouse movement
+  const handleMouseMove = (e) => {
+    if (!dragState.current.isDragging) return;
+
+    const chatPanel = chatPanelRef.current;
+    const visualPanel = visualPanelRef.current;
+    const container = containerRef.current;
+
+    if (!container || !chatPanel || !visualPanel) return;
+
+    // Calculate how far mouse has moved
+    const deltaX = e.clientX - dragState.current.startX;
+
+    // Apply constraints
+    const containerWidth = container.clientWidth;
+    const minChatWidth = containerWidth * 0.3;
+    const maxChatWidth = containerWidth * 0.7;
+
+    // Calculate new widths
+    let newChatWidth = dragState.current.startWidths.chat + deltaX;
+
+    // Apply constraints
+    if (newChatWidth < minChatWidth) {
+      newChatWidth = minChatWidth;
+    } else if (newChatWidth > maxChatWidth) {
+      newChatWidth = maxChatWidth;
+    }
+
+    const dividerWidth = dividerRef.current ? dividerRef.current.clientWidth : 5;
+    const newVisualWidth = containerWidth - newChatWidth - dividerWidth;
+
+    // Update panel widths
+    chatPanel.style.width = `${newChatWidth}px`;
+    visualPanel.style.width = `${newVisualWidth}px`;
+
+    // Store these values for transitions
+    widthsRef.current = {
+      chat: `${newChatWidth}px`,
+      visual: `${newVisualWidth}px`
+    };
+  };
+
+  // End dragging
+  const handleMouseUp = () => {
+    dragState.current.isDragging = false;
+    document.body.classList.remove('resizing');
+    document.removeEventListener('mousemove', handleMouseMove);
+    document.removeEventListener('mouseup', handleMouseUp);
+  };
+
+  const renderVisualComponent = () => {
+    // Gallery view takes precedence
+    if (showArtifactGallery) {
+      return (
+        <div className="h-full flex flex-col">
+          <ArtifactGallery 
+            artifacts={artifacts}
+            onSelectArtifact={onSelectArtifact}
+            onBack={() => onShowArtifactGallery(false)}
+            showCreatedPrompt={artifacts.length === 2}
+            isMobile={isMobile}
+          />
+        </div>
+      );
+    }
+  
+    // Get the current artifact
+    const currentArtifact = artifacts.find(a => a.id === currentArtifactId);
+    
+    // Create the navigation bar element to reduce repetition
+    const navigationBar = artifacts.length > 0 ? (
+      <ArtifactNavigation 
+        artifacts={artifacts}
+        currentArtifactId={currentArtifactId}
+        onSelectArtifact={onSelectArtifact}
+        onShowGallery={() => {
+          setShowCreatedPrompt(false); 
+          onShowArtifactGallery(true);
+        }}
+        showPreviousPrompt={showPreviousPrompt}
+        showCreatedPrompt={showCreatedPrompt}
+        isMobile={isMobile}
+      />
+    ) : null;
+  
+    // If no artifact is selected, show default view based on activeTab
+    if (!currentArtifact) {
+      return (
+        <>
+          {navigationBar}
+          <CombinedVisualizationPanel
+            mapContent={mapContent}
+            tableContent={tableContent}
+            hideHeader={false}
+            onSaveMap={onSaveMap}
+            savedMaps={savedMaps}
+            onShowArtifactGallery={onShowArtifactGallery}
+          />
+        </>
+      );
+    }
+  
+    // Extract button ID and artifact type from the artifact
+    let buttonId = null;
+    
+    // Check if buttonId is directly stored in the artifact (from updated saveArtifact function)
+    if (currentArtifact.buttonId) {
+      buttonId = currentArtifact.buttonId;
+    } 
+    // Extract from ID (format: "1.0-charts-timestamp")
+    else if (currentArtifact.id) {
+      const idMatch = currentArtifact.id.match(/^(\d+\.\d+(?:\.\d+)*)/);
+      if (idMatch) {
+        buttonId = idMatch[1];
+      }
+      // If not in ID, try extracting from title
+      else if (currentArtifact.title) {
+        const titleMatch = currentArtifact.title.match(/^(\d+\.\d+(?:\.\d+)*)/);
+        if (titleMatch) {
+          buttonId = titleMatch[1];
+        }
+        // Use specific title patterns as fallback
+        else if (currentArtifact.title.includes("Socio-Economic")) {
+          buttonId = "1.1";
+        } else if (currentArtifact.title.includes("Infrastructure Condition")) {
+          buttonId = "1.0";
+        }
+        // Add more pattern matching as needed
+      }
+    }
+    
+    // Get the artifact type
+    let artifactType = currentArtifact.type; // Use the type property if available
+    
+    // If no type property, try to extract from ID
+    if (!artifactType && currentArtifact.id && currentArtifact.id.includes('-')) {
+      artifactType = currentArtifact.id.split('-')[1];
+    }
+    
+    // If still no type, use the activeTab
+    if (!artifactType) {
+      artifactType = activeTab;
+    }
+    
+    
+    // If we have a specific component for this button and artifact type, use it
+    if (buttonId && 
+      artifactComponentMap[buttonId] && 
+      artifactComponentMap[buttonId][artifactType]) {
+    const SpecificComponent = artifactComponentMap[buttonId][artifactType];
+  
+    const isInfraMap = buttonId === "1.1.2.1" && artifactType === "map1.1.2.1";
+  
+    return (
+      <>
+        {navigationBar}
+        {isInfraMap ? (
+          <SpecificComponent onLayersReady={() => {
+            // Call setResponseReady when map layers are ready
+            setResponseReady(true);
+            // Also make it available globally for other components
+            window.setResponseReady = setResponseReady;
+          }} />
+        ) : (
+          <SpecificComponent />
+        )}
+      </>
+    );
+  }  
+    
+    // Otherwise, render based on artifact type
+    switch (artifactType) {
+      case "map":
+        return (
+          <>
+            {navigationBar}
+            <CombinedVisualizationPanel
+              mapContent={currentArtifact.content || mapContent}
+              tableContent={tableContent}
+              hideHeader={false}
+              onSaveMap={onSaveMap}
+              savedMaps={savedMaps}
+              onShowArtifactGallery={onShowArtifactGallery}
+            />
+          </>
+        );
+        
+      case "charts":
+        return (
+          <>
+            {navigationBar}
+            <ChartsComponent />
+          </>
+        );
+        
+      case "tabletools":
+        return (
+          <>
+            {navigationBar}
+            <TableAndToolsComponent />
+          </>
+        );
+        
+      case "extracts":
+        return (
+          <>
+            {navigationBar}
+            <ExtractsComponent />
+          </>
+        );
+        
+      case "report":
+        return (
+          <>
+            {navigationBar}
+            <ReportComponent />
+          </>
+        );
+        
+      case "code":
+        return (
+          <>
+            {navigationBar}
+            <CodeComponent />
+          </>
+        );
+        
+      default:
+        // Default fallback
+        return (
+          <>
+            {navigationBar}
+            <CombinedVisualizationPanel
+              mapContent={mapContent}
+              tableContent={tableContent}
+              hideHeader={false}
+              onSaveMap={onSaveMap}
+              savedMaps={savedMaps}
+              onShowArtifactGallery={onShowArtifactGallery}
+            />
+          </>
+        );
+    }
+  };
+  useEffect(() => {
+    if (isMobile && chatPanelRef.current) {
+      // Force full width immediately on mount and when isMobile changes
+      chatPanelRef.current.style.width = "100vw";
+      chatPanelRef.current.style.maxWidth = "100vw";
+      
+      // Apply these styles with timeout to ensure they take effect
+      setTimeout(() => {
+        if (chatPanelRef.current) {
+          chatPanelRef.current.style.width = "100vw";
+          chatPanelRef.current.style.maxWidth = "100vw";
+        }
+      }, 0);
+    }
+  }, [isMobile]);
+
+  const getChatPanelStyle = () => {
+    if (isMobile) {
+      return { 
+        width: "100vw !important", // Force full viewport width with !important
+        maxWidth: "100vw !important",
+        height: "100%",
+        flex: "1 0 auto !important" // Force flex to take full width
+      };
+    }
+    
+    // Rest of the function remains unchanged
+    if (isTransitioning) {
+      return {
+        width: showVisualization ? widthsRef.current.chat : "100%",
+        transition: "width 0.3s ease-in-out"
+      };
+    }
+    
+    return {
+      width: showVisualization ? widthsRef.current.chat : "100%"
+    };
+  };
+
+  const getVisualPanelStyle = () => {
+    if (isMobile) {
+      return {
+        width: "100%",
+        height: "100%",
+        opacity: activeTab === "map" ? 1 : 0
+      };
+    }
+  
+    if (isTransitioning) {
+      return {
+        width: showVisualization ? widthsRef.current.visual : "0px",
+        transition: "width 0.3s ease-in-out, opacity 0.3s ease-in-out",
+        opacity: showVisualization ? 1 : 0
+      };
+    }
+    
+    return {
+      width: showVisualization ? widthsRef.current.visual : "0px",
+      opacity: showVisualization ? 1 : 0
+    };
+  };
+
+  return (
+    <div
+      ref={containerRef}
+      className="flex-1 flex overflow-auto relative h-screen"
+    >
+      {/* Tab switcher for mobile - Only show if visualization is enabled */}
+    {/* Tab switcher for mobile - Only show if visualization is enabled */}
+{showVisualization && (
+<div className="md:hidden sticky top-0 left-0 right-0 z-30 bg-white border-b border-gray-200 flex shadow-sm h-10">
+    <button
+      onClick={() => {
+        setActiveTab("chat");
+        // Also close any artifact panel if it's open
+        if (showMobileArtifactPanel) {
+          setShowMobileArtifactPanel(false);
+        }
+      }}
+      className={`flex-1 h-full px-4 text-sm font-medium ${
+        activeTab === "chat" ? "border-b-2 border-teal-600 text-teal-600" : "text-gray-500"
+      }`}
+    >
+      Chat
+    </button>
+    <button
+      onClick={() => {
+        // Show the gallery when clicking Artifacts tab
+        onShowArtifactGallery(true);
+        setActiveTab("map");
+      }}
+      className={`flex-1 h-full px-4 text-sm font-medium ${
+        activeTab === "map" ? "border-b-2 border-teal-600 text-teal-600" : "text-gray-500"
+      }`}
+    >
+      Artifacts
+    </button>
+  </div>
+)}
+
+      {/* Chat Panel */}
+      <div
+  ref={chatPanelRef}
+  className={`${
+    isMobile 
+      ? (activeTab === "chat" 
+        ? "absolute inset-0 pt-12 pb-0 overflow-auto flex flex-col w-full mobile-chat-panel" 
+        : "hidden")
+      : "h-full block"
+  }`}
+  style={getChatPanelStyle()}
+
+>
+  <ChatSection
+    chatHistory={chatHistory}
+    onSend={onSend}
+    isLoading={isLoading}
+    setLayersVisibility={setLayersVisibility}
+    setResponseReady={setResponseReady}
+    setChartReady={setChartReady}
+    setCustomChartReady={setCustomChartReady}
+    responseReady={responseReady}
+    onLayersReady={onLayersReady}
+    showTutorial={showTutorial}
+  setShowTutorial={setShowTutorial}
+    setActiveTab={isMobile ? 
+      // For mobile, don't switch tabs - just open the panel over the chat
+      (tab) => {
+        if (tab === "map" && currentArtifactId) {
+          openMobileArtifactPanel(currentArtifactId);
+          // Don't change activeTab - stay on chat
+        } else {
+          setActiveTab(tab);
+        }
+      } : 
+      // Normal tab switching for desktop
+      setActiveTab
+    }
+    artifacts={artifacts}
+    onSelectArtifact={handleSelectArtifactDisplay}
+  />
+</div>
+
+      {/* Drag Handle */}
+      {showVisualization && (
+        <div
+          ref={dividerRef}
+          className="hidden md:flex w-1 h-full cursor-col-resize relative z-10 flex-col items-center justify-center bg-gray-100 hover:bg-gray-200 transition-colors duration-200"
+          onMouseDown={handleMouseDown}
+        >
+          <GripVertical className="h-1 w-1 text-gray-400" />
+        </div>
+      )}
+
+      {/* Visualization Panel */}
+      <div
+  ref={visualPanelRef}
+  className={`${
+    isMobile 
+      ? (activeTab !== "chat" 
+        ? "absolute inset-0 pt-12 pb-0 overflow-auto" 
+        : "hidden")
+      : "flex-shrink-0 h-full overflow-auto"
+  }`}
+  style={getVisualPanelStyle()}
+>
+  {renderVisualComponent()}
+</div>
+
+      {/* Add custom CSS for cursor styles */}
+      <style jsx global>{`
+        .resizing {
+          cursor: col-resize !important;
+          user-select: none !important;
+        }
+      `}</style>
+      {/* Mobile Artifact Gallery - Shown when activeTab is "map" and showArtifactGallery is true */}
+      {isMobile && activeTab === "map" && showArtifactGallery && (
+  <div className="absolute inset-0 pt-12 pb-0 z-20 bg-white">
+    <ArtifactGallery 
+      artifacts={artifacts}
+      onSelectArtifact={handleSelectArtifactDisplay}
+      onBack={() => {
+        setActiveTab("chat");
+        onShowArtifactGallery(false);
+      }}
+      showCreatedPrompt={artifacts.length === 2}
+      isMobile={true}
+    />
+  </div>
+)}
+
+{isMobile && (
+  <DraggableArtifactPanel
+  isOpen={showMobileArtifactPanel}
+  onClose={closeMobileArtifactPanel}
+  title={mobileArtifactTitle}
+>
+  {mobileArtifactComponent}
+</DraggableArtifactPanel>
+)}
+    </div>
+  );
+}

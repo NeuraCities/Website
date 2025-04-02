@@ -278,9 +278,9 @@ useEffect(() => {
         <div className="absolute inset-0 bg-transparent" />
         <div className="container mx-auto px-6 relative">
           <div className="max-w-4xl text-center sm:text-left">
-            <div className="inline-block bg-coral/10 font-bold text-coral px-4 py-2 rounded-full mb-4">
+            {/*<div className="inline-block bg-coral/10 font-bold text-coral px-4 py-2 rounded-full mb-4">
               Do More.
-            </div>
+            </div>*/}
             <h1 className="text-5xl font-bold text-primary mb-4 leading-tight flex">
               <Lottie 
                 animationData={animationData} 
@@ -415,10 +415,10 @@ useEffect(() => {
         <div className="container mx-auto px-6">
           <div className="text-center max-w-4xl mx-auto mb-8">
             <h2 className="text-4xl font-bold mb-4">
-            Trusted by Industry Leaders
+              Designed for Pioneers
             </h2>
             <p className="text-xl opacity-90">
-            Join leading agencies, enterprises, and innovators transforming geospatial decision-making.
+              Join the next generation of agencies, enterprises, and innovators pioneering the future
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">

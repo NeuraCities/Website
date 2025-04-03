@@ -6,7 +6,7 @@ const DraggableArtifactPanel = ({
   onClose, 
   children,
   title = "",
-  initialHeight = 32 // Initial height in percentage (0-100)
+  initialHeight = 80 // Initial height in percentage (0-100)
 }) => {
   const [panelHeight, setPanelHeight] = useState(initialHeight);
   const [isDragging, setIsDragging] = useState(false);

@@ -496,7 +496,13 @@ const InfrastructureMap = ({ onLayersReady, onFullscreenChange }) => {
             <Info size={20} />
           </button>
           {!isMobile && (
-          <button onClick={toggleFullScreen} title="Fullscreen" style={{ 
+          <button 
+          onClick={(e) => {
+            e.preventDefault(); 
+            toggleFullScreen();
+          }} 
+          title="Fullscreen"
+          style={{ 
             color: COLORS.coral,
             backgroundColor: 'white',
             border: 'none',

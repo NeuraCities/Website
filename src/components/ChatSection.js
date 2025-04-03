@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { useSearchParams, useRouter } from 'next/navigation';
 
 export default function ChatSection({ chatHistory, onSend, isLoading,
-  responseReady, setLayersVisibility, setResponseReady, setChartReady, setCustomChartReady, setActiveTab, artifacts, onSelectArtifact,
+  responseReady, setLayersVisibility, setResponseReady, setChartReady, setCustomChartReady, setActiveTab, artifacts, activeTab, onSelectArtifact,
   setShowTutorial, onShowArtifactGallery }) {
   const [typingText, setTypingText] = useState(""); 
   const [isTyping, setIsTyping] = useState(false);
@@ -27,6 +27,27 @@ const [showLoginTile, setShowLoginTile] = useState(false);
 const [isFlowActive, setIsFlowActive] = useState(false);
 const [isFirstResponse, setIsFirstResponse] = useState(true);
 const [autoScroll, ] = useState(true);
+const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+const notifyArtifactPanelClosed = () => {
+  window.dispatchEvent(new CustomEvent("artifact-panel-close"));
+};
+useEffect(() => {
+  if (isMobile && activeTab === "chat") {
+    const chatPanel = document.querySelector('[data-panel="chat"]');
+    if (chatPanel) {
+      // Force immediate full width
+      chatPanel.style.cssText = "width: 100vw !important; max-width: 100vw !important; min-width: 100vw !important; display: block !important; visibility: visible !important; opacity: 1 !important;";
+      
+      // Force a reflow
+      void chatPanel.offsetHeight;
+      
+      // Apply again after a short delay
+      setTimeout(() => {
+        chatPanel.style.cssText = "width: 100vw !important; max-width: 100vw !important; min-width: 100vw !important; display: block !important; visibility: visible !important; opacity: 1 !important;";
+      }, 50);
+    }
+  }
+}, [isMobile, activeTab]);
 
 useEffect(() => {
   if (autoScroll && messagesEndRef.current) {
@@ -375,6 +396,16 @@ useEffect(() => {
   return () => {
     window.removeEventListener('tab-change', handleTabChange);
   };
+}, []);
+useEffect(() => {
+  if (window.innerWidth < 768) {
+    const chatPanel = document.querySelector('[data-panel="chat"]');
+    if (chatPanel) {
+      chatPanel.style.minWidth = '100vw';
+      chatPanel.style.maxWidth = '100vw';
+      chatPanel.style.width = '100vw';
+    }
+  }
 }, []);
 
   useEffect(() => {
@@ -956,7 +987,7 @@ const renderMessage = (msg, idx) => {
 
   return (
 
-<div className="flex flex-col h-[670px] w-full md:max-w-3xl mx-auto overflow-auto bg-transparent">
+<div className={`flex flex-col h-[670px] w-full md:max-w-3xl mx-auto overflow-auto bg-transparent ${isMobile && activeTab === "chat" ? "chat-reset-mobile" : ""}`}>
 {/* Inject custom CSS for typing animation */}
         <style>{`
           .typing-cursor {
@@ -994,7 +1025,7 @@ const renderMessage = (msg, idx) => {
         {/* Scrollable messages area */}
         
         <div className="flex-1 overflow-hidden mt-20 md:mt-2 mb-0 md:mb-0">
-  <div className="h-full overflow-y-auto px-8 md:px-4">
+  <div className="h-full overflow-y-auto px-4 md:px-4">
 
 {chatHistory.length === 0 ? (
   <div className="fixed inset-0 flex flex-col items-center justify-center h-full min-h-screen text-center text-secondary px-4">
@@ -1135,24 +1166,30 @@ Click below to begin </h1>
   
       {/* Display Info Tile if needed */}
       {showTile && <InfoTile onContactClick={() => console.log('Redirecting to contact page...')} onClose={() => setShowTile(false)} />}
-  
-      {/* Fixed prompt buttons at the bottom */}
+  {/* Fixed prompt buttons at the bottom */}
 {flowState !== "initial" && (
-  <div className="sticky bottom-0 left-0 w-full z-10 bg-white/30 border-gray-200 px-4 py-3">
-    <div className="flex flex-wrap justify-center gap-2 max-w-3xl mx-auto">
+  <div 
+    className="sticky w-full z-10 bg-white/30 border-gray-200 px-4"
+    style={{ 
+      bottom: "0",  /* Move up from absolute bottom by 20px - adjust as needed */
+      paddingTop: "15px", 
+      paddingBottom: "15px",
+    }} 
+  >
+    <div className="flex flex-wrap justify-center gap-3 px-4 pb-4 w-full">
       {flowHistory.length > 0 && flowState !== "infrastructure-analysis" && (
         <button
-        onClick={() => {
-          const newHistory = [...flowHistory];
-          const previous = newHistory.pop();
-          setFlowHistory(newHistory);
-          setFlowState(previous);
-        }}
-        className="aspect-square w-10 h-10 h-full self-center flex items-center justify-center bg-white border border-teal-600 text-teal-700 rounded-full text-xs transition hover:bg-teal-600 hover:text-white disabled:opacity-50 disabled:cursor-not-allowed shadow-md"
-        title="Back"
-      >
-        ←
-      </button>
+          onClick={() => {
+            const newHistory = [...flowHistory];
+            const previous = newHistory.pop();
+            setFlowHistory(newHistory);
+            setFlowState(previous);
+          }}
+          className="aspect-square w-10 h-10 flex items-center justify-center bg-white border border-teal-600 text-teal-700 rounded-full text-xs transition hover:bg-teal-600 hover:text-white disabled:opacity-50 disabled:cursor-not-allowed shadow-md"
+          title="Back"
+        >
+          ←
+        </button>
       )}
 
       {currentButtons.map((button) => (
@@ -1160,7 +1197,7 @@ Click below to begin </h1>
           key={button.id}
           onClick={() => handleButtonClick(button)}
           disabled={isLoading || isTyping || isFlowActive}
-          className={`button-option whitespace-normal break-words w-full sm:max-w-[200px] px-4 py-2.5 rounded-md text-sm transition hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed text-center shadow-md ${button.id !== "contact" ? "bg-white border border-teal-600 text-teal-700 hover:bg-teal-600 hover:text-white" : ""} ${button.className || ""}`}
+          className={`button-option whitespace-normal break-words justify-center w-[90vw] sm:w-auto max-w-[320px] px-4 py-3 md:px-4 md:py-2.5 rounded-md text-sm transition hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed text-center shadow-md ${button.id !== "contact" ? "bg-white border border-teal-600 text-teal-700 hover:bg-teal-600 hover:text-white" : ""} ${button.className || ""}`}
           style={button.style || {}}
         >
           {button.text}
@@ -1181,6 +1218,14 @@ Click below to begin </h1>
       padding-bottom: ${flowState !== "initial" ? "70px" : "24px"};
     }
   }
+    .chat-reset-mobile {
+  width: 100vw !important;
+  max-width: 100vw !important;
+  min-width: 100vw !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
 `}</style>
   </div>
 );}

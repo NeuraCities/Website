@@ -281,9 +281,10 @@ useEffect(() => {
 const handleDashboardFullscreenChange = (isFullscreen) => {
   setIsDashboardFullscreen(isFullscreen);
 };
-// Function to close mobile artifact panel
 const closeMobileArtifactPanel = () => {
   setShowMobileArtifactPanel(false);
+  // Dispatch event to notify other components
+  window.dispatchEvent(new CustomEvent("artifact-panel-close"));
 };
 
 const handleSelectArtifactDisplay = (artifactId) => {
@@ -391,6 +392,27 @@ useEffect(() => {
   }
 }, [isMobile, activeTab, showVisualization]);
 
+useEffect(() => {
+  if (!isMobile || !chatPanelRef.current) return;
+
+  const chatPanel = chatPanelRef.current;
+
+  if (activeTab === "chat") {
+    // Fully reset and enforce correct layout styles
+    chatPanel.style.display = "block";
+    chatPanel.style.width = "100vw";
+    chatPanel.style.maxWidth = "100vw";
+    chatPanel.style.minHeight = "100%";
+    chatPanel.style.margin = "0"; // Reset any stray margins
+    chatPanel.style.paddingTop = "0"; // Adjust if top margin is large
+    chatPanel.style.paddingBottom = "70px"; // Accommodate for prompt buttons
+    chatPanel.scrollTop = 0; // Reset scroll position
+  } else {
+    // Hide the chat panel cleanly
+    chatPanel.style.display = "none";
+    chatPanel.style.width = "0";
+  }
+}, [activeTab, isMobile]);
 
 
   useEffect(() => {
@@ -561,19 +583,65 @@ useEffect(() => {
   }, [showVisualization]);
 
 
-  useEffect(() => {
-    if (isMobile) {
-      // Force reflow after a slight delay
-      setTimeout(() => {
-        if (chatPanelRef.current) {
-          chatPanelRef.current.style.width = "100%";
+  // In ResizablePanels.js, modify the useEffect for mobile-specific styling
+
+useEffect(() => {
+  if (isMobile) {
+    // Create a robust function that forces correct styles
+    const forceCorrectMobileStyles = () => {
+      if (chatPanelRef.current) {
+        if (activeTab === "chat") {
+          // Apply multiple critical properties and use !important
+          chatPanelRef.current.style.cssText = "width: 100vw !important; max-width: 100vw !important; min-width: 100vw !important; display: block !important; visibility: visible !important; opacity: 1 !important;";
+          
+          // Force a reflow to make sure styles are applied
+          void chatPanelRef.current.offsetHeight;
+        } else {
+          chatPanelRef.current.style.cssText = "width: 0 !important; display: none !important;";
         }
-        if (visualPanelRef.current) {
-          visualPanelRef.current.style.width = "100%";
+      }
+      
+      if (visualPanelRef.current) {
+        if (activeTab !== "chat") {
+          visualPanelRef.current.style.cssText = "width: 100vw !important; max-width: 100vw !important; display: block !important;";
+        } else {
+          visualPanelRef.current.style.cssText = "width: 0 !important; display: none !important;";
         }
-      }, 100); // Give it a beat to render
-    }
-  }, [isMobile, activeTab]);
+      }
+    };
+    
+    // Apply the styles immediately
+    forceCorrectMobileStyles();
+    
+    // Also apply after a small delay to catch any missed updates
+    setTimeout(forceCorrectMobileStyles, 50);
+    
+    // Create a more robust tab change handler
+    const handleTabChange = () => {
+      forceCorrectMobileStyles();
+      // Apply again after a delay to catch any animation issues
+      setTimeout(forceCorrectMobileStyles, 50);
+    };
+    
+    // Listen for tab changes
+    window.addEventListener("tab-change", handleTabChange);
+    
+    // Also listen for artifact panel close event which might affect layout
+    const handleArtifactPanelClose = () => {
+      if (activeTab === "chat") {
+        setTimeout(forceCorrectMobileStyles, 50);
+      }
+    };
+    
+    window.addEventListener("artifact-panel-close", handleArtifactPanelClose);
+    
+    return () => {
+      window.removeEventListener("tab-change", handleTabChange);
+      window.removeEventListener("artifact-panel-close", handleArtifactPanelClose);
+    };
+  }
+}, [isMobile, activeTab]);
+
   const handleMouseDown = (e) => {
     if (window.innerWidth < 768) return;
   
@@ -1014,6 +1082,7 @@ const getChatPanelStyle = () => {
     }
     artifacts={artifacts}
     onSelectArtifact={handleSelectArtifactDisplay}
+    activeTab={activeTab}
   />
   </div>
 </div>

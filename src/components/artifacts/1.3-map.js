@@ -14,7 +14,7 @@ const FloodplainsMap = ({ onLayersReady, onFullscreenChange }) => {
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [showLegend, setShowLegend] = useState(false);
   const [showSources, setShowSources] = useState(false);
-    const infoRef = useRef(null);
+  const infoRef = useRef(null);
   
 
   const [activeLayers, setActiveLayers] = useState({
@@ -41,22 +41,22 @@ const FloodplainsMap = ({ onLayersReady, onFullscreenChange }) => {
     }
   };
 
-const [isMobile, setIsMobile] = useState(false);
-      // Check for mobile viewport
-      useEffect(() => {
-        const checkIfMobile = () => {
-          setIsMobile(window.innerWidth < 768);
-        };
-        
-        // Initial check
-        checkIfMobile();
-        
-        // Add resize listener
-        window.addEventListener('resize', checkIfMobile);
-        
-        // Cleanup
-        return () => window.removeEventListener('resize', checkIfMobile);
-      }, []);
+  const [isMobile, setIsMobile] = useState(false);
+  // Check for mobile viewport
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    // Initial check
+    checkIfMobile();
+    
+    // Add resize listener
+    window.addEventListener('resize', checkIfMobile);
+    
+    // Cleanup
+    return () => window.removeEventListener('resize', checkIfMobile);
+  }, []);
 
   const toggleLayer = (layerName) => {
     setActiveLayers(prev => ({ ...prev, [layerName]: !prev[layerName] }));
@@ -73,20 +73,20 @@ const [isMobile, setIsMobile] = useState(false);
     }
   };
   useEffect(() => {
-      const handleClickOutside = (event) => {
-        if (infoRef.current && !infoRef.current.contains(event.target)) {
-          setShowSources(false);
-        }
-      };
-    
-      if (showSources) {
-        document.addEventListener('mousedown', handleClickOutside);
+    const handleClickOutside = (event) => {
+      if (infoRef.current && !infoRef.current.contains(event.target)) {
+        setShowSources(false);
       }
-    
-      return () => {
-        document.removeEventListener('mousedown', handleClickOutside);
-      };
-    }, [showSources]);
+    };
+  
+    if (showSources) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+  
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [showSources]);
 
   useEffect(() => {
     const initializeMap = async () => {
@@ -96,8 +96,9 @@ const [isMobile, setIsMobile] = useState(false);
       const L = await import('leaflet');
       await import('leaflet/dist/leaflet.css');
 
-      if (map || !mapContainerRef.current) return;
-      
+      if (mapContainerRef.current && mapContainerRef.current._leaflet_id) {
+        return;
+      }      
       setLoadingProgress(15);
       setLoadingStage('map');
 
@@ -268,19 +269,36 @@ const [isMobile, setIsMobile] = useState(false);
       leafletMap.floodplainLayer = floodplainLayer;
       
       setLoadingProgress(100);
-    setLoadingStage('complete');
-    if (onLayersReady) {
-      onLayersReady();
-    }
-    
-    if (window.setResponseReady) {
-      window.setResponseReady(true);
-    }
+      setLoadingStage('complete');
+      if (onLayersReady) {
+        onLayersReady();
+      }
+      
+      if (window.setResponseReady) {
+        window.setResponseReady(true);
+      }
     };
 
     initializeMap();
-    return () => map?.remove();
-  }, [COLORS.building, COLORS.flood, COLORS.primary, COLORS.street, map, onLayersReady]);
+    return () => {
+      if (mapContainerRef.current && mapContainerRef.current._leaflet_id) {
+        const leafletMap = mapContainerRef.current._leaflet_map;
+        if (leafletMap) {
+          leafletMap.remove();
+        } else {
+          // fallback: find map by container
+          const maps = window.L && window.L.DomUtil && window.L.DomUtil.get(mapContainerRef.current);
+          if (maps && maps._leaflet_id) {
+            const mapId = maps._leaflet_id;
+            const maybeMap = window.L?.map?.instances?.[mapId];
+            if (maybeMap && maybeMap.remove) {
+              maybeMap.remove();
+            }
+          }
+        }
+      }
+    };
+  }, [COLORS.building, COLORS.flood, COLORS.primary, COLORS.street, onLayersReady]);
 
   useEffect(() => {
     const handleTransitionEnd = (e) => {
@@ -345,12 +363,13 @@ const [isMobile, setIsMobile] = useState(false);
         } else {
           map.removeLayer(layers[key]);
         }
-      }    });
+      }
+    });
   }, [map, activeLayers]);
 
   return (
-    <div className={`flex flex-col h-full ${isFullScreen ? 'fixed inset-0 z-50 bg-white' : ''}`}>
-<div className="flex justify-between items-center p-3 border-b bg-white shadow-sm">
+    <div className={`flex flex-col h-full ${isFullScreen ? 'h-screen' : ''}`}>
+      <div className="flex justify-between items-center p-3 border-b bg-white shadow-sm">
         <h2 className="text-lg font-semibold" style={{ color: COLORS.primary }}>
           Austin Floodplains Map
         </h2>
@@ -425,7 +444,7 @@ const [isMobile, setIsMobile] = useState(false);
       <div className="flex-1 relative">
         <div ref={mapContainerRef} className="absolute inset-0 w-full h-full" />
         {showSources && (
-          <div ref = {infoRef} className="absolute top-0 right-0 w-[280px] bg-white border border-gray-200 rounded-xl shadow-lg p-5 z-[1050] animate-fade-in">
+          <div ref={infoRef} className="absolute top-0 right-0 w-[280px] bg-white border border-gray-200 rounded-xl shadow-lg p-5 z-[1050] animate-fade-in">
             <div className="space-y-2 text-sm text-gray-700">
               <div>
                 <a

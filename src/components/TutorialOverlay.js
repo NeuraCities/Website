@@ -36,19 +36,6 @@ const TutorialOverlay = ({ isVisible, onComplete }) => {
   const getSteps = () => {
     if (isMobile) {
       return [
-        {
-          text: "Click these to see generated results",
-          selector: "button[class*='gap-1 text-xs bg-gradient-to-r']",
-        },
-        {
-          text: "All generated results can be found here",
-          selector: "button[aria-label='Back to Artifacts']",
-        },
-        {
-          text: "Adjust map size by dragging here",
-          selector: null
-        
-        }
       ];
     } else {
       return [

@@ -247,27 +247,27 @@ const toggleFullscreen = () => {
         <div className={`flex items-center space-x-2 ${isMobile ? 'mt-2' : ''}`}>
           <div className="flex items-center space-x-2 relative">
             {/* Info Button */}
-            <button
-              onClick={() => setShowSources(prev => !prev)}
-              title="View Sources"
-              className="p-2 rounded-full border"
-              style={{ 
-                color: COLORS.coral,
-                backgroundColor: COLORS.white,
-                border: `1px solid ${COLORS.coral}`,
-                transition: 'all 0.2s ease-in-out'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = COLORS.coral;
-                e.currentTarget.style.color = COLORS.white;
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = COLORS.white;
-                e.currentTarget.style.color = COLORS.coral;
-              }}
-            >
-              <Info size={18} />
-            </button>
+             <button 
+                onClick={() => setShowSources(prev => !prev)}
+                className="flex items-center justify-center p-2 rounded-full transition-all"
+                title="View Sources"
+                style={{ 
+                  color: COLORS.coral,
+                  backgroundColor: 'white',
+                  border: 'none',
+                  transition: 'all 0.2s ease-in-out'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = COLORS.coral;
+                  e.currentTarget.style.color = 'white';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = 'white';
+                  e.currentTarget.style.color = COLORS.coral;
+                }}
+              >
+                <Info size={isMobile ? 16 : 20} />
+              </button>
 
             {/* Menu below Info Button */}
             {showSources && (

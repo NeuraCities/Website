@@ -7,7 +7,7 @@ import { useSearchParams } from 'next/navigation';
 
 export default function ChatSection({ chatHistory, onSend, isLoading,
   responseReady, setLayersVisibility, setResponseReady, setChartReady, setCustomChartReady, setActiveTab, artifacts, onSelectArtifact,
-  setShowTutorial }) {
+  setShowTutorial, onShowArtifactGallery }) {
   const [typingText, setTypingText] = useState(""); 
   const [isTyping, setIsTyping] = useState(false);
   const [showLoadingMessage, setShowLoadingMessage] = useState(false);
@@ -1142,17 +1142,17 @@ Click below to begin </h1>
     <div className="flex flex-wrap justify-center gap-2 max-w-3xl mx-auto">
       {flowHistory.length > 0 && flowState !== "infrastructure-analysis" && (
         <button
-          onClick={() => {
-            const newHistory = [...flowHistory];
-            const previous = newHistory.pop();
-            setFlowHistory(newHistory);
-            setFlowState(previous);
-          }}
-          className="w-8 h-8 flex items-center justify-center bg-white border border-teal-600 text-teal-700 rounded-full text-xs transition hover:bg-teal-600 hover:text-white disabled:opacity-50 disabled:cursor-not-allowed shadow-md"
-          title="Back"
-        >
-          ←
-        </button>
+        onClick={() => {
+          const newHistory = [...flowHistory];
+          const previous = newHistory.pop();
+          setFlowHistory(newHistory);
+          setFlowState(previous);
+        }}
+        className="aspect-square w-10 h-10 h-full self-center flex items-center justify-center bg-white border border-teal-600 text-teal-700 rounded-full text-xs transition hover:bg-teal-600 hover:text-white disabled:opacity-50 disabled:cursor-not-allowed shadow-md"
+        title="Back"
+      >
+        ←
+      </button>
       )}
 
       {currentButtons.map((button) => (

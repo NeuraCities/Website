@@ -530,8 +530,24 @@ const CombinedTransportPlanningFloodMap = ({onLayersReady,onFullscreenChange }) 
     };
 
     initializeMap();
-    return () => map?.remove();
-  }, [COLORS.biking, COLORS.buildings, COLORS.crash, COLORS.floodplains, COLORS.plans, COLORS.primary, COLORS.priority, COLORS.streets, COLORS.traffic, COLORS.transit, COLORS.transport, activeLayers.floodplains, activeLayers.priority, map, onLayersReady]);
+    return () => {
+      try {
+        if (map) {
+          map.off();
+          map.remove();
+        }
+      } catch (e) {
+        console.warn("Map cleanup error:", e);
+      }
+  
+      // 💡 Add DOM safeguard
+      if (mapContainerRef.current?._leaflet_id != null) {
+        delete mapContainerRef.current._leaflet_id;
+      }
+  
+      setMap(null); // Clear state
+    };
+  }, [onLayersReady]);
 
   useEffect(() => {
     const handleTransitionEnd = (e) => {
@@ -682,7 +698,7 @@ const CombinedTransportPlanningFloodMap = ({onLayersReady,onFullscreenChange }) 
         
         {/* Loading indicator that shows the current stage while keeping map visible */}
         {loadingStage !== 'complete' && (
-          <div className="absolute bottom-12 right-4 flex flex-col items-center bg-white bg-opacity-90 z-10 p-4 rounded-lg shadow-lg max-w-xs border border-gray-200">
+          <div className="absolute bottom-12 right-4 flex flex-col items-center bg-white bg-opacity-90 z-100 p-4 rounded-lg shadow-lg max-w-xs border border-gray-200">
             <div className="flex items-center space-x-2 mb-2">
               <div className="w-6 h-6 border-3 border-gray-300 border-t-blue-500 rounded-full animate-spin"></div>
               <p className="text-sm font-medium text-gray-800">{getLoadingMessage()}</p>

@@ -16,6 +16,8 @@ const TransportMap = ({ onLayersReady, onFullscreenChange }) => {
   const [showLegend, setShowLegend] = useState(false);
   const [showSources, setShowSources] = useState(false);
     const infoRef = useRef(null);
+    const leafletInitializedRef = useRef(false);
+
   
 
   const [activeLayers, setActiveLayers] = useState({
@@ -82,6 +84,23 @@ const TransportMap = ({ onLayersReady, onFullscreenChange }) => {
     }
   };
   useEffect(() => {
+    return () => {
+      if (map) {
+        // Explicitly remove each layer first
+        Object.keys(activeLayers).forEach(layerKey => {
+          const mapLayerKey = `${layerKey}Layer`;
+          if (map[mapLayerKey]) {
+            map.removeLayer(map[mapLayerKey]);
+          }
+        });
+        
+        // Then remove the map
+        map.remove();
+        setMap(null);
+      }
+    };
+  }, [map, activeLayers]);
+  useEffect(() => {
       const handleClickOutside = (event) => {
         if (infoRef.current && !infoRef.current.contains(event.target)) {
           setShowSources(false);
@@ -105,13 +124,37 @@ const TransportMap = ({ onLayersReady, onFullscreenChange }) => {
       const L = await import('leaflet');
       await import('leaflet/dist/leaflet.css');
 
-      const script = document.createElement('script');
-      script.src = 'https://cdnjs.cloudflare.com/ajax/libs/leaflet.heat/0.2.0/leaflet-heat.js';
-      document.head.appendChild(script);
-      await new Promise(resolve => (script.onload = resolve));
+       // Set map reference early
+       // Create empty layer groups
+       const bikingLayer = L.layerGroup();
+       const transitLayer = L.layerGroup();
+       const neighborhoodLayer = L.layerGroup();
+       const buildingLayer = L.layerGroup();
+       const streetLayer = L.layerGroup();
+       const crashMarkerLayer = L.layerGroup();
+       const trafficMarkerLayer = L.layerGroup();
+       
 
-      if (map || !mapContainerRef.current) return;
-      
+      try {
+        // Check if the script is already loaded
+        if (!document.querySelector('script[src*="leaflet-heat.js"]')) {
+          const script = document.createElement('script');
+          script.src = 'https://cdnjs.cloudflare.com/ajax/libs/leaflet.heat/0.2.0/leaflet-heat.js';
+          document.head.appendChild(script);
+          await new Promise((resolve, reject) => {
+            script.onload = resolve;
+            script.onerror = reject;
+            // Add a timeout to prevent hanging
+            setTimeout(resolve, 5000);
+          });
+        }
+      } catch (error) {
+        console.error("Error loading heatmap script:", error);
+        // Continue anyway as this is not critical
+      }
+
+      if (leafletInitializedRef.current || !mapContainerRef.current) return;
+leafletInitializedRef.current = true;
       setLoadingProgress(20);
       setLoadingStage('map');
 
@@ -122,6 +165,8 @@ const TransportMap = ({ onLayersReady, onFullscreenChange }) => {
         minZoom: 11,
         maxZoom: 18
       }).setView([30.267, -97.743], 13);
+      setMap(leafletMap);
+
 
       L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
         attribution: '&copy; OpenStreetMap contributors & CARTO',
@@ -132,17 +177,7 @@ const TransportMap = ({ onLayersReady, onFullscreenChange }) => {
       L.control.zoom({ position: 'topright' }).addTo(leafletMap);
       L.control.attribution({ position: 'bottomright' }).addTo(leafletMap);
 
-      // Create empty layer groups
-      const bikingLayer = L.layerGroup();
-      const transitLayer = L.layerGroup();
-      const neighborhoodLayer = L.layerGroup();
-      const buildingLayer = L.layerGroup();
-      const streetLayer = L.layerGroup();
-      const crashMarkerLayer = L.layerGroup();
-      const trafficMarkerLayer = L.layerGroup();
-      
-      // Set map reference early
-      setMap(leafletMap);
+     
       
       // Wait a moment for the base map to render
       await new Promise(r => setTimeout(r, 500));
@@ -319,9 +354,16 @@ const TransportMap = ({ onLayersReady, onFullscreenChange }) => {
         await new Promise(r => setTimeout(r, 50));
       }
       
-      // Add biking layer to map
-      bikingLayer.addTo(leafletMap);
-      leafletMap.bikingLayer = bikingLayer;
+      // Add biking layer to map after slight delay to ensure map container is attached
+setTimeout(() => {
+  if (leafletMap && leafletMap.getContainer && leafletMap.getContainer().parentNode) {
+    bikingLayer.addTo(leafletMap);
+    leafletMap.bikingLayer = bikingLayer;
+  } else {
+    console.warn("Map container not ready for bikingLayer");
+  }
+}, 50);
+
       
       // Pause briefly between biking and transit data
       await new Promise(r => setTimeout(r, 500));
@@ -363,9 +405,10 @@ const TransportMap = ({ onLayersReady, onFullscreenChange }) => {
         await new Promise(r => setTimeout(r, 50));
       }
       
-      // Add transit layer to map
-      transitLayer.addTo(leafletMap);
-      leafletMap.transitLayer = transitLayer;
+      if (leafletMap && !leafletMap._isDestroyed) {
+        transitLayer.addTo(leafletMap);
+        leafletMap.transitLayer = transitLayer;
+      }
       
       // All layers are now loaded
       setLoadingProgress(100);
@@ -380,7 +423,6 @@ const TransportMap = ({ onLayersReady, onFullscreenChange }) => {
     };
 
     initializeMap();
-    return () => map?.remove();
   }, [COLORS.biking, COLORS.blue, COLORS.primary, COLORS.red, COLORS.yellow, map, onLayersReady]);
 
   useEffect(() => {
@@ -399,7 +441,7 @@ const TransportMap = ({ onLayersReady, onFullscreenChange }) => {
       document.removeEventListener('transitionend', handleTransitionEnd);
     };
   }, [map]);
-  
+
   useEffect(() => {
     if (map) {
       // Create global resize function
@@ -532,7 +574,7 @@ const TransportMap = ({ onLayersReady, onFullscreenChange }) => {
         
         {/* Loading indicator that shows the current stage while keeping map visible */}
         {loadingStage !== 'complete' && (
-          <div className="absolute bottom-12 right-4 flex flex-col items-center bg-white bg-opacity-90 z-10 p-4 rounded-lg shadow-lg max-w-xs border border-gray-200">
+          <div className="absolute bottom-12 right-4 flex flex-col items-center bg-white bg-opacity-90 z-100 p-4 rounded-lg shadow-lg max-w-xs border border-gray-200">
             <div className="flex items-center space-x-2 mb-2">
               <div className="w-6 h-6 border-3 border-gray-300 border-t-blue-500 rounded-full animate-spin"></div>
               <p className="text-sm font-medium text-gray-800">{getLoadingMessage()}</p>

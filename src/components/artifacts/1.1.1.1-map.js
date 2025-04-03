@@ -117,7 +117,7 @@ const LandUseZoningMap = ({ onLayersReady, onFullscreenChange  }) => {
       document.removeEventListener('transitionend', handleTransitionEnd);
     };
   }, [map]);
-  
+
   useEffect(() => {
     if (map) {
       // Create global resize function
@@ -559,7 +559,7 @@ const LandUseZoningMap = ({ onLayersReady, onFullscreenChange  }) => {
             </div>
             
             {/* Layer indicators */}
-            <div className="grid grid-cols-3 gap-1 mt-2 w-full">
+            <div className="grid grid-cols-3 gap-1 mt-2 w-full z-100">
               <div className={`text-center p-1 rounded text-xs ${loadingStage === 'map' || loadingStage === 'zoning' || loadingStage === 'landuse' || loadingStage === 'complete' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-500'}`}>
                 Base Map
               </div>

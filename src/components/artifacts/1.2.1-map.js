@@ -126,7 +126,6 @@ const [isMobile, setIsMobile] = useState(false);
       const trafficMarkerLayer = L.layerGroup();
       
       // Set map reference early
-      setMap(leafletMap);
       
       // Wait a moment for the base map to render
       await new Promise(r => setTimeout(r, 500));
@@ -361,59 +360,31 @@ const [isMobile, setIsMobile] = useState(false);
     if (window.setResponseReady) {
       window.setResponseReady(true);
     }
+    setMap(leafletMap);
+
     };
 
-    useEffect(() => {
-      const handleTransitionEnd = (e) => {
-        // Check if the transition was on an element that could affect map size
-        if (e.target.id === 'draggable-panel-header' || 
-            e.target.closest('.draggable-artifact-panel') || 
-            e.target.classList.contains('draggable-artifact-panel')) {
-          if (map) map.invalidateSize();
-        }
-      };
-      
-      document.addEventListener('transitionend', handleTransitionEnd);
-      
-      return () => {
-        document.removeEventListener('transitionend', handleTransitionEnd);
-      };
-    }, [map]);
-
-    useEffect(() => {
-      if (map) {
-        // Create global resize function
-        window.resizeActiveMap = () => {
-          console.log("Map resize triggered");
-          
-          // For Leaflet maps, invalidateSize is the key method 
-          // that recalculates the map container size
-          
-          // Add a small delay to let the DOM update first
-          setTimeout(() => {
-            map.invalidateSize({animate: false, pan: false});
-            console.log("Map size invalidated");
-          }, 100);
-        };
-        
-        // Also set up resize handler for window resize events
-        const handleWindowResize = _.debounce(() => {
-          if (map) map.invalidateSize();
-        }, 100);
-        
-        window.addEventListener('resize', handleWindowResize);
-        
-        return () => {
-          // Clean up
-          window.removeEventListener('resize', handleWindowResize);
-          delete window.resizeActiveMap;
-        };
-      }
-    }, [map]);
 
     initializeMap();
-    return () => map?.remove();
-  }, [COLORS.blue, COLORS.green, COLORS.lightblue, COLORS.primary, COLORS.red, map, onLayersReady]);
+    return () => {
+      if (mapContainerRef.current && mapContainerRef.current._leaflet_id) {
+        const leafletMap = mapContainerRef.current._leaflet_map;
+        if (leafletMap) {
+          leafletMap.remove();
+        } else {
+          // fallback: find map by container
+          const maps = window.L && window.L.DomUtil && window.L.DomUtil.get(mapContainerRef.current);
+          if (maps && maps._leaflet_id) {
+            const mapId = maps._leaflet_id;
+            const maybeMap = window.L?.map?.instances?.[mapId];
+            if (maybeMap && maybeMap.remove) {
+              maybeMap.remove();
+            }
+          }
+        }
+      }
+    };
+      }, [COLORS.blue, COLORS.green, COLORS.lightblue, COLORS.primary, COLORS.red, map, onLayersReady]);
   useEffect(() => {
       const handleClickOutside = (event) => {
         if (infoRef.current && !infoRef.current.contains(event.target)) {
@@ -489,6 +460,54 @@ if (map.trafficMarkerLayer) {
   }
 }
   }, [map, activeLayers]);
+
+  useEffect(() => {
+    const handleTransitionEnd = (e) => {
+      // Check if the transition was on an element that could affect map size
+      if (e.target.id === 'draggable-panel-header' || 
+          e.target.closest('.draggable-artifact-panel') || 
+          e.target.classList.contains('draggable-artifact-panel')) {
+        if (map) map.invalidateSize();
+      }
+    };
+    
+    document.addEventListener('transitionend', handleTransitionEnd);
+    
+    return () => {
+      document.removeEventListener('transitionend', handleTransitionEnd);
+    };
+  }, [map]);
+
+  useEffect(() => {
+    if (map) {
+      // Create global resize function
+      window.resizeActiveMap = () => {
+        console.log("Map resize triggered");
+        
+        // For Leaflet maps, invalidateSize is the key method 
+        // that recalculates the map container size
+        
+        // Add a small delay to let the DOM update first
+        setTimeout(() => {
+          map.invalidateSize({animate: false, pan: false});
+          console.log("Map size invalidated");
+        }, 100);
+      };
+      
+      // Also set up resize handler for window resize events
+      const handleWindowResize = _.debounce(() => {
+        if (map) map.invalidateSize();
+      }, 100);
+      
+      window.addEventListener('resize', handleWindowResize);
+      
+      return () => {
+        // Clean up
+        window.removeEventListener('resize', handleWindowResize);
+        delete window.resizeActiveMap;
+      };
+    }
+  }, [map]);
 
   return (
 <div className={`flex flex-col h-full ${isFullScreen ? 'fixed inset-0 z-50 bg-white relative' : ''}`}>
@@ -572,7 +591,7 @@ if (map.trafficMarkerLayer) {
         
         {/* Loading indicator that shows the current stage while keeping map visible */}
         {loadingStage !== 'complete' && (
-          <div className="absolute bottom-12 right-4 flex flex-col items-center bg-white bg-opacity-90 z-10 p-4 rounded-lg shadow-lg max-w-xs border border-gray-200">
+          <div className="absolute bottom-12 right-4 flex flex-col items-center bg-white bg-opacity-90 z-100 p-4 rounded-lg shadow-lg max-w-xs border border-gray-200">
             <div className="flex items-center space-x-2 mb-2">
               <div className="w-6 h-6 border-3 border-gray-300 border-t-blue-500 rounded-full animate-spin"></div>
               <p className="text-sm font-medium text-gray-800">{getLoadingMessage()}</p>

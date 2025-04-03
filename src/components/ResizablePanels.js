@@ -78,6 +78,7 @@ export default function ResizablePanels({
   const dividerRef = useRef(null);
   const [isDashboardFullscreen, setIsDashboardFullscreen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  
 
 
   const [showCreatedPrompt, setShowCreatedPrompt] = useState(false);
@@ -297,8 +298,8 @@ const handleSelectArtifactDisplay = (artifactId) => {
     setActiveTab("chat"); // This triggers split view
     openMobileArtifactPanel(artifactId);
   } else {
-    // Desktop behavior - unchanged
-    setShowArtifactGallery(false);
+    // Desktop behavior - use the passed prop function instead of direct state setter
+    onShowArtifactGallery(false);
     setActiveTab(artifact.type);
   }
 };

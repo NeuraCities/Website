@@ -316,10 +316,10 @@ Transit Corridors          </a>
     <div className="relative w-full h-full">
       {isFullscreen ? (
         <div className="absolute inset-0 z-50 bg-white rounded-xl shadow-xl overflow-auto">
-          {renderPanelContent()}
-        </div>
+       {renderPanelContent}
+</div>
       ) : (
-        renderPanelContent()
+        renderPanelContent
       )}
     </div>
   );

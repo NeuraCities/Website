@@ -2,8 +2,7 @@
 import { useState, useRef, useEffect } from "react";
 import { FileText, File, X, ArrowUpRight } from "lucide-react";
 import Image from 'next/image';
-import { useSearchParams } from 'next/navigation';
-
+import { useSearchParams, useRouter } from 'next/navigation';
 
 export default function ChatSection({ chatHistory, onSend, isLoading,
   responseReady, setLayersVisibility, setResponseReady, setChartReady, setCustomChartReady, setActiveTab, artifacts, onSelectArtifact,
@@ -19,6 +18,7 @@ export default function ChatSection({ chatHistory, onSend, isLoading,
   const [showHelpDialog, setShowHelpDialog] = useState(false);
   const helpDialogRef = useRef(null);
   const questionMarkRef = useRef(null);
+  const router = useRouter();
   const [currentButtons, setCurrentButtons] = useState([]);
 const [flowState, setFlowState] = useState("initial");
 const [flowHistory, setFlowHistory] = useState([]);
@@ -732,12 +732,12 @@ default:
           <X size={10} />
         </button>
         
-        <h2 className="text-xl font-semibold mb-4">Want to use a different use case?</h2>
-        <button
-          onClick={onContactClick}
-          className="px-6 py-2 bg-cta text-white rounded-lg hover:bg-teal-600 transition duration-200"
-        >
-          Contact Us
+        <h2 className="text-xl font-semibold mb-4">Want to see a different use case?</h2>
+        <button 
+              onClick={() => router.push('/contact', { scroll: true })}
+              className="px-6 py-2 bg-cta text-white rounded-lg hover:bg-teal-600 transition duration-200"
+              >
+              Contact
         </button>
       </div>
     </div>

@@ -301,7 +301,7 @@ useEffect(() => {
               Try Demo
             </button>
             <button 
-              onClick={() => router.push('/demo', { scroll: true })}
+              onClick={() => router.push('/contact', { scroll: true })}
               className="bg-white border text-secondary px-8 py-3 rounded-lg transition-transform hover:bg-secondary hover:text-white"
             >
               Contact

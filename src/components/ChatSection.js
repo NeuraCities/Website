@@ -792,7 +792,7 @@ default:
       setShowLoginTile(true);
       return; // Exit early
     }
-
+  
     if (button.id === "contact") {
       // Navigate to contact page
       router.push('/contact', { scroll: true });
@@ -818,19 +818,38 @@ default:
     if (button.id === "reset") {
       setFlowState("infrastructure-analysis");
       setFlowHistory([]); 
-      setIsFlowActive(false); 
-      if (setActiveTab) {
-        setActiveTab("gallery");
+      setIsFlowActive(false);
+      
+      // Check if we're on mobile
+      if (window.innerWidth < 768) {
+        // On mobile, stay on chat tab
+        if (setActiveTab) {
+          setActiveTab("chat");
+        }
+        // Don't show artifact gallery on mobile
+        onShowArtifactGallery(false);
+      } else {
+        // On desktop, show gallery as before
+        if (setActiveTab) {
+          setActiveTab("gallery");
+        }
+        onShowArtifactGallery(true);
       }
-      onShowArtifactGallery(true); 
     } else {
       setFlowHistory(prev => [...prev, flowState]);
       setFlowState(button.nextState);
       
       // Always ensure we exit gallery view for non-reset buttons
-      // This is the key change
-      if (setActiveTab) {
-        setActiveTab("map"); // Switch to map view for all normal button clicks
+      if (window.innerWidth < 768) {
+        // For mobile, always stay on chat tab for better UX
+        if (setActiveTab) {
+          setActiveTab("chat");
+        }
+      } else {
+        // Desktop behavior - switch tabs
+        if (setActiveTab) {
+          setActiveTab("map");
+        }
       }
       onShowArtifactGallery(false); // Always exit gallery mode for button clicks
     }
@@ -1009,7 +1028,7 @@ const renderMessage = (msg, idx) => {
 
   return (
 
-<div className={`flex flex-col h-full w-full md:max-w-3xl mx-auto overflow-auto bg-transparent ${isMobile && activeTab === "chat" ? "chat-reset-mobile" : ""}`}>
+<div className={`flex flex-col h-[670px] md:h-full w-full md:max-w-3xl mx-auto overflow-auto bg-transparent ${isMobile && activeTab === "chat" ? "chat-reset-mobile" : ""}`}>
 {/* Inject custom CSS for typing animation */}
         <style>{`
           .typing-cursor {
@@ -1191,42 +1210,49 @@ Click below to begin </h1>
   {/* Fixed prompt buttons at the bottom */}
 {flowState !== "initial" && (
   <div 
-    className="sticky w-full z-10 bg-white/30 border-gray-200 px-4"
+    className="sticky w-full z-10 bg-none border-gray-200 px-4"
     style={{ 
-      bottom: "0",  /* Move up from absolute bottom by 20px - adjust as needed */
+      bottom: "0",
       paddingTop: "15px", 
-      paddingBottom: "15px",
+      paddingBottom: "0px",
     }} 
   >
-    <div className="flex items-center justify-center gap-3 px-4 pb-4 w-full relative">
-    {flowHistory.length > 0 && flowState !== "infrastructure-analysis" && (
-        <button
-          onClick={() => {
-            const newHistory = [...flowHistory];
-            const previous = newHistory.pop();
-            setFlowHistory(newHistory);
-            setFlowState(previous);
-          }}
-          className="aspect-square w-10 h-10 flex items-center justify-center bg-white border border-teal-600 text-teal-700 rounded-full text-xs transition hover:bg-teal-600 hover:text-white disabled:opacity-50 disabled:cursor-not-allowed shadow-md"
-          title="Back"
-        >
-          ←
-        </button>
+    <div className="md:flex md:flex-row md:items-center md:justify-center md:gap-3 px-4 pb-4 w-full relative">
+      {/* Back button container */}
+      {flowHistory.length > 0 && flowState !== "infrastructure-analysis" && (
+        <div className="flex justify-center md:block mb-3 md:mb-0">
+          <button
+            onClick={() => {
+              const newHistory = [...flowHistory];
+              const previous = newHistory.pop();
+              setFlowHistory(newHistory);
+              setFlowState(previous);
+            }}
+            className="aspect-square w-10 h-10 flex items-center justify-center bg-white border border-teal-600 text-teal-700 rounded-full text-xs transition hover:bg-teal-600 hover:text-white disabled:opacity-50 disabled:cursor-not-allowed shadow-md"
+            title="Back"
+          >
+            ←
+          </button>
+        </div>
       )}
 
-      {currentButtons.map((button) => (
-        <button
-          key={button.id}
-          onClick={() => handleButtonClick(button)}
-          disabled={isLoading || isTyping || isFlowActive}
-          className={`button-option whitespace-normal break-words justify-center w-[90vw] sm:w-auto max-w-[320px] px-4 py-3 md:px-4 md:py-2.5 rounded-md text-sm transition hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed text-center shadow-md ${button.id !== "contact" ? "bg-white border border-teal-600 text-teal-700 hover:bg-teal-600 hover:text-white" : ""} ${button.className || ""}`}
-          style={button.style || {}}
-        >
-          {button.text}
-        </button>
-      ))}
+      {/* Buttons container - flex-col on mobile, normal flex row on desktop */}
+      <div className="flex flex-col md:flex-row gap-3 md:items-center w-full md:w-auto">
+        {currentButtons.map((button) => (
+          <button
+            key={button.id}
+            onClick={() => handleButtonClick(button)}
+            disabled={isLoading || isTyping || isFlowActive}
+            className={`button-option whitespace-normal break-words justify-center w-full md:w-auto md:max-w-[320px] px-4 py-3 md:px-4 md:py-2.5 rounded-md text-sm transition hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed text-center shadow-md ${button.id !== "contact" ? "bg-white border border-teal-600 text-teal-700 hover:bg-teal-600 hover:text-white" : ""} ${button.className || ""}`}
+            style={button.style || {}}
+          >
+            {button.text}
+          </button>
+        ))}
+      </div>
     </div>
   </div>
+
 )}
 
 

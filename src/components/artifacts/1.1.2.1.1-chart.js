@@ -100,10 +100,10 @@ const BudgetStudyDashboard2 = ({onLayersReady,onFullscreenChange }) => {
         id: 'remaining-budget',
         name: 'Remaining Budget by Department',
         render: () => (
-<ResponsiveContainer width="100%" height={isMobile ? 200 : 300}>
+<ResponsiveContainer width="100%" height={isMobile ? 200 : 150}>
 <BarChart
               data={budgetData.sort((a, b) => b.REMAINING - a.REMAINING).slice(0, 10)}
-              margin={{ top: 10, right: 20, left: 10, bottom: 20 }}
+              margin={{ top: 0, right: 20, left: 10, bottom: 0 }}
             >
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="DEPT_ROLLUP_NAME" tick={false} axisLine={false} />
@@ -125,7 +125,7 @@ const BudgetStudyDashboard2 = ({onLayersReady,onFullscreenChange }) => {
       id: 'budget-vs-expenditures',
       name: 'Budget vs Expenditures by Department',
       render: () => (
-<ResponsiveContainer width="100%" height={isMobile ? 200 : 300}>
+<ResponsiveContainer width="100%" height={isMobile ? 200 : 150}>
 <BarChart data={budgetData.sort((a, b) => b.BUDGET - a.BUDGET).slice(0, 10)} margin={{ top: 10, right: 20, left: 10, bottom: 20 }}>
             <CartesianGrid strokeDasharray="3 3" />
             <YAxis tickFormatter={(value) => `$${(value / 1_000_000).toFixed(1)}M`} />

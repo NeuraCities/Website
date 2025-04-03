@@ -69,20 +69,23 @@ useEffect(() => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [showSources]);
+  
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const index = parseInt(entry.target.dataset.index);
-          if (!isNaN(index)) setActiveExtract(index);
+          if (!isNaN(index)) {
+            // Do something here only if needed
+          }
         }
       });
     }, { threshold: 0.3 });
-
+  
     Object.values(extractRefs.current).forEach(ref => {
       if (ref) observer.observe(ref);
     });
-
+  
     return () => {
       Object.values(extractRefs.current).forEach(ref => {
         if (ref) observer.unobserve(ref);

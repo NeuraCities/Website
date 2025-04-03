@@ -32,7 +32,7 @@ useEffect(() => {
   if (autoScroll && messagesEndRef.current) {
     messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
   }
-}, [chatHistory]);
+}, [chatHistory, autoScroll]);
 
 const searchParams = useSearchParams();
 
@@ -994,7 +994,7 @@ const renderMessage = (msg, idx) => {
         {/* Scrollable messages area */}
         
         <div className="flex-1 overflow-hidden mt-20 md:mt-2 mb-0 md:mb-0">
-  <div className="h-full overflow-y-auto px-8 md:px-4 overflow-y-auto">
+  <div className="h-full overflow-y-auto px-8 md:px-4">
 
 {chatHistory.length === 0 ? (
   <div className="fixed inset-0 flex flex-col items-center justify-center h-full min-h-screen text-center text-secondary px-4">

@@ -1,26 +1,25 @@
 "use client";
-import React, { useState, useEffect, useRef, useCallback} from 'react';
-import { 
-  Brain, Zap, Clipboard, Wand2, FastForward, BarChart, Map, FileText, Database, LineChart, Layers, FileSpreadsheet, Settings, FileImage, MapPin 
-} from 'lucide-react';
+import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
+import { Brain, Zap, Clipboard, Wand2, FastForward, BarChart, Map, FileText, Database, LineChart, Layers, FileSpreadsheet, Settings, FileImage, MapPin } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
-interface ResponseStep {
-  action: string;
-  icon: JSX.Element;
-  detail: string;
+interface ResponseStep { 
+  action: string; 
+  icon: JSX.Element; 
+  detail: string; 
 }
 
-interface Feature {
-  icon: JSX.Element;
-  title: string;
-  tagline: string;
-  description: string;
-  details: string[];
-  prompt: string;
-  responseSteps: ResponseStep[];
-  finalResponse: string;
-  outputArtifacts: string[];
-  color: string;
+interface Feature { 
+  icon: JSX.Element; 
+  title: string; 
+  tagline: string; 
+  description: string; 
+  details: string[]; 
+  prompt: string; 
+  responseSteps: ResponseStep[]; 
+  finalResponse: string; 
+  outputArtifacts: string[]; 
+  color: string; 
 }
 
 const FeatureSection: React.FC = () => {
@@ -31,13 +30,15 @@ const FeatureSection: React.FC = () => {
   const [showResponse, setShowResponse] = useState(false);
   const [currentResponseStep, setCurrentResponseStep] = useState(0);
   const [showFinalResponse, setShowFinalResponse] = useState(false);
-  
+  const router = useRouter();
+
   // Changed from NodeJS.Timeout to number for browser compatibility
   const typingRef = useRef<number | null>(null);
   const responseTimerRef = useRef<number | null>(null);
   const responseStepTimerRef = useRef<number | null>(null);
 
-  const features: Record<string, Feature> = {
+  // Wrap the features object in useMemo to prevent recreation on each render
+  const features = useMemo<Record<string, Feature>>(() => ({
     timeWarper: {
       icon: <FastForward className="w-10 h-10" />,
       title: "Time Warper",
@@ -52,21 +53,9 @@ const FeatureSection: React.FC = () => {
       ],
       prompt: "Model three different zoning approaches and the projected outcomes",
       responseSteps: [
-        {
-          action: "Fetching geospatial data",
-          icon: <Database />,
-          detail: "Census, zoning, property values, and transportation networks"
-        },
-        {
-          action: "Analyzing spatial patterns",
-          icon: <Layers />,
-          detail: "Density distribution, transit accessibility, land use patterns"
-        },
-        {
-          action: "Generating scenario maps",
-          icon: <Map />,
-          detail: "Three zoning proposals with varying density allowances and mixed-use configurations"
-        }
+        { action: "Fetching geospatial data", icon: <Database />, detail: "Census, zoning, property values, and transportation networks" },
+        { action: "Analyzing spatial patterns", icon: <Layers />, detail: "Density distribution, transit accessibility, land use patterns" },
+        { action: "Generating scenario maps", icon: <Map />, detail: "Three zoning proposals with varying density allowances and mixed-use configurations" }
       ],
       finalResponse: "Scenario analysis complete with projected outcomes for traffic, density, and economic impact for each model.",
       outputArtifacts: ["Report.pdf", "Map.shp", "Density Projections.csv"]
@@ -85,21 +74,9 @@ const FeatureSection: React.FC = () => {
       ],
       prompt: "Analyze how our new transit proposal impacts equity across neighborhoods",
       responseSteps: [
-        {
-          action: "Gathering demographic data",
-          icon: <Database />,
-          detail: "Census, income levels, and transportation dependency"
-        },
-        {
-          action: "Mapping transit access",
-          icon: <MapPin />,
-          detail: "Current and proposed routes with walking distance analysis"
-        },
-        {
-          action: "Running equity calculations",
-          icon: <BarChart />,
-          detail: "Service changes with demographic distributions and opportunity access"
-        }
+        { action: "Gathering demographic data", icon: <Database />, detail: "Census, income levels, and transportation dependency" },
+        { action: "Mapping transit access", icon: <MapPin />, detail: "Current and proposed routes with walking distance analysis" },
+        { action: "Running equity calculations", icon: <BarChart />, detail: "Service changes with demographic distributions and opportunity access" }
       ],
       finalResponse: "Identified 3 neighborhoods with reduced transit access. Recommending route adjustments to improve equity.",
       outputArtifacts: ["Equity Report.pdf", "Transit Maps.gdb", "Demographic.xlsx"]
@@ -118,21 +95,9 @@ const FeatureSection: React.FC = () => {
       ],
       prompt: "What approaches have we tried for downtown revitalization in the past?",
       responseSteps: [
-        {
-          action: "Searching document archives",
-          icon: <FileText />,
-          detail: "Planning reports, meeting minutes, and maps (1990-2024)"
-        },
-        {
-          action: "Extracting key initiatives",
-          icon: <FileSpreadsheet />,
-          detail: "Identified 5 revitalization programs with execution timelines"
-        },
-        {
-          action: "Analyzing outcome data",
-          icon: <LineChart />,
-          detail: "Occupancy, business licenses, property values, pedestrians"
-        }
+        { action: "Searching document archives", icon: <FileText />, detail: "Planning reports, meeting minutes, and maps (1990-2024)" },
+        { action: "Extracting key initiatives", icon: <FileSpreadsheet />, detail: "Identified 5 revitalization programs with execution timelines" },
+        { action: "Analyzing outcome data", icon: <LineChart />, detail: "Occupancy, business licenses, property values, pedestrians" }
       ],
       finalResponse: "5 initiatives from 1998-2023. Most successful: 2015 mixed-use incentive program, downtown occupancy - 22% increase.",
       outputArtifacts: ["Report.pdf", "Metrics.csv", "Historic Maps.png"]
@@ -151,26 +116,31 @@ const FeatureSection: React.FC = () => {
       ],
       prompt: "Create a workflow for reviewing development proposals against our sustainability guidelines",
       responseSteps: [
-        {
-          action: "Analyzing current process",
-          icon: <Settings />,
-          detail: "Review procedures, sustainability guidelines, evaluation tasks"
-        },
-        {
-          action: "Creating standardized templates",
-          icon: <FileText />,
-          detail: "Evaluation forms, scoring guide, sustainability metrics"
-        },
-        {
-          action: "Building workflow",
-          icon: <FileImage />,
-          detail: "Step-by-step procedure with checklist, automated scoring, and report generation"
-        }
+        { action: "Analyzing current process", icon: <Settings />, detail: "Review procedures, sustainability guidelines, evaluation tasks" },
+        { action: "Creating standardized templates", icon: <FileText />, detail: "Evaluation forms, scoring guide, sustainability metrics" },
+        { action: "Building workflow", icon: <FileImage />, detail: "Step-by-step procedure with checklist, automated scoring, and report generation" }
       ],
       finalResponse: "Workflow ready! With evaluation templates, scoring calculation, and consistent reports for every proposal.",
       outputArtifacts: ["Template.docx", "Checklist.pdf", "Standard Procedure.pdf"]
     },
-  };
+  }), []); // Empty dependency array means this will only be created once
+
+  const startResponseStepAnimation = useCallback(() => {
+    const steps = features[activeFeature].responseSteps;
+
+    const animateNextStep = (stepIndex: number) => {
+      if (stepIndex < steps.length) {
+        setCurrentResponseStep(stepIndex);
+        responseStepTimerRef.current = window.setTimeout(() => {
+          animateNextStep(stepIndex + 1);
+        }, 2000);
+      } else {
+        setShowFinalResponse(true);
+      }
+    };
+
+    animateNextStep(0);
+  }, [activeFeature, features]);
 
   // Memoize the function so it doesn't change on every render
   const startTypingAnimation = useCallback(() => {
@@ -180,15 +150,15 @@ const FeatureSection: React.FC = () => {
     setCurrentResponseStep(0);
     setIsTyping(true);
     setDisplayText('');
-    
+
     const currentPrompt = features[activeFeature].prompt;
     let i = 0;
-    
+
     // Clear any existing timeouts
     if (typingRef.current) window.clearTimeout(typingRef.current);
     if (responseTimerRef.current) window.clearTimeout(responseTimerRef.current);
     if (responseStepTimerRef.current) window.clearTimeout(responseStepTimerRef.current);
-    
+
     const typeNextChar = () => {
       if (i < currentPrompt.length) {
         setDisplayText(currentPrompt.substring(0, i + 1));
@@ -202,27 +172,10 @@ const FeatureSection: React.FC = () => {
         }, 800);
       }
     };
-    
+
     // Start typing with a delay
     typingRef.current = window.setTimeout(typeNextChar, 600);
-  }, [activeFeature]); // Only include activeFeature as dependency
-
-  const startResponseStepAnimation = useCallback(() => {
-    const steps = features[activeFeature].responseSteps;
-    
-    const animateNextStep = (stepIndex: number) => {
-      if (stepIndex < steps.length) {
-        setCurrentResponseStep(stepIndex);
-        responseStepTimerRef.current = window.setTimeout(() => {
-          animateNextStep(stepIndex + 1);
-        }, 2000);
-      } else {
-        setShowFinalResponse(true);
-      }
-    };
-    
-    animateNextStep(0);
-  }, [activeFeature, features]);
+  }, [activeFeature, features, startResponseStepAnimation]);
 
   // Initialize animation when component mounts or active feature changes
   useEffect(() => {
@@ -231,12 +184,12 @@ const FeatureSection: React.FC = () => {
     setDisplayText('');
     setShowResponse(false);
     setShowFinalResponse(false);
-    
+
     // Start animation with a slight delay
     const initTimer = window.setTimeout(() => {
       startTypingAnimation();
     }, 300);
-    
+
     // Clean up timeouts
     return () => {
       window.clearTimeout(initTimer);
@@ -248,20 +201,20 @@ const FeatureSection: React.FC = () => {
 
   const handleFeatureChange = (key: string) => {
     if (key === activeFeature) return; // Don't change if same feature
-    
+
     setIsAnimating(true);
-    
+
     // Clear all timeouts
     if (typingRef.current) window.clearTimeout(typingRef.current);
     if (responseTimerRef.current) window.clearTimeout(responseTimerRef.current);
     if (responseStepTimerRef.current) window.clearTimeout(responseStepTimerRef.current);
-    
+
     // Reset states during animation
     setIsTyping(false);
     setDisplayText('');
     setShowResponse(false);
     setShowFinalResponse(false);
-    
+
     setTimeout(() => {
       setActiveFeature(key);
       setIsAnimating(false);
@@ -269,7 +222,7 @@ const FeatureSection: React.FC = () => {
   };
 
   // Helper to return a dynamic icon based on artifact extension
-  const getArtifactIcon = (artifact: string) => {
+  const getArtifactIcon = useCallback((artifact: string) => {
     if (artifact.endsWith('.pdf')) {
       return <FileText size={12} className="mr-1" />;
     } else if (artifact.endsWith('.csv') || artifact.endsWith('.xlsx')) {
@@ -279,7 +232,7 @@ const FeatureSection: React.FC = () => {
     } else {
       return <FileText size={12} className="mr-1" />;
     }
-  };
+  }, []);
 
   return (
     <div className="w-full bg-gradient-to-b from-neutral/50 to-neutral/50 py-16 px-4">
@@ -288,7 +241,7 @@ const FeatureSection: React.FC = () => {
         <p className="text-lg text-center mb-8 text-secondary max-w-2xl mx-auto">
           Capabilities that fundamentally transform how you solve Planning challenges.
         </p>
-        
+
         {/* Feature Navigation */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-12 max-w-4xl mx-auto">
           {Object.entries(features).map(([key, feature]) => (
@@ -422,8 +375,10 @@ const FeatureSection: React.FC = () => {
                 
                 <div className="mt-10 pt-6 border-t border-neutral">
                   <div className="flex justify-between items-center">
-                    <span className="text-sm text-secondary/90">Ready to transform your planning team?</span>
-                    <button className={`px-5 py-2 rounded-lg text-white bg-gradient-to-r ${features[activeFeature].color} hover:shadow-lg transition-all`}>
+                    <span className="text-md text-secondary/90">Ready to transform your planning team?</span>
+                    <button 
+                    onClick={() => router.push('/demo', { scroll: true })}
+                    className={`px-5 py-2 rounded-lg text-white bg-gradient-to-r ${features[activeFeature].color} hover:scale-105 hover:shadow-lg transition-all`}>
                       See It In Action
                     </button>
                   </div>

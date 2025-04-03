@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import { useRouter } from 'next/navigation';
 
 import {
-  ChevronRight,
   ArrowRight,
   Database,
   Share2,
@@ -14,7 +13,7 @@ import {
   Lock
 } from 'lucide-react';
 //import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
+//import { Button } from '@/components/ui/button';
 //import { Card, CardContent } from '@/components/ui/card';
 import Image from "next/image";
 import JsonLd from '@/components/JsonLd';
@@ -296,16 +295,17 @@ useEffect(() => {
               Efficient data to decisions: plain language insights for geospatial clarity.            </p>
             <div className="flex flex-col sm:flex-row gap-6 items-start sm:items-center">
             <button 
-        onClick={() => router.push('/demo', { scroll: true })}
-        className="bg-white border text-secondary px-8 py-3 rounded-lg transition-transform hover:bg-secondary hover:text-white"
-      >
-        Try Demo
-      </button>
-              <Link href="/contact">
-                <Button size="lg" variant="outline" className="text-coral">
-                  Contact <ChevronRight className="ml-2" />
-                </Button>
-              </Link>
+              onClick={() => router.push('/demo', { scroll: true })}
+              className="bg-white border text-coral px-8 py-3 rounded-lg transition-transform hover:bg-coral hover:text-white"
+            >
+              Try Demo
+            </button>
+            <button 
+              onClick={() => router.push('/demo', { scroll: true })}
+              className="bg-white border text-secondary px-8 py-3 rounded-lg transition-transform hover:bg-secondary hover:text-white"
+            >
+              Contact
+            </button>
             </div>
           </div>
         </div>

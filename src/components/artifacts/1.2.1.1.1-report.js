@@ -12,7 +12,22 @@ const ReportComponent3 = ({onLayersReady, reportName = "Downtown Austin Infrastr
   const reportContainerRef = useRef(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showArtifactGallery] = useState(false);
-  
+  const [isMobile, setIsMobile] = useState(false);
+        // Check for mobile viewport
+        useEffect(() => {
+          const checkIfMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+          };
+          
+          // Initial check
+          checkIfMobile();
+          
+          // Add resize listener
+          window.addEventListener('resize', checkIfMobile);
+          
+          // Cleanup
+          return () => window.removeEventListener('resize', checkIfMobile);
+        }, []); 
  useEffect(() => {
     const timeout = setTimeout(() => {
       if (onLayersReady) onLayersReady();
@@ -20,7 +35,7 @@ const ReportComponent3 = ({onLayersReady, reportName = "Downtown Austin Infrastr
     }, 500); // Or however long you want to delay
 
     return () => clearTimeout(timeout);
-  }, []);
+  }, [onLayersReady]);
   const [showSources, setShowSources] = useState(false);
   const infoRef = useRef(null);
       useEffect(() => {
@@ -405,7 +420,7 @@ useEffect(() => {
             >
               <Menu size={18} />
             </button>
-
+            {!isMobile && (
             <button 
               onClick={toggleFullscreen}
               className="flex items-center justify-center p-2 rounded-full transition-all hover:shadow"
@@ -427,6 +442,7 @@ useEffect(() => {
             >
               <Maximize2 size={20} />
             </button>
+            )}
           </>
         )}
         
@@ -480,7 +496,7 @@ useEffect(() => {
 {/* Floating menu button when sidebar is closed */}
 {!sidebarVisible && (
   <div 
-    className="fixed top-6 right-6 z-30"
+    className="absolute top-6 right-6 z-30"
     style={{
       top: '4rem',
       right: '2rem'
@@ -489,7 +505,7 @@ useEffect(() => {
     <div 
       className="flex px-3 py-2 rounded-full"
       style={{ 
-        backgroundColor: 'transparent',
+        backgroundColor: COLORS.white,
         boxShadow: 'none)',
         border: 'none'
       }}
@@ -699,7 +715,7 @@ useEffect(() => {
   );
   
   const fullscreenPanelContent = (
-    <div className="fixed inset-0 z-50 bg-white backdrop-blur-sm flex flex-col">
+    <div className="absolute inset-0 z-50 bg-white backdrop-blur-sm flex flex-col">
 
       <div className="flex-1 flex flex-col bg-white h-screen overflow-hidden">
         <div className="flex flex-1 overflow-hidden">
@@ -715,7 +731,7 @@ useEffect(() => {
               <div 
                 className="flex px-3 py-2 rounded-full"
                 style={{ 
-                  backgroundColor: 'transparent',
+                  backgroundColor: COLORS.white,
                   boxShadow: 'none)',
                   border: 'none'
                 }}
@@ -1118,8 +1134,7 @@ useEffect(() => {
   
   return (
     <>
-      {regularPanelContent}
-      {isFullscreen && fullscreenPanelContent}
+      {isFullscreen ? fullscreenPanelContent : regularPanelContent}
       {showSources && (
           <div ref={infoRef}className="absolute top-4 right-4 w-[280px] bg-white border border-gray-200 rounded-xl shadow-lg p-5 z-[1000] animate-fade-in" style={{top:'100px'}}>
             <div className="space-y-2 text-sm text-gray-700">

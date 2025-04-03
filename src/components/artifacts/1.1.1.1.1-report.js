@@ -29,7 +29,22 @@ const ReportComponent1 = ({ onLayersReady, reportName = "Downtown Austin Resilie
 
   const [isEditing, setIsEditing] = useState(false);
 const [reportTitle, setReportTitle] = useState(reportName);
-
+const [isMobile, setIsMobile] = useState(false);
+      // Check for mobile viewport
+      useEffect(() => {
+        const checkIfMobile = () => {
+          setIsMobile(window.innerWidth < 768);
+        };
+        
+        // Initial check
+        checkIfMobile();
+        
+        // Add resize listener
+        window.addEventListener('resize', checkIfMobile);
+        
+        // Cleanup
+        return () => window.removeEventListener('resize', checkIfMobile);
+      }, []);
 useEffect(() => {
     const handleClickOutside = (event) => {
       if (infoRef.current && !infoRef.current.contains(event.target)) {
@@ -479,7 +494,7 @@ useEffect(() => {
               }}
             >
               <Menu size={18} />
-            </button>
+            </button>    {!isMobile && (
 
             <button 
               onClick={toggleFullscreen}
@@ -502,6 +517,7 @@ useEffect(() => {
             >
               <Maximize2 size={20} />
             </button>
+            )}
           </>
         )}
         
@@ -555,8 +571,9 @@ useEffect(() => {
 {/* Floating menu button when sidebar is closed */}
 {!sidebarVisible && (
   <div 
-    className="fixed top-6 right-6 z-30"
+    className="absolute top-6 right-6 z-30"
     style={{
+      
       top: '4rem',
       right: '2rem'
     }}
@@ -564,7 +581,7 @@ useEffect(() => {
     <div 
       className="flex px-3 py-2 rounded-full"
       style={{ 
-        backgroundColor: 'transparent',
+        backgroundColor: 'white',
         boxShadow: 'none)',
         border: 'none'
       }}
@@ -665,7 +682,7 @@ useEffect(() => {
           >
             <Menu size={18} />
           </button>
-
+          {!isMobile && (
           <button 
             onClick={toggleFullscreen}
             className="flex items-center justify-center p-2 rounded-full transition-all hover:shadow mr-2"
@@ -687,6 +704,7 @@ useEffect(() => {
           >
             <Maximize2 size={20} />
           </button>
+          )}
         </>
       )}
       
@@ -717,7 +735,7 @@ useEffect(() => {
   </div>
 )}
         {/* Main content with added margin/gap from sidebar */}
-        <div className="flex-1 overflow-auto pl-4" style={{ backgroundColor: COLORS.white }}>
+        <div className="flex-1 overflow-auto pl-4 relative" style={{ backgroundColor: COLORS.white }}>
         <div className="w-full max-w-3xl mx-auto px-4 sm:px-6 py-4 sm:py-6 my-4 bg-white rounded-lg shadow-sm" ref={reportContainerRef}>
         {/* All sections rendered in a single scrollable document */}
             {sections.map((section) => (
@@ -783,14 +801,14 @@ useEffect(() => {
   );
   
   const fullscreenPanelContent = (
-    <div className="fixed inset-0 z-50 bg-white backdrop-blur-sm flex flex-col">
+<div className="absolute inset-0 z-[100] bg-white flex flex-col">
 
       <div className="flex-1 flex flex-col bg-white h-screen overflow-hidden">
         <div className="flex flex-1 overflow-hidden">
           {/* Floating menu button when sidebar is closed */}
           {!sidebarVisible && (
             <div 
-              className="fixed z-50"
+              className="absolute z-50"
               style={{
                 top: '1rem',
                 right: '2rem'
@@ -903,8 +921,7 @@ useEffect(() => {
                     >
                       <Menu size={18} />
                     </button>
-  
-                    {/* Exit fullscreen button */}
+                    {!isMobile && (
                     <button 
                       onClick={toggleFullscreen}
                       className="flex items-center justify-center p-2 rounded-full transition-all hover:shadow mr-2"
@@ -926,6 +943,7 @@ useEffect(() => {
                     >
                       <Minimize2 size={20} />
                     </button>
+                    )}
                   </>
                 )}
                 
@@ -1074,7 +1092,7 @@ useEffect(() => {
                       >
                         <Menu size={18} />
                       </button>
-  
+                      {!isMobile && (
                       <button 
                         onClick={toggleFullscreen}
                         className="flex items-center justify-center p-2 rounded-full transition-all hover:shadow"
@@ -1096,6 +1114,7 @@ useEffect(() => {
                       >
                         <Minimize2 size={20} />
                       </button>
+                      )}
                     </>
                   )}
                   
@@ -1219,7 +1238,7 @@ return (
     <>
       {isFullscreen ? fullscreenPanelContent : regularPanelContent}
       {showSources && (
-    <div ref={infoRef}className="absolute top-full right-0 mt-2 w-[280px] bg-white border border-gray-200 rounded-xl shadow-lg p-5 z-[1000000]" style={{top:'100px'}}>
+    <div ref={infoRef}className="absolute top-full right-0 mt-2 w-[280px] bg-white border border-gray-200 rounded-xl shadow-lg p-5 z-[1000000]" style={{top:'170px'}}>
       <div className="space-y-2 text-sm text-gray-700">
         <div>
           <a

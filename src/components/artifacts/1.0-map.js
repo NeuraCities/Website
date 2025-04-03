@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Layers, Maximize2, X, Info } from 'lucide-react';
 import _ from 'lodash';
 
-const InfrastructureMap = ({ onLayersReady }) => {
+const InfrastructureMap = ({ onLayersReady, onFullscreenChange }) => {
   const mapContainerRef = useRef(null);
   const [map, setMap] = useState(null);
   const infoRef = useRef(null);
@@ -14,6 +14,22 @@ const InfrastructureMap = ({ onLayersReady }) => {
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [showLegend, setShowLegend] = useState(false);
   const [showSources, setShowSources] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+        // Check for mobile viewport
+        useEffect(() => {
+          const checkIfMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+          };
+          
+          // Initial check
+          checkIfMobile();
+          
+          // Add resize listener
+          window.addEventListener('resize', checkIfMobile);
+          
+          // Cleanup
+          return () => window.removeEventListener('resize', checkIfMobile);
+        }, []);
   
   const [activeLayers, setActiveLayers] = useState({
     buildings: true,
@@ -35,11 +51,10 @@ const InfrastructureMap = ({ onLayersReady }) => {
     coral: '#008080',
     white: '#FFFFFF'
   };
-
   const toggleFullScreen = () => {
     setIsFullScreen(!isFullScreen);
-    if (map) {
-      setTimeout(() => map.invalidateSize(), 300);
+    if (onFullscreenChange) {
+      onFullscreenChange(!isFullScreen);
     }
   };
 
@@ -55,6 +70,8 @@ const InfrastructureMap = ({ onLayersReady }) => {
     map.buildingHeatmap.setOptions({ radius: heatmapRadius, max: heatmapIntensity });
     map.streetHeatmap.setOptions({ radius: heatmapRadius * 0.7, max: heatmapIntensity });
   };
+
+  
 
   useEffect(() => {
     if (map) {
@@ -380,7 +397,7 @@ const InfrastructureMap = ({ onLayersReady }) => {
   };
 
   return (
-    <div className={`flex flex-col h-full ${isFullScreen ? 'fixed inset-0 z-50 bg-white' : ''}`}>
+    <div className={`flex flex-col h-full`}>
       <div className="flex justify-between items-center p-3 border-b bg-white shadow-sm">
         <h2 className="text-lg font-semibold" style={{ color: COLORS.primary }}>
           Austin Infrastructure Resilience Map
@@ -432,7 +449,7 @@ const InfrastructureMap = ({ onLayersReady }) => {
           }}>
             <Info size={20} />
           </button>
-
+          {!isMobile && (
           <button onClick={toggleFullScreen} title="Fullscreen" style={{ 
             color: COLORS.coral,
             backgroundColor: 'white',
@@ -455,6 +472,7 @@ const InfrastructureMap = ({ onLayersReady }) => {
           }}>
             {isFullScreen ? <X size={20}/> : <Maximize2 size={20} />}
           </button>
+          )}
         </div>
       </div>
 

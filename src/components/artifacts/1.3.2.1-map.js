@@ -5,7 +5,7 @@ import { Layers, Maximize2, X, Info } from 'lucide-react';
 import _ from 'lodash';
 import * as turf from '@turf/turf';
 
-const ConcernAreasMap = ({onLayersReady}) => {
+const ConcernAreasMap = ({onLayersReady, onFullscreenChange}) => {
   const mapContainerRef = useRef(null);
   const [map, setMap] = useState(null);
   const [isFullScreen, setIsFullScreen] = useState(false);
@@ -50,15 +50,32 @@ const ConcernAreasMap = ({onLayersReady}) => {
   };
 
   const toggleFullScreen = () => {
-    setIsFullScreen(prev => !prev);
-    if (map) {
-      setTimeout(() => map.invalidateSize(), 300);
+    setIsFullScreen(!isFullScreen);
+    if (onFullscreenChange) {
+      onFullscreenChange(!isFullScreen);
     }
   };
 
   const toggleLayer = (layerName) => {
     setActiveLayers(prev => ({ ...prev, [layerName]: !prev[layerName] }));
   };
+
+  const [isMobile, setIsMobile] = useState(false);
+        // Check for mobile viewport
+        useEffect(() => {
+          const checkIfMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+          };
+          
+          // Initial check
+          checkIfMobile();
+          
+          // Add resize listener
+          window.addEventListener('resize', checkIfMobile);
+          
+          // Cleanup
+          return () => window.removeEventListener('resize', checkIfMobile);
+        }, []);
 
   useEffect(() => {
       const handleClickOutside = (event) => {
@@ -325,7 +342,13 @@ const ConcernAreasMap = ({onLayersReady}) => {
   
     initializeMap();
     return () => map?.remove();
-  }, []);
+  }, [COLORS.building,
+    COLORS.concern,
+    COLORS.flood,
+    COLORS.primary,
+    COLORS.street,
+    map,
+    onLayersReady]);
 
   useEffect(() => {
     if (!map) return;
@@ -347,8 +370,8 @@ const ConcernAreasMap = ({onLayersReady}) => {
   }, [map, activeLayers]);
 
   return (
-    <div className={`flex flex-col h-full ${isFullScreen ? 'fixed inset-0 z-50 bg-white' : ''}`}>
-      <div className="flex justify-between items-center p-3 border-b bg-white shadow-sm">
+    <div className={`flex flex-col h-full ${isFullScreen ? 'fixed inset-0 z-50 bg-white relative' : ''}`}>
+<div className="flex justify-between items-center p-3 border-b bg-white shadow-sm">
         <h2 className="text-lg font-semibold" style={{ color: COLORS.primary }}>
           Austin Areas of Concern Map
         </h2>
@@ -397,6 +420,7 @@ const ConcernAreasMap = ({onLayersReady}) => {
           }}>
             <Info size={20} />
           </button>
+          {!isMobile && (
           <button onClick={toggleFullScreen} title="Fullscreen" style={{ 
             color: COLORS.coral,
             backgroundColor: 'white',
@@ -419,6 +443,7 @@ const ConcernAreasMap = ({onLayersReady}) => {
           }}>
             {isFullScreen ? <X size={20} /> : <Maximize2 size={20} />}
           </button>
+          )}
         </div>
       </div>
       

@@ -25,6 +25,15 @@ const [showTile, setShowTile] = useState(false);
 const [showLoginTile, setShowLoginTile] = useState(false);
 const [isFlowActive, setIsFlowActive] = useState(false);
 const [isFirstResponse, setIsFirstResponse] = useState(true);
+const [autoScroll, ] = useState(true);
+
+useEffect(() => {
+  if (autoScroll && messagesEndRef.current) {
+    messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+  }
+}, [chatHistory]);
+
+
 
 useEffect(() => {
   if (responseReady && showLoadingMessage && !isLoading) {
@@ -75,6 +84,12 @@ const findArtifactsForMessage = (message) => {
 const LoginTile = ({ onClose, onSubmit }) => {
   const [newsletter, setNewsletter] = useState(false);
 
+  // Modified onClose function that also resets isFlowActive
+  const handleClose = () => {
+    setIsFlowActive(false); // Reset the flow active state
+    onClose(); // Call the original onClose function
+  };
+
   const handleMicrosoftLogin = () => {
     // Azure AD application configuration
     const clientId = "050f429e-488a-4dc8-8b78-fd43a9cee740";
@@ -112,16 +127,16 @@ const LoginTile = ({ onClose, onSubmit }) => {
     <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 z-[10000]">
       {/* Container div - different sizes for mobile vs desktop */}
       <div className="bg-white rounded-xl shadow-lg w-full relative md:max-w-lg max-w-xs md:p-8 p-4 text-center">
-        {/* Close Button */}
+        {/* Close Button - now using the handleClose function */}
         <button
-          onClick={onClose}
+          onClick={handleClose}
           className="absolute top-3 right-3 text-gray-500 hover:text-gray-700 focus:outline-none"
         >
           <X size={18} />
         </button>
 
         <h2 className="md:text-3xl text-xl font-bold text-primary md:mb-2 mb-1">Welcome to NeuraCities</h2>
-        <p className="md:text-lg text-sm md:mb-6 mb-3 text-secondary">Please sign up to access the infrastructure resilience analysis</p>
+        <p className="md:text-lg text-sm md:mb-6 mb-3 text-secondary">Please sign up to access the demo</p>
         
         <form onSubmit={onSubmit} className="md:space-y-4 space-y-2">
           <input
@@ -319,20 +334,36 @@ const triggerFlowSequence = async (buttonId) => {
     setSelectedFileType(type);
     setIsViewerOpen(true);
   };
-  // Add to your ChatPage component
+
+  // Add near the beginning of your component
 useEffect(() => {
-  // Force chat panel to full width on initial load for mobile
-  if (window.innerWidth < 768) {
-    // Use requestAnimationFrame to ensure DOM has updated
-    requestAnimationFrame(() => {
-      const chatPanel = document.querySelector('[ref=chatPanelRef]');
+  // Monitor for tab changes and handle mobile styling
+  const handleTabChange = () => {
+    // For mobile, ensure chat takes full width when active
+    if (window.innerWidth < 768) {
+      const chatPanel = document.querySelector('[data-panel="chat"]');
       if (chatPanel) {
-        chatPanel.style.width = '100vw';
-        chatPanel.style.maxWidth = '100vw';
+        requestAnimationFrame(() => {
+          chatPanel.style.cssText = 'width: 100vw !important; max-width: 100vw !important;';
+        });
       }
-    });
+    }
+  };
+  
+  // Initial setup for mobile
+  if (window.innerWidth < 768) {
+    handleTabChange();
   }
+  
+  // Listen for tab changes
+  window.addEventListener('tab-change', handleTabChange);
+  
+  // Cleanup 
+  return () => {
+    window.removeEventListener('tab-change', handleTabChange);
+  };
 }, []);
+
   useEffect(() => {
     function handleClickOutside(event) {
       if (helpDialogRef.current && !helpDialogRef.current.contains(event.target)) {
@@ -660,6 +691,23 @@ default:
   ]);
     }
   };
+  useEffect(() => {
+    // Reset critical state on mount
+    setIsFlowActive(false);
+    setShowLoginTile(false);
+    
+    console.log("State reset on mount");
+  }, []);
+  useEffect(() => {
+    console.log("ChatSection mounted with states:", {
+      isFlowActive,
+      showLoginTile,
+      flowState,
+      isLoading,
+      isTyping
+    });
+  }, [flowState, isFlowActive, isLoading, isTyping, showLoginTile]);
+
   const InfoTile = ({ onContactClick, onClose }) => (
     <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 z-[10000]">
       <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full text-center relative">
@@ -683,15 +731,27 @@ default:
   );
   
   const handleButtonClick = (button) => {
-    if (isLoading || isTyping || isFlowActive) return;
-    setIsFlowActive(true);
-    console.log("Button clicked with ID:", button.id);
-    
-    // For button 1.0, only show the login tile without proceeding to the next stage
+    // For the initial button (1.0), simplify the condition
     if (button.id === "1.0") {
+      // If login tile is already showing, don't do anything
+      if (showLoginTile) {
+        return;
+      }
+      
+      console.log("Initial demo button clicked");
+      setIsFlowActive(true);
       setShowLoginTile(true);
-      return; // Exit early to prevent sending the message and showing response
-    } 
+      return; // Exit early
+    }
+    
+    // For all other buttons, check if we're already processing something
+    if (isLoading || isTyping || isFlowActive) {
+      console.log("Button click ignored - system busy");
+      return;
+    }
+    
+    console.log("Button clicked with ID:", button.id);
+    setIsFlowActive(true);
     
     // Handle other buttons as before
     if (["1.2.1.2.1", "1.2.1.1.1", "1.1.1.1.1", "1.2.2.1.1.1", "1.1.2.1.1.1", "1.3.2.1.1.1", "1.3.1.1.1.1"].includes(button.id)) {
@@ -710,14 +770,6 @@ default:
       setFlowState(button.nextState);
     }
   
-    // REMOVE/COMMENT OUT THIS SECTION - Don't change tabs on mobile
-    // if (window.innerWidth < 768) {
-    //   if (typeof setActiveTab === 'function') {
-    //     setActiveTab("map");
-    //   }
-    //   window.dispatchEvent(new CustomEvent('switch-to-artifacts-tab'));
-    // }
-  
     onSend(button.text, { responseId: button.id });
     setShowLoadingMessage(true);
     if (button.id === "1.2") {
@@ -725,7 +777,22 @@ default:
     }
   };
   
-  
+  useEffect(() => {
+    // Check URL parameters
+    const queryParams = new URLSearchParams(window.location.search);
+    const source = queryParams.get('source');
+    
+    // If coming from homepage, make sure to reset all states
+    if (source === 'homepage') {
+      setIsFlowActive(false);
+      setShowLoginTile(false);
+      setFlowState("initial");
+      // Any other state resets needed
+      console.log("States reset due to homepage navigation");
+    }
+    
+    console.log("Navigation source:", source || "direct/internal");
+  }, []);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -867,7 +934,7 @@ if (isLastAssistantMessage && isTyping) {
         className="flex items-center gap-1 text-xs bg-gradient-to-r from-[#e0f2f2] to-white border border-[#008080] text-[#008080] rounded-md py-1.5 px-3 
                   hover:bg-gradient-to-r hover:from-[#008080] hover:to-[#009999] hover:text-white transition-all duration-200 shadow-sm
                   transform hover:scale-105 active:scale-95 hover:shadow-md relative overflow-hidden
-                  after:absolute after:inset-0 after:bg-white after:bg-opacity-20 after:rounded-md after:top-0 after:h-1/2"
+                  after:absolute after:inset-0 after:rounded-md after:top-0 after:h-1/2"
       >
         <span className="font-medium relative z-10">{artifact.title || `View ${artifact.type}`}</span>
         <ArrowUpRight size={12} className="relative z-10" />
@@ -883,8 +950,8 @@ if (isLastAssistantMessage && isTyping) {
 
   return (
 
-      <div className="flex flex-col h-full w-full pt-32 relative bg-transparent">
-        {/* Inject custom CSS for typing animation */}
+<div className="flex flex-col h-[670px] w-full md:max-w-3xl mx-auto overflow-auto bg-transparent">
+{/* Inject custom CSS for typing animation */}
         <style>{`
           .typing-cursor {
             display: inline-block;
@@ -919,22 +986,28 @@ if (isLastAssistantMessage && isTyping) {
         `}</style>
     
         {/* Scrollable messages area */}
-        <div className="flex-1 p-2 md:p-4 mb-16 md:mb-16 mt-12 md:mt-2 overflow-auto ios-height-fix">{chatHistory.length === 0 ? (
-            <div className="flex flex-col items-center justify-center h-full min-h-[60vh] text-center text-gray-700 px-4">
-            <h2 className="text-xl md:text-2xl font-semibold mb-6">
-              Click the button below to get started
-            </h2>
-            <button
-              onClick={() =>
-                handleButtonClick({
-                  id: "1.0",
-                  text: "I want to evaluate the Resilience of Infrastructure around downtown Austin",
-                })
-              }
-              className="px-6 py-3 bg-white text-coral rounded-lg shadow-md hover:bg-coral hover:text-white transition duration-200 text-sm md:text-base text-center max-w-md"
-            >
-              I want to evaluate the Resilience of Infrastructure around downtown Austin
-            </button>
+        
+        <div className="flex-1 overflow-hidden mt-20 md:mt-2 mb-0 md:mb-0">
+  <div className="h-full overflow-y-auto px-2 md:px-4 overflow-y-auto">
+
+{chatHistory.length === 0 ? (
+  <div className="fixed inset-0 flex flex-col items-center justify-center h-full min-h-screen text-center text-secondary px-4">
+  <h2 className="text-xl md:text-4xl font-semibold mb-4 text-primary">
+Ready to see NeuraCities in action? </h2>
+ <h1 className="text-xl md:text-2xl mb-6 text-secondary">
+Click below to begin </h1>
+  <button
+    onClick={() =>
+      handleButtonClick({
+        id: "1.0",
+        text: "I want to evaluate the Resilience of Infrastructure around downtown Austin",
+      })
+    }
+    className="flex items-center gap-1 bg-gradient-to-r from-[#e0f2f2] to-white border border-[#008080] text-[#008080] rounded-lg py-3 px-6 hover:bg-gradient-to-r hover:from-[#008080] hover:to-[#009999] hover:text-white transition-all duration-200 shadow-sm transform hover:scale-105 active:scale-95 hover:shadow-md relative overflow-hidden after:absolute after:inset-0 after:rounded-md after:top-0 after:h-1/2 mx-auto"
+
+  >
+  <span className="font-medium relative z-10">I want to evaluate the Resilience of Infrastructure around downtown Austin</span>
+  </button>
           </div>
           ) : (
             <div className="space-y-4">
@@ -943,6 +1016,7 @@ if (isLastAssistantMessage && isTyping) {
               <div ref={messagesEndRef} />
             </div>
           )}
+        </div>
         </div>
     
   
@@ -1056,27 +1130,25 @@ if (isLastAssistantMessage && isTyping) {
       {/* Display Info Tile if needed */}
       {showTile && <InfoTile onContactClick={() => console.log('Redirecting to contact page...')} onClose={() => setShowTile(false)} />}
   
-      {/* Floating buttons without panel */}
+      {/* Fixed prompt buttons at the bottom */}
 {flowState !== "initial" && (
-  <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6 z-10">
-    <div className="flex flex-wrap justify-center gap-2 text-center">
+  <div className="sticky bottom-0 left-0 w-full z-10 bg-white/30 border-gray-200 px-4 py-3">
+    <div className="flex flex-wrap justify-center gap-2 max-w-3xl mx-auto">
       {flowHistory.length > 0 && flowState !== "infrastructure-analysis" && (
-        <div className="flex flex-wrap justify-center items-stretch gap-2 text-center">
-          <button
-            onClick={() => {
-              const newHistory = [...flowHistory];
-              const previous = newHistory.pop();
-              setFlowHistory(newHistory);
-              setFlowState(previous);
-            }}
-            className="self-center w-8 h-8 flex items-center justify-center bg-white border border-teal-600 text-teal-700 rounded-full text-xs transition hover:bg-teal-600 hover:text-white disabled:opacity-50 disabled:cursor-not-allowed shadow-md"
-            title="Back"
-          >
-            ←
-          </button>
-        </div>
+        <button
+          onClick={() => {
+            const newHistory = [...flowHistory];
+            const previous = newHistory.pop();
+            setFlowHistory(newHistory);
+            setFlowState(previous);
+          }}
+          className="w-8 h-8 flex items-center justify-center bg-white border border-teal-600 text-teal-700 rounded-full text-xs transition hover:bg-teal-600 hover:text-white disabled:opacity-50 disabled:cursor-not-allowed shadow-md"
+          title="Back"
+        >
+          ←
+        </button>
       )}
-      
+
       {currentButtons.map((button) => (
         <button
           key={button.id}
@@ -1091,6 +1163,7 @@ if (isLastAssistantMessage && isTyping) {
     </div>
   </div>
 )}
+
 
 {/* Add padding at the bottom of the chat area to prevent text from appearing behind buttons */}
 <style jsx global>{`

@@ -23,7 +23,9 @@ const COLORS = {
   cta: '#95A5A6',
 };
 
-const ClimateVulnerabilityDashboard = ({onLayersReady}) => {
+
+
+const ClimateVulnerabilityDashboard = ({onLayersReady, onFullscreenChange}) => {
   const [data, setData] = useState(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [singleChartView, setSingleChartView] = useState(null);
@@ -31,6 +33,22 @@ const ClimateVulnerabilityDashboard = ({onLayersReady}) => {
   const [showSources, setShowSources] = useState(false);
     const infoRef = useRef(null);
   
+    const [isMobile, setIsMobile] = useState(false);
+          // Check for mobile viewport
+          useEffect(() => {
+            const checkIfMobile = () => {
+              setIsMobile(window.innerWidth < 768);
+            };
+            
+            // Initial check
+            checkIfMobile();
+            
+            // Add resize listener
+            window.addEventListener('resize', checkIfMobile);
+            
+            // Cleanup
+            return () => window.removeEventListener('resize', checkIfMobile);
+          }, []);
   useEffect(() => {
       const handleClickOutside = (event) => {
         if (infoRef.current && !infoRef.current.contains(event.target)) {
@@ -53,7 +71,7 @@ const ClimateVulnerabilityDashboard = ({onLayersReady}) => {
     }, 500); // Or however long you want to delay
 
     return () => clearTimeout(timeout);
-  }, []);
+  }, [onLayersReady]);
   useEffect(() => {
     fetch('/data/heatisland-data.json')
       .then(res => res.json())
@@ -144,8 +162,11 @@ const ClimateVulnerabilityDashboard = ({onLayersReady}) => {
     }
   ];
 
-  const toggleFullscreen = () => setIsFullscreen(!isFullscreen);
-
+  const toggleFullscreen = () => {
+    const next = !isFullscreen;
+    setIsFullscreen(next);
+    if (onFullscreenChange) onFullscreenChange(next);
+  };
   const regularPanelContent = (
     <div className="p-4" ref={chartContainerRef}>
      <div className="flex justify-between items-center mb-6">
@@ -161,6 +182,7 @@ const ClimateVulnerabilityDashboard = ({onLayersReady}) => {
     >
       <Info size={18} />
     </button>
+    {!isMobile && (
     <button
       onClick={toggleFullscreen}
       className="p-2 rounded-full border"
@@ -169,6 +191,7 @@ const ClimateVulnerabilityDashboard = ({onLayersReady}) => {
     >
       {isFullscreen ? <X size={18} /> : <Maximize2 size={18} />}
     </button>
+    )}
   </div>
 </div>
 
@@ -205,7 +228,7 @@ const ClimateVulnerabilityDashboard = ({onLayersReady}) => {
     </div>
   );
 
-  
+  /*
 // Add missing fullscreenPanelContent
 const fullscreenPanelContent = (
   <div className="fixed inset-0 z-50 bg-white overflow-auto p-4">
@@ -240,6 +263,7 @@ const fullscreenPanelContent = (
         >
           <Info size={20} />
         </button>
+        {!isMobile && (
         <button
           onClick={toggleFullscreen}
           style={{ 
@@ -266,6 +290,7 @@ const fullscreenPanelContent = (
         >
           <X size={20} />
         </button>
+        )}
       </div>
     </div>
 
@@ -282,11 +307,16 @@ const fullscreenPanelContent = (
     </div>
   </div>
 );
+*/
   return (
-    <>
-    
-      {regularPanelContent}
-      {isFullscreen && fullscreenPanelContent}
+    <div className="relative w-full h-full">
+    {isFullscreen ? (
+  <div className="absolute inset-0 z-50 bg-white rounded-xl shadow-xl overflow-auto">
+    {regularPanelContent}
+  </div>
+) : (
+  regularPanelContent
+)}
       {showSources && (
   <div ref = {infoRef} className="absolute top-36 right-6 w-[280px] bg-white border border-gray-200 rounded-xl shadow-lg p-5 z-50 animate-fade-in">
     <div className="space-y-2 text-sm text-gray-700">
@@ -346,7 +376,7 @@ Floodplains        </a>
   </div>
 )}
 
-    </>
+    </div>
   );
 };
 

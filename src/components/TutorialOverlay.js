@@ -44,6 +44,11 @@ const TutorialOverlay = ({ isVisible, onComplete }) => {
           text: "All generated results can be found here",
           selector: "button[aria-label='Back to Artifacts']",
         },
+        {
+          text: "Adjust map size by dragging here",
+          selector: null
+        
+        }
       ];
     } else {
       return [
@@ -70,7 +75,10 @@ const TutorialOverlay = ({ isVisible, onComplete }) => {
   const tutorialSteps = getSteps();
 
   const calculatePosition = (element, stepConfig) => {
-    if (!element || !tooltipRef.current) return { top: 0, left: 0 };
+    if (!element || !tooltipRef.current) {
+      // Manual fallback if no target element — e.g., bottom center of screen
+      return { top: window.innerHeight + 100, left: window.innerWidth / 2 - 100 };
+    };
 
     const rect = element.getBoundingClientRect();
     const tooltip = tooltipRef.current;
@@ -87,9 +95,13 @@ const TutorialOverlay = ({ isVisible, onComplete }) => {
           left = rect.left + rect.width / 2 - tooltipWidth / 2;
           break;
         case "All generated results can be found here":
-          top = rect.bottom - 300;
+          top = rect.bottom - 320;
           left = rect.left + rect.width / 2 - tooltipWidth / 2 + 150;
           break;
+          case "Adjust map size by dragging here":
+            top = rect.top - tooltipHeight +500;
+            left = rect.left + rect.width / 2 - tooltipWidth / 2; 
+            break;
       }
     } else {
       switch (stepText) {
@@ -107,7 +119,7 @@ const TutorialOverlay = ({ isVisible, onComplete }) => {
           break;
         case "Legend and Sources!":
             top = rect.bottom + -13;  
-            left = rect.left + rect.width / 2 - tooltipWidth / 2 + 300;
+            left = rect.left + rect.width / 2 - tooltipWidth + 400;
           break;
         default:
           top = rect.bottom + 15;
@@ -121,6 +133,7 @@ const TutorialOverlay = ({ isVisible, onComplete }) => {
   const findTargetElement = () => {
     if (currentStep >= tutorialSteps.length) return null;
     const step = tutorialSteps[currentStep];
+    if (!step.selector) return null; // ← Skip if no selector
     const elements = document.querySelectorAll(step.selector);
     for (let i = 0; i < elements.length; i++) {
       const element = elements[i];
@@ -193,14 +206,14 @@ const TutorialOverlay = ({ isVisible, onComplete }) => {
           return { ...baseStyle, bottom: "-10px", left: "50%", transform: "translateX(-50%)", borderWidth: "10px 10px 0 10px", borderColor: "white transparent transparent transparent" };
         case "All generated results can be found here":
           return { ...baseStyle, top: "-10px", left: "50%", transform: "translateX(-50%)", borderWidth: "0 10px 10px 10px", borderColor: "transparent transparent white transparent" };
-        case "Legend and Sources!":
-          return { ...baseStyle, right: "-10px", top: "50%", transform: "translateY(-50%)", borderWidth: "10px 0 10px 10px", borderColor: "transparent transparent transparent white" };
-        default:
+          case "Adjust map size by dragging here":
+            return { ...baseStyle, bottom: "-10px", left: "50%", transform: "translateX(-50%)", borderWidth: "10px 10px 0 10px", borderColor: "white transparent transparent transparent" };
+            default:
           return {};
       }
     } else {
       switch (stepText) {
-        case "Click any to proceed":
+        case "Choose any to proceed":
         case "Click these to see generated results":
           return { ...baseStyle, bottom: "-10px", left: "50%", transform: "translateX(-50%)", borderWidth: "10px 10px 0 10px", borderColor: "white transparent transparent transparent" };
         case "All generated results can be found here":

@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Layers, Maximize2, X, Info } from 'lucide-react';
 import _ from 'lodash';
 
-const CombinedTransportPlanningFloodMap = ({onLayersReady}) => {
+const CombinedTransportPlanningFloodMap = ({onLayersReady,onFullscreenChange }) => {
   const mapContainerRef = useRef(null);
   const [map, setMap] = useState(null);
   const [isFullScreen, setIsFullScreen] = useState(false);
@@ -28,6 +28,22 @@ const CombinedTransportPlanningFloodMap = ({onLayersReady}) => {
     floodplains: true,
     priority: true,
   });
+  const [isMobile, setIsMobile] = useState(false);
+        // Check for mobile viewport
+        useEffect(() => {
+          const checkIfMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+          };
+          
+          // Initial check
+          checkIfMobile();
+          
+          // Add resize listener
+          window.addEventListener('resize', checkIfMobile);
+          
+          // Cleanup
+          return () => window.removeEventListener('resize', checkIfMobile);
+        }, []);
 
   const COLORS = {
     biking: '#008080',
@@ -60,7 +76,9 @@ const CombinedTransportPlanningFloodMap = ({onLayersReady}) => {
 
   const toggleFullScreen = () => {
     setIsFullScreen(!isFullScreen);
-    if (map) setTimeout(() => map.invalidateSize(), 300);
+    if (onFullscreenChange) {
+      onFullscreenChange(!isFullScreen);
+    }
   };
 
   const toggleLayer = (layerName) => {
@@ -513,7 +531,7 @@ const CombinedTransportPlanningFloodMap = ({onLayersReady}) => {
 
     initializeMap();
     return () => map?.remove();
-  }, []);
+  }, [COLORS.biking, COLORS.buildings, COLORS.crash, COLORS.floodplains, COLORS.plans, COLORS.primary, COLORS.priority, COLORS.streets, COLORS.traffic, COLORS.transit, COLORS.transport, activeLayers.floodplains, activeLayers.priority, map, onLayersReady]);
 
   useEffect(() => {
     if (!map) return;
@@ -536,8 +554,8 @@ const CombinedTransportPlanningFloodMap = ({onLayersReady}) => {
   }, [map, activeLayers]);
 
   return (
-    <div className={`flex flex-col h-full ${isFullScreen ? 'fixed inset-0 z-50 bg-white' : ''}`}>
-      <div className="flex justify-between items-center p-3 border-b bg-white shadow-sm">
+    <div className={`flex flex-col h-full ${isFullScreen ? 'fixed inset-0 z-50 bg-white relative' : ''}`}>
+<div className="flex justify-between items-center p-3 border-b bg-white shadow-sm">
         <h2 className="text-lg font-semibold text-primary">Austin Combined Map with Floodplains</h2>
         <div className="flex items-center space-x-1">
           <button onClick={() => setShowLegend(prev => !prev)} title="Layers & Legend" style={{ 
@@ -584,6 +602,7 @@ const CombinedTransportPlanningFloodMap = ({onLayersReady}) => {
           }}>
             <Info size={20} />
           </button>
+          {!isMobile && (
           <button onClick={toggleFullScreen} title="Fullscreen" style={{ 
             color: COLORS.coral,
             backgroundColor: 'white',
@@ -606,6 +625,7 @@ const CombinedTransportPlanningFloodMap = ({onLayersReady}) => {
           }}>
             {isFullScreen ? <X size={20} /> : <Maximize2 size={20} />}
           </button>
+          )}
         </div>
       </div>
       

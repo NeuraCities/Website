@@ -6,7 +6,7 @@ const DraggableArtifactPanel = ({
   onClose, 
   children,
   title = "",
-  initialHeight = 40 // Initial height in percentage (0-100)
+  initialHeight = 32 // Initial height in percentage (0-100)
 }) => {
   const [panelHeight, setPanelHeight] = useState(initialHeight);
   const [isDragging, setIsDragging] = useState(false);
@@ -36,8 +36,9 @@ const DraggableArtifactPanel = ({
     // Calculate new height (inverse of drag direction)
     const newHeightPercentage = startHeight - (deltaY / windowHeight * 100);
     
-    // Constrain between 15% (handle only) and 95% (almost full screen)
-    const constrainedHeight = Math.max(15, Math.min(95, newHeightPercentage));
+    // Constrain between 15% (handle only) and MAX_HEIGHT_VH (to leave space for nav)
+    const MAX_HEIGHT_VH = 85; // Maximum height to avoid overlapping with nav bar
+    const constrainedHeight = Math.max(15, Math.min(MAX_HEIGHT_VH, newHeightPercentage));
     setPanelHeight(constrainedHeight);
     
     // If user drags below 20%, we'll consider it a "close" gesture
@@ -54,7 +55,7 @@ const DraggableArtifactPanel = ({
     if (panelHeight < 25) {
       setPanelHeight(15); // Minimized
     } else if (panelHeight > 75) {
-      setPanelHeight(90); // Expanded
+      setPanelHeight(79); // Expanded
     } else {
       setPanelHeight(50); // Default
     }
@@ -80,6 +81,7 @@ const DraggableArtifactPanel = ({
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
+        id="draggable-panel-header"
       >
         <div className="w-8 h-1 bg-gray-300 rounded-full my-1"></div>
         {title && <div className="absolute left-0 right-0 text-center font-medium text-sm px-10 truncate">{title}</div>}

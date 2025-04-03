@@ -2,6 +2,8 @@
 import { useState} from 'react';
 import Link from 'next/link';
 import { motion } from "framer-motion";
+import { useRouter } from 'next/navigation';
+
 import {
   ChevronRight,
   ArrowRight,
@@ -150,6 +152,7 @@ const SponsorshipSection: React.FC = () => {
 
 const HomePage = () => {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
+  const router = useRouter();
   {/*const [message, setMessage] = useState("");
   const [chatHistory, setChatHistory] = useState<ChatMessage[]>([]);
   const [mapContent, setMapContent] = useState("");
@@ -292,11 +295,12 @@ useEffect(() => {
             <p className="text-xl text-secondary mb-6 leading-relaxed">
               Efficient data to decisions: plain language insights for geospatial clarity.            </p>
             <div className="flex flex-col sm:flex-row gap-6 items-start sm:items-center">
-              <Link href="/demo">
-                <Button size="lg" className="bg-coral text-white hover:bg-coral/90">
-                  Try Demo <ArrowRight className="ml-2" />
-                </Button>
-              </Link>
+            <button 
+        onClick={() => router.push('/demo', { scroll: true })}
+        className="bg-white border text-secondary px-8 py-3 rounded-lg transition-transform hover:bg-secondary hover:text-white"
+      >
+        Try Demo
+      </button>
               <Link href="/contact">
                 <Button size="lg" variant="outline" className="text-coral">
                   Contact <ChevronRight className="ml-2" />

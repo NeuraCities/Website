@@ -76,7 +76,10 @@ export default function ResizablePanels({
   const chatPanelRef = useRef(null);
   const visualPanelRef = useRef(null);
   const dividerRef = useRef(null);
-  
+  const [isDashboardFullscreen, setIsDashboardFullscreen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+
   const [showCreatedPrompt, setShowCreatedPrompt] = useState(false);
 const [showMobileArtifactPanel, setShowMobileArtifactPanel] = useState(false);
 const [mobileArtifactComponent, setMobileArtifactComponent] = useState(null);
@@ -274,7 +277,9 @@ useEffect(() => {
 }, [openMobileArtifactPanel]);
 
 
-
+const handleDashboardFullscreenChange = (isFullscreen) => {
+  setIsDashboardFullscreen(isFullscreen);
+};
 // Function to close mobile artifact panel
 const closeMobileArtifactPanel = () => {
   setShowMobileArtifactPanel(false);
@@ -297,6 +302,8 @@ const handleSelectArtifactDisplay = (artifactId) => {
     setActiveTab(artifact.type);
   }
 };
+
+
 // Add near the top of your useEffect hooks in ResizablePanels
 useEffect(() => {
   // Make openMobileArtifactPanel available globally
@@ -323,43 +330,115 @@ useEffect(() => {
       window.removeEventListener('show-two-artifact-prompt', handler);
     };
   }, []);
-  const [isMobile, setIsMobile] = useState(false);
-  // Add this useEffect after your isMobile state definition
-  // Add this near your other useEffect hooks
-useEffect(() => {
-  if (isMobile && chatPanelRef.current) {
-    // Force full width immediately on mount and when isMobile changes
-    chatPanelRef.current.style.width = "100vw";
-    chatPanelRef.current.style.maxWidth = "100vw";
-    
-    // Apply these styles with timeout to ensure they take effect
-    setTimeout(() => {
-      if (chatPanelRef.current) {
-        chatPanelRef.current.style.width = "100vw";
-        chatPanelRef.current.style.maxWidth = "100vw";
-      }
-    }, 0);
-  }
-}, [isMobile]);
+// Single comprehensive useEffect for mobile-specific styling
+
+
 useEffect(() => {
   if (isMobile) {
-    // Force immediate size adjustment for mobile
-    if (chatPanelRef.current) {
-      chatPanelRef.current.style.width = "100%";
-    }
-    if (visualPanelRef.current) {
-      visualPanelRef.current.style.width = "100%";
-    }
-    
-    // Also apply a slight delay to ensure the DOM has updated
-    setTimeout(() => {
+    // Force immediate styles for mobile
+    const applyMobileStyles = () => {
       if (chatPanelRef.current) {
-        chatPanelRef.current.style.width = "100%";
+        if (activeTab === "chat") {
+          chatPanelRef.current.style.cssText = "width: 100vw !important; max-width: 100vw !important; display: block !important;";
+        } else {
+          chatPanelRef.current.style.cssText = "width: 0 !important; display: none !important;";
+        }
       }
-    }, 50);
+      
+      if (visualPanelRef.current) {
+        if (activeTab !== "chat") {
+          visualPanelRef.current.style.cssText = "width: 100vw !important; max-width: 100vw !important; display: block !important;";
+        } else {
+          visualPanelRef.current.style.cssText = "width: 0 !important; display: none !important;";
+        }
+      }
+    };
+    
+    // Apply immediately
+    applyMobileStyles();
+    
+    // Apply again after a delay to ensure it takes effect
+    setTimeout(applyMobileStyles, 100);
+    
+    // Also apply whenever active tab changes
+    const handleTabChange = () => {
+      applyMobileStyles();
+    };
+    
+    window.addEventListener("tab-change", handleTabChange);
+    return () => window.removeEventListener("tab-change", handleTabChange);
+  } else {
+    // Desktop behavior - handle split panel
+    const container = containerRef.current;
+    if (container && chatPanelRef.current && visualPanelRef.current && showVisualization) {
+      const containerWidth = container.clientWidth;
+      const visualWidth = containerWidth * 0.4;
+      const dividerWidth = dividerRef.current ? dividerRef.current.clientWidth : 0;
+      const chatWidth = containerWidth - visualWidth - dividerWidth;
+      
+      chatPanelRef.current.style.width = `${chatWidth}px`;
+      visualPanelRef.current.style.width = `${visualWidth}px`;
+      
+      // Update stored widths for transitions
+      widthsRef.current = {
+        chat: `${chatWidth}px`,
+        visual: `${visualWidth}px`
+      };
+    } else if (!showVisualization && chatPanelRef.current) {
+      chatPanelRef.current.style.width = '100%';
+    }
   }
-}, [isMobile]);
+}, [isMobile, activeTab, showVisualization]);
 
+
+
+  useEffect(() => {
+    const container = containerRef.current;
+    const divider = dividerRef.current;
+  
+    if (!container || !divider) return;
+  
+    // Skip this setup for mobile
+    if (isMobile) return;
+  
+    // Initial setup - visual panel takes 40% of the container width on desktop
+    const setInitialWidths = () => {
+      const containerWidth = container.clientWidth;
+  
+      // If visualization is hidden, chat takes full width
+      if (!showVisualization) {
+        if (chatPanelRef.current) {
+          chatPanelRef.current.style.width = '100%';
+        }
+        return;
+      }
+  
+      const visualWidth = containerWidth * 0.4;
+      const chatWidth = containerWidth - visualWidth - divider.clientWidth;
+  
+      if (chatPanelRef.current && visualPanelRef.current) {
+        chatPanelRef.current.style.width = `${chatWidth}px`;
+        visualPanelRef.current.style.width = `${visualWidth}px`;
+  
+        // Store these values for transitions
+        widthsRef.current = {
+          chat: `${chatWidth}px`,
+          visual: `${visualWidth}px`
+        };
+      }
+    };
+  
+    // Set initial widths when component mounts
+    setInitialWidths();
+  
+    // Handle window resize
+    window.addEventListener('resize', setInitialWidths);
+  
+    // Clean up event listener
+    return () => {
+      window.removeEventListener('resize', setInitialWidths);
+    };
+  }, [showVisualization, isMobile]);
 useEffect(() => {
   const checkMobile = () => {
     setIsMobile(window.innerWidth < 768);
@@ -480,24 +559,6 @@ useEffect(() => {
     };
   }, [showVisualization]);
 
-  useEffect(() => {
-    if (isMobile) {
-      // Force immediate size adjustment for mobile
-      if (chatPanelRef.current) {
-        chatPanelRef.current.style.width = "100%";
-      }
-      if (visualPanelRef.current) {
-        visualPanelRef.current.style.width = "100%";
-      }
-      
-      // Also apply a slight delay to ensure the DOM has updated
-      setTimeout(() => {
-        if (chatPanelRef.current) {
-          chatPanelRef.current.style.width = "100%";
-        }
-      }, 50);
-    }
-  }, [isMobile]);
 
   useEffect(() => {
     if (isMobile) {
@@ -513,7 +574,6 @@ useEffect(() => {
     }
   }, [isMobile, activeTab]);
   const handleMouseDown = (e) => {
-    // Prevent drag on mobile
     if (window.innerWidth < 768) return;
   
     e.preventDefault();
@@ -522,6 +582,10 @@ useEffect(() => {
     const visualPanel = visualPanelRef.current;
   
     if (!container || !chatPanel || !visualPanel) return;
+  
+    // Disable transitions during drag
+    chatPanel.style.transition = 'none';
+    visualPanel.style.transition = 'none';
   
     dragState.current = {
       isDragging: true,
@@ -537,6 +601,22 @@ useEffect(() => {
     document.addEventListener('mousemove', handleMouseMove);
     document.addEventListener('mouseup', handleMouseUp);
   };
+  
+  const handleMouseUp = () => {
+    dragState.current.isDragging = false;
+    if (window.resizeActiveMap) window.resizeActiveMap();
+  
+    // Restore transitions
+    const chatPanel = chatPanelRef.current;
+    const visualPanel = visualPanelRef.current;
+    if (chatPanel) chatPanel.style.transition = '';
+    if (visualPanel) visualPanel.style.transition = '';
+  
+    document.body.classList.remove('resizing');
+    document.removeEventListener('mousemove', handleMouseMove);
+    document.removeEventListener('mouseup', handleMouseUp);
+  };
+  
   
 
   // Handle mouse movement
@@ -581,13 +661,6 @@ useEffect(() => {
     };
   };
 
-  // End dragging
-  const handleMouseUp = () => {
-    dragState.current.isDragging = false;
-    document.body.classList.remove('resizing');
-    document.removeEventListener('mousemove', handleMouseMove);
-    document.removeEventListener('mouseup', handleMouseUp);
-  };
 
   const renderVisualComponent = () => {
     // Gallery view takes precedence
@@ -689,12 +762,28 @@ useEffect(() => {
       artifactComponentMap[buttonId] && 
       artifactComponentMap[buttonId][artifactType]) {
     const SpecificComponent = artifactComponentMap[buttonId][artifactType];
+    if (buttonId === "1.0" || buttonId === "1.1" || buttonId === "1.1.1.1" || buttonId === "1.1.2" || buttonId === "1.1.2.1" || buttonId === "1.1.2.1.1" || buttonId === "1.2" ||  buttonId === "1.2.1"
+      || buttonId === "1.2.1.1" || buttonId === "1.2.1.1" || buttonId === "1.2.2" || buttonId === "1.2.2.1" || buttonId === "1.2.2.1.1" || buttonId === "1.3" || buttonId === "1.3.1" || buttonId === "1.3.1.1" 
+      || buttonId === "1.3.2" || buttonId === "1.3.2.1" || buttonId === "1.3.2.1.1"
+    ) {
+      return (
+        <>
+          {navigationBar}
+          <SpecificComponent 
+  onFullscreenChange={handleDashboardFullscreenChange}
+  onLayersReady={onLayersReady}
+  isFullscreen={isDashboardFullscreen}
+/>
+        </>
+      );
+    }
   
     const isInfraMap = buttonId === "1.1.2.1" && artifactType === "map1.1.2.1";
   
     return (
       <>
         {navigationBar}
+        <SpecificComponent />
         {isInfraMap ? (
           <SpecificComponent onLayersReady={() => {
             // Call setResponseReady when map layers are ready
@@ -783,33 +872,18 @@ useEffect(() => {
         );
     }
   };
-  useEffect(() => {
-    if (isMobile && chatPanelRef.current) {
-      // Force full width immediately on mount and when isMobile changes
-      chatPanelRef.current.style.width = "100vw";
-      chatPanelRef.current.style.maxWidth = "100vw";
-      
-      // Apply these styles with timeout to ensure they take effect
-      setTimeout(() => {
-        if (chatPanelRef.current) {
-          chatPanelRef.current.style.width = "100vw";
-          chatPanelRef.current.style.maxWidth = "100vw";
-        }
-      }, 0);
-    }
-  }, [isMobile]);
 
-  const getChatPanelStyle = () => {
-    if (isMobile) {
-      return { 
-        width: "100vw !important", // Force full viewport width with !important
-        maxWidth: "100vw !important",
-        height: "100%",
-        flex: "1 0 auto !important" // Force flex to take full width
-      };
-    }
+
+const getChatPanelStyle = () => {
+  if (isMobile) {
+    return { 
+      width: activeTab === "chat" ? "100%" : "0",
+      display: activeTab === "chat" ? "block" : "none",
+      height: "100%",
+    };
+  }
     
-    // Rest of the function remains unchanged
+    // For desktop, respect the showVisualization toggle
     if (isTransitioning) {
       return {
         width: showVisualization ? widthsRef.current.chat : "100%",
@@ -821,43 +895,34 @@ useEffect(() => {
       width: showVisualization ? widthsRef.current.chat : "100%"
     };
   };
-
   const getVisualPanelStyle = () => {
     if (isMobile) {
       return {
-        width: "100%",
+        width: activeTab !== "chat" ? "100%" : "0",
+        display: activeTab !== "chat" ? "block" : "none",
         height: "100%",
-        opacity: activeTab === "map" ? 1 : 0
       };
     }
   
-    if (isTransitioning) {
-      return {
-        width: showVisualization ? widthsRef.current.visual : "0px",
-        transition: "width 0.3s ease-in-out, opacity 0.3s ease-in-out",
-        opacity: showVisualization ? 1 : 0
-      };
-    }
-    
     return {
-      width: showVisualization ? widthsRef.current.visual : "0px",
-      opacity: showVisualization ? 1 : 0
+      width: widthsRef.current.visual,  // ← use this
+      transition: "width 0.3s ease-in-out, opacity 0.3s ease-in-out",
+      opacity: showVisualization ? 1 : 0,
     };
   };
+  
 
   return (
     <div
       ref={containerRef}
-      className="flex-1 flex overflow-auto relative h-screen"
-    >
-      {/* Tab switcher for mobile - Only show if visualization is enabled */}
-    {/* Tab switcher for mobile - Only show if visualization is enabled */}
+      className={`w-full h-full flex flex-col md:flex-row overflow-hidden relative ${chatHistory.length > 0 ? 'border border-secondary/25 rounded-lg' : ''}`}
+      >
+        
 {showVisualization && (
 <div className="md:hidden sticky top-0 left-0 right-0 z-30 bg-white border-b border-gray-200 flex shadow-sm h-10">
     <button
       onClick={() => {
         setActiveTab("chat");
-        // Also close any artifact panel if it's open
         if (showMobileArtifactPanel) {
           setShowMobileArtifactPanel(false);
         }
@@ -870,7 +935,6 @@ useEffect(() => {
     </button>
     <button
       onClick={() => {
-        // Show the gallery when clicking Artifacts tab
         onShowArtifactGallery(true);
         setActiveTab("map");
       }}
@@ -882,21 +946,17 @@ useEffect(() => {
     </button>
   </div>
 )}
-
-      {/* Chat Panel */}
       <div
-  ref={chatPanelRef}
-  className={`${
-    isMobile 
-      ? (activeTab === "chat" 
-        ? "absolute inset-0 pt-12 pb-0 overflow-auto flex flex-col w-full mobile-chat-panel" 
-        : "hidden")
-      : "h-full block"
-  }`}
-  style={getChatPanelStyle()}
-
+  
 >
-  <ChatSection
+<div
+  ref={chatPanelRef}
+  style={getChatPanelStyle()}
+  className="h-full"
+  data-panel="chat"
+>
+  <
+    ChatSection
     chatHistory={chatHistory}
     onSend={onSend}
     isLoading={isLoading}
@@ -924,6 +984,7 @@ useEffect(() => {
     artifacts={artifacts}
     onSelectArtifact={handleSelectArtifactDisplay}
   />
+  </div>
 </div>
 
       {/* Drag Handle */}
@@ -940,17 +1001,44 @@ useEffect(() => {
       {/* Visualization Panel */}
       <div
   ref={visualPanelRef}
-  className={`${
-    isMobile 
-      ? (activeTab !== "chat" 
-        ? "absolute inset-0 pt-12 pb-0 overflow-auto" 
-        : "hidden")
-      : "flex-shrink-0 h-full overflow-auto"
-  }`}
+  className="h-full w-full overflow-auto border-l border-secondary/25"
   style={getVisualPanelStyle()}
 >
   {renderVisualComponent()}
 </div>
+{isDashboardFullscreen && (
+      <div className="absolute inset-0 z-[100] bg-white">
+        {/* Get the current artifact to pass to the fullscreen view */}
+        {(() => {
+          const currentArtifact = artifacts.find(a => a.id === currentArtifactId);
+          if (!currentArtifact) return null;
+          
+          let buttonId = currentArtifact.buttonId;
+if (!buttonId && currentArtifact.id) {
+  const idMatch = currentArtifact.id.match(/^(\d+\.\d+(?:\.\d+)*)/);
+  if (idMatch) buttonId = idMatch[1];
+}
+
+let artifactType = currentArtifact.type;
+if (!artifactType && currentArtifact.id && currentArtifact.id.includes('-')) {
+  artifactType = currentArtifact.id.split('-')[1];
+}
+
+          
+          if (artifactComponentMap[buttonId] && artifactComponentMap[buttonId][artifactType]) {
+            const FullscreenComponent = artifactComponentMap[buttonId][artifactType];
+            return (
+              <FullscreenComponent 
+  isFullscreen={isDashboardFullscreen}
+  onFullscreenChange={handleDashboardFullscreenChange}
+  onLayersReady={onLayersReady}
+/>
+            );
+          }
+          return null;
+        })()}
+      </div>
+    )}
 
       {/* Add custom CSS for cursor styles */}
       <style jsx global>{`

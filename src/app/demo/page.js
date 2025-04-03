@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect } from "react";
@@ -654,9 +655,8 @@ const handleSaveMap = (mapName, mapContent) => {
 };
 
 return (
-<div className="flex flex-col relative pt-80 overflow-hidden">
-{/* Add viewport meta tag to ensure proper mobile scaling */}
-    <style jsx global>{`
+<div className="fixed inset-x-0 pt-[72px] h-[calc(100vh-64px)] overflow-hidden flex flex-col w-screen">
+<style jsx global>{`
       /* Fix iOS height issues */
       html, body {
         height: 100%;
@@ -677,10 +677,18 @@ return (
           min-height: 2.5rem;
         }
       }
-    `}</style>
 
-  <main className="flex-1 flex flex-col overflow-hidden bg-transparent ios-height-fix ">
-    <ResizablePanels
+      /* Ensure panels don't overflow */
+      .panel-container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+      }
+    `}</style>
+<div className="w-full h-[calc(100vh-64px)] flex flex-col overflow-y-scroll">
+
+    <main className="flex-1 flex overflow-hidden px-4 md:px-6 h-full">
+      <ResizablePanels
         chatHistory={chatHistory}
         onSend={fetchChatResponse}
         isLoading={isLoading}
@@ -709,12 +717,14 @@ return (
         customChartReady={customChartReady}
         showPreviousPrompt={showPreviousPrompt}
         showTutorial={showTutorial}
-setShowTutorial={setShowTutorial}
+        setShowTutorial={setShowTutorial}
       />
     </main>
     <TutorialOverlay 
-  isVisible={showTutorial} 
-  onComplete={handleTutorialComplete} 
-/>
+      isVisible={showTutorial} 
+      onComplete={handleTutorialComplete} 
+    />
   </div>
-);}
+  </div>
+);
+}

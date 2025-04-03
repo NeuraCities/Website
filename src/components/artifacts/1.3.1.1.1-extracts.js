@@ -23,7 +23,7 @@ const GrantsComponent = ({onLayersReady}) => {
       }, 500); // Or however long you want to delay
   
       return () => clearTimeout(timeout);
-    }, []);
+    }, [onLayersReady]);
 
   const extracts = [
     {
@@ -41,6 +41,22 @@ Applications are accepted through the FEMA GO portal (https://go.fema.gov/) and 
     }
   ];
 
+  const [isMobile, setIsMobile] = useState(false);
+        // Check for mobile viewport
+        useEffect(() => {
+          const checkIfMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+          };
+          
+          // Initial check
+          checkIfMobile();
+          
+          // Add resize listener
+          window.addEventListener('resize', checkIfMobile);
+          
+          // Cleanup
+          return () => window.removeEventListener('resize', checkIfMobile);
+        }, []); 
 useEffect(() => {
     const handleClickOutside = (event) => {
       if (infoRef.current && !infoRef.current.contains(event.target)) {
@@ -80,8 +96,8 @@ useEffect(() => {
   const toggleFullscreen = () => setIsFullscreen(prev => !prev);
 
   const renderPanel = (fullscreen = false) => (
-    <div className={`${fullscreen ? 'fixed inset-0 z-50' : ''} flex flex-col bg-white h-full overflow-hidden`}>
-      <div className="flex flex-1 overflow-hidden">
+    <div className={`${fullscreen ? 'absolute inset-0 z-[100]' : ''} flex flex-col bg-white h-full overflow-hidden`}>
+<div className="flex flex-1 overflow-hidden">
         
         <div className="flex-1 overflow-auto p-6" style={{ backgroundColor: COLORS.white }}>
           <div className="max-w-4xl mx-auto">
@@ -112,7 +128,7 @@ useEffect(() => {
         </div>
       </div>
 
-      <div className="fixed top-5 right-6 z-50">
+      <div className="absolute top-5 right-6 z-50">
         <div className="flex space-x-3 bg-transparent px-4 py-2 rounded-full shadow-md border">
         <button onClick={() => setShowSources(prev => !prev)} title="View Sources" style={{ 
               color: COLORS.coral,
@@ -136,6 +152,7 @@ useEffect(() => {
             }}>
             <Info size={20} />
           </button>
+          {!isMobile && (
           <button onClick={toggleFullscreen} title="Toggle fullscreen" style={{ 
               color: COLORS.coral,
               backgroundColor: 'white',
@@ -161,7 +178,7 @@ useEffect(() => {
               : <Maximize2 size={20} />
             }
           </button>
-          
+          )}
       </div>
       </div>
     </div>

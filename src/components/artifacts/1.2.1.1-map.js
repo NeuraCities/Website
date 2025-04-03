@@ -4,7 +4,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Layers, Maximize2, X, Info } from 'lucide-react';
 import _ from 'lodash';
 
-const AreasOfConcernMap = ({ onLayersReady }) => {
+const AreasOfConcernMap = ({ onLayersReady, onFullscreenChange }) => {
   const mapContainerRef = useRef(null);
   const [map, setMap] = useState(null);
   const [isFullScreen, setIsFullScreen] = useState(false);
@@ -12,7 +12,22 @@ const AreasOfConcernMap = ({ onLayersReady }) => {
   const [showSources, setShowSources] = useState(false);
     const infoRef = useRef(null);
   
-  
+  const [isMobile, setIsMobile] = useState(false);
+        // Check for mobile viewport
+        useEffect(() => {
+          const checkIfMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+          };
+          
+          // Initial check
+          checkIfMobile();
+          
+          // Add resize listener
+          window.addEventListener('resize', checkIfMobile);
+          
+          // Cleanup
+          return () => window.removeEventListener('resize', checkIfMobile);
+        }, []);
   // Add loading states
   const [loadingStage, setLoadingStage] = useState('initializing'); // 'initializing', 'map', 'concerns', 'complete'
   const [loadingProgress, setLoadingProgress] = useState(0);
@@ -53,8 +68,10 @@ const AreasOfConcernMap = ({ onLayersReady }) => {
   };
 
   const toggleFullScreen = () => {
-    setIsFullScreen(prev => !prev);
-    if (map) setTimeout(() => map.invalidateSize(), 300);
+    setIsFullScreen(!isFullScreen);
+    if (onFullscreenChange) {
+      onFullscreenChange(!isFullScreen);
+    }
   };
 
   const toggleLayer = (layerName) => {
@@ -370,7 +387,7 @@ const AreasOfConcernMap = ({ onLayersReady }) => {
 
     initializeMap();
     return () => map?.remove();
-  }, []);
+  }, [COLORS.blue, COLORS.concern, COLORS.green, COLORS.lightblue, COLORS.primary, COLORS.red, COLORS.yellow, map, onLayersReady]);
 
   useEffect(() => {
       const handleClickOutside = (event) => {
@@ -406,8 +423,8 @@ const AreasOfConcernMap = ({ onLayersReady }) => {
   }, [map, activeLayers]);
 
   return (
-    <div className={`flex flex-col h-full ${isFullScreen ? 'fixed inset-0 z-50 bg-white' : ''}`}>
-      <div className="flex justify-between items-center p-3 border-b bg-white shadow-sm">
+    <div className={`flex flex-col h-full ${isFullScreen ? 'fixed inset-0 z-50 bg-white relative' : ''}`}>
+<div className="flex justify-between items-center p-3 border-b bg-white shadow-sm">
         <h2 className="text-lg font-semibold" style={{ color: COLORS.primary }}>
           Austin Areas of Concern Map
         </h2>
@@ -456,6 +473,7 @@ const AreasOfConcernMap = ({ onLayersReady }) => {
           }}>
             <Info size={20} />
           </button>
+          {!isMobile && (
           <button onClick={toggleFullScreen} title="Fullscreen" style={{ 
             color: COLORS.coral,
             backgroundColor: 'white',
@@ -478,6 +496,7 @@ const AreasOfConcernMap = ({ onLayersReady }) => {
           }}>
             {isFullScreen ? <X size={20} /> : <Maximize2 size={20} />}
           </button>
+          )}
         </div>
       </div>
       

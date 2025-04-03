@@ -27,7 +27,7 @@ const COLORS = {
 const PIE_COLORS = ['#3498DB', '#E67E22', '#9B59B6', '#2ECC71', '#1ABC9C', '#F39C12', '#D35400', '#C0392B'];
 
 
-const SocioEconomicDashboard = ({onLayersReady}) => {
+const SocioEconomicDashboard = ({onLayersReady, onFullscreenChange}) => {
   const [showSources, setShowSources] = useState(false);
   const [neighborhoodData, setNeighborhoodData] = useState({});
   const [selectedChart, setSelectedChart] = useState('income-distribution');
@@ -221,13 +221,25 @@ const SocioEconomicDashboard = ({onLayersReady}) => {
     }
   };
 
-  const toggleFullscreen = () => setIsFullscreen(!isFullscreen);
+
+const toggleFullscreen = () => {
+  const newState = !isFullscreen;
+  setIsFullscreen(newState);
+  if (onFullscreenChange) {
+    onFullscreenChange(newState);
+  }
+};
 
   const renderPanelContent = (fullscreen = false) => (
+    
     <div
-      className={`px-4 pt-4 ${fullscreen ? 'fixed inset-0 z-50 bg-white overflow-auto' : 'max-h-[90vh] overflow-y-auto pb-4'}`}
-      ref={chartContainerRef}
-    >
+    className={`flex flex-col flex-grow px-4 pt-4 transition-all duration-300 ${
+      fullscreen 
+        ? 'absolute inset-0 z-50 bg-white overflow-auto' 
+        : 'relative max-h-[90vh] overflow-y-auto pb-4'
+    }`}
+    ref={chartContainerRef}
+>    
       <div className={`flex ${isMobile ? 'flex-col' : 'justify-between'} items-${isMobile ? 'start' : 'center'} mb-4`}>
         <h2 className="text-xl font-semibold" style={{ color: COLORS.primary }}>
           Socio-Economic Dashboard
@@ -314,7 +326,7 @@ const SocioEconomicDashboard = ({onLayersReady}) => {
               </div>
             )}
           </div>
-
+          {!isMobile && (
           <button 
             onClick={toggleFullscreen} 
             className="p-2 rounded-full border" 
@@ -335,6 +347,7 @@ const SocioEconomicDashboard = ({onLayersReady}) => {
           >
             {fullscreen ? <X size={18} /> : <Maximize2 size={18} />}
           </button>
+          )}
         </div>
       </div>
 
@@ -368,10 +381,9 @@ const SocioEconomicDashboard = ({onLayersReady}) => {
   );
 
   return (
-    <>
-      {renderPanelContent(false)}
-      {isFullscreen && renderPanelContent(true)}
-    </>
+    <div className="relative w-full h-full">
+  {renderPanelContent(isFullscreen)}
+</div>
   );
 };
 

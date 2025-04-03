@@ -24,7 +24,7 @@ const getColor = (index) => {
   return palette[index % palette.length];
 };
 
-const BudgetStudyDashboard2 = ({onLayersReady}) => {
+const BudgetStudyDashboard2 = ({onLayersReady,onFullscreenChange }) => {
   const [budgetData, setBudgetData] = useState([]);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [singleChartView, setSingleChartView] = useState(null);
@@ -61,6 +61,7 @@ const BudgetStudyDashboard2 = ({onLayersReady}) => {
         document.removeEventListener('mousedown', handleClickOutside);
       };
     }, [showSources]);
+    
 
   useEffect(() => {
     Papa.parse('/data/budget-data.csv', {
@@ -138,8 +139,12 @@ const BudgetStudyDashboard2 = ({onLayersReady}) => {
     }
   ];
 
-  const toggleFullscreen = () => setIsFullscreen(!isFullscreen);
-
+  const toggleFullscreen = () => {
+    const next = !isFullscreen;
+    setIsFullscreen(next);
+    if (onFullscreenChange) onFullscreenChange(next);
+  };
+  
   const renderPanelContent = (fullscreen = false) => (
     <div
       className={`p-4 ${fullscreen ? 'fixed inset-0 z-50 bg-white overflow-auto' : 'max-h-[90vh] overflow-y-auto pb-4'}`}
@@ -205,6 +210,7 @@ const BudgetStudyDashboard2 = ({onLayersReady}) => {
   >
     <Info size={18} />
   </button>
+  {!isMobile && (
   <button
     onClick={toggleFullscreen}
     className="p-2 rounded-full border"
@@ -231,6 +237,7 @@ const BudgetStudyDashboard2 = ({onLayersReady}) => {
   >
     {fullscreen ? <X size={18} /> : <Maximize2 size={18} />}
   </button>
+  )}
 </div>
 
       </div>
@@ -275,10 +282,15 @@ const BudgetStudyDashboard2 = ({onLayersReady}) => {
   
 
   return (
-    <>
-      {renderPanelContent(false)}
-      
-      {isFullscreen && renderPanelContent(true)}
+    <div className="relative w-full h-full">
+      {isFullscreen ? (
+        <div className="absolute inset-0 z-50 bg-white rounded-xl shadow-xl overflow-auto">
+          {renderPanelContent()}
+        </div>
+      ) : (
+        renderPanelContent()
+      )}
+    
       {showSources && (
   <div ref={infoRef}className="fixed top-20 right-6 w-[280px] bg-white border border-gray-200 rounded-xl shadow-lg p-5 z-[1000] animate-fade-in" style={{top:'120px'}}>
     <div className="space-y-2 text-sm text-gray-700">
@@ -362,7 +374,7 @@ Neighborhoods          </a>
   </div>
 )}
 
-    </>
+    </div>
   );
 };
 

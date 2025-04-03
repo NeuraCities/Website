@@ -3,7 +3,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Layers, Maximize2, X, Info } from 'lucide-react';
 import _ from 'lodash';
 
-const CombinedTransportPlanningMap = ({onLayersReady}) => {
+const CombinedTransportPlanningMap = ({onLayersReady, onFullscreenChange}) => {
   const mapContainerRef = useRef(null);
   const [map, setMap] = useState(null);
   const [isFullScreen, setIsFullScreen] = useState(false);
@@ -43,6 +43,23 @@ const CombinedTransportPlanningMap = ({onLayersReady}) => {
     white: '#FFFFFF'
   };
 
+  const [isMobile, setIsMobile] = useState(false);
+        // Check for mobile viewport
+        useEffect(() => {
+          const checkIfMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+          };
+          
+          // Initial check
+          checkIfMobile();
+          
+          // Add resize listener
+          window.addEventListener('resize', checkIfMobile);
+          
+          // Cleanup
+          return () => window.removeEventListener('resize', checkIfMobile);
+        }, []);
+
   // Get loading status message
   const getLoadingMessage = () => {
     switch(loadingStage) {
@@ -57,8 +74,11 @@ const CombinedTransportPlanningMap = ({onLayersReady}) => {
 
   const toggleFullScreen = () => {
     setIsFullScreen(!isFullScreen);
-    if (map) setTimeout(() => map.invalidateSize(), 300);
+    if (onFullscreenChange) {
+      onFullscreenChange(!isFullScreen);
+    }
   };
+
 
   const toggleLayer = (layerName) => {
     setActiveLayers(prev => ({ ...prev, [layerName]: !prev[layerName] }));
@@ -326,7 +346,7 @@ useEffect(() => {
 
     initializeMap();
     return () => map?.remove();
-  }, []);
+  }, [COLORS.biking, COLORS.blue, COLORS.green, COLORS.orange, COLORS.primary, COLORS.red, COLORS.transit, activeLayers.plans, activeLayers.traffic, map, onLayersReady]);
 
   useEffect(() => {
     if (!map) return;
@@ -341,8 +361,8 @@ useEffect(() => {
   }, [map, activeLayers]);
 
   return (
-    <div className={`flex flex-col h-full ${isFullScreen ? 'fixed inset-0 z-50 bg-white' : ''}`}>
-      <div className="flex justify-between items-center p-3 border-b bg-white shadow-sm">
+    <div className={`flex flex-col h-full ${isFullScreen ? 'fixed inset-0 z-50 bg-white relative' : ''}`}>
+<div className="flex justify-between items-center p-3 border-b bg-white shadow-sm">
         <h2 className="text-lg font-semibold text-primary">Austin Combined Transport + Planning Map</h2>
         <div className="flex items-center space-x-1">
           <button onClick={() => setShowLegend(prev => !prev)} title="Layers & Legend" style={{ 
@@ -389,6 +409,7 @@ useEffect(() => {
           }}>
             <Info size={20} />
           </button>
+          {!isMobile && (
           <button onClick={toggleFullScreen} title="Fullscreen" style={{ 
             color: COLORS.coral,
             backgroundColor: 'white',
@@ -411,6 +432,7 @@ useEffect(() => {
           }}>
             {isFullScreen ? <X size={20} /> : <Maximize2 size={20} />}
           </button>
+          )}
         </div>
       </div>
       

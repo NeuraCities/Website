@@ -3,7 +3,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Layers, Maximize2, X, Info } from 'lucide-react';
 import _ from 'lodash';
 
-const TransportAndPlansMap = ({ onLayersReady }) => {
+const TransportAndPlansMap = ({ onLayersReady,  onFullscreenChange}) => {
   const mapContainerRef = useRef(null);
   const [map, setMap] = useState(null);
   
@@ -16,7 +16,22 @@ const TransportAndPlansMap = ({ onLayersReady }) => {
   const [showSources, setShowSources] = useState(false);
     const infoRef = useRef(null);
   
-
+const [isMobile, setIsMobile] = useState(false);
+      // Check for mobile viewport
+      useEffect(() => {
+        const checkIfMobile = () => {
+          setIsMobile(window.innerWidth < 768);
+        };
+        
+        // Initial check
+        checkIfMobile();
+        
+        // Add resize listener
+        window.addEventListener('resize', checkIfMobile);
+        
+        // Cleanup
+        return () => window.removeEventListener('resize', checkIfMobile);
+      }, []);
   const [activeLayers, setActiveLayers] = useState({
     transport: true,
     plans: true,
@@ -40,8 +55,15 @@ const TransportAndPlansMap = ({ onLayersReady }) => {
   };
 
   const toggleFullScreen = () => {
-    setIsFullScreen(prev => !prev);
-    if (map) setTimeout(() => map.invalidateSize(), 300);
+    setIsFullScreen(prev => {
+      const next = !prev;
+      if (typeof onFullscreenChange === 'function') {
+        onFullscreenChange(next);
+      }
+      return next;
+    });
+    setShowLegend(false);
+    setTimeout(() => map?.invalidateSize(), 300);
   };
 
   const toggleLayer = (layerName) => {
@@ -343,7 +365,7 @@ const TransportAndPlansMap = ({ onLayersReady }) => {
 
     initializeMap();
     return () => map?.remove();
-  }, []);
+  }, [COLORS.blue, COLORS.green, COLORS.lightblue, COLORS.primary, COLORS.red, map, onLayersReady]);
   useEffect(() => {
       const handleClickOutside = (event) => {
         if (infoRef.current && !infoRef.current.contains(event.target)) {
@@ -421,7 +443,7 @@ if (map.trafficMarkerLayer) {
   }, [map, activeLayers]);
 
   return (
-    <div className={`flex flex-col h-full ${isFullScreen ? 'fixed inset-0 z-50 bg-white' : ''}`}>
+<div className={`flex flex-col h-full ${isFullScreen ? 'fixed inset-0 z-50 bg-white relative' : ''}`}>
       <div className="flex justify-between items-center p-3 border-b bg-white shadow-sm">
         <h2 className="text-lg font-semibold" style={{ color: COLORS.primary }}>
           Austin Transport + Planning Map
@@ -471,6 +493,7 @@ if (map.trafficMarkerLayer) {
           }}>
             <Info size={20} />
           </button>
+          {!isMobile && (
           <button onClick={toggleFullScreen} title="Fullscreen" style={{ 
             color: COLORS.coral,
             backgroundColor: 'white',
@@ -493,6 +516,7 @@ if (map.trafficMarkerLayer) {
           }}>
             {isFullScreen ? <X size={20} /> : <Maximize2 size={20}  />}
           </button>
+          )}
         </div>
       </div>
       <div className="flex-1 relative">

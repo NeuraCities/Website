@@ -6,6 +6,7 @@
   perspective: 1000px;
 }
 
+
 .card {
   position: relative;
   width: 100%;
@@ -17,8 +18,56 @@
   backface-visibility: hidden;
 }
 
+
 .rotate-y-180 {
   transform: rotateY(180deg);
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+/* Add this to your CSS */
+
+/* Main container */
+.flex-1.flex.overflow-auto.relative.h-screen {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+}
+
+/* Chat panel on desktop */
+@media (min-width: 768px) {
+  [ref=chatPanelRef] {
+    width: 60%;  /* Default split */
+    max-width: none;
+    transition: width 0.3s ease;
+  }
+  
+  [ref=visualPanelRef] {
+    width: 40%;  /* Default split */
+    transition: width 0.3s ease;
+  }
+  
+  /* Override any unintended mobile-first styles */
+  .w-full.md\\:max-w-lg {
+    max-width: none;
+  }
+}
+
+/* Make sure the divider is visible */
+.w-1.h-full.cursor-col-resize.relative.z-10 {
+  display: flex;
+  opacity: 1;
+  background-color: #e5e7eb;
+}
+
+/* Fix any forced width styles on mobile */
+@media (max-width: 767px) {
+  .mobile-chat-panel {
+    width: 100% !important;
+  }
 }
 
 @layer base {

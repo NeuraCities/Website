@@ -2,9 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import { Maximize2, X, ChevronLeft, ChevronRight, Info } from 'lucide-react';
 
-const InfrastructureConditionDashboard = ({onLayersReady}) => {
+const InfrastructureConditionDashboard = ({onLayersReady, onFullscreenChange, isFullscreen}) => {
   // State for fullscreen and single chart view
-  const [isFullscreen, setIsFullscreen] = useState(false);
   const [singleChartView, setSingleChartView] = useState(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [sidebarVisible, setSidebarVisible] = useState(true);
@@ -13,6 +12,7 @@ const InfrastructureConditionDashboard = ({onLayersReady}) => {
   const [showSources, setShowSources] = useState(false);
   const infoRef = useRef(null);
   
+
   // Check if viewport is mobile
   useEffect(() => {
     const checkMobile = () => {
@@ -105,10 +105,6 @@ const InfrastructureConditionDashboard = ({onLayersReady}) => {
     }
   }, [isSidebarOpen, SIDEBAR_WIDTH]);
   
-  // Toggle fullscreen
-  const toggleFullscreen = () => {
-    setIsFullscreen(!isFullscreen);
-  };
 
   // Data from the provided table with updated theme colors
   const conditionData = [
@@ -250,74 +246,78 @@ const InfrastructureConditionDashboard = ({onLayersReady}) => {
         <h2 className={`${isMobile ? "text-lg" : "text-xl"} font-semibold`} style={{ color: COLORS.primary }}>
           {isMobile ? "Infrastructure Analysis" : "Infrastructure Condition Analysis"}
         </h2>
-        <div className="flex items-center space-x-2">
-          {singleChartView && (
-            <button 
-              onClick={() => setSingleChartView(null)}
-              className="flex items-center justify-center p-2 rounded-full transition-all"
-              title="Return to dashboard"
-              style={{ 
-                color: COLORS.coral,
-                backgroundColor: COLORS.white,
-                border: `1px solid ${COLORS.coral}`,
-                transition: 'all 0.2s ease-in-out'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = COLORS.coral;
-                e.currentTarget.style.color = COLORS.white;
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = COLORS.white;
-                e.currentTarget.style.color = COLORS.coral;
-              }}
-            >
-              <X size={isMobile ? 16 : 18} />
-            </button>
-          )}
-          <button 
-            onClick={() => setShowSources(prev => !prev)}
-            className="flex items-center justify-center p-2 rounded-full transition-all"
-            title="View Sources"
-            style={{ 
-              color: COLORS.coral,
-              backgroundColor: 'white',
-              border: 'none',
-              transition: 'all 0.2s ease-in-out'
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = COLORS.coral;
-              e.currentTarget.style.color = 'white';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = 'white';
-              e.currentTarget.style.color = COLORS.coral;
-            }}
-          >
-            <Info size={isMobile ? 16 : 20} />
-          </button>
 
-          <button 
-            onClick={toggleFullscreen}
-            className="flex items-center justify-center p-2 rounded-full transition-all"
-            title="Toggle fullscreen"
-            style={{ 
-              color: COLORS.coral,
-              backgroundColor: COLORS.white,
-              border: `1px solid ${COLORS.coral}`,
-              transition: 'all 0.2s ease-in-out'
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = COLORS.coral;
-              e.currentTarget.style.color = COLORS.white;
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = COLORS.white;
-              e.currentTarget.style.color = COLORS.coral;
-            }}
-          >
-            <Maximize2 size={isMobile ? 16 : 18} />
-          </button>
-        </div>
+<div className="flex items-center space-x-2">
+  {singleChartView && (
+    <button 
+      onClick={() => setSingleChartView(null)}
+      className="flex items-center justify-center p-2 rounded-full transition-all"
+      title="Return to dashboard"
+      style={{ 
+        color: COLORS.coral,
+        backgroundColor: COLORS.white,
+        border: `1px solid ${COLORS.coral}`,
+        transition: 'all 0.2s ease-in-out'
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.backgroundColor = COLORS.coral;
+        e.currentTarget.style.color = COLORS.white;
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.backgroundColor = COLORS.white;
+        e.currentTarget.style.color = COLORS.coral;
+      }}
+    >
+      <X size={isMobile ? 16 : 18} />
+    </button>
+  )}
+  <button 
+    onClick={() => setShowSources(prev => !prev)}
+    className="flex items-center justify-center p-2 rounded-full transition-all"
+    title="View Sources"
+    style={{ 
+      color: COLORS.coral,
+      backgroundColor: 'white',
+      border: 'none',
+      transition: 'all 0.2s ease-in-out'
+    }}
+    onMouseEnter={(e) => {
+      e.currentTarget.style.backgroundColor = COLORS.coral;
+      e.currentTarget.style.color = 'white';
+    }}
+    onMouseLeave={(e) => {
+      e.currentTarget.style.backgroundColor = 'white';
+      e.currentTarget.style.color = COLORS.coral;
+    }}
+  >
+    <Info size={isMobile ? 16 : 20} />
+  </button>
+
+  {/* Only render fullscreen button when not on mobile */}
+  {!isMobile && (
+     
+    <button onClick={() => onFullscreenChange(true)}
+          className="flex items-center justify-center p-2 rounded-full transition-all"
+      title="Toggle fullscreen"
+      style={{ 
+        color: COLORS.coral,
+        backgroundColor: COLORS.white,
+        border: `1px solid ${COLORS.coral}`,
+        transition: 'all 0.2s ease-in-out'
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.backgroundColor = COLORS.coral;
+        e.currentTarget.style.color = COLORS.white;
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.backgroundColor = COLORS.white;
+        e.currentTarget.style.color = COLORS.coral;
+      }}
+    >
+      <Maximize2 size={18} />
+    </button>
+  )}
+</div>
       </div>
       
       {singleChartView ? (
@@ -432,8 +432,8 @@ const InfrastructureConditionDashboard = ({onLayersReady}) => {
 
   // Fullscreen panel content
   const fullscreenPanelContent = (
-    <div className="fixed inset-0 z-50 bg-gray-900/70 backdrop-blur-sm flex overflow-hidden">
-      <div className="flex-1 flex flex-col md:flex-row bg-white h-screen overflow-hidden">
+    <div className="absolute inset-0 z-50 bg-white overflow-hidden rounded-xl shadow-lg">
+    <div className="flex flex-col md:flex-row bg-white h-full overflow-hidden">
         {/* Sidebar - only visible on larger screens or when explicitly opened on mobile */}
         {sidebarVisible && (
           <div 
@@ -542,8 +542,8 @@ const InfrastructureConditionDashboard = ({onLayersReady}) => {
               >
                 <Info size={isMobile ? 18 : 20} />
               </button>
-              <button 
-                onClick={toggleFullscreen}
+               <button
+              onClick={() => onFullscreenChange(!isFullscreen)}
                 className="flex items-center justify-center p-2 rounded-full transition-all shadow-sm"
                 title="Exit fullscreen"
                 style={{ 
@@ -639,7 +639,7 @@ const InfrastructureConditionDashboard = ({onLayersReady}) => {
   
 
   return (
-    <>
+    <div className="relative w-full h-full">
       {regularPanelContent}
       {isFullscreen && fullscreenPanelContent}
 
@@ -647,7 +647,7 @@ const InfrastructureConditionDashboard = ({onLayersReady}) => {
 {showSources && (
   <div ref={infoRef}
     className="fixed right-6 w-[280px] bg-white border border-gray-200 rounded-xl shadow-lg p-5 z-[1000] animate-fade-in"
-    style={{ top: '120px' }} // Use inline style for top positioning
+    style={{ top: '190px' }} // Use inline style for top positioning
   >
     <div className="space-y-2 text-sm text-gray-700">
       <div>
@@ -706,7 +706,7 @@ Neighborhoods        </a>
           background: #9ca3af;
         }
       `}</style>
-    </>
+    </div>
   );
   
 };

@@ -14,8 +14,25 @@ const PoliciesComponent = ({onLayersReady}) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [sidebarVisible, setSidebarVisible] = useState(true);
   const [activeExtract, setActiveExtract] = useState(0);
+
   const extractRefs = useRef({});
     const infoRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
+      // Check for mobile viewport
+      useEffect(() => {
+        const checkIfMobile = () => {
+          setIsMobile(window.innerWidth < 768);
+        };
+        
+        // Initial check
+        checkIfMobile();
+        
+        // Add resize listener
+        window.addEventListener('resize', checkIfMobile);
+        
+        // Cleanup
+        return () => window.removeEventListener('resize', checkIfMobile);
+      }, []);
   
   const [showSources, setShowSources] = useState(false);
   useEffect(() => {
@@ -131,8 +148,8 @@ const extracts = [
   
 
   const renderPanel = (fullscreen = false) => (
-    <div className={`${fullscreen ? 'fixed inset-0 z-50' : ''} flex flex-col bg-white h-full overflow-hidden`}>
-      <div className="flex flex-1 overflow-hidden">
+<div className={`${fullscreen ? 'absolute inset-0 z-[100]' : ''} flex flex-col bg-white h-full overflow-hidden`}>
+<div className="flex flex-1 overflow-hidden">
         {/* Sidebar */}
         {sidebarVisible && (
           <div
@@ -212,81 +229,83 @@ const extracts = [
       </div>
 
       {/* Floating Buttons */}
-      <div className="fixed top-5 right-6 z-50">
-        <div className="flex space-x-3 bg-white px-4 py-2 rounded-full shadow-md border">
-          <button onClick={toggleSidebar} title="Toggle sidebar" style={{ 
-              color: COLORS.coral,
-              backgroundColor: 'white',
-              border: 'none',
-              transition: 'all 0.2s ease-in-out',
-              borderRadius: '50%',  // Makes the button circular
-              width: window.innerWidth < 640 ? '28px' : '36px',
-height: window.innerWidth < 640 ? '28px' : '36px',
+      {/* Floating Buttons (now inside panel, not fixed to screen) */}
+<div className="absolute top-16 right-6 z-10">
+  <div className="flex space-x-3 bg-white px-4 py-2 rounded-full shadow-md border">
+    {/* Sidebar Toggle */}
+    <button onClick={toggleSidebar} title="Toggle sidebar" style={{
+      color: COLORS.coral,
+      backgroundColor: 'white',
+      border: 'none',
+      transition: 'all 0.2s ease-in-out',
+      borderRadius: '50%',
+      width: window.innerWidth < 640 ? '28px' : '36px',
+      height: window.innerWidth < 640 ? '28px' : '36px',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+    }}
+    onMouseEnter={(e) => {
+      e.currentTarget.style.backgroundColor = COLORS.coral;
+      e.currentTarget.style.color = 'white';
+    }}
+    onMouseLeave={(e) => {
+      e.currentTarget.style.backgroundColor = 'white';
+      e.currentTarget.style.color = COLORS.coral;
+    }}>
+      <Menu size={20} />
+    </button>
 
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = COLORS.coral;
-              e.currentTarget.style.color = 'white';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = 'white';
-              e.currentTarget.style.color = COLORS.coral;
-            }}>
-            <Menu size={20}  />
-          </button>
-          <button onClick={() => setShowSources(prev => !prev)} title="View Sources" style={{ 
-              color: COLORS.coral,
-              backgroundColor: 'white',
-              border: 'none',
-              transition: 'all 0.2s ease-in-out',
-              borderRadius: '50%',  // Makes the button circular
-              width: '36px',        // Fixed width
-              height: '36px',       // Fixed height
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = COLORS.coral;
-              e.currentTarget.style.color = 'white';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = 'white';
-              e.currentTarget.style.color = COLORS.coral;
-            }}>
-  <Info size={20} />
-</button>
+    {/* Info Button */}
+    <button onClick={() => setShowSources(prev => !prev)} title="View Sources" style={{
+      color: COLORS.coral,
+      backgroundColor: 'white',
+      border: 'none',
+      transition: 'all 0.2s ease-in-out',
+      borderRadius: '50%',
+      width: '36px',
+      height: '36px',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+    }}
+    onMouseEnter={(e) => {
+      e.currentTarget.style.backgroundColor = COLORS.coral;
+      e.currentTarget.style.color = 'white';
+    }}
+    onMouseLeave={(e) => {
+      e.currentTarget.style.backgroundColor = 'white';
+      e.currentTarget.style.color = COLORS.coral;
+    }}>
+      <Info size={20} />
+    </button>
+    {!isMobile && (
+      <button onClick={toggleFullscreen} title="Toggle fullscreen" style={{
+      color: COLORS.coral,
+      backgroundColor: 'white',
+      border: 'none',
+      transition: 'all 0.2s ease-in-out',
+      borderRadius: '50%',
+      width: '36px',
+      height: '36px',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+    }}
+    onMouseEnter={(e) => {
+      e.currentTarget.style.backgroundColor = COLORS.coral;
+      e.currentTarget.style.color = 'white';
+    }}
+    onMouseLeave={(e) => {
+      e.currentTarget.style.backgroundColor = 'white';
+      e.currentTarget.style.color = COLORS.coral;
+    }}>
+      {fullscreen ? <Minimize2 size={20} /> : <Maximize2 size={20} />}
+    </button>
+    )}
+  </div>
+</div>
 
-          <button onClick={toggleFullscreen} title="Toggle fullscreen" style={{ 
-              color: COLORS.coral,
-              backgroundColor: 'white',
-              border: 'none',
-              transition: 'all 0.2s ease-in-out',
-              borderRadius: '50%',  // Makes the button circular
-              width: '36px',        // Fixed width
-              height: '36px',       // Fixed height
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = COLORS.coral;
-              e.currentTarget.style.color = 'white';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = 'white';
-              e.currentTarget.style.color = COLORS.coral;
-            }}>
-            {fullscreen
-              ? <Minimize2 size={20}  />
-              : <Maximize2 size={20}  />
-            }
-          </button>
-        </div>
-      </div>
     </div>
   );
 

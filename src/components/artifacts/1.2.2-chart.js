@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Papa from 'papaparse';
 import {
   PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer
@@ -17,13 +17,30 @@ const COLORS = {
   white: '#FFFFFF'
 };
 
-const SidewalkConditionDashboard = ({onLayersReady}) => {
+const SidewalkConditionDashboard = ({onLayersReady, onFullscreenChange}) => {
   const [data, setData] = useState([]);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [singleChartView, setSingleChartView] = useState(false);
   const [showSources, setShowSources] = useState(false);
-    const infoRef = useRef(null);
+  const infoRef = useRef(null);
   
+  const [isMobile, setIsMobile] = useState(false);
+        // Check for mobile viewport
+        useEffect(() => {
+          const checkIfMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+          };
+          
+          // Initial check
+          checkIfMobile();
+          
+          // Add resize listener
+          window.addEventListener('resize', checkIfMobile);
+          
+          // Cleanup
+          return () => window.removeEventListener('resize', checkIfMobile);
+        }, []);
+
    useEffect(() => {
       const timeout = setTimeout(() => {
         if (onLayersReady) onLayersReady();
@@ -31,7 +48,7 @@ const SidewalkConditionDashboard = ({onLayersReady}) => {
       }, 500); // Or however long you want to delay
   
       return () => clearTimeout(timeout);
-    }, []);
+    }, [onLayersReady]);
   useEffect(() => {
     Papa.parse('/data/sidewalkcondition-data.csv', {
       download: true,
@@ -91,7 +108,11 @@ const SidewalkConditionDashboard = ({onLayersReady}) => {
     </ResponsiveContainer>
   );
 
-  const toggleFullscreen = () => setIsFullscreen(!isFullscreen);
+  const toggleFullscreen = () => {
+    const next = !isFullscreen;
+    setIsFullscreen(next);
+    if (onFullscreenChange) onFullscreenChange(next);
+  };
 
   const renderHeader = () => (
     <div className="flex justify-between items-center mb-4 relative">
@@ -216,40 +237,53 @@ Transit Corridors          </a>
 
         {/* Fullscreen or Close Button */}
         {singleChartView ? (
-          <button onClick={() => setSingleChartView(false)} className="p-2 rounded-full border" style={{ 
-            color: COLORS.coral,
-            backgroundColor: COLORS.white,
-            border: `1px solid ${COLORS.coral}`,
-            transition: 'all 0.2s ease-in-out'
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.backgroundColor = COLORS.coral;
-            e.currentTarget.style.color = COLORS.white;
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.backgroundColor = COLORS.white;
-            e.currentTarget.style.color = COLORS.coral;
-          }}>
-            <X size={18} />
-          </button>
-        ) : (
-          <button onClick={toggleFullscreen} className="p-2 rounded-full border" style={{ 
-            color: COLORS.coral,
-            backgroundColor: COLORS.white,
-            border: `1px solid ${COLORS.coral}`,
-            transition: 'all 0.2s ease-in-out'
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.backgroundColor = COLORS.coral;
-            e.currentTarget.style.color = COLORS.white;
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.backgroundColor = COLORS.white;
-            e.currentTarget.style.color = COLORS.coral;
-          }}>
-            <Maximize2 size={18} />
-          </button>
-        )}
+  <button
+    onClick={() => setSingleChartView(false)}
+    className="p-2 rounded-full border"
+    style={{
+      color: COLORS.coral,
+      backgroundColor: COLORS.white,
+      border: `1px solid ${COLORS.coral}`,
+      transition: 'all 0.2s ease-in-out',
+    }}
+    onMouseEnter={(e) => {
+      e.currentTarget.style.backgroundColor = COLORS.coral;
+      e.currentTarget.style.color = COLORS.white;
+    }}
+    onMouseLeave={(e) => {
+      e.currentTarget.style.backgroundColor = COLORS.white;
+      e.currentTarget.style.color = COLORS.coral;
+    }}
+  >
+    <X size={18} />
+  </button>
+) : (
+  <>
+    {!isMobile && (
+      <button
+        onClick={toggleFullscreen}
+        className="p-2 rounded-full border"
+        style={{
+          color: COLORS.coral,
+          backgroundColor: COLORS.white,
+          border: `1px solid ${COLORS.coral}`,
+          transition: 'all 0.2s ease-in-out',
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.backgroundColor = COLORS.coral;
+          e.currentTarget.style.color = COLORS.white;
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.backgroundColor = COLORS.white;
+          e.currentTarget.style.color = COLORS.coral;
+        }}
+      >
+        <Maximize2 size={18} />
+      </button>
+    )}
+  </>
+)}
+
       </div>
     </div>
   );
@@ -263,7 +297,8 @@ Transit Corridors          </a>
     </div>
   );
 
-  const regularPanelContent = (
+
+  const renderPanelContent = (
     <div className="p-4 max-h-[90vh] overflow-y-auto pb-4">
       {renderHeader()}
       {singleChartView ? (
@@ -277,18 +312,16 @@ Transit Corridors          </a>
     </div>
   );
 
-  const fullscreenPanelContent = (
-    <div className="fixed inset-0 z-50 bg-white p-6 overflow-auto">
-      {renderHeader()}
-      {chartContainer}
-    </div>
-  );
-
   return (
-    <>
-      {regularPanelContent}
-      {isFullscreen && fullscreenPanelContent}
-    </>
+    <div className="relative w-full h-full">
+      {isFullscreen ? (
+        <div className="absolute inset-0 z-50 bg-white rounded-xl shadow-xl overflow-auto">
+          {renderPanelContent()}
+        </div>
+      ) : (
+        renderPanelContent()
+      )}
+    </div>
   );
 };
 

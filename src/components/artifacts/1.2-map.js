@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Layers, Maximize2, X, Info } from 'lucide-react';
 import _ from 'lodash';
 
-const CrashTrafficHeatmap = ({ onLayersReady }) => {
+const CrashTrafficHeatmap = ({ onLayersReady, onFullscreenChange }) => {
   const mapContainerRef = useRef(null);
   const [map, setMap] = useState(null);
   
@@ -14,7 +14,22 @@ const CrashTrafficHeatmap = ({ onLayersReady }) => {
   const [showLegend, setShowLegend] = useState(false);
   const [showSources, setShowSources] = useState(false);
     const infoRef = useRef(null);
-  
+  const [isMobile, setIsMobile] = useState(false);
+        // Check for mobile viewport
+        useEffect(() => {
+          const checkIfMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+          };
+          
+          // Initial check
+          checkIfMobile();
+          
+          // Add resize listener
+          window.addEventListener('resize', checkIfMobile);
+          
+          // Cleanup
+          return () => window.removeEventListener('resize', checkIfMobile);
+        }, []);
 
   const [activeLayers, setActiveLayers] = useState({
     crashes: true,
@@ -39,11 +54,17 @@ const CrashTrafficHeatmap = ({ onLayersReady }) => {
     white: '#FFFFFF'
   };
 
+  
   const toggleFullScreen = () => {
-    setIsFullScreen(prev => !prev);
-    if (map) {
-      setTimeout(() => map.invalidateSize(), 300);
-    }
+    setIsFullScreen(prev => {
+      const next = !prev;
+      if (typeof onFullscreenChange === 'function') {
+        onFullscreenChange(next);
+      }
+      return next;
+    });
+    setShowLegend(false);
+    setTimeout(() => map?.invalidateSize(), 300);
   };
 
   const toggleLayer = (layerName) => {
@@ -404,8 +425,8 @@ useEffect(() => {
   };
 
   return (
-    <div className={`flex flex-col h-full ${isFullScreen ? 'fixed inset-0 z-50 bg-white' : ''}`}>
-      <div className="flex justify-between items-center p-3 border-b bg-white shadow-sm">
+<div className={`flex flex-col h-full ${isFullScreen ? 'fixed inset-0 z-50 bg-white relative' : ''}`}>
+<div className="flex justify-between items-center p-3 border-b bg-white shadow-sm">
         <h2 className="text-lg font-semibold" style={{ color: COLORS.primary }}>
           Crash & Traffic Heatmap
         </h2>
@@ -455,6 +476,7 @@ useEffect(() => {
               }}>
             <Info size={20} />
             </button>
+            {!isMobile && (
           <button onClick={toggleFullScreen}
           style={{ 
             color: COLORS.coral,
@@ -475,7 +497,7 @@ useEffect(() => {
           onMouseLeave={(e) => {
             e.currentTarget.style.backgroundColor = 'white';
             e.currentTarget.style.color = COLORS.coral;
-          }}>{isFullScreen ? <X size={20} /> : <Maximize2 size={20} />}</button>
+          }}>{isFullScreen ? <X size={20} /> : <Maximize2 size={20} />}</button> )}
         </div>
       </div>
       <div className="flex-1 relative">

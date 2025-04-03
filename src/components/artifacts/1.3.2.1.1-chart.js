@@ -24,13 +24,31 @@ const getColor = (index) => {
   return palette[index % palette.length];
 };
 
-const BudgetDashboard = ({onLayersReady}) => {
+const BudgetDashboard = ({onLayersReady, onFullscreenChange}) => {
     const infoRef = useRef(null);
   const [budgetData, setBudgetData] = useState([]);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [singleChartView, setSingleChartView] = useState(null);
   const chartContainerRef = useRef(null);
   const [showSources, setShowSources] = useState(false);
+
+  const [isMobile, setIsMobile] = useState(false);
+        // Check for mobile viewport
+        useEffect(() => {
+          const checkIfMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+          };
+          
+          // Initial check
+          checkIfMobile();
+          
+          // Add resize listener
+          window.addEventListener('resize', checkIfMobile);
+          
+          // Cleanup
+          return () => window.removeEventListener('resize', checkIfMobile);
+        }, []);
+
  useEffect(() => {
     const timeout = setTimeout(() => {
       if (onLayersReady) onLayersReady();
@@ -38,7 +56,7 @@ const BudgetDashboard = ({onLayersReady}) => {
     }, 500); // Or however long you want to delay
 
     return () => clearTimeout(timeout);
-  }, []);
+  }, [onLayersReady]);
 
   useEffect(() => {
       const handleClickOutside = (event) => {
@@ -132,14 +150,15 @@ const BudgetDashboard = ({onLayersReady}) => {
     }
   ];
 
-  const toggleFullscreen = () => setIsFullscreen(!isFullscreen);
+  const toggleFullscreen = () => {
+    const next = !isFullscreen;
+    setIsFullscreen(next);
+    if (onFullscreenChange) onFullscreenChange(next);
+  };
 
   const renderPanelContent = (fullscreen = false) => (
-    <div
-      className={`p-4 ${fullscreen ? 'fixed inset-0 z-50 bg-white overflow-auto' : 'max-h-[90vh] overflow-y-auto pb-4'}`}
-      ref={chartContainerRef}
-    >
-      <div className="flex justify-between items-center mb-4">
+    <div className="p-4" ref={chartContainerRef}>
+     <div className="flex justify-between items-center mb-6">
         <h2 className="text-xl font-semibold" style={{ color: COLORS.primary }}>
           Budget Allocation Dashboard
         </h2>
@@ -183,6 +202,7 @@ const BudgetDashboard = ({onLayersReady}) => {
             >
               <Info size={18} />
             </button>
+            {!isMobile && (
             <button onClick={toggleFullscreen} className="p-2 rounded-full border" style={{ 
                           color: COLORS.coral,
                           backgroundColor: COLORS.white,
@@ -199,6 +219,7 @@ const BudgetDashboard = ({onLayersReady}) => {
                         }}>
               {fullscreen ? <X size={18} /> : <Maximize2 size={18} />}
             </button>
+            )}
         </div>
       </div>
   
@@ -240,9 +261,16 @@ const BudgetDashboard = ({onLayersReady}) => {
   
 
   return (
-    <>
+    <div className="relative w-full h-full">
+    {isFullscreen ? (
+      <div className="absolute inset-0 z-50 bg-white rounded-xl shadow-xl overflow-auto">
+        {renderPanelContent()}
+      </div>
+    ) : (
+      renderPanelContent()
+    )}
     {showSources && (
-    <div ref={InfoRef} className="absolute top-0 right-0 mt-2 w-[280px] bg-white border border-gray-200 rounded-xl shadow-lg p-5 z-[1000]"
+    <div ref={infoRef} className="absolute top-0 right-0 mt-2 w-[280px] bg-white border border-gray-200 rounded-xl shadow-lg p-5 z-[1000]"
     style={{top: '120px'}}>
       <div className="space-y-2 text-sm text-gray-700">
         <div>
@@ -332,9 +360,8 @@ Budget          </a>
     </div>
   )}
 
-      {renderPanelContent(false)}
-      {isFullscreen && renderPanelContent(true)}
-    </>
+      
+    </div>
   );
 };
 

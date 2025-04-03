@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Layers, Maximize2, X, Info } from 'lucide-react';
 import _ from 'lodash';
 
-const FloodplainsMap = ({ onLayersReady }) => {
+const FloodplainsMap = ({ onLayersReady, onFullscreenChange }) => {
   const mapContainerRef = useRef(null);
   const [map, setMap] = useState(null);
   
@@ -35,11 +35,28 @@ const FloodplainsMap = ({ onLayersReady }) => {
   };
 
   const toggleFullScreen = () => {
-    setIsFullScreen(prev => !prev);
-    if (map) {
-      setTimeout(() => map.invalidateSize(), 300);
+    setIsFullScreen(!isFullScreen);
+    if (onFullscreenChange) {
+      onFullscreenChange(!isFullScreen);
     }
   };
+
+const [isMobile, setIsMobile] = useState(false);
+      // Check for mobile viewport
+      useEffect(() => {
+        const checkIfMobile = () => {
+          setIsMobile(window.innerWidth < 768);
+        };
+        
+        // Initial check
+        checkIfMobile();
+        
+        // Add resize listener
+        window.addEventListener('resize', checkIfMobile);
+        
+        // Cleanup
+        return () => window.removeEventListener('resize', checkIfMobile);
+      }, []);
 
   const toggleLayer = (layerName) => {
     setActiveLayers(prev => ({ ...prev, [layerName]: !prev[layerName] }));
@@ -263,7 +280,7 @@ const FloodplainsMap = ({ onLayersReady }) => {
 
     initializeMap();
     return () => map?.remove();
-  }, []);
+  }, [COLORS.building, COLORS.flood, COLORS.primary, COLORS.street, map, onLayersReady]);
 
   useEffect(() => {
     if (!map) return;
@@ -284,8 +301,8 @@ const FloodplainsMap = ({ onLayersReady }) => {
   }, [map, activeLayers]);
 
   return (
-    <div className={`flex flex-col h-full ${isFullScreen ? 'fixed inset-0 z-50 bg-white' : ''}`}>
-      <div className="flex justify-between items-center p-3 border-b bg-white shadow-sm">
+    <div className={`flex flex-col h-full ${isFullScreen ? 'fixed inset-0 z-50 bg-white relative' : ''}`}>
+<div className="flex justify-between items-center p-3 border-b bg-white shadow-sm">
         <h2 className="text-lg font-semibold" style={{ color: COLORS.primary }}>
           Austin Floodplains Map
         </h2>
@@ -332,6 +349,7 @@ const FloodplainsMap = ({ onLayersReady }) => {
               e.currentTarget.style.backgroundColor = 'white';
               e.currentTarget.style.color = COLORS.coral;
             }}><Info size={20} /></button>
+            {!isMobile && (
           <button onClick={toggleFullScreen}
           style={{ 
             color: COLORS.coral,
@@ -353,6 +371,7 @@ const FloodplainsMap = ({ onLayersReady }) => {
             e.currentTarget.style.backgroundColor = 'white';
             e.currentTarget.style.color = COLORS.coral;
           }}>{isFullScreen ? <X size={20} /> : <Maximize2 size={20} />}</button>
+        )}
         </div>
       </div>
       <div className="flex-1 relative">

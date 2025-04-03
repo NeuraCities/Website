@@ -604,18 +604,48 @@ useEffect(() => {
   
   const handleMouseUp = () => {
     dragState.current.isDragging = false;
+    
+    // Add map resize call here
     if (window.resizeActiveMap) window.resizeActiveMap();
-  
-    // Restore transitions
+    
+    // Existing code remains unchanged
     const chatPanel = chatPanelRef.current;
     const visualPanel = visualPanelRef.current;
     if (chatPanel) chatPanel.style.transition = '';
     if (visualPanel) visualPanel.style.transition = '';
-  
+    
     document.body.classList.remove('resizing');
     document.removeEventListener('mousemove', handleMouseMove);
     document.removeEventListener('mouseup', handleMouseUp);
   };
+  useEffect(() => {
+    if (visualPanelRef.current && chatPanelRef.current) {
+      setIsTransitioning(true);
+    
+      // Store the previous widths before transition starts
+      if (chatPanelRef.current.style.width) {
+        widthsRef.current.chat = chatPanelRef.current.style.width;
+      }
+      if (visualPanelRef.current.style.width) {
+        widthsRef.current.visual = visualPanelRef.current.style.width;
+      }
+    
+      const visualPanelCurrent = visualPanelRef.current;
+    
+      const transitionEndHandler = () => {
+        setIsTransitioning(false);
+        
+        // Add this: resize map after transition completes
+        if (window.resizeActiveMap) window.resizeActiveMap();
+      };
+    
+      visualPanelCurrent.addEventListener('transitionend', transitionEndHandler);
+    
+      return () => {
+        visualPanelCurrent.removeEventListener('transitionend', transitionEndHandler);
+      };
+    }
+  }, [showVisualization]);  
   
   
 

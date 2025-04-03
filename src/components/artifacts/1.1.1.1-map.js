@@ -65,7 +65,7 @@ const LandUseZoningMap = ({ onLayersReady, onFullscreenChange  }) => {
           // Cleanup
           return () => window.removeEventListener('resize', checkIfMobile);
         }, []);
-        
+
   const setNeighborhoodLayer = useState(null)[1];
   const [, setBuildingMarkerLayer] = useState(null);
   const [, setStreetMarkerLayer] = useState(null);
@@ -100,6 +100,55 @@ const LandUseZoningMap = ({ onLayersReady, onFullscreenChange  }) => {
       [layerName]: !prev[layerName]
     }));
   };
+
+  useEffect(() => {
+    const handleTransitionEnd = (e) => {
+      // Check if the transition was on an element that could affect map size
+      if (e.target.id === 'draggable-panel-header' || 
+          e.target.closest('.draggable-artifact-panel') || 
+          e.target.classList.contains('draggable-artifact-panel')) {
+        if (map) map.invalidateSize();
+      }
+    };
+    
+    document.addEventListener('transitionend', handleTransitionEnd);
+    
+    return () => {
+      document.removeEventListener('transitionend', handleTransitionEnd);
+    };
+  }, [map]);
+  
+  useEffect(() => {
+    if (map) {
+      // Create global resize function
+      window.resizeActiveMap = () => {
+        console.log("Map resize triggered");
+        
+        // For Leaflet maps, invalidateSize is the key method 
+        // that recalculates the map container size
+        
+        // Add a small delay to let the DOM update first
+        setTimeout(() => {
+          map.invalidateSize({animate: false, pan: false});
+          console.log("Map size invalidated");
+        }, 100);
+      };
+      
+      // Also set up resize handler for window resize events
+      const handleWindowResize = _.debounce(() => {
+        if (map) map.invalidateSize();
+      }, 100);
+      
+      window.addEventListener('resize', handleWindowResize);
+      
+      return () => {
+        // Clean up
+        window.removeEventListener('resize', handleWindowResize);
+        delete window.resizeActiveMap;
+      };
+    }
+  }, [map]);
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (infoRef.current && !infoRef.current.contains(event.target)) {

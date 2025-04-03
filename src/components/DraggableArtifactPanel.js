@@ -18,8 +18,27 @@ const DraggableArtifactPanel = ({
   useEffect(() => {
     if (isOpen) {
       setPanelHeight(initialHeight);
+      
+      // Resize map when panel first opens
+      setTimeout(() => {
+        if (window.resizeActiveMap) {
+          window.resizeActiveMap();
+        }
+      }, 300); // Wait for animation to complete
     }
   }, [isOpen, initialHeight]);
+
+  // Trigger map resize when panel height changes
+  useEffect(() => {
+    if (isOpen && !isDragging) {
+      // Only trigger resize after dragging stops to avoid constant resizing
+      setTimeout(() => {
+        if (window.resizeActiveMap) {
+          window.resizeActiveMap();
+        }
+      }, 100);
+    }
+  }, [panelHeight, isDragging, isOpen]);
 
   const handleTouchStart = (e) => {
     setIsDragging(true);
@@ -59,6 +78,13 @@ const DraggableArtifactPanel = ({
     } else {
       setPanelHeight(50); // Default
     }
+    
+    // Trigger map resize after snapping is complete
+    setTimeout(() => {
+      if (window.resizeActiveMap) {
+        window.resizeActiveMap();
+      }
+    }, 350); // Wait for the snap animation to complete
   };
 
   // Style for the panel container

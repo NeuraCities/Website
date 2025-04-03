@@ -2,6 +2,7 @@
 import { useState, useRef, useEffect } from "react";
 import { FileText, File, X, ArrowUpRight } from "lucide-react";
 import Image from 'next/image';
+import { useSearchParams } from 'next/navigation';
 
 
 export default function ChatSection({ chatHistory, onSend, isLoading,
@@ -33,6 +34,18 @@ useEffect(() => {
   }
 }, [chatHistory]);
 
+const searchParams = useSearchParams();
+
+useEffect(() => {
+  const source = searchParams.get('source');
+
+  if (source === 'homepage') {
+    setIsFlowActive(false);
+    setShowLoginTile(false);
+    setFlowState("initial");
+    console.log("States reset due to homepage navigation (desktop)");
+  }
+}, [searchParams]);
 
 
 useEffect(() => {
@@ -139,19 +152,19 @@ const LoginTile = ({ onClose, onSubmit }) => {
         <p className="md:text-lg text-sm md:mb-6 mb-3 text-secondary">Please sign up to access the demo</p>
         
         <form onSubmit={onSubmit} className="md:space-y-4 space-y-2">
-          <input
-            type="text"
-            placeholder="Name"
-            className="w-full md:p-3 p-2 border border-gray-300 rounded-lg md:text-lg text-sm focus:outline-none focus:ring-2 focus:ring-coral focus:border-transparent"
-            required
-          />
+        <input
+  type="text"
+  placeholder="Name"
+  className="w-full md:p-3 p-2 border border-gray-300 rounded-lg md:text-lg text-16 focus:outline-none focus:ring-2 focus:ring-coral focus:border-transparent"
+  required
+/>
           
-          <input
-            type="email"
-            placeholder="Email"
-            className="w-full md:p-3 p-2 border border-gray-300 rounded-lg md:text-lg text-sm focus:outline-none focus:ring-2 focus:ring-coral focus:border-transparent"
-            required
-          />
+<input
+  type="email"
+  placeholder="Email"
+  className="w-full md:p-3 p-2 border border-gray-300 rounded-lg md:text-lg text-16 focus:outline-none focus:ring-2 focus:ring-coral focus:border-transparent"
+  required
+/>
           
           <div className="flex items-center space-x-2 text-left">
             <input
@@ -842,111 +855,104 @@ typewriterTimerRef.current = setTimeout(typeNextWord, 30);
   };
 
 
-  // Render helper function for messages
-  const renderMessage = (msg, idx) => {
-    // Get dynamic width class based on message content length
-    
-    // For user messages, always render normally
-    if (msg.role === "user") {
-      return (
-        <div
-          key={idx}
-          className="bg-neutral p-3 rounded-lg w-auto max-w-[fit-content] ml-auto mb-2 text-sm md:text-base"
-        >
-          <div className="text-primary break-words">
-            {msg.content}
-          </div>
-        </div>
-      );
-    }
+  // Updated renderMessage function in ChatSection.js
+// Replace the existing renderMessage function with this one
 
-    const isLastAssistantMessage = idx === chatHistory.length - 1 && msg.role === "assistant";
-
-    // If we're waiting for map to load, show "Generating..." message
-    if (isLastAssistantMessage && !responseReady && !isTyping) {
-      return (
-        <div
-          key={idx}
-          className="bg-primary p-3 rounded-lg shadow-sm w-auto max-w-[fit-content] mr-auto mb-2 text-sm md:text-base"
-        >
-          <div className="text-white break-words whitespace-pre-line">
-            Generating
-            <span className="dot-typing ml-1"></span>
-          </div>
-        </div>
-      );
-    }
-
-    // If it's the most recent assistant message and we're typing, show the animation
-    // For the most recent assistant message and we're typing
-if (isLastAssistantMessage && isTyping) {
-  console.log("Rendering typing message on mobile:", { typingText: typingText });
-  return (
-    <div
-      key={idx}
-      className="bg-primary p-3 rounded-lg shadow-sm w-auto max-w-[fit-content] mr-auto mb-2 text-sm md:text-base"
-    >
-      <div className="text-white break-words whitespace-pre-line">
-        {typingText || "\u00A0"}
-        <span className="typing-cursor">|</span>
-      </div>
-    </div>
-  );
-}
-    
-    // Find artifacts associated with this message
-    const messageArtifacts = findArtifactsForMessage(msg, idx);
-    
-    // For all other assistant messages, render normally with artifact buttons if available
+const renderMessage = (msg, idx) => {
+  // For user messages, always render normally with adjusted width on mobile
+  if (msg.role === "user") {
     return (
-      <div key={idx} className="mr-auto mb-4">
-        <div className="bg-primary p-3 rounded-lg shadow-sm w-auto max-w-[fit-content] text-sm md:text-base">
-          <div className="text-white break-words">
-            {msg.content}
-          </div>
-        </div>
-        
-       {/* Render artifact buttons if there are artifacts */}
-{/* Render artifact buttons if there are artifacts */}
-{messageArtifacts.length > 0 && (
-  <div className="flex flex-wrap gap-2 mt-2 ml-1">
-    {/* Render artifact buttons if there are artifacts */}
-{messageArtifacts.length > 0 && (
-  <div className="flex flex-wrap gap-2 mt-2 ml-1">
-    {messageArtifacts.map((artifact) => (
-      <button
-        key={artifact.id}
-        onClick={() => {
-          onSelectArtifact(artifact.id);
-          
-          // For mobile, open panel instead of changing tabs
-          if (window.innerWidth < 768) {
-            if (typeof window.openMobileArtifactPanel === 'function') {
-              window.openMobileArtifactPanel(artifact.id);
-            }
-          } else {
-            // Desktop behavior - switch tabs
-            if (setActiveTab) {
-              setActiveTab("map");
-            }
-          }
-        }}
-        className="flex items-center gap-1 text-xs bg-gradient-to-r from-[#e0f2f2] to-white border border-[#008080] text-[#008080] rounded-md py-1.5 px-3 
-                  hover:bg-gradient-to-r hover:from-[#008080] hover:to-[#009999] hover:text-white transition-all duration-200 shadow-sm
-                  transform hover:scale-105 active:scale-95 hover:shadow-md relative overflow-hidden
-                  after:absolute after:inset-0 after:rounded-md after:top-0 after:h-1/2"
+      <div
+        key={idx}
+        className="bg-neutral p-3 rounded-lg w-auto max-w-[80%] md:max-w-[fit-content] ml-auto mb-2 text-sm md:text-base"
       >
-        <span className="font-medium relative z-10">{artifact.title || `View ${artifact.type}`}</span>
-        <ArrowUpRight size={12} className="relative z-10" />
-      </button>
-    ))}
-  </div>
-)}
-  </div>
-)}
+        <div className="text-primary break-words">
+          {msg.content}
+        </div>
       </div>
     );
-  };
+  }
+
+  const isLastAssistantMessage = idx === chatHistory.length - 1 && msg.role === "assistant";
+
+  // If we're waiting for map to load, show "Generating..." message
+  if (isLastAssistantMessage && !responseReady && !isTyping) {
+    return (
+      <div
+        key={idx}
+        className="bg-primary p-3 rounded-lg shadow-sm w-auto max-w-[80%] md:max-w-[fit-content] mr-auto mb-2 text-sm md:text-base"
+      >
+        <div className="text-white break-words whitespace-pre-line">
+          Generating
+          <span className="dot-typing ml-1"></span>
+        </div>
+      </div>
+    );
+  }
+
+  // For the most recent assistant message and we're typing
+  if (isLastAssistantMessage && isTyping) {
+    console.log("Rendering typing message on mobile:", { typingText: typingText });
+    return (
+      <div
+        key={idx}
+        className="bg-primary p-3 rounded-lg shadow-sm w-auto max-w-[80%] md:max-w-[fit-content] mr-auto mb-2 text-sm md:text-base"
+      >
+        <div className="text-white break-words whitespace-pre-line">
+          {typingText || "\u00A0"}
+          <span className="typing-cursor">|</span>
+        </div>
+      </div>
+    );
+  }
+    
+  // Find artifacts associated with this message
+  const messageArtifacts = findArtifactsForMessage(msg, idx);
+    
+  // For all other assistant messages, render normally with artifact buttons if available
+  return (
+    <div key={idx} className="mr-auto mb-4 max-w-[80%] md:max-w-full">
+      <div className="bg-primary p-3 rounded-lg shadow-sm w-auto max-w-full text-sm md:text-base">
+        <div className="text-white break-words">
+          {msg.content}
+        </div>
+      </div>
+        
+      {/* Render artifact buttons if there are artifacts */}
+      {messageArtifacts.length > 0 && (
+        <div className="flex flex-wrap gap-2 mt-2 ml-1">
+          {messageArtifacts.map((artifact) => (
+            <button
+              key={artifact.id}
+              onClick={() => {
+                onSelectArtifact(artifact.id);
+                
+                // For mobile, open panel instead of changing tabs
+                if (window.innerWidth < 768) {
+                  if (typeof window.openMobileArtifactPanel === 'function') {
+                    window.openMobileArtifactPanel(artifact.id);
+                  }
+                } else {
+                  // Desktop behavior - switch tabs
+                  if (setActiveTab) {
+                    setActiveTab("map");
+                  }
+                }
+              }}
+              className="flex items-center gap-1 text-xs bg-gradient-to-r from-[#e0f2f2] to-white border border-[#008080] text-[#008080] rounded-md py-1.5 px-3 
+                        hover:bg-gradient-to-r hover:from-[#008080] hover:to-[#009999] hover:text-white transition-all duration-200 shadow-sm
+                        transform hover:scale-105 active:scale-95 hover:shadow-md relative overflow-hidden
+                        after:absolute after:inset-0 after:rounded-md after:top-0 after:h-1/2"
+            >
+              <span className="font-medium relative z-10">{artifact.title || `View ${artifact.type}`}</span>
+              <ArrowUpRight size={12} className="relative z-10" />
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
 
   return (
 
@@ -988,7 +994,7 @@ if (isLastAssistantMessage && isTyping) {
         {/* Scrollable messages area */}
         
         <div className="flex-1 overflow-hidden mt-20 md:mt-2 mb-0 md:mb-0">
-  <div className="h-full overflow-y-auto px-2 md:px-4 overflow-y-auto">
+  <div className="h-full overflow-y-auto px-8 md:px-4 overflow-y-auto">
 
 {chatHistory.length === 0 ? (
   <div className="fixed inset-0 flex flex-col items-center justify-center h-full min-h-screen text-center text-secondary px-4">

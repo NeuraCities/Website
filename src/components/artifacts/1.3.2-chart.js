@@ -267,7 +267,7 @@ const EmergencyResponsivenessDashboard = ({onLayersReady, onFullscreenChange}) =
   return (
     <div className="relative w-full h-full">
     {isFullscreen ? (
-      <div className="absolute inset-0 z-50 bg-white rounded-xl shadow-xl overflow-auto">
+      <div className="absolute inset-0 z-50 bg-white/50 rounded-xl shadow-xl overflow-auto">
         {renderPanelContent()}
       </div>
     ) : (

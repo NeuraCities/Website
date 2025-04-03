@@ -278,7 +278,7 @@ const fullscreenPanelContent = (
   return (
     <div className="relative w-full h-full">
     {isFullscreen ? (
-  <div className="absolute inset-0 z-50 bg-white rounded-xl shadow-xl overflow-auto">
+  <div className="absolute inset-0 z-50 /50 rounded-xl shadow-xl overflow-auto">
     {regularPanelContent}
   </div>
 ) : (

@@ -141,6 +141,8 @@ const [sectionContent, setSectionContent] = useState(sampleContent);
     { id: 'methods', name: 'Methodology' },
     { id: 'findings', name: 'Key Findings' },
     { id: 'analysis', name: 'Analysis' },
+    { id: 'chart', name: 'Sidewalk Chart' },
+    { id: 'map', name: 'Combined Map' },
     { id: 'conclusion', name: 'Conclusion' },
     { id: 'references', name: 'References' }
   ];

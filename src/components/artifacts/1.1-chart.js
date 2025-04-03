@@ -381,7 +381,7 @@ const toggleFullscreen = () => {
   );
 
   return (
-    <div className="relative w-full h-full">
+    <div className="relative w-full h-full bg-white/50">
   {renderPanelContent(isFullscreen)}
 </div>
   );

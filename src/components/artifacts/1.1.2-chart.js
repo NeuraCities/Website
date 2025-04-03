@@ -169,7 +169,7 @@ const EmergencyResponsivenessDashboard = ({ onLayersReady, onFullscreenChange })
   };
 
   const renderDashboardContent = () => (
-<div className={`flex flex-col h-full bg-white ${isMobile ? 'p-2' : 'p-4'}`} style={{ overflow: 'hidden' }}>
+<div className={`flex flex-col h-full bg-white/50 ${isMobile ? 'p-2' : 'p-4'}`} style={{ overflow: 'hidden' }}>
 <div className="flex justify-between items-center mb-4">
         <h2 className="text-lg sm:text-xl font-semibold" style={{ color: COLORS.primary }}>
           Emergency Responsiveness Dashboard

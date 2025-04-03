@@ -147,7 +147,7 @@ const BudgetStudyDashboard2 = ({onLayersReady,onFullscreenChange }) => {
   
   const renderPanelContent = (fullscreen = false) => (
     <div
-      className={`p-4 ${fullscreen ? 'fixed inset-0 z-50 bg-white overflow-auto' : 'max-h-[90vh] overflow-y-auto pb-4'}`}
+      className={`p-4 ${fullscreen ? 'fixed inset-0 z-50 bg-white/50 overflow-auto' : 'max-h-[90vh] overflow-y-auto pb-4'}`}
       ref={chartContainerRef}
     >
       <div className="flex justify-between items-center mb-4">
@@ -250,9 +250,9 @@ const BudgetStudyDashboard2 = ({onLayersReady,onFullscreenChange }) => {
           {charts.find(c => c.id === singleChartView)?.render()}
         </div>
       ) : (
-<div className="space-y-4 sm:space-y-6 px-2 sm:px-4">
+<div className="space-y-2 sm:space-y-6 px-2 sm:px-4">
 {/* Move legend to top */}
-  <div className="flex flex-wrap mb-4">
+  <div className="flex flex-wrap mb-2">
     {budgetData.slice(0, 10).map((entry, index) => (
       <div key={index} className="flex items-center mr-4 mb-2">
         <div className="w-3 h-3 rounded-full mr-2" style={{ backgroundColor: entry.fill }}></div>

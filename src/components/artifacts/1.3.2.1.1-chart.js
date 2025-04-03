@@ -147,7 +147,7 @@ const BudgetStudyDashboard = ({onLayersReady,onFullscreenChange }) => {
   
   const renderPanelContent = (fullscreen = false) => (
     <div
-      className={`p-4 ${fullscreen ? 'fixed inset-0 z-50 bg-white overflow-auto' : 'max-h-[90vh] overflow-y-auto pb-4'}`}
+      className={`p-4 ${fullscreen ? 'fixed inset-0 z-50 bg-white/50 overflow-auto' : 'max-h-[90vh] overflow-y-auto pb-4'}`}
       ref={chartContainerRef}
     >
       <div className="flex justify-between items-center mb-4">

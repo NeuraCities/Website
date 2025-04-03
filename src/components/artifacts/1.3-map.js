@@ -5,7 +5,8 @@ import _ from 'lodash';
 
 const FloodplainsMap = ({ onLayersReady, onFullscreenChange }) => {
   const mapContainerRef = useRef(null);
-  const [map, setMap] = useState(null);
+  const mapInstanceRef = useRef(null); // Store map instance in a ref instead of state
+  const [mapInitialized, setMapInitialized] = useState(false);
   
   // Add loading states
   const [loadingStage, setLoadingStage] = useState('initializing'); // 'initializing', 'map', 'floodplains', 'complete'
@@ -16,7 +17,6 @@ const FloodplainsMap = ({ onLayersReady, onFullscreenChange }) => {
   const [showSources, setShowSources] = useState(false);
   const infoRef = useRef(null);
   
-
   const [activeLayers, setActiveLayers] = useState({
     neighborhoods: true,
     buildings: true,
@@ -72,6 +72,8 @@ const FloodplainsMap = ({ onLayersReady, onFullscreenChange }) => {
       default: return 'Loading...';
     }
   };
+  
+  // Handle click outside for source info
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (infoRef.current && !infoRef.current.contains(event.target)) {
@@ -88,225 +90,325 @@ const FloodplainsMap = ({ onLayersReady, onFullscreenChange }) => {
     };
   }, [showSources]);
 
+  // Initialize the map only once
   useEffect(() => {
+    let isCancelled = false;
+    
     const initializeMap = async () => {
-      setLoadingStage('initializing');
-      setLoadingProgress(10);
-      
-      const L = await import('leaflet');
-      await import('leaflet/dist/leaflet.css');
-
-      if (mapContainerRef.current && mapContainerRef.current._leaflet_id) {
-        return;
-      }      
-      setLoadingProgress(15);
-      setLoadingStage('map');
-
-      // Initialize base map and infrastructure in one stage
-      const leafletMap = L.map(mapContainerRef.current, {
-        zoomControl: false,
-        attributionControl: false,
-        minZoom: 11,
-        maxZoom: 18
-      }).setView([30.267, -97.743], 13);
-
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-        attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
-        subdomains: 'abcd',
-        maxZoom: 19
-      }).addTo(leafletMap);
-
-      L.control.zoom({ position: 'topright' }).addTo(leafletMap);
-
-      // Initialize empty layer groups
-      const buildingLayer = L.layerGroup();
-      const streetLayer = L.layerGroup();
-      const neighborhoodLayer = L.layerGroup();
-      const floodplainLayer = L.layerGroup();
-      
-      // Set map reference early
-      setMap(leafletMap);
-      
-      // Start loading infrastructure right away
-      const promises = [];
-      
-      // Load neighborhood data and add to map immediately
-      const neighborhoodPromise = (async () => {
-        const res = await fetch('/data/neighborhood-data.json');
-        const data = await res.json();
-        neighborhoodLayer.addTo(leafletMap); // Add to map immediately
-        
-        // Add neighborhoods in small batches
-        const batchSize = Math.ceil(data.length / 5);
-        for (let i = 0; i < data.length; i += batchSize) {
-          const batch = data.slice(i, i + batchSize);
-          batch.forEach(n => {
-            try {
-              const coords = n.the_geom.coordinates[0][0].map(c => [c[1], c[0]]);
-              const polygon = L.polygon(coords, {
-                color: COLORS.primary,
-                weight: 2,
-                opacity: 0.6,
-                fillOpacity: 0
-              }).bindPopup(`<strong>${n.neighname}</strong>`);
-              neighborhoodLayer.addLayer(polygon);
-            } catch {}
-          });
-          // No need to wait between batches - load as fast as possible
+      try {
+        // Safety checks
+        if (!mapContainerRef.current) {
+          console.log("Map container not available yet");
+          return;
         }
         
-        leafletMap.neighborhoodLayer = neighborhoodLayer;
-        return neighborhoodLayer;
-      })();
-      promises.push(neighborhoodPromise);
-
-      // Load building data and add to map immediately
-      const buildingPromise = (async () => {
-        const res = await fetch('/data/building-data.json');
-        const data = await res.json();
-        buildingLayer.addTo(leafletMap); // Add to map immediately
-        
-        // Add buildings in small batches
-        const batchSize = Math.ceil(data.length / 5);
-        for (let i = 0; i < data.length; i += batchSize) {
-          const batch = data.slice(i, i + batchSize);
-          batch.forEach(b => {
-            try {
-              const coords = b.the_geom.coordinates[0][0];
-              const lat = _.meanBy(coords, c => c[1]);
-              const lng = _.meanBy(coords, c => c[0]);
-              const marker = L.marker([lat, lng], {
-                icon: L.divIcon({
-                  className: '',
-                  html: `<div style="width:6px;height:6px;border-radius:50%;background:${COLORS.building};opacity:0.3"></div>`
-                })
-              }).bindPopup(`<strong>Building ID: ${b.objectid}</strong>`);
-              buildingLayer.addLayer(marker);
-            } catch {}
-          });
-          // No need to wait between batches - load as fast as possible
+        if (mapInstanceRef.current) {
+          console.log("Map already initialized");
+          return;
         }
         
+        if (mapInitialized) {
+          console.log("Map initialization already in progress");
+          return;
+        }
+        
+        // Set initialization state to prevent duplicate initialization
+        setMapInitialized(true);
+        setLoadingStage('initializing');
+        setLoadingProgress(10);
+        
+        // Import Leaflet
+        const L = await import('leaflet');
+        await import('leaflet/dist/leaflet.css');
+        
+        // Another safety check after async operations
+        if (isCancelled || !mapContainerRef.current) {
+          console.log("Initialization cancelled or container removed");
+          return;
+        }
+        
+        setLoadingProgress(15);
+        setLoadingStage('map');
+
+        // Initialize base map
+        const leafletMap = L.map(mapContainerRef.current, {
+          zoomControl: false,
+          attributionControl: false,
+          minZoom: 11,
+          maxZoom: 18
+        }).setView([30.267, -97.743], 13);
+
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+          attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
+          subdomains: 'abcd',
+          maxZoom: 19
+        }).addTo(leafletMap);
+
+        L.control.zoom({ position: 'topright' }).addTo(leafletMap);
+
+        // Store the map instance in the ref
+        mapInstanceRef.current = leafletMap;
+
+        // Initialize empty layer groups
+        const buildingLayer = L.layerGroup();
+        const streetLayer = L.layerGroup();
+        const neighborhoodLayer = L.layerGroup();
+        const floodplainLayer = L.layerGroup();
+        
+        // Store layer references on the map instance
         leafletMap.buildingLayer = buildingLayer;
-        return buildingLayer;
-      })();
-      promises.push(buildingPromise);
-
-      // Load street data and add to map immediately
-      const streetPromise = (async () => {
-        const res = await fetch('/data/street-data.json');
-        const data = await res.json();
-        streetLayer.addTo(leafletMap); // Add to map immediately
-        
-        // Add streets in small batches
-        const batchSize = Math.ceil(data.length / 5);
-        for (let i = 0; i < data.length; i += batchSize) {
-          const batch = data.slice(i, i + batchSize);
-          batch.forEach(s => {
-            try {
-              s.the_geom.coordinates[0].forEach(coord => {
-                const [lng, lat] = coord;
-                const marker = L.marker([lat, lng], {
-                  icon: L.divIcon({
-                    className: '',
-                    html: `<div style="width:6px;height:6px;border-radius:50%;background:${COLORS.street};opacity:0.3"></div>`
-                  })
-                }).bindPopup(`<strong>${s.full_street_name_from_gis}</strong>`);
-                streetLayer.addLayer(marker);
-              });
-            } catch {}
-          });
-          // No need to wait between batches - load as fast as possible
-        }
-        
         leafletMap.streetLayer = streetLayer;
-        return streetLayer;
-      })();
-      promises.push(streetPromise);
-      
-      // Load all infrastructure in the background
-      Promise.all(promises).then(() => {
-        // Infrastructure is fully loaded
-        setLoadingProgress(35);
-      });
-      
-      // Wait just a moment to let map initialize
-      await new Promise(r => setTimeout(r, 500));
-      
-      // Now load floodplains data sequentially and visibly
-      setLoadingStage('floodplains');
-      
-      const res = await fetch('/data/floodplains-data.json');
-      const floodplainData = await res.json();
-      
-      // Add floodplain polygons in batches to create visual loading effect
-      const batchSize = Math.ceil(floodplainData.length / 10); // 10 batches
-      
-      for (let i = 0; i < floodplainData.length; i += batchSize) {
-        const batch = floodplainData.slice(i, i + batchSize);
+        leafletMap.neighborhoodLayer = neighborhoodLayer;
+        leafletMap.floodplainLayer = floodplainLayer;
         
-        batch.forEach(f => {
+        // Start loading infrastructure right away
+        const promises = [];
+        
+        // Load neighborhood data and add to map immediately
+        const neighborhoodPromise = (async () => {
           try {
-            const coordsList = f.the_geom.coordinates.map(ring => ring.map(([lng, lat]) => [lat, lng]));
-            const polygon = L.polygon(coordsList, {
-              color: COLORS.flood,
-              fillOpacity: 0.4,
-              weight: 1
-            }).bindPopup(`Flood Zone: ${f.flood_zone}<br>Drainage ID: ${f.drainage_id}`);
-            floodplainLayer.addLayer(polygon);
-          } catch {}
+            const res = await fetch('/data/neighborhood-data.json');
+            const data = await res.json();
+            if (isCancelled) return;
+            
+            neighborhoodLayer.addTo(leafletMap); // Add to map immediately
+            
+            // Add neighborhoods in small batches
+            const batchSize = Math.ceil(data.length / 5);
+            for (let i = 0; i < data.length && !isCancelled; i += batchSize) {
+              const batch = data.slice(i, i + batchSize);
+              batch.forEach(n => {
+                try {
+                  const coords = n.the_geom.coordinates[0][0].map(c => [c[1], c[0]]);
+                  const polygon = L.polygon(coords, {
+                    color: COLORS.primary,
+                    weight: 2,
+                    opacity: 0.6,
+                    fillOpacity: 0
+                  }).bindPopup(`<strong>${n.neighname}</strong>`);
+                  neighborhoodLayer.addLayer(polygon);
+                } catch (e) {
+                  console.error("Error adding neighborhood:", e);
+                }
+              });
+            }
+            
+            return neighborhoodLayer;
+          } catch (e) {
+            console.error("Error loading neighborhood data:", e);
+            return null;
+          }
+        })();
+        promises.push(neighborhoodPromise);
+
+        // Load building data and add to map immediately
+        const buildingPromise = (async () => {
+          try {
+            const res = await fetch('/data/building-data.json');
+            const data = await res.json();
+            if (isCancelled) return;
+            
+            buildingLayer.addTo(leafletMap); // Add to map immediately
+            
+            // Add buildings in small batches
+            const batchSize = Math.ceil(data.length / 5);
+            for (let i = 0; i < data.length && !isCancelled; i += batchSize) {
+              const batch = data.slice(i, i + batchSize);
+              batch.forEach(b => {
+                try {
+                  const coords = b.the_geom.coordinates[0][0];
+                  const lat = _.meanBy(coords, c => c[1]);
+                  const lng = _.meanBy(coords, c => c[0]);
+                  const marker = L.marker([lat, lng], {
+                    icon: L.divIcon({
+                      className: '',
+                      html: `<div style="width:6px;height:6px;border-radius:50%;background:${COLORS.building};opacity:0.3"></div>`
+                    })
+                  }).bindPopup(`<strong>Building ID: ${b.objectid}</strong>`);
+                  buildingLayer.addLayer(marker);
+                } catch (e) {
+                  console.error("Error adding building:", e);
+                }
+              });
+            }
+            
+            return buildingLayer;
+          } catch (e) {
+            console.error("Error loading building data:", e);
+            return null;
+          }
+        })();
+        promises.push(buildingPromise);
+
+        // Load street data and add to map immediately
+        const streetPromise = (async () => {
+          try {
+            const res = await fetch('/data/street-data.json');
+            const data = await res.json();
+            if (isCancelled) return;
+            
+            streetLayer.addTo(leafletMap); // Add to map immediately
+            
+            // Add streets in small batches
+            const batchSize = Math.ceil(data.length / 5);
+            for (let i = 0; i < data.length && !isCancelled; i += batchSize) {
+              const batch = data.slice(i, i + batchSize);
+              batch.forEach(s => {
+                try {
+                  s.the_geom.coordinates[0].forEach(coord => {
+                    const [lng, lat] = coord;
+                    const marker = L.marker([lat, lng], {
+                      icon: L.divIcon({
+                        className: '',
+                        html: `<div style="width:6px;height:6px;border-radius:50%;background:${COLORS.street};opacity:0.3"></div>`
+                      })
+                    }).bindPopup(`<strong>${s.full_street_name_from_gis}</strong>`);
+                    streetLayer.addLayer(marker);
+                  });
+                } catch (e) {
+                  console.error("Error adding street:", e);
+                }
+              });
+            }
+            
+            return streetLayer;
+          } catch (e) {
+            console.error("Error loading street data:", e);
+            return null;
+          }
+        })();
+        promises.push(streetPromise);
+        
+        // Load all infrastructure in the background
+        Promise.all(promises).then(() => {
+          if (isCancelled) return;
+          // Infrastructure is fully loaded
+          setLoadingProgress(35);
         });
         
-        // Update loading progress
-        setLoadingProgress(35 + (i / floodplainData.length) * 65);
+        // Wait just a moment to let map initialize
+        if (!isCancelled) await new Promise(r => setTimeout(r, 500));
         
-        // Wait a bit before adding next batch to create visual effect
-        await new Promise(r => setTimeout(r, 50));
-      }
-      
-      // Add floodplain layer to map
-      floodplainLayer.addTo(leafletMap);
-      leafletMap.floodplainLayer = floodplainLayer;
-      
-      setLoadingProgress(100);
-      setLoadingStage('complete');
-      if (onLayersReady) {
-        onLayersReady();
-      }
-      
-      if (window.setResponseReady) {
-        window.setResponseReady(true);
+        // Now load floodplains data sequentially and visibly
+        if (!isCancelled) {
+          setLoadingStage('floodplains');
+          
+          try {
+            const res = await fetch('/data/floodplains-data.json');
+            const floodplainData = await res.json();
+            
+            if (isCancelled) return;
+            
+            // Add floodplain polygons in batches to create visual loading effect
+            const batchSize = Math.ceil(floodplainData.length / 10); // 10 batches
+            
+            for (let i = 0; i < floodplainData.length && !isCancelled; i += batchSize) {
+              const batch = floodplainData.slice(i, i + batchSize);
+              
+              batch.forEach(f => {
+                try {
+                  const coordsList = f.the_geom.coordinates.map(ring => ring.map(([lng, lat]) => [lat, lng]));
+                  const polygon = L.polygon(coordsList, {
+                    color: COLORS.flood,
+                    fillOpacity: 0.4,
+                    weight: 1
+                  }).bindPopup(`Flood Zone: ${f.flood_zone}<br>Drainage ID: ${f.drainage_id}`);
+                  floodplainLayer.addLayer(polygon);
+                } catch (e) {
+                  console.error("Error adding floodplain:", e);
+                }
+              });
+              
+              // Update loading progress
+              if (!isCancelled) {
+                setLoadingProgress(35 + (i / floodplainData.length) * 65);
+                // Wait a bit before adding next batch to create visual effect
+                await new Promise(r => setTimeout(r, 50));
+              }
+            }
+            
+            // Add floodplain layer to map
+            if (!isCancelled) {
+              floodplainLayer.addTo(leafletMap);
+              
+              setLoadingProgress(100);
+              setLoadingStage('complete');
+              
+              if (onLayersReady) {
+                onLayersReady();
+              }
+              
+              if (window.setResponseReady) {
+                window.setResponseReady(true);
+              }
+            }
+          } catch (e) {
+            console.error("Error loading floodplain data:", e);
+          }
+        }
+      } catch (error) {
+        console.error("Error initializing map:", error);
+        setMapInitialized(false); // Reset initialization state on error
       }
     };
 
     initializeMap();
+    
+    // Cleanup function
     return () => {
-      if (mapContainerRef.current && mapContainerRef.current._leaflet_id) {
-        const leafletMap = mapContainerRef.current._leaflet_map;
-        if (leafletMap) {
-          leafletMap.remove();
-        } else {
-          // fallback: find map by container
-          const maps = window.L && window.L.DomUtil && window.L.DomUtil.get(mapContainerRef.current);
-          if (maps && maps._leaflet_id) {
-            const mapId = maps._leaflet_id;
-            const maybeMap = window.L?.map?.instances?.[mapId];
-            if (maybeMap && maybeMap.remove) {
-              maybeMap.remove();
-            }
-          }
+      isCancelled = true;
+      
+      // We don't cleanup the map here - we do it in a separate effect
+    };
+  }, []); // Empty dependency array - only run once
+  
+  // Dedicated cleanup effect - runs only on unmount
+  useEffect(() => {
+    // Return cleanup function for unmount
+    return () => {
+      // Cleanup map resources safely
+      if (mapInstanceRef.current) {
+        try {
+          console.log("Cleaning up map on component unmount");
+          mapInstanceRef.current.remove();
+          mapInstanceRef.current = null;
+        } catch (e) {
+          console.error("Error during map cleanup:", e);
         }
       }
     };
-  }, [COLORS.building, COLORS.flood, COLORS.primary, COLORS.street, onLayersReady]);
+  }, []); // Empty dependency array ensures this only runs on mount/unmount
 
+  // Handle display mode changes
+  useEffect(() => {
+    setTimeout(() => {
+      try {
+        if (mapInstanceRef.current) {
+          mapInstanceRef.current.invalidateSize(true);
+        } else {
+          console.warn("Map instance is null during fullscreen toggle");
+        }
+      } catch (e) {
+        console.error("Error invalidating map size:", e);
+      }
+    }, 300);
+  }, [isFullScreen]);
+  
+
+  // Handle transitions that might affect map size
   useEffect(() => {
     const handleTransitionEnd = (e) => {
       // Check if the transition was on an element that could affect map size
       if (e.target.id === 'draggable-panel-header' || 
           e.target.closest('.draggable-artifact-panel') || 
           e.target.classList.contains('draggable-artifact-panel')) {
-        if (map) map.invalidateSize();
+        if (mapInstanceRef.current) {
+          try {
+            mapInstanceRef.current.invalidateSize();
+          } catch (e) {
+            console.error("Error invalidating map size after transition:", e);
+          }
+        }
       }
     };
     
@@ -315,10 +417,11 @@ const FloodplainsMap = ({ onLayersReady, onFullscreenChange }) => {
     return () => {
       document.removeEventListener('transitionend', handleTransitionEnd);
     };
-  }, [map]);
+  }, []);
 
+  // Set up global resize handler
   useEffect(() => {
-    if (map) {
+    if (mapInstanceRef.current) {
       // Create global resize function
       window.resizeActiveMap = () => {
         console.log("Map resize triggered");
@@ -328,15 +431,27 @@ const FloodplainsMap = ({ onLayersReady, onFullscreenChange }) => {
         
         // Add a small delay to let the DOM update first
         setTimeout(() => {
-          map.invalidateSize({animate: false, pan: false});
-          console.log("Map size invalidated");
-        }, 100);
+          try {
+            if (mapInstanceRef.current) {
+              mapInstanceRef.current.invalidateSize({animate: false, pan: false});
+              console.log("Map size invalidated");
+            }
+          } catch (e) {
+            console.error("Error during map resize:", e);
+          }
+        }, 300);
       };
       
       // Also set up resize handler for window resize events
       const handleWindowResize = _.debounce(() => {
-        if (map) map.invalidateSize();
-      }, 100);
+        try {
+          if (mapInstanceRef.current) {
+            mapInstanceRef.current.invalidateSize();
+          }
+        } catch (e) {
+          console.error("Error during window resize handler:", e);
+        }
+      }, 300);
       
       window.addEventListener('resize', handleWindowResize);
       
@@ -346,29 +461,39 @@ const FloodplainsMap = ({ onLayersReady, onFullscreenChange }) => {
         delete window.resizeActiveMap;
       };
     }
-  }, [map]);
+  }, [mapInitialized]); // Only run when map initialization state changes
 
+  // Handle layer visibility changes
   useEffect(() => {
-    if (!map) return;
+    if (!mapInstanceRef.current) return;
+    
+    const map = mapInstanceRef.current;
     const layers = {
       neighborhoods: map.neighborhoodLayer,
       buildings: map.buildingLayer,
       streets: map.streetLayer,
       floodplains: map.floodplainLayer
     };
+    
     Object.entries(activeLayers).forEach(([key, active]) => {
       if (layers[key]) {
-        if (active) {
-          map.addLayer(layers[key]);
-        } else {
-          map.removeLayer(layers[key]);
+        try {
+          if (active) {
+            map.addLayer(layers[key]);
+          } else {
+            map.removeLayer(layers[key]);
+          }
+        } catch (e) {
+          console.error(`Error toggling layer ${key}:`, e);
         }
       }
     });
-  }, [map, activeLayers]);
+  }, [activeLayers, mapInitialized]);
 
   return (
-    <div className={`flex flex-col h-full ${isFullScreen ? 'h-screen' : ''}`}>
+    <div 
+      className="flex flex-col h-full"
+    >
       <div className="flex justify-between items-center p-3 border-b bg-white shadow-sm">
         <h2 className="text-lg font-semibold" style={{ color: COLORS.primary }}>
           Austin Floodplains Map

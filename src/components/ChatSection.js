@@ -51,9 +51,14 @@ useEffect(() => {
 
 useEffect(() => {
   if (autoScroll && messagesEndRef.current) {
-    messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+    // Delay the scroll to ensure artifact buttons are rendered
+    const scrollTimer = setTimeout(() => {
+      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+    }, 100); // Small delay to allow DOM to update with artifact buttons
+    
+    return () => clearTimeout(scrollTimer);
   }
-}, [chatHistory, autoScroll]);
+}, [chatHistory, autoScroll, typingText, isTyping]);
 
 const searchParams = useSearchParams();
 
@@ -787,6 +792,12 @@ default:
       setShowLoginTile(true);
       return; // Exit early
     }
+
+    if (button.id === "contact") {
+      // Navigate to contact page
+      router.push('/contact', { scroll: true });
+      return; // Exit early
+    }
     
     // For all other buttons, check if we're already processing something
     if (isLoading || isTyping || isFlowActive) {
@@ -808,10 +819,20 @@ default:
       setFlowState("infrastructure-analysis");
       setFlowHistory([]); 
       setIsFlowActive(false); 
+      if (setActiveTab) {
+        setActiveTab("gallery");
+      }
       onShowArtifactGallery(true); 
     } else {
       setFlowHistory(prev => [...prev, flowState]);
       setFlowState(button.nextState);
+      
+      // Always ensure we exit gallery view for non-reset buttons
+      // This is the key change
+      if (setActiveTab) {
+        setActiveTab("map"); // Switch to map view for all normal button clicks
+      }
+      onShowArtifactGallery(false); // Always exit gallery mode for button clicks
     }
   
     onSend(button.text, { responseId: button.id });
@@ -905,9 +926,10 @@ const renderMessage = (msg, idx) => {
   }
 
   const isLastAssistantMessage = idx === chatHistory.length - 1 && msg.role === "assistant";
+  const isResetResponse = msg.content === "Starting a new analysis. What would you like to evaluate?";
 
   // If we're waiting for map to load, show "Generating..." message
-  if (isLastAssistantMessage && !responseReady && !isTyping) {
+  if (isLastAssistantMessage && !responseReady && !isTyping && !isResetResponse) {
     return (
       <div
         key={idx}
@@ -922,7 +944,7 @@ const renderMessage = (msg, idx) => {
   }
 
   // For the most recent assistant message and we're typing
-  if (isLastAssistantMessage && isTyping) {
+  if (isLastAssistantMessage && isTyping && !isResetResponse) {
     console.log("Rendering typing message on mobile:", { typingText: typingText });
     return (
       <div
@@ -987,7 +1009,7 @@ const renderMessage = (msg, idx) => {
 
   return (
 
-<div className={`flex flex-col h-[670px] w-full md:max-w-3xl mx-auto overflow-auto bg-transparent ${isMobile && activeTab === "chat" ? "chat-reset-mobile" : ""}`}>
+<div className={`flex flex-col h-full w-full md:max-w-3xl mx-auto overflow-auto bg-transparent ${isMobile && activeTab === "chat" ? "chat-reset-mobile" : ""}`}>
 {/* Inject custom CSS for typing animation */}
         <style>{`
           .typing-cursor {
@@ -1176,8 +1198,8 @@ Click below to begin </h1>
       paddingBottom: "15px",
     }} 
   >
-    <div className="flex flex-wrap justify-center gap-3 px-4 pb-4 w-full">
-      {flowHistory.length > 0 && flowState !== "infrastructure-analysis" && (
+    <div className="flex items-center justify-center gap-3 px-4 pb-4 w-full relative">
+    {flowHistory.length > 0 && flowState !== "infrastructure-analysis" && (
         <button
           onClick={() => {
             const newHistory = [...flowHistory];

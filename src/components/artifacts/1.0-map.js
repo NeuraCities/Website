@@ -16,6 +16,7 @@ const InfrastructureMap = ({ onLayersReady, onFullscreenChange }) => {
   const [showSources, setShowSources] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
         // Check for mobile viewport
+        
         useEffect(() => {
           const checkIfMobile = () => {
             setIsMobile(window.innerWidth < 768);
@@ -657,9 +658,6 @@ const InfrastructureMap = ({ onLayersReady, onFullscreenChange }) => {
 )}
       </div>
 
-      <div className="p-2 bg-white border-t text-xs text-gray-500">
-        <p><strong>Source:</strong> Austin Infrastructure Resilience Data (March 2025)</p>
-      </div>
     </div>
   );
 };

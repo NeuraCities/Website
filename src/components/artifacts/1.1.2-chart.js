@@ -24,7 +24,11 @@ const EmergencyResponsivenessDashboard = ({ onLayersReady, onFullscreenChange })
   const [showSources, setShowSources] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 640);
   const infoRef = useRef(null);
-
+  useEffect(() => {
+    const timeout = setTimeout(() => window.scrollTo(0, 0), 200);
+    return () => clearTimeout(timeout);
+  }, []);
+  
       // Check for mobile viewport
       useEffect(() => {
         const checkIfMobile = () => {
@@ -106,7 +110,7 @@ const EmergencyResponsivenessDashboard = ({ onLayersReady, onFullscreenChange })
       id: 'response-times',
       name: 'Average On-Time Response Rates',
       render: () => (
-        <ResponsiveContainer width="100%" height={isMobile ? 200 : 300}>
+        <ResponsiveContainer width="100%" height={isMobile ? 200 : 200}>
           <LineChart data={monthlyData.slice(0, 24)}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="formatted_month" />
@@ -124,7 +128,7 @@ const EmergencyResponsivenessDashboard = ({ onLayersReady, onFullscreenChange })
       id: 'incident-counts',
       name: 'Monthly Emergency Incidents',
       render: () => (
-        <ResponsiveContainer width="100%" height={isMobile ? 200 : 300}>
+        <ResponsiveContainer width="100%" height={isMobile ? 200 : 200}>
           <BarChart data={monthlyData.slice(0, 24)}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="formatted_month" />
@@ -142,7 +146,7 @@ const EmergencyResponsivenessDashboard = ({ onLayersReady, onFullscreenChange })
       id: 'satisfaction',
       name: 'Public Satisfaction Rates',
       render: () => (
-        <ResponsiveContainer width="100%" height={isMobile ? 200 : 300}>
+        <ResponsiveContainer width="100%" height={isMobile ? 200 : 200}>
           <LineChart data={satisfactionData}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="formatted_month" />
@@ -165,7 +169,7 @@ const EmergencyResponsivenessDashboard = ({ onLayersReady, onFullscreenChange })
   };
 
   const renderDashboardContent = () => (
-<div className={`flex flex-col h-full bg-white ${isMobile ? 'p-2' : 'p-4'} overflow-auto`}>
+<div className={`flex flex-col h-full bg-white ${isMobile ? 'p-2' : 'p-4'}`} style={{ overflow: 'hidden' }}>
 <div className="flex justify-between items-center mb-4">
         <h2 className="text-lg sm:text-xl font-semibold" style={{ color: COLORS.primary }}>
           Emergency Responsiveness Dashboard

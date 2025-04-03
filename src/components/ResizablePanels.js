@@ -882,17 +882,14 @@ useEffect(() => {
     return (
       <>
         {navigationBar}
-        <SpecificComponent />
-        {isInfraMap ? (
-          <SpecificComponent onLayersReady={() => {
-            // Call setResponseReady when map layers are ready
-            setResponseReady(true);
-            // Also make it available globally for other components
-            window.setResponseReady = setResponseReady;
-          }} />
-        ) : (
-          <SpecificComponent />
-        )}
+        <SpecificComponent
+          {...(isInfraMap ? {
+            onLayersReady: () => {
+              setResponseReady(true);
+              window.setResponseReady = setResponseReady;
+            }
+          } : {})}
+        />
       </>
     );
   }  
@@ -1083,6 +1080,7 @@ const getChatPanelStyle = () => {
     artifacts={artifacts}
     onSelectArtifact={handleSelectArtifactDisplay}
     activeTab={activeTab}
+    onShowArtifactGallery={onShowArtifactGallery}
   />
   </div>
 </div>
@@ -1101,7 +1099,7 @@ const getChatPanelStyle = () => {
       {/* Visualization Panel */}
       <div
   ref={visualPanelRef}
-  className="h-full w-full overflow-auto border-l border-secondary/25"
+  className="h-full w-full flex flex-col border-l border-secondary/25"
   style={getVisualPanelStyle()}
 >
   {renderVisualComponent()}

@@ -11,7 +11,27 @@ const AreasOfConcernMap = ({ onLayersReady, onFullscreenChange }) => {
   const [showLegend, setShowLegend] = useState(false);
   const [showSources, setShowSources] = useState(false);
     const infoRef = useRef(null);
-  
+    const mapInitializedRef = useRef(false);
+
+
+  // Add this function outside of your effects
+const cleanupMap = () => {
+  if (map) {
+    // Remove all layers first
+    try {
+      Object.entries(map).forEach(([key, layer]) => {
+        if (key.includes('Layer') && layer instanceof L.LayerGroup) {
+          layer.clearLayers();
+        }
+      });
+      map.remove();
+      console.log("Map successfully removed");
+    } catch (err) {
+      console.error("Error cleaning up map:", err);
+    }
+    mapInitializedRef.current = false;
+  }
+};
   const [isMobile, setIsMobile] = useState(false);
         // Check for mobile viewport
         useEffect(() => {
@@ -79,6 +99,7 @@ const AreasOfConcernMap = ({ onLayersReady, onFullscreenChange }) => {
   };
 
   useEffect(() => {
+    cleanupMap();
     const initializeMap = async () => {
       setLoadingStage('initializing');
       setLoadingProgress(10);
@@ -91,7 +112,8 @@ const AreasOfConcernMap = ({ onLayersReady, onFullscreenChange }) => {
       document.head.appendChild(script);
       await new Promise(resolve => script.onload = resolve);
 
-      if (map || !mapContainerRef.current) return;
+      if (mapInitializedRef.current || !mapContainerRef.current) return;
+mapInitializedRef.current = true;
       
       setLoadingProgress(20);
       setLoadingStage('map');
@@ -384,10 +406,19 @@ const AreasOfConcernMap = ({ onLayersReady, onFullscreenChange }) => {
       // Wait for background loading to complete (optional)
       await backgroundPromise;
     };
+    if (!mapInitializedRef.current) {
+      initializeMap();
+    }
+    return () => {
+      cleanupMap();
+    };
+  }, []);
 
-    initializeMap();
-    return () => map?.remove();
-  }, [COLORS.blue, COLORS.concern, COLORS.green, COLORS.lightblue, COLORS.primary, COLORS.red, COLORS.yellow, map, onLayersReady]);
+useEffect(() => {
+  return () => {
+    cleanupMap();
+  };
+}, []);
 
   useEffect(() => {
     const handleTransitionEnd = (e) => {
@@ -723,10 +754,6 @@ const AreasOfConcernMap = ({ onLayersReady, onFullscreenChange }) => {
             })}
           </div>
         )}
-      </div>
-      
-      <div className="p-2 bg-white border-t text-xs text-gray-500">
-        <p><strong>Source:</strong> Austin Transport, Planning, Crash, Traffic, and Infrastructure Data (March 2025)</p>
       </div>
     </div>
   );

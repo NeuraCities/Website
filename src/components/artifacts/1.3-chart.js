@@ -105,7 +105,7 @@ const ClimateVulnerabilityDashboard = ({onLayersReady, onFullscreenChange}) => {
       id: 'temperature',
       name: 'Avg. Temperature Increase by Neighborhood (°F)',
       render: () => (
-        <ResponsiveContainer width="100%" height={300}>
+        <ResponsiveContainer width="100%" height={200}>
           <BarChart data={barData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="name" />
@@ -118,36 +118,10 @@ const ClimateVulnerabilityDashboard = ({onLayersReady, onFullscreenChange}) => {
       )
     },
     {
-      id: 'impervious',
-      name: 'Impervious Surface Distribution (%)',
-      render: () => (
-        <ResponsiveContainer width="100%" height={300}>
-          <PieChart>
-            <Pie
-              data={pieData}
-              cx="50%"
-              cy="50%"
-              outerRadius={100}
-              fill="#8884d8"
-              dataKey="value"
-              nameKey="name"
-              label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(1)}%`}
-            >
-              {pieData.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={pieColors[index % pieColors.length]} />
-              ))}
-            </Pie>
-            <Tooltip formatter={(value) => `${value.toFixed(1)}%`} />
-            <Legend />
-          </PieChart>
-        </ResponsiveContainer>
-      )
-    },
-    {
       id: 'canopyheat',
       name: 'Tree Canopy vs. Heat Emergency Calls',
       render: () => (
-        <ResponsiveContainer width="100%" height={300}>
+        <ResponsiveContainer width="100%" height={200}>
           <BarChart data={canopyVsHeatData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="name" />
@@ -205,7 +179,7 @@ const ClimateVulnerabilityDashboard = ({onLayersReady, onFullscreenChange}) => {
           {charts.find(c => c.id === singleChartView)?.render()}
         </div>
       ) : (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="flex flex-col space-y-8">
           {charts.slice(0, 2).map(chart => (
             <div
               key={chart.id}
@@ -216,13 +190,6 @@ const ClimateVulnerabilityDashboard = ({onLayersReady, onFullscreenChange}) => {
               {chart.render()}
             </div>
           ))}
-          <div
-            className="bg-gray-50 p-4 rounded-lg shadow lg:col-span-2 cursor-pointer"
-            onClick={() => setSingleChartView('canopyheat')}
-          >
-            <h3 className="text-md font-medium mb-2" style={{ color: COLORS.secondary }}>{charts[2].name}</h3>
-            {charts[2].render()}
-          </div>
         </div>
       )}
     </div>

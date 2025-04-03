@@ -342,12 +342,7 @@ const ConcernAreasMap = ({onLayersReady, onFullscreenChange}) => {
   
     initializeMap();
     return () => map?.remove();
-  }, [COLORS.building,
-    COLORS.concern,
-    COLORS.flood,
-    COLORS.primary,
-    COLORS.street,
-    map,
+  }, [
     onLayersReady]);
 
     useEffect(() => {
@@ -665,9 +660,6 @@ const ConcernAreasMap = ({onLayersReady, onFullscreenChange}) => {
         )}
       </div>
       
-      <div className="p-2 bg-white border-t text-xs text-gray-500">
-        <p><strong>Source:</strong> City of Austin Resilience Dataset (March 2025)</p>
-      </div>
     </div>
   );
 };

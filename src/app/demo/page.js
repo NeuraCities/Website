@@ -294,8 +294,6 @@ const buttonResponses = {
   },
   "reset": {
     response: "Starting a new analysis. What would you like to evaluate?",
-    artifactType: "charts",
-    artifactTitle: "New Analysis"
   }
 };
 
@@ -462,7 +460,29 @@ const fetchChatResponse = async (message, extraData = null) => {
   };
 
   try {
+    if (extraData?.responseId === "reset") {
+      // Just add the response without creating any artifacts
+      const resetResponse = { 
+        role: "assistant", 
+        content: "Starting a new analysis. What would you like to evaluate?"
+        // No artifactIds here
+      };
+      
+      const newHistory = [...updatedHistory, resetResponse];
+      setChatHistory(newHistory);
+      
+      try {
+        localStorage.setItem('currentConversation', JSON.stringify(newHistory));
+      } catch (error) {
+        console.warn("localStorage error:", error);
+      }
+    
+      setIsLoading(false);
+      return;
+    }
     if (extraData?.responseId && buttonResponses[extraData.responseId]) {
+
+      
       const buttonId = extraData.responseId;
       const responseInfo = buttonResponses[buttonId];
       
@@ -655,7 +675,7 @@ const handleSaveMap = (mapName, mapContent) => {
 };
 
 return (
-<div className="fixed inset-x-0 pt-[72px] h-[calc(100vh-64px)] overflow-hidden flex flex-col w-screen">
+<div className="fixed inset-0 top-[64px]">
 <style jsx global>{`
       /* Fix iOS height issues */
       html, body {

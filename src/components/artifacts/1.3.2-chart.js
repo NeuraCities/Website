@@ -114,7 +114,7 @@ const EmergencyResponsivenessDashboard = ({onLayersReady, onFullscreenChange}) =
       id: 'response-times',
       name: 'Average On-Time Response Rates',
       render: () => (
-        <ResponsiveContainer width="100%" height={300}>
+        <ResponsiveContainer width="100%" height={200}>
           <LineChart data={monthlyData.slice(0, 24)}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="formatted_month" />
@@ -132,7 +132,7 @@ const EmergencyResponsivenessDashboard = ({onLayersReady, onFullscreenChange}) =
       id: 'incident-counts',
       name: 'Monthly Emergency Incidents',
       render: () => (
-        <ResponsiveContainer width="100%" height={300}>
+        <ResponsiveContainer width="100%" height={200}>
           <BarChart data={monthlyData.slice(0, 24)}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="formatted_month" />
@@ -150,7 +150,7 @@ const EmergencyResponsivenessDashboard = ({onLayersReady, onFullscreenChange}) =
       id: 'satisfaction',
       name: 'Public Satisfaction Rates',
       render: () => (
-        <ResponsiveContainer width="100%" height={300}>
+        <ResponsiveContainer width="100%" height={200}>
           <LineChart data={satisfactionData}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="formatted_month" />

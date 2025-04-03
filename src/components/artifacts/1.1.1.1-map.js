@@ -744,9 +744,6 @@ const LandUseZoningMap = ({ onLayersReady, onFullscreenChange  }) => {
         )}
       </div>
 
-      <div className="p-2 bg-white border-t text-xs text-gray-500">
-        Source: Austin Land Use & Zoning Data (March 2025)
-      </div>
     </div>
   );
 };

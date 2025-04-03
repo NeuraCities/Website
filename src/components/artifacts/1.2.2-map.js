@@ -747,9 +747,6 @@ setTimeout(() => {
           </div>
         )}
       </div>
-      <div className="p-2 bg-white border-t text-xs text-gray-500">
-        <p><strong>Source:</strong> Austin Transportation, Infrastructure, Crash, and Traffic Data (March 2025)</p>
-      </div>
     </div>
   );
 };

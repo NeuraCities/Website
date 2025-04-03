@@ -573,9 +573,6 @@ const FloodplainsMap = ({ onLayersReady, onFullscreenChange }) => {
           </div>
         )}
       </div>
-      <div className="p-2 bg-white border-t text-xs text-gray-500">
-        <p><strong>Source:</strong> Austin Floodplain Data (March 2025)</p>
-      </div>
     </div>
   );
 };

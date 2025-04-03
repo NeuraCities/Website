@@ -369,24 +369,7 @@ const UpdatedFloodInfraIntersectionMap = ({ onLayersReady, onFullscreenChange })
 
     initializeMap();
     return () => map?.remove();
-  }, [COLORS.building, COLORS.flood, COLORS.intersect, COLORS.primary, COLORS.street, map, onLayersReady]);
-
-  useEffect(() => {
-    const handleTransitionEnd = (e) => {
-      // Check if the transition was on an element that could affect map size
-      if (e.target.id === 'draggable-panel-header' || 
-          e.target.closest('.draggable-artifact-panel') || 
-          e.target.classList.contains('draggable-artifact-panel')) {
-        if (map) map.invalidateSize();
-      }
-    };
-    
-    document.addEventListener('transitionend', handleTransitionEnd);
-    
-    return () => {
-      document.removeEventListener('transitionend', handleTransitionEnd);
-    };
-  }, [map]);
+  }, []);
 
   useEffect(() => {
     if (map) {
@@ -538,7 +521,7 @@ const UpdatedFloodInfraIntersectionMap = ({ onLayersReady, onFullscreenChange })
         
         {/* Loading indicator that shows the current stage while keeping map visible */}
         {loadingStage !== 'complete' && (
-          <div className="absolute bottom-12 right-4 flex flex-col items-center bg-white bg-opacity-90 z-100 p-4 rounded-lg shadow-lg max-w-xs border border-gray-200">
+          <div className="absolute bottom-12 right-4 flex flex-col items-center bg-white bg-opacity-90 z-10 p-4 rounded-lg shadow-lg max-w-xs border border-gray-200">
             <div className="flex items-center space-x-2 mb-2">
               <div className="w-6 h-6 border-3 border-gray-300 border-t-blue-500 rounded-full animate-spin"></div>
               <p className="text-sm font-medium text-gray-800">{getLoadingMessage()}</p>
@@ -721,9 +704,6 @@ const UpdatedFloodInfraIntersectionMap = ({ onLayersReady, onFullscreenChange })
         )}
       </div>
       
-      <div className="p-2 bg-white border-t text-xs text-gray-500">
-        <p><strong>Source:</strong> City of Austin Floodplain and Infrastructure Data (March 2025)</p>
-      </div>
     </div>
   );
 };

@@ -124,7 +124,7 @@ const DisasterHistoryDashboard = ({onLayersReady, onFullscreenChange }) => {
       id: 'activations-per-year',
       name: 'Yearly EOC Activations',
       render: () => (
-        <ResponsiveContainer width="100%" height={300}>
+        <ResponsiveContainer width="100%" height={200}>
           <BarChart data={getActivationsPerYear()}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="year" />
@@ -140,7 +140,7 @@ const DisasterHistoryDashboard = ({onLayersReady, onFullscreenChange }) => {
       id: 'risk-reduction-stacked',
       name: 'Risk Reduction by Type (Stacked)',
       render: () => (
-        <ResponsiveContainer width="100%" height={300}>
+        <ResponsiveContainer width="100%" height={200}>
           <BarChart data={riskReductionData}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="year" />
@@ -159,7 +159,7 @@ const DisasterHistoryDashboard = ({onLayersReady, onFullscreenChange }) => {
       name: 'Average Duration by Hazard Type (Days)',
       colSpan: 2,
       render: () => (
-        <ResponsiveContainer width="100%" height={300}>
+        <ResponsiveContainer width="100%" height={200}>
           <BarChart data={getAverageDurationPerHazard()} layout="vertical">
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis type="number" />

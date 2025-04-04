@@ -147,6 +147,21 @@ html, body {
   width: 0 !important;
 }
 
+@media (max-width: 768px) {
+  .mobile-artifact-gallery-container {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+  
+  .mobile-artifact-gallery {
+    width: 90% !important;
+    max-width: 450px !important;
+    margin: 0 auto !important;
+    position: relative !important;
+  }
+}
 @layer base {
   * {
     @apply border-border;

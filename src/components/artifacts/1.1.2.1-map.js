@@ -11,10 +11,11 @@ const HighPriorityInfrastructureMap = ({ onLayersReady, onFullscreenChange }) =>
   const [showSources, setShowSources] = useState(false);
   const infoRef = useRef(null);
   
-  
   // Add loading states
   const [loadingStage, setLoadingStage] = useState('initializing'); // 'initializing', 'map', 'concerns', 'complete'
   const [loadingProgress, setLoadingProgress] = useState(0);
+  const [showLoading, setShowLoading] = useState(true);
+
   
   const [activeLayers, setActiveLayers] = useState({
     concern: true,
@@ -188,6 +189,11 @@ const [isMobile, setIsMobile] = useState(false);
           await new Promise(r => setTimeout(r, 20));
         }
         await new Promise(r => setTimeout(r, 300));
+        setLoadingProgress(100);
+setLoadingStage('complete');
+setTimeout(() => {
+  setShowLoading(false);
+}, 300); 
         return buildingData;
       };
       
@@ -431,8 +437,8 @@ const [isMobile, setIsMobile] = useState(false);
       <div className="flex-1 relative">
         <div ref={mapContainerRef} className="absolute inset-0 w-full h-full" />
         
-        {loadingStage !== 'complete' && (
-  <div className="absolute bottom-12 right-4 flex flex-col items-center bg-white bg-opacity-90 z-[1001] p-4 rounded-lg shadow-lg max-w-xs border border-gray-200">
+        {showLoading && (
+            <div className="absolute bottom-12 right-4 flex flex-col items-center bg-white bg-opacity-90 z-[1001] p-4 rounded-lg shadow-lg max-w-xs border border-gray-200">
     <div className="flex items-center space-x-2 mb-2">
       <div className="w-6 h-6 border-3 border-gray-300 border-t-red-500 rounded-full animate-spin"></div>
       <p className="text-sm font-medium text-gray-800">{getLoadingMessage()}</p>

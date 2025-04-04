@@ -719,7 +719,7 @@ return (
     `}</style>
 <div className="w-full h-[calc(100vh-64px)] flex flex-col overflow-y-scroll">
 
-    <main className="flex-1 flex overflow-hidden px-4 md:px-6 py-4 h-full">
+    <main className="flex-1 flex overflow-hidden px-4 justify-center items-center md:px-6 py-4 h-full">
       <ResizablePanels
         chatHistory={chatHistory}
         onSend={fetchChatResponse}

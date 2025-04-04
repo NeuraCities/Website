@@ -188,26 +188,28 @@ const EmergencyResponsivenessDashboard = ({ onLayersReady, onFullscreenChange })
       </div>
 
       {singleChartView ? (
-        <div className="bg-gray-50 p-3 rounded-lg shadow">
-<h3 className={`font-medium mb-4 ${isMobile ? 'text-sm' : 'text-base sm:text-md'}`} style={{ color: COLORS.secondary }}>
-{charts.find(c => c.id === singleChartView)?.name}
-          </h3>
-          {charts.find(c => c.id === singleChartView)?.render()}
-        </div>
-      ) : (
-<div className={`gap-4 ${isMobile ? 'flex overflow-x-auto space-x-4 snap-x snap-mandatory' : 'grid grid-cols-1 md:grid-cols-2'}`}>
-{charts.map(chart => (
-            <div
-              key={chart.id}
-              className={`bg-gray-50 p-3 rounded-lg shadow cursor-pointer ${chart.colSpan === 2 ? 'md:col-span-2' : ''}`}
-              onClick={() => setSingleChartView(chart.id)}
-            >
-              <h3 className="text-base sm:text-md font-medium mb-4" style={{ color: COLORS.secondary }}>{chart.name}</h3>
-              {chart.render()}
-            </div>
-          ))}
-        </div>
-      )}
+  <div className="bg-gray-50 p-3 rounded-lg shadow">
+    <h3 className={`font-medium mb-4 ${isMobile ? 'text-sm' : 'text-base sm:text-md'}`} style={{ color: COLORS.secondary }}>
+      {charts.find(c => c.id === singleChartView)?.name}
+    </h3>
+    {charts.find(c => c.id === singleChartView)?.render()}
+  </div>
+) : (
+  <div className={`${isMobile ? 'h-[calc(100vh-120px)] overflow-y-auto pb-4' : ''}`}>
+  <div className={`gap-4 ${isMobile ? 'flex flex-col space-y-4' : 'grid grid-cols-1 md:grid-cols-2'}`}>
+    {charts.map(chart => (
+      <div
+        key={chart.id}
+        className={`bg-gray-50 p-3 rounded-lg shadow cursor-pointer ${!isMobile && chart.colSpan === 2 ? 'md:col-span-2' : ''}`}
+        onClick={() => setSingleChartView(chart.id)}
+      >
+        <h3 className="text-base sm:text-md font-medium mb-4" style={{ color: COLORS.secondary }}>{chart.name}</h3>
+        {chart.render()}
+      </div>
+    ))}
+  </div>
+  </div>
+)}
     </div>
   );
 
@@ -221,17 +223,18 @@ const EmergencyResponsivenessDashboard = ({ onLayersReady, onFullscreenChange })
         renderDashboardContent()
       )}
 
-      {showSources && (
-        <div
-  ref={infoRef}
-  className={`fixed ${isMobile ? 'bottom-5 left-1/2 transform -translate-x-1/2 w-[90%]' : 'top-24 right-6 w-[280px]'} bg-white border border-gray-200 rounded-xl shadow-lg p-5 z-[1000]`}>
-          <div className="space-y-2 text-sm text-gray-700">
-            <a href="https://data.austintexas.gov/d/gjtj-jt2d" className="text-blue-600 underline hover:text-blue-800" target="_blank" rel="noopener noreferrer">EMS</a>
-            <a href="https://data.austintexas.gov/d/fszi-c96k" className="text-blue-600 underline hover:text-blue-800" target="_blank" rel="noopener noreferrer">EMS Satisfaction</a>
-            <a href="https://data.austintexas.gov/Locations-and-Maps/Neighborhoods/a7ap-j2yt/about_data" className="text-blue-600 underline hover:text-blue-800" target="_blank" rel="noopener noreferrer">Neighborhoods</a>
-          </div>
-        </div>
-      )}
+
+{showSources && (
+  <div
+    ref={infoRef}
+    className={`fixed ${isMobile ? 'bottom-5 left-1/2 transform -translate-x-1/2 w-[90%]' : 'top-24 right-6 w-[280px]'} bg-white border border-gray-200 rounded-xl shadow-lg p-5 z-[1000]`}>
+    <div className="flex flex-col space-y-2 text-sm text-gray-700">
+      <a href="https://data.austintexas.gov/d/gjtj-jt2d" className="block text-blue-600 underline hover:text-blue-800 mb-2" target="_blank" rel="noopener noreferrer">EMS</a>
+      <a href="https://data.austintexas.gov/d/fszi-c96k" className="block text-blue-600 underline hover:text-blue-800 mb-2" target="_blank" rel="noopener noreferrer">EMS Satisfaction</a>
+      <a href="https://data.austintexas.gov/Locations-and-Maps/Neighborhoods/a7ap-j2yt/about_data" className="block text-blue-600 underline hover:text-blue-800" target="_blank" rel="noopener noreferrer">Neighborhoods</a>
+    </div>
+  </div>
+)}
     </div>
   );
 };

@@ -1150,22 +1150,43 @@ if (!artifactType && currentArtifact.id && currentArtifact.id.includes('-')) {
           user-select: none !important;
         }
       `}</style>
-      {/* Mobile Artifact Gallery - Shown when activeTab is "map" and showArtifactGallery is true */}
+      
       {isMobile && activeTab === "map" && showArtifactGallery && (
-  <div className="absolute inset-0 pt-12 pb-0 z-20 bg-white">
-    <ArtifactGallery 
-      artifacts={artifacts}
-      onSelectArtifact={handleSelectArtifactDisplay}
-      onBack={() => {
-        setActiveTab("chat");
-        onShowArtifactGallery(false);
+  <div 
+    className="fixed inset-0 pt-12 pb-0 z-20 bg-white"
+    style={{
+      left: 0,
+      right: 0,
+      top: 78,
+      bottom: 0,
+      width: '100%',
+      overflow: 'auto'
+    }}
+  >
+    <div 
+      style={{
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+        padding: '0 8px'
       }}
-      showCreatedPrompt={artifacts.length === 2}
-      isMobile={true}
-    />
+    >
+      <div style={{ width: '100%', maxWidth: '450px' }}>
+        <ArtifactGallery 
+          artifacts={artifacts}
+          onSelectArtifact={handleSelectArtifactDisplay}
+          onBack={() => {
+            setActiveTab("chat");
+            onShowArtifactGallery(false);
+          }}
+          showCreatedPrompt={artifacts.length === 2}
+          isMobile={true}
+        />
+      </div>
+    </div>
   </div>
 )}
-
 {isMobile && (
   <DraggableArtifactPanel
   isOpen={showMobileArtifactPanel}

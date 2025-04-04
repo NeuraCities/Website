@@ -211,7 +211,16 @@ const InfrastructureMap = ({ onLayersReady, onFullscreenChange }) => {
       
         neighborhoods.forEach(n => {
           try {
-            const coords = n.the_geom.coordinates[0][0].map(c => [c[1], c[0]]);
+            // Check if each level of nesting exists before accessing
+            if (n.the_geom && 
+                n.the_geom.coordinates && 
+                Array.isArray(n.the_geom.coordinates) && 
+                n.the_geom.coordinates.length > 0 && 
+                Array.isArray(n.the_geom.coordinates[0]) && 
+                n.the_geom.coordinates[0].length > 0 &&
+                Array.isArray(n.the_geom.coordinates[0][0])) {
+                  
+              const coords = n.the_geom.coordinates[0][0].map(c => [c[1], c[0]]);
             const polygon = L.polygon(coords, {
               color: COLORS.primary,
               weight: 2,
@@ -219,7 +228,10 @@ const InfrastructureMap = ({ onLayersReady, onFullscreenChange }) => {
               fillOpacity: 0
             }).bindPopup(`<strong>${n.neighname}</strong><br>Area: ${parseFloat(n.sqmiles).toFixed(2)} sq miles`);
             layer.addLayer(polygon);
-          } catch {}
+          }
+        } catch (err) {
+          console.error("Error processing coordinates:", err);
+        }
         });
       
         return layer;

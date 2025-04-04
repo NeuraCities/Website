@@ -155,7 +155,7 @@ const InfrastructureConditionDashboard = ({onLayersReady, onFullscreenChange, is
       name: 'Overall Condition',
       description: 'Distribution of infrastructure condition ratings',
       render: () => (
-        <div className={isMobile ? "h-48" : "h-64"}>
+        <div className={isMobile ? "h-48" : "h-40"}>
           <ResponsiveContainer width="100%" height="100%">
             <PieChart>
               <Pie
@@ -240,7 +240,7 @@ const InfrastructureConditionDashboard = ({onLayersReady, onFullscreenChange, is
 
   // Regular panel content
   const regularPanelContent = (
-    <div className="flex flex-col w-full h-full bg-white/50 p-4 overflow-auto" ref={chartContainerRef}>
+    <div className="flex flex-col w-full h-full bg-white/50 p-4 overflow-auto mb-6" ref={chartContainerRef}>
       {/* Header */}
       <div className="flex justify-between items-center mb-6">
         <h2 className={`${isMobile ? "text-lg" : "text-xl"} font-semibold`} style={{ color: COLORS.primary }}>
@@ -493,7 +493,7 @@ const InfrastructureConditionDashboard = ({onLayersReady, onFullscreenChange, is
         )}
 
         {/* Main content area */}
-        <div className="flex-1 flex flex-col overflow-hidden">
+        <div className="flex-1 flex flex-col overflow-hidden mb-6">
           {/* Header */}
           <div className="text-white px-4 py-3 flex items-center justify-between" style={{ backgroundColor: COLORS.coral }}>
             <div className="flex items-center">
@@ -639,7 +639,7 @@ const InfrastructureConditionDashboard = ({onLayersReady, onFullscreenChange, is
   
 
   return (
-    <div className="relative w-full h-full">
+    <div className="relative w-full h-full mb-4" style={{ paddingBottom: '50px' }}>
       {regularPanelContent}
       {isFullscreen && fullscreenPanelContent}
 

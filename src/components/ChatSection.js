@@ -112,7 +112,7 @@ const findArtifactsForMessage = (message) => {
     .filter(a => a !== undefined);
 };
 
-const LoginTile = ({ onClose, onSubmit }) => {
+const LoginTile = ({ onClose}) => {
   const [newsletter, setNewsletter] = useState(false);
 
   // Modified onClose function that also resets isFlowActive
@@ -169,7 +169,7 @@ const LoginTile = ({ onClose, onSubmit }) => {
         <h2 className="md:text-3xl text-xl font-bold text-primary md:mb-2 mb-1">Welcome to NeuraCities</h2>
         <p className="md:text-lg text-sm md:mb-6 mb-3 text-secondary">Please sign up to access the demo</p>
         
-        <form name="demo-form" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/forms.html" onSubmit={onSubmit} className="md:space-y-4 space-y-2">
+        <form name="demo-form" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/forms.html" onSubmit={handleLoginSubmit} className="md:space-y-4 space-y-2">
         <input type="hidden" name="form-name" value="demo-form" />
                 <div hidden>
                   <input name="bot-field" />
@@ -242,13 +242,41 @@ const LoginTile = ({ onClose, onSubmit }) => {
     </div>
   );
 };
-const handleLoginSubmit = (e) => {
+const handleLoginSubmit = async (e) => {
   e.preventDefault();
   setShowLoginTile(false);
+
+  // Extract form data
+  const form = e.target;
+  const formData = new FormData(form);
+
+  // Update the newsletter value explicitly
+  formData.set('newsletter', newsletter ? 'yes' : 'no');
+
+  // Convert to URL-encoded data
+  const params = new URLSearchParams();
+  formData.forEach((value, key) => {
+    params.append(key, value.toString());
+  });
 
   // Force mobile to always stay on chat tab
   if (window.innerWidth < 768 && typeof setActiveTab === "function") {
     setActiveTab("chat");
+  }
+
+  try {
+    const response = await fetch('/forms.html', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: params.toString()
+    });
+    if (response.ok) {
+      // Handle successful submission (e.g., navigate to chat)
+    } else {
+      console.error('Error submitting form:', response.statusText);
+    }
+  } catch (error) {
+    console.error('Error submitting form:', error);
   }
 
   const buttonData = {
@@ -266,7 +294,7 @@ const handleLoginSubmit = (e) => {
   // Send message and trigger response processing
   onSend(buttonData.text, { responseId: buttonData.id });
   setShowLoadingMessage(true);
-setIsFirstResponse(true);
+  setIsFirstResponse(true);
   
   // For mobile, use a cleaner approach - don't rely on triggerFlowSequence
   if (window.innerWidth < 768) {
@@ -279,11 +307,11 @@ setIsFirstResponse(true);
     // Use normal flow for desktop
     triggerFlowSequence("1.0");
   }
+
   setTimeout(() => {
     setShowTutorial(true);
   }, 12000);
 };
-
 
 const buttonFlows = {
   "1.0": ["map", "neighborhoods", "buildings", "streets", "response", "chart"],

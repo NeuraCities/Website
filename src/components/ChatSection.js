@@ -294,11 +294,6 @@ const handleLoginSubmit = async (e) => {
     console.error('Error submitting form:', error);
   }
 
-  const buttonData = {
-    id: "1.0",
-    text: "I want to evaluate the Resilience of Infrastructure around downtown Austin",
-    nextState: "infrastructure-analysis"
-  };
 
   setFlowHistory(prev => [...prev, flowState]);
   setFlowState("infrastructure-analysis");

@@ -1,5 +1,5 @@
 "use client";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback, useMemo } from "react";
 import { FileText, File, X, ArrowUpRight } from "lucide-react";
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
@@ -314,14 +314,14 @@ const handleLoginSubmit = async (e) => {
   }, 12000);
 };
 
-const buttonFlows = {
+const buttonFlows = useMemo(() => ({
   "1.0": ["map", "neighborhoods", "buildings", "streets", "response", "chart"],
   "1.1": ["map", "chart"],
   "1.2": ["map", "crashes", "response"],
   "1.3.1": ["chart1", "chart2", "response"]
-};
+}), []);
 
-const triggerFlowSequence = async (buttonId) => {
+const triggerFlowSequence = useCallback(async (buttonId) => {
   const flow = buttonFlows[buttonId];
   if (!flow) return;
 
@@ -393,7 +393,8 @@ const triggerFlowSequence = async (buttonId) => {
   setTimeout(() => {
     setIsFlowActive(false);
   }, 2000);
-};
+}, [buttonFlows, setLayersVisibility, setChartReady, setCustomChartReady, setResponseReady]);
+
 
 
 
@@ -833,7 +834,7 @@ useEffect(() => {
   
   // Run the check
   checkForOAuthRedirect();
-}, []); 
+}, [flowState, onSend, setResponseReady, setShowTutorial, triggerFlowSequence]); 
 
   useEffect(() => {
     // Reset critical state on mount

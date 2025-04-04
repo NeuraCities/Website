@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from "react";
 import { FileText, File, X, ArrowUpRight } from "lucide-react";
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { Input } from "./ui/input";
+//import { Input } from "./ui/input";
 import Checkbox from "./ui/Checkbox";
 
 export default function ChatSection({ chatHistory, onSend, isLoading,
@@ -177,11 +177,11 @@ const LoginTile = ({ onClose}) => {
                 
                 {/* Add hidden input for newsletter value */}
                 <input type="hidden" name="newsletter" value={newsletter ? "yes" : "no"} />
-           <Input
+           <input
             type="text"
             name="name"
             placeholder="Name"
-            className="w-full md:p-3 p-2 border border-gray-300 rounded-lg md:text-lg text-16 focus:outline-none focus:ring-2 focus:ring-coral focus:border-transparent"
+            className="w-full md:p-3 p-2 border border-secondary rounded-lg md:text-lg text-16 focus:outline-none focus:ring-2 focus:ring-coral focus:border-transparent"
             required
           />
                     
@@ -189,7 +189,7 @@ const LoginTile = ({ onClose}) => {
             name="email"
             type="email"
             placeholder="Email"
-            className="w-full md:p-3 p-2 border border-gray-300 rounded-lg md:text-lg text-16 focus:outline-none focus:ring-2 focus:ring-coral focus:border-transparent"
+            className="w-full md:p-3 p-2 border border-secondary rounded-lg md:text-lg text-16 focus:outline-none focus:ring-2 focus:ring-coral focus:border-transparent"
             required
           />
           
@@ -199,7 +199,7 @@ const LoginTile = ({ onClose}) => {
               id="newsletter"
               checked={newsletter}
               onChange={(e) => setNewsletter(e.target.checked)}
-              className="md:w-4 md:h-4 w-3 h-3 text-coral border-gray-300 rounded focus:ring-coral"
+              className="md:w-4 md:h-4 w-3 h-3 text-coral border-secondary rounded focus:ring-coral"
             />
             <label htmlFor="newsletter" className="md:text-base text-xs font-medium text-primary">
               Keep me updated with NeuraCities!

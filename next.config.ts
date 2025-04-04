@@ -5,6 +5,9 @@ import webpack from "webpack";
 const nextConfig: NextConfig = {
   trailingSlash: true,
   reactStrictMode: false,
+  images: {
+    unoptimized: true, // Disable Next.js image optimization for Netlify
+  },
   webpack: (config, { isServer }) => {
     if (!isServer) {
       // Provide fallbacks for modules that are not available in the browser.

@@ -45,7 +45,7 @@ const BudgetStudyDashboard = ({onLayersReady,onFullscreenChange }) => {
     }, 500); // Or however long you want to delay
 
     return () => clearTimeout(timeout);
-  }, []);
+  }, [onLayersReady]);
   useEffect(() => {
       const handleClickOutside = (event) => {
         if (infoRef.current && !infoRef.current.contains(event.target)) {

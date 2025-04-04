@@ -56,7 +56,7 @@ const EmergencyResponsivenessDashboard = ({ onLayersReady, onFullscreenChange })
       if (window.setResponseReady) window.setResponseReady(true);
     }, 500);
     return () => clearTimeout(timeout);
-  }, []);
+  }, [onLayersReady]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {

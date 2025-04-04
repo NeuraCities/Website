@@ -9,7 +9,7 @@ const HighPriorityInfrastructureMap = ({ onLayersReady, onFullscreenChange }) =>
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [showLegend, setShowLegend] = useState(false);
   const [showSources, setShowSources] = useState(false);
-    const infoRef = useRef(null);
+  const infoRef = useRef(null);
   
   
   // Add loading states
@@ -61,15 +61,10 @@ const [isMobile, setIsMobile] = useState(false);
   };
 
   const toggleFullScreen = () => {
-    setIsFullScreen(prev => {
-      const next = !prev;
-      if (typeof onFullscreenChange === 'function') {
-        onFullscreenChange(next);
-      }
-      return next;
-    });
-    setShowLegend(false);
-    setTimeout(() => map?.invalidateSize(), 300);
+    setIsFullScreen(!isFullScreen);
+    if (onFullscreenChange) {
+      onFullscreenChange(!isFullScreen);
+    }
   };
 
   const toggleLayer = (layerName) => {
@@ -271,6 +266,7 @@ const [isMobile, setIsMobile] = useState(false);
 
     initMap();
     //return () => map?.leafletMap.remove();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [onLayersReady]); // Add onLayersReady to dependency array
 
   useEffect(() => {
@@ -320,6 +316,7 @@ const [isMobile, setIsMobile] = useState(false);
       };
     }
   }, [map]);
+  
 
   useEffect(() => {
       const handleClickOutside = (event) => {
@@ -351,17 +348,9 @@ const [isMobile, setIsMobile] = useState(false);
     });
   }, [map, activeLayers]);
 
-  // Force map re-render when fullscreen changes
-  useEffect(() => {
-    if (map && map.leafletMap) {
-      setTimeout(() => {
-        map.leafletMap.invalidateSize();
-      }, 300);
-    }
-  }, [isFullScreen, map]);
 
   return (
-<div className={`flex flex-col h-full ${isFullScreen ? 'fixed inset-0 z-50 bg-white' : ''}`}>
+<div className={`flex flex-col h-full ${isFullScreen ? 'inset-0 z-50 bg-white relative' : ''}`}>
 <div className="flex justify-between items-center p-3 border-b bg-white shadow-sm">
         <h2 className="text-lg font-semibold" style={{ color: COLORS.primary }}>
           High Priority Infrastructure
@@ -443,7 +432,7 @@ const [isMobile, setIsMobile] = useState(false);
         <div ref={mapContainerRef} className="absolute inset-0 w-full h-full" />
         
         {loadingStage !== 'complete' && (
-  <div className="absolute bottom-12 right-4 flex flex-col items-center bg-white bg-opacity-90 z-100 p-4 rounded-lg shadow-lg max-w-xs border border-gray-200">
+  <div className="absolute bottom-12 right-4 flex flex-col items-center bg-white bg-opacity-90 z-[1001] p-4 rounded-lg shadow-lg max-w-xs border border-gray-200">
     <div className="flex items-center space-x-2 mb-2">
       <div className="w-6 h-6 border-3 border-gray-300 border-t-red-500 rounded-full animate-spin"></div>
       <p className="text-sm font-medium text-gray-800">{getLoadingMessage()}</p>
@@ -452,17 +441,17 @@ const [isMobile, setIsMobile] = useState(false);
     {/* Progress bar */}
     <div className="w-full h-2 bg-gray-200 rounded-full">
       <div
-        className="h-full bg-red-500 rounded-full transition-all duration-300 ease-out"
+        className="h-full bg-primary rounded-full transition-all duration-300 ease-out"
         style={{ width: `${loadingProgress}%` }}
       ></div>
     </div>
 
     {/* Layer indicators */}
     <div className="grid grid-cols-2 gap-1 mt-2 w-full">
-      <div className={`text-center p-1 rounded text-xs ${['map', 'concerns', 'complete'].includes(loadingStage) ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-500'}`}>
+      <div className={`text-center p-1 rounded text-xs ${['map', 'concerns', 'complete'].includes(loadingStage) ? 'bg-coral text-white' : 'bg-gray-100 text-gray-500'}`}>
         Base Map
       </div>
-      <div className={`text-center p-1 rounded text-xs ${['concerns', 'complete'].includes(loadingStage) ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-500'}`}>
+      <div className={`text-center p-1 rounded text-xs ${['concerns', 'complete'].includes(loadingStage) ? 'bg-coral text-white' : 'bg-gray-100 text-gray-500'}`}>
         Priority Points
       </div>
     </div>

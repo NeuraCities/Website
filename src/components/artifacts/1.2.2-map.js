@@ -1,5 +1,5 @@
 // TransportMap.jsx
-// Updated with sequential loading and visual progress indicator
+// Fixed to properly hide loading indicator when complete
 import React, { useEffect, useRef, useState } from 'react';
 import { Layers, Maximize2, X, Info } from 'lucide-react';
 import _ from 'lodash';
@@ -11,14 +11,13 @@ const TransportMap = ({ onLayersReady, onFullscreenChange }) => {
   // Add loading states
   const [loadingStage, setLoadingStage] = useState('initializing'); // 'initializing', 'map', 'biking', 'transit', 'complete'
   const [loadingProgress, setLoadingProgress] = useState(0);
+  const [isLoading, setIsLoading] = useState(true); // Add explicit loading state
   
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [showLegend, setShowLegend] = useState(false);
   const [showSources, setShowSources] = useState(false);
-    const infoRef = useRef(null);
-    const leafletInitializedRef = useRef(false);
-
-  
+  const infoRef = useRef(null);
+  const leafletInitializedRef = useRef(false);
 
   const [activeLayers, setActiveLayers] = useState({
     biking: true,
@@ -52,21 +51,21 @@ const TransportMap = ({ onLayersReady, onFullscreenChange }) => {
   };
 
   const [isMobile, setIsMobile] = useState(false);
-        // Check for mobile viewport
-        useEffect(() => {
-          const checkIfMobile = () => {
-            setIsMobile(window.innerWidth < 768);
-          };
-          
-          // Initial check
-          checkIfMobile();
-          
-          // Add resize listener
-          window.addEventListener('resize', checkIfMobile);
-          
-          // Cleanup
-          return () => window.removeEventListener('resize', checkIfMobile);
-        }, []);
+  // Check for mobile viewport
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    // Initial check
+    checkIfMobile();
+    
+    // Add resize listener
+    window.addEventListener('resize', checkIfMobile);
+    
+    // Cleanup
+    return () => window.removeEventListener('resize', checkIfMobile);
+  }, []);
 
   const toggleLayer = (layerName) => {
     setActiveLayers(prev => ({ ...prev, [layerName]: !prev[layerName] }));
@@ -83,6 +82,7 @@ const TransportMap = ({ onLayersReady, onFullscreenChange }) => {
       default: return 'Loading...';
     }
   };
+  
   useEffect(() => {
     return () => {
       if (map) {
@@ -100,41 +100,42 @@ const TransportMap = ({ onLayersReady, onFullscreenChange }) => {
       }
     };
   }, [map, activeLayers]);
+  
   useEffect(() => {
-      const handleClickOutside = (event) => {
-        if (infoRef.current && !infoRef.current.contains(event.target)) {
-          setShowSources(false);
-        }
-      };
-    
-      if (showSources) {
-        document.addEventListener('mousedown', handleClickOutside);
+    const handleClickOutside = (event) => {
+      if (infoRef.current && !infoRef.current.contains(event.target)) {
+        setShowSources(false);
       }
+    };
     
-      return () => {
-        document.removeEventListener('mousedown', handleClickOutside);
-      };
-    }, [showSources]);
+    if (showSources) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+    
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [showSources]);
 
   useEffect(() => {
     const initializeMap = async () => {
+      setIsLoading(true);
       setLoadingStage('initializing');
       setLoadingProgress(10);
       
       const L = await import('leaflet');
       await import('leaflet/dist/leaflet.css');
 
-       // Set map reference early
-       // Create empty layer groups
-       const bikingLayer = L.layerGroup();
-       const transitLayer = L.layerGroup();
-       const neighborhoodLayer = L.layerGroup();
-       const buildingLayer = L.layerGroup();
-       const streetLayer = L.layerGroup();
-       const crashMarkerLayer = L.layerGroup();
-       const trafficMarkerLayer = L.layerGroup();
-       
-
+      // Set map reference early
+      // Create empty layer groups
+      const bikingLayer = L.layerGroup();
+      const transitLayer = L.layerGroup();
+      const neighborhoodLayer = L.layerGroup();
+      const buildingLayer = L.layerGroup();
+      const streetLayer = L.layerGroup();
+      const crashMarkerLayer = L.layerGroup();
+      const trafficMarkerLayer = L.layerGroup();
+      
       try {
         // Check if the script is already loaded
         if (!document.querySelector('script[src*="leaflet-heat.js"]')) {
@@ -154,7 +155,7 @@ const TransportMap = ({ onLayersReady, onFullscreenChange }) => {
       }
 
       if (leafletInitializedRef.current || !mapContainerRef.current) return;
-leafletInitializedRef.current = true;
+      leafletInitializedRef.current = true;
       setLoadingProgress(20);
       setLoadingStage('map');
 
@@ -167,7 +168,6 @@ leafletInitializedRef.current = true;
       }).setView([30.267, -97.743], 13);
       setMap(leafletMap);
 
-
       L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
         attribution: '&copy; OpenStreetMap contributors & CARTO',
         subdomains: 'abcd',
@@ -176,8 +176,6 @@ leafletInitializedRef.current = true;
 
       L.control.zoom({ position: 'topright' }).addTo(leafletMap);
       L.control.attribution({ position: 'bottomright' }).addTo(leafletMap);
-
-     
       
       // Wait a moment for the base map to render
       await new Promise(r => setTimeout(r, 500));
@@ -355,15 +353,14 @@ leafletInitializedRef.current = true;
       }
       
       // Add biking layer to map after slight delay to ensure map container is attached
-setTimeout(() => {
-  if (leafletMap && leafletMap.getContainer && leafletMap.getContainer().parentNode) {
-    bikingLayer.addTo(leafletMap);
-    leafletMap.bikingLayer = bikingLayer;
-  } else {
-    console.warn("Map container not ready for bikingLayer");
-  }
-}, 50);
-
+      setTimeout(() => {
+        if (leafletMap && leafletMap.getContainer && leafletMap.getContainer().parentNode) {
+          bikingLayer.addTo(leafletMap);
+          leafletMap.bikingLayer = bikingLayer;
+        } else {
+          console.warn("Map container not ready for bikingLayer");
+        }
+      }, 50);
       
       // Pause briefly between biking and transit data
       await new Promise(r => setTimeout(r, 500));
@@ -412,14 +409,20 @@ setTimeout(() => {
       
       // All layers are now loaded
       setLoadingProgress(100);
-    setLoadingStage('complete');
-    if (onLayersReady) {
-      onLayersReady();
-    }
-    
-    if (window.setResponseReady) {
-      window.setResponseReady(true);
-    }
+      setLoadingStage('complete');
+      
+      // Add a delay before hiding the loading indicator to ensure the user sees 100%
+      setTimeout(() => {
+        setIsLoading(false); // Hide loading indicator after a short delay
+      }, 1000);
+      
+      if (onLayersReady) {
+        onLayersReady();
+      }
+      
+      if (window.setResponseReady) {
+        window.setResponseReady(true);
+      }
     };
 
     initializeMap();
@@ -490,13 +493,14 @@ setTimeout(() => {
           map.addLayer(map[layerKey]);
         } else {
           map.removeLayer(map[layerKey]);
-        }      }
+        }
+      }
     });
   }, [map, activeLayers]);
 
   return (
     <div className={`flex flex-col h-full ${isFullScreen ? 'fixed inset-0 z-50 bg-white' : ''} ${isFullScreen ? 'relative' : ''}`}>
-<div className="flex justify-between items-center p-3 border-b bg-white shadow-sm">
+      <div className="flex justify-between items-center p-3 border-b bg-white shadow-sm">
         <h2 className="text-lg font-semibold text-[#2C3E50]">Bike & Transit Corridors Map</h2>
         <div className="flex items-center space-x-3">
           <button onClick={() => setShowLegend(prev => !prev)} title="Layers & Legend" style={{ 
@@ -575,9 +579,9 @@ setTimeout(() => {
       <div className="flex-1 relative">
         <div ref={mapContainerRef} className="absolute inset-0 w-full h-full" />
         
-        {/* Loading indicator that shows the current stage while keeping map visible */}
-        {loadingStage !== 'complete' && (
-          <div className="absolute bottom-12 right-4 flex flex-col items-center bg-white bg-opacity-90 z-100 p-4 rounded-lg shadow-lg max-w-xs border border-gray-200">
+        {/* Loading indicator that shows only when isLoading is true */}
+        {isLoading && (
+          <div className="absolute bottom-12 right-4 flex flex-col items-center bg-white bg-opacity-90 z-[1001] p-4 rounded-lg shadow-lg max-w-xs border border-gray-200">
             <div className="flex items-center space-x-2 mb-2">
               <div className="w-6 h-6 border-3 border-gray-300 border-t-blue-500 rounded-full animate-spin"></div>
               <p className="text-sm font-medium text-gray-800">{getLoadingMessage()}</p>
@@ -586,20 +590,20 @@ setTimeout(() => {
             {/* Progress bar */}
             <div className="w-full h-2 bg-gray-200 rounded-full">
               <div 
-                className="h-full bg-blue-500 rounded-full transition-all duration-300 ease-out"
+                className="h-full bg-primary rounded-full transition-all duration-300 ease-out"
                 style={{ width: `${loadingProgress}%` }}
               ></div>
             </div>
             
             {/* Layer indicators */}
             <div className="grid grid-cols-3 gap-1 mt-2 w-full">
-              <div className={`text-center p-1 rounded text-xs ${loadingStage === 'map' || loadingStage === 'biking' || loadingStage === 'transit' || loadingStage === 'complete' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-500'}`}>
+              <div className={`text-center p-1 rounded text-xs ${loadingStage === 'map' || loadingStage === 'biking' || loadingStage === 'transit' || loadingStage === 'complete' ? 'bg-coral text-white' : 'bg-gray-100 text-gray-500'}`}>
                 Base Map
               </div>
-              <div className={`text-center p-1 rounded text-xs ${loadingStage === 'biking' || loadingStage === 'transit' || loadingStage === 'complete' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-500'}`}>
+              <div className={`text-center p-1 rounded text-xs ${loadingStage === 'biking' || loadingStage === 'transit' || loadingStage === 'complete' ? 'bg-coral text-white' : 'bg-gray-100 text-gray-500'}`}>
                 Biking
               </div>
-              <div className={`text-center p-1 rounded text-xs ${loadingStage === 'transit' || loadingStage === 'complete' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-500'}`}>
+              <div className={`text-center p-1 rounded text-xs ${loadingStage === 'transit' || loadingStage === 'complete' ? 'bg-coral text-white' : 'bg-gray-100 text-gray-500'}`}>
                 Transit
               </div>
             </div>
@@ -607,7 +611,7 @@ setTimeout(() => {
         )}
         
         {showSources && (
-          <div ref={infoRef}className="absolute top-0 right-0 mt-2 w-[280px] bg-white border border-gray-200 rounded-xl shadow-lg p-5 z-[1000]">
+          <div ref={infoRef} className="absolute top-0 right-0 mt-2 w-[280px] bg-white border border-gray-200 rounded-xl shadow-lg p-5 z-[1000]">
             <div className="space-y-2 text-sm text-gray-700">
               <div>
                 <a

@@ -37,7 +37,10 @@ const FloodplainsMap = ({ onLayersReady, onFullscreenChange }) => {
   const toggleFullScreen = () => {
     setIsFullScreen(!isFullScreen);
     if (onFullscreenChange) {
-      onFullscreenChange(!isFullScreen);
+      // Move the state update out of the render phase with setTimeout
+      setTimeout(() => {
+        onFullscreenChange(!isFullScreen);
+      }, 0);
     }
   };
 
@@ -360,6 +363,7 @@ const FloodplainsMap = ({ onLayersReady, onFullscreenChange }) => {
       
       // We don't cleanup the map here - we do it in a separate effect
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); // Empty dependency array - only run once
   
   // Dedicated cleanup effect - runs only on unmount
@@ -380,19 +384,26 @@ const FloodplainsMap = ({ onLayersReady, onFullscreenChange }) => {
   }, []); // Empty dependency array ensures this only runs on mount/unmount
 
   // Handle display mode changes
-  useEffect(() => {
+useEffect(() => {
+  // Use multiple timeouts with increasing delays to ensure the map resizes properly
+  const timeouts = [100, 300, 600, 1000].map(delay => 
     setTimeout(() => {
       try {
         if (mapInstanceRef.current) {
-          mapInstanceRef.current.invalidateSize(true);
-        } else {
-          console.warn("Map instance is null during fullscreen toggle");
+          console.log(`Attempting map invalidateSize after ${delay}ms`);
+          mapInstanceRef.current.invalidateSize({ animate: false, pan: false });
         }
       } catch (e) {
-        console.error("Error invalidating map size:", e);
+        console.error(`Error invalidating map size after ${delay}ms:`, e);
       }
-    }, 300);
-  }, [isFullScreen]);
+    }, delay)
+  );
+  
+  // Return cleanup function
+  return () => {
+    timeouts.forEach(timeoutId => clearTimeout(timeoutId));
+  };
+}, [isFullScreen]);
   
 
   // Handle transitions that might affect map size
@@ -489,6 +500,34 @@ const FloodplainsMap = ({ onLayersReady, onFullscreenChange }) => {
       }
     });
   }, [activeLayers, mapInitialized]);
+
+  // Add a ResizeObserver to detect container size changes
+useEffect(() => {
+  if (!mapContainerRef.current) return;
+  
+  const resizeObserver = new ResizeObserver(entries => {
+    if (entries.length > 0) {
+      console.log("Container size changed, forcing map resize");
+      if (mapInstanceRef.current) {
+        // Try multiple resize attempts with increasing delays
+        [50, 200, 500].forEach(delay => {
+          setTimeout(() => {
+            if (mapInstanceRef.current) {
+              mapInstanceRef.current.invalidateSize({ animate: false, pan: false });
+              console.log(`Map resize after container change: ${delay}ms`);
+            }
+          }, delay);
+        });
+      }
+    }
+  });
+  
+  resizeObserver.observe(mapContainerRef.current);
+  
+  return () => {
+    resizeObserver.disconnect();
+  };
+}, []);
 
   return (
     <div 
@@ -627,7 +666,7 @@ const FloodplainsMap = ({ onLayersReady, onFullscreenChange }) => {
 
         {/* Loading indicator that shows the current stage while keeping map visible */}
         {loadingStage !== 'complete' && (
-          <div className="absolute bottom-12 right-4 flex flex-col items-center bg-white bg-opacity-90 z-10 p-4 rounded-lg shadow-lg max-w-xs border border-gray-200">
+          <div className="absolute bottom-12 right-4 flex flex-col items-center bg-white bg-opacity-90 z-[1001] p-4 rounded-lg shadow-lg max-w-xs border border-gray-200">
             <div className="flex items-center space-x-2 mb-2">
               <div className="w-6 h-6 border-3 border-gray-300 border-t-blue-500 rounded-full animate-spin"></div>
               <p className="text-sm font-medium text-gray-800">{getLoadingMessage()}</p>
@@ -636,17 +675,17 @@ const FloodplainsMap = ({ onLayersReady, onFullscreenChange }) => {
             {/* Progress bar */}
             <div className="w-full h-2 bg-gray-200 rounded-full">
               <div 
-                className="h-full bg-blue-500 rounded-full transition-all duration-300 ease-out"
+                className="h-full bg-primary rounded-full transition-all duration-300 ease-out"
                 style={{ width: `${loadingProgress}%` }}
               ></div>
             </div>
             
             {/* Layer indicators */}
             <div className="grid grid-cols-2 gap-1 mt-2 w-full">
-              <div className={`text-center p-1 rounded text-xs ${loadingStage === 'map' || loadingStage === 'floodplains' || loadingStage === 'complete' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-500'}`}>
+              <div className={`text-center p-1 rounded text-xs ${loadingStage === 'map' || loadingStage === 'floodplains' || loadingStage === 'complete' ? 'bg-coral text-white' : 'bg-gray-100 text-gray-500'}`}>
                 Map & Infrastructure
               </div>
-              <div className={`text-center p-1 rounded text-xs ${loadingStage === 'floodplains' || loadingStage === 'complete' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-500'}`}>
+              <div className={`text-center p-1 rounded text-xs ${loadingStage === 'floodplains' || loadingStage === 'complete' ? 'bg-coral text-white' : 'bg-gray-100 text-gray-500'}`}>
                 Floodplains
               </div>
             </div>

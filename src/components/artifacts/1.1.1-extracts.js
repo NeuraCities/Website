@@ -57,8 +57,7 @@ const PoliciesComponent = ({onLayersReady}) => {
     }, 500); // Or however long you want to delay
 
     return () => clearTimeout(timeout);
-  }, []);
-  // (Same imports and setup as before)
+  }, [onLayersReady]);
 const extracts = [
     {
       id: 6,
@@ -131,13 +130,17 @@ const extracts = [
         }
       });
     }, { threshold: 0.3 });
-
-    Object.values(extractRefs.current).forEach(ref => {
+  
+    // Store the current refs in a variable inside the effect
+    const currentRefs = extractRefs.current;
+    
+    Object.values(currentRefs).forEach(ref => {
       if (ref) observer.observe(ref);
     });
-
+  
     return () => {
-      Object.values(extractRefs.current).forEach(ref => {
+      // Use the stored variable in the cleanup function
+      Object.values(currentRefs).forEach(ref => {
         if (ref) observer.unobserve(ref);
       });
     };

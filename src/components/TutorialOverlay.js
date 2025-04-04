@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 
 const TutorialOverlay = ({ isVisible, onComplete }) => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -33,7 +33,7 @@ const TutorialOverlay = ({ isVisible, onComplete }) => {
     }
   }, [isVisible, isMobile]);
 
-  const getSteps = () => {
+  const getSteps = useCallback(() => {
     if (isMobile) {
       return [
       ];
@@ -57,11 +57,12 @@ const TutorialOverlay = ({ isVisible, onComplete }) => {
         }
       ];
     }
-  };
+  }, [isMobile]);
 
   const tutorialSteps = getSteps();
 
-  const calculatePosition = (element, stepConfig) => {
+  // Wrap calculatePosition in useCallback
+  const calculatePosition = useCallback((element, stepConfig) => {
     if (!element || !tooltipRef.current) {
       // Manual fallback if no target element — e.g., bottom center of screen
       return { top: window.innerHeight + 100, left: window.innerWidth / 2 - 100 };
@@ -115,12 +116,12 @@ const TutorialOverlay = ({ isVisible, onComplete }) => {
     }
 
     return { top, left };
-  };
+  }, [isMobile, tooltipRef]);
 
-  const findTargetElement = () => {
+  const findTargetElement = useCallback(() => {
     if (currentStep >= tutorialSteps.length) return null;
     const step = tutorialSteps[currentStep];
-    if (!step.selector) return null; // ← Skip if no selector
+    if (!step.selector) return null;
     const elements = document.querySelectorAll(step.selector);
     for (let i = 0; i < elements.length; i++) {
       const element = elements[i];
@@ -130,7 +131,8 @@ const TutorialOverlay = ({ isVisible, onComplete }) => {
       }
     }
     return null;
-  };
+  }, [currentStep, tutorialSteps]);
+  
 
   useEffect(() => {
     if (!isVisible) return;
@@ -145,7 +147,7 @@ const TutorialOverlay = ({ isVisible, onComplete }) => {
       window.removeEventListener("resize", handleResize);
       clearTimeout(timerId);
     };
-  }, [isVisible, currentStep, isMobile]);
+  }, [findTargetElement, isVisible, currentStep, isMobile]);
 
   useEffect(() => {
     if (!tooltipRef.current || !targetElement || !isVisible) return;
@@ -154,15 +156,15 @@ const TutorialOverlay = ({ isVisible, onComplete }) => {
       const position = calculatePosition(targetElement, step);
       setTooltipPosition(position);
     });
-  }, [tooltipRef.current, targetElement, currentStep, isVisible]);
+  }, [tutorialSteps, calculatePosition, targetElement, currentStep, isVisible]);
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     if (currentStep < tutorialSteps.length - 1) {
       setCurrentStep((prev) => prev + 1);
     } else {
       onComplete();
     }
-  };
+  }, [currentStep, tutorialSteps.length, onComplete]);
 
   useEffect(() => {
     if (!isVisible) return;
@@ -172,7 +174,7 @@ const TutorialOverlay = ({ isVisible, onComplete }) => {
     };
     document.addEventListener("click", handleClick);
     return () => document.removeEventListener("click", handleClick);
-  }, [isVisible, currentStep]);
+  }, [handleNext, isVisible, currentStep]);
 
   if (!isVisible || currentStep >= tutorialSteps.length) return null;
   const currentStepConfig = tutorialSteps[currentStep];

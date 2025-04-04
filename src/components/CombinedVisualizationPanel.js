@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useMemo } from "react";
+import React, { useState, useEffect, useRef, useMemo, useCallback } from "react";
 import {
   Map, Table, Maximize2, Minimize2, ChevronDown, ChevronUp, Download,
   Wrench, Layers, Palette, Share2, X, BookmarkPlus
@@ -228,17 +228,8 @@ const mapContainerRef = useRef(null);
     }
   };
 
-  const handleMouseMove = (e) => {
-    if (!dragState.current.isDragging) return;
-    e.preventDefault();
-    dragState.current.lastY = e.clientY;
 
-    if (!dragState.current.rafId) {
-      dragState.current.rafId = requestAnimationFrame(updateDragPosition);
-    }
-  };
-
-  const updateDragPosition = () => {
+  const updateDragPosition = useCallback(() => {
     dragState.current.rafId = null;
 
     if (!dragState.current.isDragging) return;
@@ -258,24 +249,33 @@ const mapContainerRef = useRef(null);
     if (dragState.current.isDragging) {
       dragState.current.rafId = requestAnimationFrame(updateDragPosition);
     }
-  };
+  }, [isTableCollapsed]);
 
-  const handleMouseUp = () => {
+  const handleMouseMove = useCallback((e) => {
+    if (!dragState.current.isDragging) return;
+    e.preventDefault();
+    dragState.current.lastY = e.clientY;
+  
+    if (!dragState.current.rafId) {
+      dragState.current.rafId = requestAnimationFrame(updateDragPosition);
+    }
+  }, [updateDragPosition]);
+  const handleMouseUp = useCallback(() => {
     if (dragState.current.rafId) {
       cancelAnimationFrame(dragState.current.rafId);
     }
-
+  
     dragState.current.isDragging = false;
     dragState.current.rafId = null;
-
+  
     document.removeEventListener('mousemove', handleMouseMove);
     document.removeEventListener('mouseup', handleMouseUp);
     document.body.style.cursor = '';
-
+  
     if (dragHandleRef.current) {
       dragHandleRef.current.classList.remove('dragging');
     }
-  };
+  }, [handleMouseMove]);
 
   // Cleanup event listeners on unmount
   useEffect(() => {
@@ -287,7 +287,7 @@ const mapContainerRef = useRef(null);
       document.removeEventListener('mouseup', handleMouseUp);
       document.body.style.cursor = '';
     };
-  }, []);
+  }, [handleMouseMove, handleMouseUp]);
 
   // Toggle fullscreen mode
   const toggleFullscreen = () => {
@@ -313,24 +313,19 @@ const mapContainerRef = useRef(null);
     return Array.isArray(tableContent) ? tableContent : [tableContent].filter(Boolean);
   }, [tableContent]);
   
-  // Dynamic table titles
-  const getDynamicTableTitles = () => {
+  const getDynamicTableTitles = useCallback(() => {
     if (!Array.isArray(tableContent) || tableContent.length === 0) {
       return ["Data Table"];
     }
-
-    const titles = tableContent.map((table, index) => {
+  
+    return tableContent.map((table, index) => {
       const headerMatch = table.match(/<th[^>]*>(.*?)<\/th>/);
-      if (headerMatch && headerMatch[1]) {
-        return headerMatch[1];
-      }
-      return `Table ${index + 1}`;
+      return headerMatch?.[1] || `Table ${index + 1}`;
     });
-
-    return titles;
-  };
-
-  const tableTitles = useMemo(() => getDynamicTableTitles(), [tableContent]);
+  }, [tableContent]);
+  
+  const tableTitles = useMemo(() => getDynamicTableTitles(), [getDynamicTableTitles]);
+  
 // Inside CombinedVisualizationPanel component
 // Inside CombinedVisualizationPanel component
 const renderContent = () => {
@@ -381,7 +376,7 @@ const renderContent = () => {
   }, [processedTableContent]);
 
   // Table resizing implementation directly inside the component
-  const addResizableBehaviorToTables = () => {
+  const addResizableBehaviorToTables = useCallback(() => {
     // Exit early if table is collapsed
     if (isTableCollapsed) return;
     
@@ -673,14 +668,14 @@ const renderContent = () => {
         }
       });
     }, 300); // Delay to ensure DOM is ready
-  };
+  }, [isTableCollapsed]);
 
   // Call the resizable behavior when appropriate
   useEffect(() => {
     if (!isTableCollapsed) {
       addResizableBehaviorToTables();
     }
-  }, [isTableCollapsed, currentTableIndex, processedTableContent]);
+  }, [isTableCollapsed, addResizableBehaviorToTables]);
 
   // Regular panel view
   const regularPanelView = (

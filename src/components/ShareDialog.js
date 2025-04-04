@@ -1,5 +1,5 @@
 // app/components/ShareDialog.js
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import { Share2, Mail, Copy, Check, X } from 'lucide-react';
 
 export default function ShareDialog({
@@ -56,15 +56,15 @@ export default function ShareDialog({
       document.removeEventListener('keydown', handleEscKey);
       document.body.style.overflow = '';
     };
-  }, [isOpen]);
+  }, [handleClose, isOpen]);
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     setIsClosing(true);
     setTimeout(() => {
       setIsClosing(false);
       onClose();
     }, 200);
-  };
+  }, [onClose]);
 
   // Handle form submission
   const handleSubmit = (e) => {

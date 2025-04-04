@@ -11,9 +11,12 @@ const COLORS = {
 
 const GrantsComponent = ({onLayersReady}) => {
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const [, setActiveExtract] = useState(0);
   const extractRefs = useRef({});
-    const infoRef = useRef(null);
+  const infoRef = useRef(null);
+  // Add this missing reference
+  const sectionRefs = useRef({});
+  // Add state for active section
+  const [, setActiveSection] = useState(null);
   
   const [showSources, setShowSources] = useState(false);
    useEffect(() => {
@@ -72,26 +75,35 @@ useEffect(() => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [showSources]);
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const index = parseInt(entry.target.dataset.index);
-          if (!isNaN(index)) setActiveExtract(index);
-        }
-      });
-    }, { threshold: 0.3 });
-
-    Object.values(extractRefs.current).forEach(ref => {
-      if (ref) observer.observe(ref);
-    });
-
-    return () => {
-      Object.values(extractRefs.current).forEach(ref => {
-        if (ref) observer.unobserve(ref);
-      });
-    };
-  }, []);
+ 
+    useEffect(() => {
+              const options = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.3,
+              };
+            
+              const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                  if (entry.isIntersecting) {
+                    const id = entry.target.id;
+                    setActiveSection(id);
+                  }
+                });
+              }, options);
+            
+              const refsSnapshot = { ...sectionRefs.current }; 
+            
+              Object.values(refsSnapshot).forEach(ref => {
+                if (ref) observer.observe(ref);
+              });
+            
+              return () => {
+                Object.values(refsSnapshot).forEach(ref => {
+                  if (ref) observer.unobserve(ref);
+                });
+              };
+            }, [isFullscreen]);
 
   const toggleFullscreen = () => setIsFullscreen(prev => !prev);
 
@@ -106,7 +118,10 @@ useEffect(() => {
                 key={extract.id}
                 id={`${fullscreen ? 'fullscreen' : 'regular'}-extract-${index}`}
                 data-index={index}
-                ref={el => extractRefs.current[`${fullscreen ? 'fullscreen' : 'regular'}-${index}`] = el}
+                ref={el => {
+                  extractRefs.current[`${fullscreen ? 'fullscreen' : 'regular'}-${index}`] = el;
+                  sectionRefs.current[`${fullscreen ? 'fullscreen' : 'regular'}-extract-${index}`] = el;
+                }}
                 className="mb-10 border-b pb-6"
                 style={{ scrollMarginTop: '6rem' }}
               >
@@ -187,7 +202,7 @@ useEffect(() => {
   return (
     <>
     {showSources && (
-  <div ref = {infoRef} className="fixed top-20 right-6 w-[280px] bg-white border border-gray-200 rounded-xl shadow-lg p-5 z-[1000] animate-fade-in">
+  <div ref={infoRef} className="fixed top-20 right-6 w-[280px] bg-white border border-gray-200 rounded-xl shadow-lg p-5 z-[1000] animate-fade-in">
     <div className="space-y-2 text-sm text-gray-700">
     <div>
         <a

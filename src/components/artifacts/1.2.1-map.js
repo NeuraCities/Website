@@ -55,15 +55,10 @@ const [isMobile, setIsMobile] = useState(false);
   };
 
   const toggleFullScreen = () => {
-    setIsFullScreen(prev => {
-      const next = !prev;
-      if (typeof onFullscreenChange === 'function') {
-        onFullscreenChange(next);
-      }
-      return next;
-    });
-    setShowLegend(false);
-    setTimeout(() => map?.invalidateSize(), 300);
+    setIsFullScreen(!isFullScreen);
+    if (onFullscreenChange) {
+      onFullscreenChange(!isFullScreen);
+    }
   };
 
   const toggleLayer = (layerName) => {
@@ -83,7 +78,9 @@ const [isMobile, setIsMobile] = useState(false);
   };
 
   useEffect(() => {
+    const container = mapContainerRef.current;
     const initializeMap = async () => {
+      try{
       setLoadingStage('initializing');
       setLoadingProgress(10);
       
@@ -361,30 +358,35 @@ const [isMobile, setIsMobile] = useState(false);
       window.setResponseReady(true);
     }
     setMap(leafletMap);
-
+  } catch (error) {
+    console.error('Error initializing map:', error);
+    // Important: Set loading stage to complete even if there's an error
+    setLoadingProgress(100);
+    setLoadingStage('complete');
+  }
     };
 
 
     initializeMap();
-    return () => {
-      if (mapContainerRef.current && mapContainerRef.current._leaflet_id) {
-        const leafletMap = mapContainerRef.current._leaflet_map;
-        if (leafletMap) {
-          leafletMap.remove();
-        } else {
-          // fallback: find map by container
-          const maps = window.L && window.L.DomUtil && window.L.DomUtil.get(mapContainerRef.current);
-          if (maps && maps._leaflet_id) {
-            const mapId = maps._leaflet_id;
-            const maybeMap = window.L?.map?.instances?.[mapId];
-            if (maybeMap && maybeMap.remove) {
-              maybeMap.remove();
-            }
+    
+  return () => {
+    if (container && container._leaflet_id) {
+      const leafletMap = container._leaflet_map;
+      if (leafletMap) {
+        leafletMap.remove();
+      } else {
+        const maps = window.L?.DomUtil?.get(container);
+        if (maps && maps._leaflet_id) {
+          const mapId = maps._leaflet_id;
+          const maybeMap = window.L?.map?.instances?.[mapId];
+          if (maybeMap?.remove) {
+            maybeMap.remove();
           }
         }
       }
-    };
-      }, [COLORS.blue, COLORS.green, COLORS.lightblue, COLORS.primary, COLORS.red, map, onLayersReady]);
+    }
+  };
+}, [COLORS.blue, COLORS.green, COLORS.lightblue, COLORS.primary, COLORS.red, map, onLayersReady]);
   useEffect(() => {
       const handleClickOutside = (event) => {
         if (infoRef.current && !infoRef.current.contains(event.target)) {
@@ -510,8 +512,8 @@ if (map.trafficMarkerLayer) {
   }, [map]);
 
   return (
-<div className={`flex flex-col h-full ${isFullScreen ? 'fixed inset-0 z-50 bg-white' : ''}`}>
-      <div className="flex justify-between items-center p-3 border-b bg-white shadow-sm">
+<div className={`flex flex-col h-full ${isFullScreen ? 'inset-0 z-50 bg-white relative' : ''}`}>
+<div className="flex justify-between items-center p-3 border-b bg-white shadow-sm">
         <h2 className="text-lg font-semibold" style={{ color: COLORS.primary }}>
           Austin Transport + Planning Map
         </h2>
@@ -591,7 +593,7 @@ if (map.trafficMarkerLayer) {
         
         {/* Loading indicator that shows the current stage while keeping map visible */}
         {loadingStage !== 'complete' && (
-          <div className="absolute bottom-12 right-4 flex flex-col items-center bg-white bg-opacity-90 z-100 p-4 rounded-lg shadow-lg max-w-xs border border-gray-200">
+          <div className="absolute bottom-12 right-4 flex flex-col items-center bg-white bg-opacity-90 z-[1001] p-4 rounded-lg shadow-lg max-w-xs border border-gray-200">
             <div className="flex items-center space-x-2 mb-2">
               <div className="w-6 h-6 border-3 border-gray-300 border-t-blue-500 rounded-full animate-spin"></div>
               <p className="text-sm font-medium text-gray-800">{getLoadingMessage()}</p>
@@ -600,20 +602,20 @@ if (map.trafficMarkerLayer) {
             {/* Progress bar */}
             <div className="w-full h-2 bg-gray-200 rounded-full">
               <div 
-                className="h-full bg-blue-500 rounded-full transition-all duration-300 ease-out"
+                className="h-full bg-primary rounded-full transition-all duration-300 ease-out"
                 style={{ width: `${loadingProgress}%` }}
               ></div>
             </div>
             
             {/* Layer indicators */}
             <div className="grid grid-cols-3 gap-1 mt-2 w-full">
-              <div className={`text-center p-1 rounded text-xs ${loadingStage === 'map' || loadingStage === 'transport' || loadingStage === 'plans' || loadingStage === 'complete' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-500'}`}>
+              <div className={`text-center p-1 rounded text-xs ${loadingStage === 'map' || loadingStage === 'transport' || loadingStage === 'plans' || loadingStage === 'complete' ? 'bg-coral text-white' : 'bg-gray-100 text-gray-500'}`}>
                 Base Map
               </div>
-              <div className={`text-center p-1 rounded text-xs ${loadingStage === 'transport' || loadingStage === 'plans' || loadingStage === 'complete' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-500'}`}>
+              <div className={`text-center p-1 rounded text-xs ${loadingStage === 'transport' || loadingStage === 'plans' || loadingStage === 'complete' ? 'bg-coral text-white' : 'bg-gray-100 text-gray-500'}`}>
                 Transport
               </div>
-              <div className={`text-center p-1 rounded text-xs ${loadingStage === 'plans' || loadingStage === 'complete' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-500'}`}>
+              <div className={`text-center p-1 rounded text-xs ${loadingStage === 'plans' || loadingStage === 'complete' ? 'bg-coral text-white' : 'bg-gray-100 text-gray-500'}`}>
                 Plans
               </div>
             </div>

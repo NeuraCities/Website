@@ -1100,7 +1100,12 @@ const getChatPanelStyle = () => {
       <div
   ref={visualPanelRef}
   className="h-full w-full flex flex-col border-l border-secondary/25"
-  style={{ ...getVisualPanelStyle(), padding: 0, margin: 0 }}
+  style={{ 
+    ...getVisualPanelStyle(), 
+    padding: 0, 
+    margin: 0,
+    visibility: isDashboardFullscreen ? 'hidden' : 'visible' 
+  }}
 >
   {renderVisualComponent()}
 </div>

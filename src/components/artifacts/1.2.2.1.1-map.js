@@ -1,4 +1,3 @@
-// CombinedTransportPlanningFloodMap.jsx
 import React, { useEffect, useRef, useState } from 'react';
 import { Layers, Maximize2, X, Info } from 'lucide-react';
 import _ from 'lodash';
@@ -14,6 +13,7 @@ const CombinedTransportPlanningFloodMap = ({onLayersReady,onFullscreenChange }) 
   // Add loading states
   const [loadingStage, setLoadingStage] = useState('initializing'); // 'initializing', 'map', 'floodplains', 'priority', 'complete'
   const [loadingProgress, setLoadingProgress] = useState(0);
+  const [isLoading, setIsLoading] = useState(true); // Add explicit loading state
 
   const [activeLayers, setActiveLayers] = useState({
     biking: false,
@@ -102,7 +102,9 @@ const CombinedTransportPlanningFloodMap = ({onLayersReady,onFullscreenChange }) 
   }, [showSources]);
 
   useEffect(() => {
+    const currentRef = mapContainerRef.current;
     const initializeMap = async () => {
+      setIsLoading(true); // Set loading state to true initially
       setLoadingStage('initializing');
       setLoadingProgress(10);
       
@@ -515,8 +517,15 @@ const CombinedTransportPlanningFloodMap = ({onLayersReady,onFullscreenChange }) 
       
       await loadPriorityData();
       
+      // Set loading to 100% complete
       setLoadingProgress(100);
       setLoadingStage('complete');
+      
+      // Add a delay before hiding the loading indicator
+      setTimeout(() => {
+        setIsLoading(false); // This will hide the loading indicator
+      }, 1000);
+      
       if (onLayersReady) {
         onLayersReady();
       }
@@ -524,7 +533,7 @@ const CombinedTransportPlanningFloodMap = ({onLayersReady,onFullscreenChange }) 
       if (window.setResponseReady) {
         window.setResponseReady(true);
       }
-        
+      
       // Wait for background loading to complete (optional)
       await backgroundPromise;
     };
@@ -540,13 +549,13 @@ const CombinedTransportPlanningFloodMap = ({onLayersReady,onFullscreenChange }) 
         console.warn("Map cleanup error:", e);
       }
   
-      // 💡 Add DOM safeguard
-      if (mapContainerRef.current?._leaflet_id != null) {
-        delete mapContainerRef.current._leaflet_id;
+      if (currentRef?._leaflet_id != null) {
+        delete currentRef._leaflet_id;
       }
   
-      setMap(null); // Clear state
+      setMap(null);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [onLayersReady]);
 
   useEffect(() => {
@@ -618,7 +627,7 @@ const CombinedTransportPlanningFloodMap = ({onLayersReady,onFullscreenChange }) 
   }, [map, activeLayers]);
 
   return (
-    <div className={`flex flex-col h-full ${isFullScreen ? 'fixed inset-0 z-50 bg-white' : ''}`}>
+<div className={`flex flex-col h-full ${isFullScreen ? 'inset-0 z-50 bg-white relative' : ''}`}>
 <div className="flex justify-between items-center p-3 border-b bg-white shadow-sm">
         <h2 className="text-lg font-semibold text-primary">Austin Combined Map with Floodplains</h2>
         <div className="flex items-center space-x-1">
@@ -696,9 +705,9 @@ const CombinedTransportPlanningFloodMap = ({onLayersReady,onFullscreenChange }) 
       <div className="flex-1 relative">
         <div ref={mapContainerRef} className="absolute inset-0 w-full h-full" />
         
-        {/* Loading indicator that shows the current stage while keeping map visible */}
-        {loadingStage !== 'complete' && (
-          <div className="absolute bottom-12 right-4 flex flex-col items-center bg-white bg-opacity-90 z-100 p-4 rounded-lg shadow-lg max-w-xs border border-gray-200">
+        {/* Loading indicator that shows only when isLoading is true */}
+        {isLoading && (
+          <div className="absolute bottom-12 right-4 flex flex-col items-center bg-white bg-opacity-90 z-[1001] p-4 rounded-lg shadow-lg max-w-xs border border-gray-200">
             <div className="flex items-center space-x-2 mb-2">
               <div className="w-6 h-6 border-3 border-gray-300 border-t-blue-500 rounded-full animate-spin"></div>
               <p className="text-sm font-medium text-gray-800">{getLoadingMessage()}</p>
@@ -707,20 +716,20 @@ const CombinedTransportPlanningFloodMap = ({onLayersReady,onFullscreenChange }) 
             {/* Progress bar */}
             <div className="w-full h-2 bg-gray-200 rounded-full">
               <div 
-                className="h-full bg-blue-500 rounded-full transition-all duration-300 ease-out"
+                className="h-full bg-primary rounded-full transition-all duration-300 ease-out"
                 style={{ width: `${loadingProgress}%` }}
               ></div>
             </div>
             
             {/* Layer indicators */}
             <div className="grid grid-cols-3 gap-1 mt-2 w-full">
-              <div className={`text-center p-1 rounded text-xs ${loadingStage === 'map' || loadingStage === 'floodplains' || loadingStage === 'priority' || loadingStage === 'complete' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-500'}`}>
+              <div className={`text-center p-1 rounded text-xs ${loadingStage === 'map' || loadingStage === 'floodplains' || loadingStage === 'priority' || loadingStage === 'complete' ? 'bg-coral text-white' : 'bg-gray-100 text-gray-500'}`}>
                 Base Map
               </div>
-              <div className={`text-center p-1 rounded text-xs ${loadingStage === 'floodplains' || loadingStage === 'priority' || loadingStage === 'complete' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-500'}`}>
+              <div className={`text-center p-1 rounded text-xs ${loadingStage === 'floodplains' || loadingStage === 'priority' || loadingStage === 'complete' ? 'bg-coral text-white' : 'bg-gray-100 text-gray-500'}`}>
                 Floodplains
               </div>
-              <div className={`text-center p-1 rounded text-xs ${loadingStage === 'priority' || loadingStage === 'complete' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-500'}`}>
+              <div className={`text-center p-1 rounded text-xs ${loadingStage === 'priority' || loadingStage === 'complete' ? 'bg-coral text-white' : 'bg-gray-100 text-gray-500'}`}>
                 Priority
               </div>
             </div>

@@ -83,17 +83,19 @@ const LandUseZoningMap = ({ onLayersReady, onFullscreenChange  }) => {
   };
 
   const toggleFullScreen = () => {
-    setIsFullScreen(prev => {
-      const next = !prev;
-      if (typeof onFullscreenChange === 'function') {
-        onFullscreenChange(next);
-      }
-      return next;
-    });
+    // First, get the new state
+    const newFullscreenState = !isFullScreen;
+    
+    // Update the state
+    setIsFullScreen(newFullscreenState);
+    
+    if (typeof onFullscreenChange === 'function') {
+      onFullscreenChange(newFullscreenState);
+    }
+    
     setShowLegend(false);
     setTimeout(() => map?.invalidateSize(), 300);
   };
-
   const toggleLayer = (layerName) => {
     setActiveLayers(prev => ({
       ...prev,
@@ -421,6 +423,7 @@ const LandUseZoningMap = ({ onLayersReady, onFullscreenChange  }) => {
   
     initializeMap();
     return () => map?.remove();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   
   useEffect(() => {
@@ -553,20 +556,20 @@ const LandUseZoningMap = ({ onLayersReady, onFullscreenChange  }) => {
             {/* Progress bar */}
             <div className="w-full h-2 bg-gray-200 rounded-full">
               <div 
-                className="h-full bg-blue-500 rounded-full transition-all duration-300 ease-out"
+                className="h-full bg-primary rounded-full transition-all duration-300 ease-out"
                 style={{ width: `${loadingProgress}%` }}
               ></div>
             </div>
             
             {/* Layer indicators */}
             <div className="grid grid-cols-3 gap-1 mt-2 w-full z-100">
-              <div className={`text-center p-1 rounded text-xs ${loadingStage === 'map' || loadingStage === 'zoning' || loadingStage === 'landuse' || loadingStage === 'complete' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-500'}`}>
+              <div className={`text-center p-1 rounded text-xs ${loadingStage === 'map' || loadingStage === 'zoning' || loadingStage === 'landuse' || loadingStage === 'complete' ? 'bg-coral text-white' : 'bg-gray-100 text-gray-500'}`}>
                 Base Map
               </div>
-              <div className={`text-center p-1 rounded text-xs ${loadingStage === 'zoning' || loadingStage === 'landuse' || loadingStage === 'complete' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-500'}`}>
+              <div className={`text-center p-1 rounded text-xs ${loadingStage === 'zoning' || loadingStage === 'landuse' || loadingStage === 'complete' ? 'bg-coral text-white' : 'bg-gray-100 text-gray-500'}`}>
                 Zoning
               </div>
-              <div className={`text-center p-1 rounded text-xs ${loadingStage === 'landuse' || loadingStage === 'complete' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-500'}`}>
+              <div className={`text-center p-1 rounded text-xs ${loadingStage === 'landuse' || loadingStage === 'complete' ? 'bg-coral text-white' : 'bg-gray-100 text-gray-500'}`}>
                 Land Use
               </div>
             </div>

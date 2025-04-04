@@ -59,7 +59,7 @@ const SocioEconomicDashboard = ({onLayersReady, onFullscreenChange}) => {
     }, 500); // Or however long you want to delay
 
     return () => clearTimeout(timeout);
-  }, []);
+  }, [onLayersReady]);
   
   useEffect(() => {
     const handleClickOutside = (event) => {

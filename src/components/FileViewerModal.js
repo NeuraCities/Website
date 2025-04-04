@@ -8,7 +8,7 @@ export default function FileViewerModal({
   fileUrl,
   fileType
 }) {
-  const [zoomLevel, setZoomLevel] = useState(1);
+  const [, setZoomLevel] = useState(1);
   const [fileContent, setFileContent] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -214,20 +214,6 @@ export default function FileViewerModal({
       return (
         <div className="flex flex-col items-center justify-center h-64">
           <p className="text-lg text-gray-500">No preview available</p>
-        </div>
-      );
-    }
-
-    // Image content
-    if (fileType === 'image') {
-      return (
-        <div className="flex items-center justify-center h-full">
-          <img
-            src={fileContent}
-            alt={file?.name || 'Image preview'}
-            className="max-h-full max-w-full object-contain transition-transform"
-            style={{ transform: `scale(${zoomLevel})` }}
-          />
         </div>
       );
     }

@@ -85,37 +85,6 @@ const ExtractsComponent = ({ onSaveExtract, extractsCollectionName = "Research E
     }
   ];
   
-  // Set up intersection observer to track which extract is in view
-  useEffect(() => {
-    const options = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.3,
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const index = parseInt(entry.target.dataset.index);
-          if (!isNaN(index)) {
-            setActiveExtract(index);
-          }
-        }
-      });
-    }, options);
-    
-    // Observe all extract elements
-    Object.values(extractRefs.current).forEach(ref => {
-      if (ref) observer.observe(ref);
-    });
-    
-    return () => {
-      Object.values(extractRefs.current).forEach(ref => {
-        if (ref) observer.unobserve(ref);
-      });
-    };
-  }, [extracts.length]);
-  
   // Handle sidebar animation
   useEffect(() => {
     if (isSidebarOpen) {

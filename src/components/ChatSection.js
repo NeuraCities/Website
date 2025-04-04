@@ -2,7 +2,7 @@
 import { useState, useRef, useEffect } from "react";
 import { FileText, File, X, ArrowUpRight } from "lucide-react";
 import Image from 'next/image';
-import { useSearchParams, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
 export default function ChatSection({ chatHistory, onSend, isLoading,
   responseReady, setLayersVisibility, setResponseReady, setChartReady, setCustomChartReady, setActiveTab, artifacts, activeTab, onSelectArtifact,
@@ -28,9 +28,7 @@ const [isFlowActive, setIsFlowActive] = useState(false);
 const [isFirstResponse, setIsFirstResponse] = useState(true);
 const [autoScroll, ] = useState(true);
 const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
-const notifyArtifactPanelClosed = () => {
-  window.dispatchEvent(new CustomEvent("artifact-panel-close"));
-};
+
 useEffect(() => {
   if (isMobile && activeTab === "chat") {
     const chatPanel = document.querySelector('[data-panel="chat"]');
@@ -53,25 +51,17 @@ useEffect(() => {
   if (autoScroll && messagesEndRef.current) {
     // Delay the scroll to ensure artifact buttons are rendered
     const scrollTimer = setTimeout(() => {
-      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
-    }, 100); // Small delay to allow DOM to update with artifact buttons
+      if (messagesEndRef.current && messagesEndRef.current.offsetParent !== null) {
+        setTimeout(() => {
+          messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      }    }, 100); // Small delay to allow DOM to update with artifact buttons
     
     return () => clearTimeout(scrollTimer);
   }
 }, [chatHistory, autoScroll, typingText, isTyping]);
 
-const searchParams = useSearchParams();
 
-useEffect(() => {
-  const source = searchParams.get('source');
-
-  if (source === 'homepage') {
-    setIsFlowActive(false);
-    setShowLoginTile(false);
-    setFlowState("initial");
-    console.log("States reset due to homepage navigation (desktop)");
-  }
-}, [searchParams]);
 
 
 useEffect(() => {
@@ -757,7 +747,7 @@ default:
     });
   }, [flowState, isFlowActive, isLoading, isTyping, showLoginTile]);
 
-  const InfoTile = ({ onContactClick, onClose }) => (
+  const InfoTile = ({ onClose }) => (
     <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 z-[10000]">
       <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full text-center relative">
         {/* Close Button */}

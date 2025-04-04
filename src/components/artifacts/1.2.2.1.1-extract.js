@@ -15,6 +15,8 @@ const FemaComponent = ({onLayersReady}) => {
   const extractRefs = useRef({});
     const infoRef = useRef(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [, setActiveSection] = useState(null);
+
         // Check for mobile viewport
         useEffect(() => {
           const checkIfMobile = () => {
@@ -71,27 +73,33 @@ useEffect(() => {
   }, [showSources]);
   
   useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const index = parseInt(entry.target.dataset.index);
-          if (!isNaN(index)) {
-            // Do something here only if needed
-          }
-        }
-      });
-    }, { threshold: 0.3 });
-  
-    Object.values(extractRefs.current).forEach(ref => {
-      if (ref) observer.observe(ref);
-    });
-  
-    return () => {
-      Object.values(extractRefs.current).forEach(ref => {
-        if (ref) observer.unobserve(ref);
-      });
-    };
-  }, []);
+          const options = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.3,
+          };
+        
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                const id = entry.target.id;
+                setActiveSection(id);
+              }
+            });
+          }, options);
+        
+          const refsSnapshot = { ...extractRefs.current };
+        
+          Object.values(refsSnapshot).forEach(ref => {
+            if (ref) observer.observe(ref);
+          });
+        
+          return () => {
+            Object.values(refsSnapshot).forEach(ref => {
+              if (ref) observer.unobserve(ref);
+            });
+          };
+        }, [isFullscreen]);
 
   const toggleFullscreen = () => setIsFullscreen(prev => !prev);
 

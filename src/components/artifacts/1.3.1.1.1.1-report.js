@@ -488,40 +488,71 @@ useEffect(() => {
       
       {/* Content sections with more indentation */}
       <div className="pl-6 mt-2">
-        {sections.map((section) => (
-          <button
-            key={section.id}
-            onClick={() => {
-              setActiveSection(section.id);
-              const element = document.getElementById(section.id);
-              if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-              }
-            }}
-            className="w-full text-left px-4 py-3 text-sm flex items-center mb-2 rounded-full transition-all"
-            style={{
-              backgroundColor: activeSection === section.id ? COLORS.coral : COLORS.white,
-              color: activeSection === section.id ? COLORS.white : COLORS.secondary,
-              border: 'none',
-              boxShadow: activeSection === section.id ? '0 2px 4px rgba(0,0,0,0.1)' : 'none',
-              transition: 'all 0.2s ease-in-out'
-            }}
-            onMouseEnter={(e) => {
-              if (activeSection !== section.id) {
-                e.currentTarget.style.backgroundColor = '#f0f0f0';
-              }
-            }}
-            onMouseLeave={(e) => {
-              if (activeSection !== section.id) {
-                e.currentTarget.style.backgroundColor = 'transparent';
-              }
-            }}
-          >
-            <div className="flex justify-between items-center w-full">
-              <span>{section.name}</span>
-            </div>
-          </button>
-        ))}
+      {sections.map((section) => (
+  <button
+    key={section.id}
+    onClick={() => {
+      // Use the fullscreen section ID format for active section
+      const fullscreenId = `fullscreen-${section.id}`; // Fixed template literal syntax
+      setActiveSection(fullscreenId);
+      const element = document.getElementById(fullscreenId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }}
+    className="w-full text-left px-4 py-3 text-sm flex items-center mb-2 rounded-full transition-all"
+    style={{
+      backgroundColor: activeSection === `fullscreen-${section.id}` ? COLORS.coral : COLORS.white, // Fixed
+      color: activeSection === `fullscreen-${section.id}` ? COLORS.white : COLORS.secondary, // Fixed
+      border: 'none',
+      boxShadow: activeSection === section.id ? '0 2px 4px rgba(0,0,0,0.1)' : 'none',
+      transition: 'all 0.2s ease-in-out'
+    }}
+    onMouseEnter={(e) => {
+      if (activeSection !== `fullscreen-${section.id}`) { // Fixed
+        e.currentTarget.style.backgroundColor = '#f0f0f0';
+      }
+    }}
+    onMouseLeave={(e) => {
+      if (activeSection !== `fullscreen-${section.id}`) { // Fixed
+        e.currentTarget.style.backgroundColor = 'transparent';
+      }
+    }}
+  >
+    <div className="flex justify-between items-center w-full">
+      <span>{section.name}</span>
+    </div>
+  </button>
+))}
+
+{sections.map((section) => (
+  <div 
+    key={`fullscreen-${section.id}`} // Fixed
+    id={`fullscreen-${section.id}`} // Fixed
+    ref={el => sectionRefs.current[`fullscreen-${section.id}`] = el} // Fixed
+    className="mb-16"
+  >
+    {/* Report title - editable when in edit mode */}
+    {section.id === 'intro' && (
+      <div 
+        className={`text-3xl font-bold mb-8 ${isEditing ? 'border-b-2 pb-2' : ''}`}
+        style={{ 
+          color: COLORS.primary,
+          borderColor: isEditing ? COLORS.coral : 'transparent',
+          outline: 'none'
+        }}
+        contentEditable={isEditing}
+        suppressContentEditableWarning={true}
+        onBlur={handleTitleChange}
+      >
+        {reportTitle}
+      </div>
+    )}
+
+    {/* Section content - editable or static based on mode */}
+    {renderSectionContent(section)}
+  </div>
+))}
       </div>
     </div>
   </div>
@@ -1048,7 +1079,7 @@ useEffect(() => {
                     key={section.id}
                     onClick={() => {
                       // Use the fullscreen section ID format for active section
-                      const fullscreenId = 'fullscreen-${section.id};'
+                      const fullscreenId = `fullscreen-${section.id}`;
                       setActiveSection(fullscreenId);
                       const element = document.getElementById(fullscreenId);
                       if (element) {
@@ -1057,19 +1088,19 @@ useEffect(() => {
                     }}
                     className="w-full text-left px-4 py-3 text-sm flex items-center mb-2 rounded-full transition-all"
                     style={{
-                      backgroundColor: activeSection === 'fullscreen-${section.id}' ? COLORS.coral : COLORS.white,
-                      color: activeSection === 'fullscreen-${section.id}' ? COLORS.white : COLORS.secondary,
+                      backgroundColor: activeSection === `fullscreen-${section.id}` ? COLORS.coral : COLORS.white,
+                      color: activeSection === `fullscreen-${section.id}` ? COLORS.white : COLORS.secondary,
                       border: 'none',
                       boxShadow: activeSection === section.id ? '0 2px 4px rgba(0,0,0,0.1)' : 'none',
                       transition: 'all 0.2s ease-in-out'
                     }}
                     onMouseEnter={(e) => {
-                      if (activeSection !== 'fullscreen-${section.id}') {
+                      if (activeSection !== `fullscreen-${section.id}`) {
                         e.currentTarget.style.backgroundColor = '#f0f0f0';
                       }
                     }}
                     onMouseLeave={(e) => {
-                      if (activeSection !== 'fullscreen-${section.id}') {
+                      if (activeSection !== `fullscreen-${section.id}`) {
                         e.currentTarget.style.backgroundColor = 'transparent';
                       }
                     }}
@@ -1090,9 +1121,9 @@ useEffect(() => {
             {/* All sections rendered in a single scrollable document */}
             {sections.map((section) => (
               <div 
-                key={'fullscreen-${section.id}'}
-                id={'fullscreen-${section.id}'}
-                ref={el => sectionRefs.current['fullscreen-${section.id}'] = el}
+                key={`fullscreen-${section.id}`}
+                id={`fullscreen-${section.id}`}
+                ref={el => sectionRefs.current[`fullscreen-${section.id}`] = el}
                 className="mb-16"
               >
                 {/* Report title - editable when in edit mode */}

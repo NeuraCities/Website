@@ -8,9 +8,6 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
-  PieChart,
-  Pie,
-  Cell
 } from 'recharts';
 import { Maximize2, X, Info } from 'lucide-react';
 
@@ -84,10 +81,7 @@ const ClimateVulnerabilityDashboard = ({onLayersReady, onFullscreenChange}) => {
 
   const barData = Object.entries(data).map(([name, metrics]) => ({ name, ...metrics }));
 
-  const pieData = barData.map(entry => ({
-    name: entry.name,
-    value: entry.impervious_surface_percentage
-  }));
+  
 
   const canopyVsHeatData = barData.map(entry => ({
     name: entry.name,
@@ -95,10 +89,7 @@ const ClimateVulnerabilityDashboard = ({onLayersReady, onFullscreenChange}) => {
     'Heat Emergency Calls': entry.heat_related_emergency_calls_per_100k
   }));
 
-  const pieColors = [
-    COLORS.primary, COLORS.secondary, COLORS.coral, COLORS.cta,
-    '#7F8C8D', '#607D8B', '#D35400', '#16A085'
-  ];
+  
 
   const charts = [
     {

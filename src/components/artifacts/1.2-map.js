@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { Layers, Maximize2, X, Info } from 'lucide-react';
 import _ from 'lodash';
 
@@ -56,26 +56,21 @@ const CrashTrafficHeatmap = ({ onLayersReady, onFullscreenChange }) => {
 
   
   const toggleFullScreen = () => {
-    setIsFullScreen(prev => {
-      const next = !prev;
-      if (typeof onFullscreenChange === 'function') {
-        onFullscreenChange(next);
-      }
-      return next;
-    });
-    setShowLegend(false);
-    setTimeout(() => map?.invalidateSize(), 300);
+    setIsFullScreen(!isFullScreen);
+    if (onFullscreenChange) {
+      onFullscreenChange(!isFullScreen);
+    }
   };
 
   const toggleLayer = (layerName) => {
     setActiveLayers(prev => ({ ...prev, [layerName]: !prev[layerName] }));
   };
 
-  const updateHeatmapSettings = () => {
+  const updateHeatmapSettings = useCallback(() => {
     if (!map) return;
     map.crashHeatmap?.setOptions({ radius: heatmapRadius, max: heatmapIntensity });
     map.trafficHeatmap?.setOptions({ radius: heatmapRadius, max: heatmapIntensity });
-  };
+  }, [map, heatmapRadius, heatmapIntensity]);
 
   useEffect(() => {
     const initializeMap = async () => {
@@ -340,6 +335,7 @@ const CrashTrafficHeatmap = ({ onLayersReady, onFullscreenChange }) => {
 
     initializeMap();
     return () => map?.remove();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 useEffect(() => {
     const handleClickOutside = (event) => {
@@ -458,8 +454,8 @@ useEffect(() => {
 
   useEffect(() => {
     updateHeatmapSettings();
-  }, [heatmapRadius, heatmapIntensity, map]);
-  
+  }, [updateHeatmapSettings]);
+
   // Get loading status message
   const getLoadingMessage = () => {
     switch(loadingStage) {
@@ -615,7 +611,7 @@ useEffect(() => {
         
         {/* Loading indicator that shows the current stage while keeping map visible */}
         {loadingStage !== 'complete' && (
-          <div className="absolute bottom-12 right-4 flex flex-col items-center bg-white bg-opacity-90 z-100 p-4 rounded-lg shadow-lg max-w-xs border border-gray-200">
+          <div className="absolute bottom-12 right-4 flex flex-col items-center bg-white bg-opacity-90 z-[1001] p-4 rounded-lg shadow-lg max-w-xs border border-gray-200">
             <div className="flex items-center space-x-2 mb-2">
               <div className="w-6 h-6 border-3 border-gray-300 border-t-blue-500 rounded-full animate-spin"></div>
               <p className="text-sm font-medium text-gray-800">{getLoadingMessage()}</p>
@@ -624,20 +620,20 @@ useEffect(() => {
             {/* Progress bar */}
             <div className="w-full h-2 bg-gray-200 rounded-full">
               <div 
-                className="h-full bg-blue-500 rounded-full transition-all duration-300 ease-out"
+                className="h-full bg-primary rounded-full transition-all duration-300 ease-out"
                 style={{ width: `${loadingProgress}%` }}
               ></div>
             </div>
             
             {/* Layer indicators */}
             <div className="grid grid-cols-3 gap-1 mt-2 w-full">
-              <div className={`text-center p-1 rounded text-xs ${loadingStage === 'map' || loadingStage === 'crashes' || loadingStage === 'traffic' || loadingStage === 'complete' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-500'}`}>
+              <div className={`text-center p-1 rounded text-xs ${loadingStage === 'map' || loadingStage === 'crashes' || loadingStage === 'traffic' || loadingStage === 'complete' ? 'bg-coral text-white' : 'bg-gray-100 text-gray-500'}`}>
                 Map & Infrastructure
               </div>
-              <div className={`text-center p-1 rounded text-xs ${loadingStage === 'crashes' || loadingStage === 'traffic' || loadingStage === 'complete' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-500'}`}>
+              <div className={`text-center p-1 rounded text-xs ${loadingStage === 'crashes' || loadingStage === 'traffic' || loadingStage === 'complete' ? 'bg-coral text-white' : 'bg-gray-100 text-gray-500'}`}>
                 Crashes
               </div>
-              <div className={`text-center p-1 rounded text-xs ${loadingStage === 'traffic' || loadingStage === 'complete' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-500'}`}>
+              <div className={`text-center p-1 rounded text-xs ${loadingStage === 'traffic' || loadingStage === 'complete' ? 'bg-coral text-white' : 'bg-gray-100 text-gray-500'}`}>
                 Traffic
               </div>
             </div>

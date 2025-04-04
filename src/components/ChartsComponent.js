@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import {
   BarChart2, Maximize2, X, ChevronLeft, ChevronRight
 } from "lucide-react";
@@ -68,7 +68,7 @@ const resizeTimeoutRef = useRef(null);
     setShowArtifactGallery(false);
   };
 
-  const handleChartResize = (force = false) => {
+  const handleChartResize = useCallback((force = false) => {
     // Skip resize if flag is set and not forcing
     if (skipResize && !force) return;
     
@@ -115,7 +115,7 @@ const resizeTimeoutRef = useRef(null);
       // Reset the resize timeout ref
       resizeTimeoutRef.current = null;
     }, 200); // 200ms debounce
-  };
+  }, [skipResize]);
   useEffect(() => {
     return () => {
       if (resizeTimeoutRef.current) {
@@ -132,7 +132,7 @@ const resizeTimeoutRef = useRef(null);
       // Clean up when component unmounts
       delete window.handleChartResize;
     };
-  }, []);
+  }, [handleChartResize]);
 
   // Add MutationObserver to detect size changes
   useEffect(() => {
@@ -174,7 +174,7 @@ const resizeTimeoutRef = useRef(null);
     return () => {
       observer.disconnect();
     };
-  }, []);
+  }, [handleChartResize]);
 
   // Toggle sidebar without resetting width
   const toggleSidebar = () => {
@@ -233,7 +233,7 @@ const resizeTimeoutRef = useRef(null);
         handleChartResize();
       }, 300);
     }
-  }, [isSidebarOpen]);
+  }, [handleChartResize, isSidebarOpen]);
 
   // Toggle fullscreen
   const toggleFullscreen = () => {

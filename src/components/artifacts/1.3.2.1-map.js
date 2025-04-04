@@ -1,23 +1,25 @@
-//30.265813, -97.751391
-// ConcernAreasMap.tsx
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Layers, Maximize2, X, Info } from 'lucide-react';
 import _ from 'lodash';
 import * as turf from '@turf/turf';
 
-const ConcernAreasMap = ({onLayersReady, onFullscreenChange}) => {
+const ConcernAreasMap = (props) => {
+  const { onLayersReady, onFullscreenChange } = props;
   const mapContainerRef = useRef(null);
+  const mapInstanceRef = useRef(null);
   const [map, setMap] = useState(null);
-  const [isFullScreen, setIsFullScreen] = useState(false);
-  const [showLegend, setShowLegend] = useState(false);
-  const [showSources, setShowSources] = useState(false);
-    const infoRef = useRef(null);
+  const infoRef = useRef(null);
   
-
-  // Add loading states similar to UpdatedFloodInfraIntersectionMap
+  // Enhanced loading states
   const [loadingStage, setLoadingStage] = useState('initializing'); // 'initializing', 'map', 'floodplains', 'concerns', 'complete'
   const [loadingProgress, setLoadingProgress] = useState(0);
-
+  const [showLegend, setShowLegend] = useState(false);
+  const [showSources, setShowSources] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  
+  // Use the isFullscreen prop passed from the parent component
+  const isFullScreen = props?.isFullscreen || false;
+  
   const [activeLayers, setActiveLayers] = useState({
     neighborhood: false,
     building: false,
@@ -37,99 +39,177 @@ const ConcernAreasMap = ({onLayersReady, onFullscreenChange}) => {
     white: '#FFFFFF'
   };
 
-  // Get loading status message
-  const getLoadingMessage = () => {
-    switch(loadingStage) {
-      case 'initializing': return 'Initializing map...';
-      case 'map': return 'Loading base map...';
-      case 'floodplains': return 'Loading floodplain data...';
-      case 'concerns': return 'Identifying areas of concern...';
-      case 'complete': return 'Map ready';
-      default: return 'Loading...';
-    }
-  };
+  
+  // Check for mobile viewport
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    // Initial check
+    checkIfMobile();
+    
+    // Add resize listener
+    window.addEventListener('resize', checkIfMobile);
+    
+    // Cleanup
+    return () => window.removeEventListener('resize', checkIfMobile);
+  }, []);
 
   const toggleFullScreen = () => {
-    setIsFullScreen(!isFullScreen);
+    // Only call the parent's fullscreen handler, don't manage state locally
     if (onFullscreenChange) {
       onFullscreenChange(!isFullScreen);
     }
   };
 
   const toggleLayer = (layerName) => {
-    setActiveLayers(prev => ({ ...prev, [layerName]: !prev[layerName] }));
+    setActiveLayers(prev => ({
+      ...prev,
+      [layerName]: !prev[layerName]
+    }));
   };
 
-  const [isMobile, setIsMobile] = useState(false);
-        // Check for mobile viewport
-        useEffect(() => {
-          const checkIfMobile = () => {
-            setIsMobile(window.innerWidth < 768);
-          };
-          
-          // Initial check
-          checkIfMobile();
-          
-          // Add resize listener
-          window.addEventListener('resize', checkIfMobile);
-          
-          // Cleanup
-          return () => window.removeEventListener('resize', checkIfMobile);
-        }, []);
-
+  // Handle clicks outside the info panel
   useEffect(() => {
-      const handleClickOutside = (event) => {
-        if (infoRef.current && !infoRef.current.contains(event.target)) {
-          setShowSources(false);
-        }
-      };
-    
-      if (showSources) {
-        document.addEventListener('mousedown', handleClickOutside);
+    const handleClickOutside = (event) => {
+      if (infoRef.current && !infoRef.current.contains(event.target)) {
+        setShowSources(false);
       }
-    
-      return () => {
-        document.removeEventListener('mousedown', handleClickOutside);
-      };
-    }, [showSources]);
+    };
+  
+    if (showSources) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+  
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [showSources]);
 
+  // Handle transition end events for map resize
   useEffect(() => {
+    const handleTransitionEnd = (e) => {
+      if (e.target.id === 'draggable-panel-header' || 
+          e.target.closest('.draggable-artifact-panel') || 
+          e.target.classList.contains('draggable-artifact-panel')) {
+        if (map) map.invalidateSize();
+      }
+    };
+    
+    document.addEventListener('transitionend', handleTransitionEnd);
+    
+    return () => {
+      document.removeEventListener('transitionend', handleTransitionEnd);
+    };
+  }, [map]);
+
+  // Set up global resize function for the map
+  useEffect(() => {
+    if (map) {
+      window.resizeActiveMap = () => {
+        console.log("Map resize triggered");
+        
+        setTimeout(() => {
+          map.invalidateSize({animate: false, pan: false});
+          console.log("Map size invalidated");
+        }, 100);
+      };
+      
+      const handleWindowResize = _.debounce(() => {
+        if (map) map.invalidateSize();
+      }, 100);
+      
+      window.addEventListener('resize', handleWindowResize);
+      
+      return () => {
+        window.removeEventListener('resize', handleWindowResize);
+        delete window.resizeActiveMap;
+      };
+    }
+  }, [map]);
+
+  // Invalid size after initial render
+  useEffect(() => {
+    if (map) {
+      const timeout = setTimeout(() => {
+        map.invalidateSize();
+      }, 500);
+  
+      return () => clearTimeout(timeout);
+    }
+  }, [map]);
+
+  // Main map initialization 
+  useEffect(() => {
+    let isCurrent = true;
     const initializeMap = async () => {
+      if (mapInstanceRef.current) {
+        mapInstanceRef.current.remove();
+        mapInstanceRef.current = null;
+      }
+      
       setLoadingStage('initializing');
       setLoadingProgress(10);
-
+      
       const L = await import('leaflet');
       await import('leaflet/dist/leaflet.css');
-  
-      if (map || !mapContainerRef.current) return;
+
+      if (!mapContainerRef.current || !isCurrent) return;
       
       setLoadingProgress(20);
       setLoadingStage('map');
-  
+
+      // Initialize base map
       const leafletMap = L.map(mapContainerRef.current, {
         zoomControl: false,
         attributionControl: false,
         minZoom: 11,
         maxZoom: 18
       }).setView([30.267, -97.743], 13);
-  
+        // Initialize empty layer groups
+      leafletMap.buildingLayer = L.layerGroup();
+      leafletMap.streetLayer = L.layerGroup();
+      leafletMap.neighborhoodLayer = L.layerGroup();
+      // Safely add all layers to map
+if (leafletMap.floodplainLayer) {
+  leafletMap.floodplainLayer.addTo(leafletMap);
+} else {
+  console.warn("floodplainLayer is undefined when trying to add to map");
+  leafletMap.floodplainLayer = L.layerGroup().addTo(leafletMap);
+}
+
+if (leafletMap.concernLayer) {
+  leafletMap.concernLayer.addTo(leafletMap);
+} else {
+  console.warn("concernLayer is undefined when trying to add to map");
+  leafletMap.concernLayer = L.layerGroup().addTo(leafletMap);
+}
+
+      //leafletMap.floodplainLayer = L.layerGroup();
+      //leafletMap.concernLayer = L.layerGroup();
+
       L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
         attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
         subdomains: 'abcd',
         maxZoom: 19
       }).addTo(leafletMap);
-  
-      L.control.zoom({ position: 'topright' }).addTo(leafletMap);
-  
-      // Initialize empty layer groups
-      leafletMap.buildingLayer = L.layerGroup();
-      leafletMap.streetLayer = L.layerGroup();
-      leafletMap.neighborhoodLayer = L.layerGroup();
-      leafletMap.floodplainLayer = L.layerGroup();
-      leafletMap.concernLayer = L.layerGroup();
 
-      // Set map reference early
+      L.control.zoom({ position: 'topright' }).addTo(leafletMap);
+      
+    
+
+      // Set map references
+      mapInstanceRef.current = leafletMap;
       setMap(leafletMap);
+      
+      // Force Leaflet to recalculate its container size
+      leafletMap.whenReady(() => {
+        setTimeout(() => {
+          leafletMap.invalidateSize();
+          console.log('Manually invalidated size after init');
+        }, 200);
+      });
       
       // Wait a moment for the base map to render
       await new Promise(r => setTimeout(r, 500));
@@ -137,7 +217,7 @@ const ConcernAreasMap = ({onLayersReady, onFullscreenChange}) => {
       // Load background data in the background (for layers that will be hidden by default)
       const bgPromises = [];
       
-      // Load neighborhoods, base buildings, and streets in background
+      // Load neighborhoods, buildings, and streets in background
       const fetchNeighborhoods = async () => {
         const res = await fetch('/data/neighborhood-data.json');
         const data = await res.json();
@@ -185,38 +265,73 @@ const ConcernAreasMap = ({onLayersReady, onFullscreenChange}) => {
       setLoadingProgress(30);
       
       const drawFloodplains = async () => {
-        const res = await fetch('/data/floodplains-data.json');
-        const floodplainData = await res.json();
-        
-        // Add floodplain polygons in batches to create visual loading effect
-        const batchSize = Math.ceil(floodplainData.length / 10); // 10 batches
-        
-        for (let i = 0; i < floodplainData.length; i += batchSize) {
-          const batch = floodplainData.slice(i, i + batchSize);
-          
-          batch.forEach(f => {
-            try {
-              const coordsList = f.the_geom.coordinates.map(ring => ring.map(([lng, lat]) => [lat, lng]));
-              const polygon = L.polygon(coordsList, {
-                color: COLORS.flood,
-                fillOpacity: 0.4,
-                weight: 1
-              }).bindPopup(`Flood Zone: ${f.flood_zone}`);
-              leafletMap.floodplainLayer.addLayer(polygon);
-            } catch {}
-          });
-          
-          // Update loading progress
-          setLoadingProgress(30 + (i / floodplainData.length) * 35);
-          
-          // Wait a bit before adding next batch to create visual effect
-          await new Promise(r => setTimeout(r, 50));
+        // First check if map is still valid
+        if (!leafletMap || !mapContainerRef.current || !isCurrent) {
+          console.warn("Map context invalid when drawing floodplains");
+          return [];
         }
         
-        // Add floodplain layer to map
-        leafletMap.floodplainLayer.addTo(leafletMap);
-        
-        return floodplainData;
+        try {
+          // Fetch the floodplain data
+          const res = await fetch('/data/floodplains-data.json');
+          const floodplainData = await res.json();
+          
+          // Create a temporary layer group instead of using the one on leafletMap
+          const tempFloodplainLayer = L.layerGroup();
+          
+          // Add floodplain polygons in batches
+          const batchSize = Math.ceil(floodplainData.length / 10);
+          
+          for (let i = 0; i < floodplainData.length; i += batchSize) {
+            if (!isCurrent) break; // Stop if component is unmounting
+            
+            const batch = floodplainData.slice(i, i + batchSize);
+            
+            batch.forEach(f => {
+              try {
+                const coordsList = f.the_geom.coordinates.map(ring => 
+                  ring.map(([lng, lat]) => [lat, lng])
+                );
+                
+                const polygon = L.polygon(coordsList, {
+                  color: COLORS.flood,
+                  fillOpacity: 0.4,
+                  weight: 1
+                }).bindPopup(`Flood Zone: ${f.flood_zone}`);
+                
+                tempFloodplainLayer.addLayer(polygon);
+              } catch (err) {
+                console.warn("Error adding floodplain polygon:", err);
+              }
+            });
+            
+            setLoadingProgress(30 + (i / floodplainData.length) * 35);
+            await new Promise(r => setTimeout(r, 50));
+          }
+          
+          // Check if map is still valid before adding the layer
+          if (leafletMap && isCurrent && leafletMap._container) {
+            // Replace the original floodplain layer with our new one
+            leafletMap.floodplainLayer = tempFloodplainLayer;
+            
+            // Safely add the layer to the map with proper timing
+            leafletMap.whenReady(() => {
+              try {
+                if (leafletMap._container && isCurrent) {
+                  tempFloodplainLayer.addTo(leafletMap);
+                  console.log("Successfully added floodplain layer to map");
+                }
+              } catch (err) {
+                console.error("Error adding floodplain layer in whenReady:", err);
+              }
+            });
+          }
+          
+          return floodplainData;
+        } catch (err) {
+          console.error("Error in drawFloodplains:", err);
+          return [];
+        }
       };
       
       const floodplainData = await drawFloodplains();
@@ -329,72 +444,43 @@ const ConcernAreasMap = ({onLayersReady, onFullscreenChange}) => {
       // Add concern layer to map
       leafletMap.concernLayer.addTo(leafletMap);
       
-      setLoadingProgress(100);
-    setLoadingStage('complete');
-    if (onLayersReady) {
-      onLayersReady();
-    }
-    
-    if (window.setResponseReady) {
-      window.setResponseReady(true);
-    }
+      setTimeout(() => {
+        leafletMap.invalidateSize();
+        console.log('Map stabilized after initialization');
+      }, 300);
+
+      // Only update state if this effect is still the current one
+      if (isCurrent) {
+        setLoadingProgress(100);
+        setLoadingStage('complete');
+        
+        if (onLayersReady) {
+          onLayersReady();
+        }
+        
+        if (window.setResponseReady) {
+          window.setResponseReady(true);
+        }
+      }
     };
   
     initializeMap();
-    return () => map?.remove();
-  }, [
-    onLayersReady]);
-
-    useEffect(() => {
-      const handleTransitionEnd = (e) => {
-        // Check if the transition was on an element that could affect map size
-        if (e.target.id === 'draggable-panel-header' || 
-            e.target.closest('.draggable-artifact-panel') || 
-            e.target.classList.contains('draggable-artifact-panel')) {
-          if (map) map.invalidateSize();
-        }
-      };
-      
-      document.addEventListener('transitionend', handleTransitionEnd);
-      
-      return () => {
-        document.removeEventListener('transitionend', handleTransitionEnd);
-      };
-    }, [map]);
-
-    useEffect(() => {
-      if (map) {
-        // Create global resize function
-        window.resizeActiveMap = () => {
-          console.log("Map resize triggered");
-          
-          // For Leaflet maps, invalidateSize is the key method 
-          // that recalculates the map container size
-          
-          // Add a small delay to let the DOM update first
-          setTimeout(() => {
-            map.invalidateSize({animate: false, pan: false});
-            console.log("Map size invalidated");
-          }, 100);
-        };
-        
-        // Also set up resize handler for window resize events
-        const handleWindowResize = _.debounce(() => {
-          if (map) map.invalidateSize();
-        }, 100);
-        
-        window.addEventListener('resize', handleWindowResize);
-        
-        return () => {
-          // Clean up
-          window.removeEventListener('resize', handleWindowResize);
-          delete window.resizeActiveMap;
-        };
+    
+    return () => {
+      isCurrent = false; 
+      if (mapInstanceRef.current) {
+        mapInstanceRef.current.remove();
+        mapInstanceRef.current = null;
       }
-    }, [map]);
+    };
+    // Make sure the map is properly initialized when the component is mounted
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
+  // Update active layers
   useEffect(() => {
     if (!map) return;
+    
     const layers = {
       neighborhood: map.neighborhoodLayer,
       building: map.buildingLayer,
@@ -402,6 +488,7 @@ const ConcernAreasMap = ({onLayersReady, onFullscreenChange}) => {
       floodplain: map.floodplainLayer,
       concernArea: map.concernLayer
     };
+    
     Object.entries(activeLayers).forEach(([key, active]) => {
       if (layers[key]) {
         if (active) {
@@ -409,83 +496,110 @@ const ConcernAreasMap = ({onLayersReady, onFullscreenChange}) => {
         } else {
           map.removeLayer(layers[key]);
         }
-      }    });
+      }
+    });
   }, [map, activeLayers]);
 
+  // Get loading status message
+  const getLoadingMessage = () => {
+    switch(loadingStage) {
+      case 'initializing': return 'Initializing map...';
+      case 'map': return 'Loading base map...';
+      case 'floodplains': return 'Loading floodplain data...';
+      case 'concerns': return 'Identifying areas of concern...';
+      case 'complete': return 'Map ready';
+      default: return 'Loading...';
+    }
+  };
+
   return (
-    <div className={`flex flex-col h-full ${isFullScreen ? 'fixed inset-0 z-50 bg-white' : ''}`}>
-<div className="flex justify-between items-center p-3 border-b bg-white shadow-sm">
+    <div className="flex flex-col h-full">
+      <div className="flex justify-between items-center p-3 border-b bg-white shadow-sm">
         <h2 className="text-lg font-semibold" style={{ color: COLORS.primary }}>
           Austin Areas of Concern Map
         </h2>
         <div className="flex items-center space-x-1">
-          <button onClick={() => setShowLegend(prev => !prev)} title="Layers & Legend" style={{ 
-            color: COLORS.coral,
-            backgroundColor: 'white',
-            border: 'none',
-            transition: 'all 0.2s ease-in-out',
-            borderRadius: '50%',
-            width: '36px',
-            height: '36px',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.backgroundColor = COLORS.coral;
-            e.currentTarget.style.color = 'white';
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.backgroundColor = 'white';
-            e.currentTarget.style.color = COLORS.coral;
-          }}>
+          <button 
+            onClick={() => setShowLegend(prev => !prev)} 
+            title="Layers & Legend" 
+            style={{ 
+              color: COLORS.coral,
+              backgroundColor: 'white',
+              border: 'none',
+              transition: 'all 0.2s ease-in-out',
+              borderRadius: '50%',
+              width: '36px',
+              height: '36px',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = COLORS.coral;
+              e.currentTarget.style.color = 'white';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = 'white';
+              e.currentTarget.style.color = COLORS.coral;
+            }}
+          >
             <Layers size={20} />
           </button>
-          <button onClick={() => setShowSources(prev => !prev)} title="View Sources" style={{ 
-            color: COLORS.coral,
-            backgroundColor: 'white',
-            border: 'none',
-            transition: 'all 0.2s ease-in-out',
-            borderRadius: '50%',
-            width: '36px',
-            height: '36px',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.backgroundColor = COLORS.coral;
-            e.currentTarget.style.color = 'white';
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.backgroundColor = 'white';
-            e.currentTarget.style.color = COLORS.coral;
-          }}>
+          
+          <button 
+            onClick={() => setShowSources(prev => !prev)} 
+            title="View Sources" 
+            style={{ 
+              color: COLORS.coral,
+              backgroundColor: 'white',
+              border: 'none',
+              transition: 'all 0.2s ease-in-out',
+              borderRadius: '50%',
+              width: '36px',
+              height: '36px',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = COLORS.coral;
+              e.currentTarget.style.color = 'white';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = 'white';
+              e.currentTarget.style.color = COLORS.coral;
+            }}
+          >
             <Info size={20} />
           </button>
+          
           {!isMobile && (
-          <button onClick={toggleFullScreen} title="Fullscreen" style={{ 
-            color: COLORS.coral,
-            backgroundColor: 'white',
-            border: 'none',
-            transition: 'all 0.2s ease-in-out',
-            borderRadius: '50%',
-            width: '36px',
-            height: '36px',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.backgroundColor = COLORS.coral;
-            e.currentTarget.style.color = 'white';
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.backgroundColor = 'white';
-            e.currentTarget.style.color = COLORS.coral;
-          }}>
-            {isFullScreen ? <X size={20} /> : <Maximize2 size={20} />}
-          </button>
+            <button 
+              onClick={toggleFullScreen} 
+              title="Fullscreen" 
+              style={{ 
+                color: COLORS.coral,
+                backgroundColor: 'white',
+                border: 'none',
+                transition: 'all 0.2s ease-in-out',
+                borderRadius: '50%',
+                width: '36px',
+                height: '36px',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = COLORS.coral;
+                e.currentTarget.style.color = 'white';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = 'white';
+                e.currentTarget.style.color = COLORS.coral;
+              }}
+            >
+              {isFullScreen ? <X size={20} /> : <Maximize2 size={20} />}
+            </button>
           )}
         </div>
       </div>
@@ -495,7 +609,7 @@ const ConcernAreasMap = ({onLayersReady, onFullscreenChange}) => {
         
         {/* Loading indicator that shows the current stage while keeping map visible */}
         {loadingStage !== 'complete' && (
-          <div className="absolute bottom-12 right-4 flex flex-col items-center bg-white bg-opacity-90 z-100 p-4 rounded-lg shadow-lg max-w-xs border border-gray-200">
+          <div className="absolute bottom-12 right-4 flex flex-col items-center bg-white bg-opacity-90 z-[1001] p-4 rounded-lg shadow-lg max-w-xs border border-gray-200">
             <div className="flex items-center space-x-2 mb-2">
               <div className="w-6 h-6 border-3 border-gray-300 border-t-red-500 rounded-full animate-spin"></div>
               <p className="text-sm font-medium text-gray-800">{getLoadingMessage()}</p>
@@ -504,20 +618,20 @@ const ConcernAreasMap = ({onLayersReady, onFullscreenChange}) => {
             {/* Progress bar */}
             <div className="w-full h-2 bg-gray-200 rounded-full">
               <div 
-                className="h-full bg-red-500 rounded-full transition-all duration-300 ease-out"
+                className="h-full bg-primary rounded-full transition-all duration-300 ease-out"
                 style={{ width: `${loadingProgress}%` }}
               ></div>
             </div>
             
             {/* Layer indicators */}
             <div className="grid grid-cols-3 gap-1 mt-2 w-full">
-              <div className={`text-center p-1 rounded text-xs ${loadingStage === 'map' || loadingStage === 'floodplains' || loadingStage === 'concerns' || loadingStage === 'complete' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-500'}`}>
+              <div className={`text-center p-1 rounded text-xs ${loadingStage === 'map' || loadingStage === 'floodplains' || loadingStage === 'concerns' || loadingStage === 'complete' ? 'bg-coral text-white' : 'bg-gray-100 text-gray-500'}`}>
                 Base Map
               </div>
-              <div className={`text-center p-1 rounded text-xs ${loadingStage === 'floodplains' || loadingStage === 'concerns' || loadingStage === 'complete' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-500'}`}>
+              <div className={`text-center p-1 rounded text-xs ${loadingStage === 'floodplains' || loadingStage === 'concerns' || loadingStage === 'complete' ? 'bg-coral text-white' : 'bg-gray-100 text-gray-500'}`}>
                 Floodplains
               </div>
-              <div className={`text-center p-1 rounded text-xs ${loadingStage === 'concerns' || loadingStage === 'complete' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-500'}`}>
+              <div className={`text-center p-1 rounded text-xs ${loadingStage === 'concerns' || loadingStage === 'complete' ? 'bg-coral text-white' : 'bg-gray-100 text-gray-500'}`}>
                 Concerns
               </div>
             </div>
@@ -659,7 +773,6 @@ const ConcernAreasMap = ({onLayersReady, onFullscreenChange}) => {
           </div>
         )}
       </div>
-      
     </div>
   );
 };

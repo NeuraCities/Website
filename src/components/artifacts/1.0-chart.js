@@ -36,7 +36,7 @@ const InfrastructureConditionDashboard = ({onLayersReady, onFullscreenChange, is
     }, 500);
 
     return () => clearTimeout(timeout);
-  }, []);
+  }, [onLayersReady]);
   
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -240,7 +240,7 @@ const InfrastructureConditionDashboard = ({onLayersReady, onFullscreenChange, is
 
   // Regular panel content
   const regularPanelContent = (
-    <div className="flex flex-col w-full h-full bg-white/50 p-4" ref={chartContainerRef}>
+    <div className="flex flex-col w-full h-full bg-white/50 p-4 overflow-auto" ref={chartContainerRef}>
       {/* Header */}
       <div className="flex justify-between items-center mb-6">
         <h2 className={`${isMobile ? "text-lg" : "text-xl"} font-semibold`} style={{ color: COLORS.primary }}>

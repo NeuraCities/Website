@@ -1,10 +1,11 @@
 
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import ResizablePanels from "../../components/ResizablePanels";
 import ArtifactService from "@/app/services/ArtifactService";
 import TutorialOverlay from "../../components/TutorialOverlay"
+import SearchParamsWrapper from "../../components/SearchParamsWrapper";
 
 export default function ChatPage() {
   
@@ -138,6 +139,14 @@ const bridgesTable = `
   </tbody>
 </table>
 `;
+const handleSourceChange = (source) => {
+  if (source === 'homepage') {
+    setIsFlowActive(false);
+    setShowLoginTile(false);
+    setFlowState("initial");
+    console.log("States reset due to homepage navigation (desktop)");
+  }
+};
 
 // Create hardcodedTables array at component level
 const hardcodedTables = [roadwayTable, bridgesTable];
@@ -675,7 +684,10 @@ const handleSaveMap = (mapName, mapContent) => {
 };
 
 return (
-<div className="fixed inset-0 top-[64px]">
+<div className="fixed inset-0 top-[68px]">
+<Suspense fallback={null}>
+        <SearchParamsWrapper onSourceChange={handleSourceChange} />
+      </Suspense>
 <style jsx global>{`
       /* Fix iOS height issues */
       html, body {

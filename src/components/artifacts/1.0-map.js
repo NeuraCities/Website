@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { Layers, Maximize2, X, Info } from 'lucide-react';
 import _ from 'lodash';
 
@@ -66,11 +66,11 @@ const InfrastructureMap = ({ onLayersReady, onFullscreenChange }) => {
     }));
   };
 
-  const updateHeatmapSettings = () => {
+  const updateHeatmapSettings = useCallback(() => {
     if (!map || !map.buildingHeatmap || !map.streetHeatmap) return;
     map.buildingHeatmap.setOptions({ radius: heatmapRadius, max: heatmapIntensity });
     map.streetHeatmap.setOptions({ radius: heatmapRadius * 0.7, max: heatmapIntensity });
-  };
+  }, [map, heatmapRadius, heatmapIntensity]);
 
   useEffect(() => {
     const handleTransitionEnd = (e) => {
@@ -394,6 +394,7 @@ const InfrastructureMap = ({ onLayersReady, onFullscreenChange }) => {
     initializeMap();
 
     return () => map?.remove();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -428,7 +429,7 @@ const InfrastructureMap = ({ onLayersReady, onFullscreenChange }) => {
 
   useEffect(() => {
     updateHeatmapSettings();
-  }, [heatmapRadius, heatmapIntensity, map]);
+  }, [updateHeatmapSettings, heatmapRadius, heatmapIntensity, map]);
 
   // Get loading status message
   const getLoadingMessage = () => {
@@ -585,23 +586,23 @@ const InfrastructureMap = ({ onLayersReady, onFullscreenChange }) => {
             {/* Progress bar */}
             <div className="w-full h-2 bg-gray-200 rounded-full">
               <div 
-                className="h-full bg-blue-500 rounded-full transition-all duration-300 ease-out"
+                className="h-full bg-primary rounded-full transition-all duration-300 ease-out"
                 style={{ width: `${loadingProgress}%` }}
               ></div>
             </div>
             
             {/* Layer indicators */}
-            <div className="grid grid-cols-4 gap-1 mt-2 w-full">
-              <div className={`text-center p-1 rounded text-xs ${loadingStage === 'map' || loadingStage === 'neighborhoods' || loadingStage === 'buildings' || loadingStage === 'streets' || loadingStage === 'complete' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-500'}`}>
+            <div className="grid grid-cols-4 gap-2 mt-2 w-full">
+              <div className={`text-center p-1 rounded text-xs ${loadingStage === 'map' || loadingStage === 'neighborhoods' || loadingStage === 'buildings' || loadingStage === 'streets' || loadingStage === 'complete' ? 'bg-coral text-white' : 'bg-gray-100 text-gray-500'}`}>
                 Base Map
               </div>
-              <div className={`text-center p-1 rounded text-xs ${loadingStage === 'neighborhoods' || loadingStage === 'buildings' || loadingStage === 'streets' || loadingStage === 'complete' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-500'}`}>
+              <div className={`text-center p-1 rounded text-xs ${loadingStage === 'neighborhoods' || loadingStage === 'buildings' || loadingStage === 'streets' || loadingStage === 'complete' ? 'bg-coral text-white' : 'bg-gray-100 text-gray-500'}`}>
                 Neighborhoods
               </div>
-              <div className={`text-center p-1 rounded text-xs ${loadingStage === 'buildings' || loadingStage === 'streets' || loadingStage === 'complete' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-500'}`}>
+              <div className={`text-center p-1 rounded text-xs ${loadingStage === 'buildings' || loadingStage === 'streets' || loadingStage === 'complete' ? 'bg-coral text-white' : 'bg-gray-100 text-gray-500'}`}>
                 Buildings
               </div>
-              <div className={`text-center p-1 rounded text-xs ${loadingStage === 'streets' || loadingStage === 'complete' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-500'}`}>
+              <div className={`text-center p-1 rounded text-xs ${loadingStage === 'streets' || loadingStage === 'complete' ? 'bg-coral text-white' : 'bg-gray-100 text-gray-500'}`}>
                 Streets
               </div>
             </div>

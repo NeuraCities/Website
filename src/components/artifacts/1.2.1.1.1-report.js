@@ -181,35 +181,34 @@ const [sectionContent, setSectionContent] = useState(sampleContent);
   // Refs for each section for intersection observer
   const sectionRefs = useRef({});
   
-  // Set up intersection observer to track which section is in view
-useEffect(() => {
-  const options = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.3,
-  };
-  
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const id = entry.target.id;
-        // Set the active section based on the intersecting element's ID
-        setActiveSection(id);
-      }
-    });
-  }, options);
-  
-  // Observe all section elements
-  Object.values(sectionRefs.current).forEach(ref => {
-    if (ref) observer.observe(ref);
-  });
-  
-  return () => {
-    Object.values(sectionRefs.current).forEach(ref => {
-      if (ref) observer.unobserve(ref);
-    });
-  };
-}, [isFullscreen]); // Add isFullscreen as a dependency to reinitialize observer when toggling modes
+    useEffect(() => {
+      const options = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.3,
+      };
+    
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            setActiveSection(id);
+          }
+        });
+      }, options);
+    
+      const refsSnapshot = { ...sectionRefs.current }; 
+    
+      Object.values(refsSnapshot).forEach(ref => {
+        if (ref) observer.observe(ref);
+      });
+    
+      return () => {
+        Object.values(refsSnapshot).forEach(ref => {
+          if (ref) observer.unobserve(ref);
+        });
+      };
+    }, [isFullscreen]);
   
   // Handle sidebar animation
   useEffect(() => {

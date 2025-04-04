@@ -37,8 +37,8 @@ const Footer = () => {
           aria-label="NeuraCities on LinkedIn"
         >
           <Image 
-            src="/images/linkedin.png" // Adjust the path as necessary
-            alt="NeuraCities on LinkedIn"
+            src="/images/LinkedIn.svg"
+            alt="LinkedIn"
             width={24} // Set the desired width
             height={24} // Set the desired height
           />

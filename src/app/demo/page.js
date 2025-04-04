@@ -480,6 +480,7 @@ const fetchChatResponse = async (message, extraData = null) => {
       const newHistory = [...updatedHistory, resetResponse];
       setChatHistory(newHistory);
       
+      
       try {
         localStorage.setItem('currentConversation', JSON.stringify(newHistory));
       } catch (error) {

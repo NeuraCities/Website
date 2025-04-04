@@ -1,6 +1,6 @@
 //30.265813, -97.751391
 // AreasOfConcernMap.jsx
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { Layers, Maximize2, X, Info } from 'lucide-react';
 import _ from 'lodash';
 
@@ -12,6 +12,7 @@ const AreasOfConcernMap = ({ onLayersReady, onFullscreenChange }) => {
   const [showSources, setShowSources] = useState(false);
     const infoRef = useRef(null);
     const mapInitializedRef = useRef(false);
+    
 
 
     const cleanupMap = useCallback(() => {
@@ -501,7 +502,7 @@ useEffect(() => {
   }, [map, activeLayers]);
 
   return (
-    <div className={`flex flex-col h-full ${isFullScreen ? 'fixed inset-0 z-50 bg-white' : ''}`}>
+<div className={`flex flex-col h-full ${isFullScreen ? 'inset-0 z-50 bg-white relative' : ''}`}>
 <div className="flex justify-between items-center p-3 border-b bg-white shadow-sm">
         <h2 className="text-lg font-semibold" style={{ color: COLORS.primary }}>
           Austin Areas of Concern Map

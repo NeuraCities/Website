@@ -15,6 +15,7 @@ const TransportAndPlansMap = ({ onLayersReady,  onFullscreenChange}) => {
   const [showLegend, setShowLegend] = useState(false);
   const [showSources, setShowSources] = useState(false);
     const infoRef = useRef(null);
+    const [isLoading, setIsLoading] = useState(true);
   
 const [isMobile, setIsMobile] = useState(false);
       // Check for mobile viewport
@@ -349,10 +350,11 @@ const [isMobile, setIsMobile] = useState(false);
       
       // All layers are now loaded
       setLoadingProgress(100);
-    setLoadingStage('complete');
-    if (onLayersReady) {
-      onLayersReady();
-    }
+setLoadingStage('complete');
+setIsLoading(false);
+if (onLayersReady) {
+  onLayersReady();
+}
     
     if (window.setResponseReady) {
       window.setResponseReady(true);
@@ -360,9 +362,9 @@ const [isMobile, setIsMobile] = useState(false);
     setMap(leafletMap);
   } catch (error) {
     console.error('Error initializing map:', error);
-    // Important: Set loading stage to complete even if there's an error
     setLoadingProgress(100);
-    setLoadingStage('complete');
+setLoadingStage('complete');
+setIsLoading(false);
   }
     };
 
@@ -592,7 +594,7 @@ if (map.trafficMarkerLayer) {
         <div ref={mapContainerRef} className="absolute inset-0 w-full h-full" />
         
         {/* Loading indicator that shows the current stage while keeping map visible */}
-        {loadingStage !== 'complete' && (
+        {isLoading && (
           <div className="absolute bottom-12 right-4 flex flex-col items-center bg-white bg-opacity-90 z-[1001] p-4 rounded-lg shadow-lg max-w-xs border border-gray-200">
             <div className="flex items-center space-x-2 mb-2">
               <div className="w-6 h-6 border-3 border-gray-300 border-t-blue-500 rounded-full animate-spin"></div>

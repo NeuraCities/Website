@@ -65,7 +65,6 @@ useEffect(() => {
 
 
 
-
 useEffect(() => {
   if (responseReady && showLoadingMessage && !isLoading) {
     console.log("Response became ready, starting typewriter");
@@ -126,8 +125,9 @@ const LoginTile = ({ onClose}) => {
     const clientId = "050f429e-488a-4dc8-8b78-fd43a9cee740";
     const tenantId = "common";
     
-    // This should be your callback URL where you handle the OAuth response
-    const redirectUri = "https://neuracities.com/auth/microsoft/callback";
+    // This should match the route where your MicrosoftAuthCallback component is rendered
+    // If you're using React Router, this should be the path in your router configuration
+    const redirectUri = window.location.origin + "/auth/microsoft/callback";
     
     // Scope for basic profile info and email
     const scope = "openid profile email User.Read";
@@ -153,6 +153,7 @@ const LoginTile = ({ onClose}) => {
     // Redirect to Microsoft's OAuth page
     window.location.href = authUrl.toString();
   };
+  
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 z-[10000]">
@@ -769,6 +770,71 @@ default:
   ]);
     }
   };
+
+  // Add this function to your ChatSection.js file
+// This will check for OAuth redirects when the component mounts
+
+useEffect(() => {
+  // Check if this is a redirect from Microsoft OAuth
+  const checkForOAuthRedirect = () => {
+    const queryParams = new URLSearchParams(window.location.search);
+    const code = queryParams.get('code');
+    const state = queryParams.get('state');
+    const storedState = localStorage.getItem("microsoftOAuthState");
+    const triggerAnalysis = localStorage.getItem("triggerInfrastructureAnalysis");
+    
+    // If we have a code and the state matches what we stored, this is a valid OAuth redirect
+    if (code && state && state === storedState && triggerAnalysis === "true") {
+      console.log("Detected valid OAuth redirect");
+      
+      // Clean up localStorage
+      localStorage.removeItem("microsoftOAuthState");
+      localStorage.removeItem("triggerInfrastructureAnalysis");
+      
+      // Clear query parameters from URL (optional but cleaner)
+      window.history.replaceState({}, document.title, window.location.pathname);
+      
+      // Simulate clicking the infrastructure analysis button
+      setTimeout(() => {
+        console.log("Triggering infrastructure analysis flow after OAuth");
+        
+        // Same logic as in handleLoginSubmit to trigger the analysis flow
+        const buttonData = {
+          id: "1.0",
+          text: "I want to evaluate the Resilience of Infrastructure around downtown Austin",
+          nextState: "infrastructure-analysis"
+        };
+        
+        setFlowHistory(prev => [...prev, flowState]);
+        setFlowState("infrastructure-analysis");
+        setIsFlowActive(true);
+        
+        // Send message and trigger response processing
+        onSend(buttonData.text, { responseId: buttonData.id });
+        setShowLoadingMessage(true);
+        setIsFirstResponse(true);
+        
+        // For mobile, use a cleaner approach
+        if (window.innerWidth < 768) {
+          setTimeout(() => {
+            setResponseReady(true);
+          }, 2500);
+        } else {
+          triggerFlowSequence("1.0");
+        }
+        
+        // Show tutorial after a delay
+        setTimeout(() => {
+          setShowTutorial(true);
+        }, 12000);
+      }, 1000); // Small delay to ensure component is fully mounted
+    }
+  };
+  
+  // Run the check
+  checkForOAuthRedirect();
+}, []); 
+
   useEffect(() => {
     // Reset critical state on mount
     setIsFlowActive(false);

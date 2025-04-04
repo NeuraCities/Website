@@ -1240,6 +1240,8 @@ Click below to begin </h1>
   >
   <span className="font-medium relative z-10">I want to evaluate the Resilience of Infrastructure around downtown Austin</span>
   </button>
+  <h3 className="text-sm mt-10 mb-0 font-semi-bold text-coral underline">Disclaimer</h3>
+  <p className="text-xs max-w-xl text-secondary leading-relaxed"> This demo is provided for informational and illustrative purposes only. The data and visualizations shown are not guaranteed to be complete, accurate, or up-to-date and should not be used as the sole basis for any decision-making.</p>
           </div>
           ) : (
             <div className="space-y-4">

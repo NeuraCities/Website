@@ -276,36 +276,37 @@ useEffect(() => {
       <JsonLd data={websiteSchema} />
       <JsonLd data={organizationSchema} />
       {/* Hero Section */}
-      <header className="relative bg-transparent py-32 overflow-hidden">
+      <header className="relative bg-transparent py-32 sm:py-36 overflow-hidden">
         <div className="absolute inset-0 bg-transparent" />
         <div className="container mx-auto px-6 relative">
-          <div className="max-w-4xl text-center sm:text-left">
+          <div className="max-w-4xl sm:max-w-5xl mx-auto text-center">
             {/*<div className="inline-block bg-coral/10 font-bold text-coral px-4 py-2 rounded-full mb-4">
               Do More.
             </div>*/}
-            <h1 className="text-5xl font-bold text-primary mb-4 leading-tight flex">
+            <h1 className="text-5xl sm:text-4xl text-center font-bold text-primary mb-4 sm:mb-6 leading-tight flex justify-center">
               <Lottie 
                 animationData={animationData} 
                 loop={true}
                 autoplay={true}
-                className="h-12 sm:h-24 md:h-20 lg:h-24"
+                className="h-12 sm:h-28 md:h-24 lg:h-32"
               />
             </h1>
-            <p className="text-xl text-secondary mb-6 leading-relaxed">
-              Efficient data to decisions: plain language insights for geospatial clarity.            </p>
-            <div className="flex flex-col sm:flex-row gap-6 items-start sm:items-center">
-            <button 
-              onClick={() => router.push('/demo', { scroll: true })}
-              className="bg-white border text-coral px-8 py-3 rounded-lg transition-transform hover:bg-coral hover:text-white"
-            >
-              Try Demo
-            </button>
-            <button 
-              onClick={() => router.push('/contact', { scroll: true })}
-              className="bg-white border text-secondary px-8 py-3 rounded-lg transition-transform hover:bg-secondary hover:text-white"
-            >
-              Contact
-            </button>
+            <p className="text-xl sm:text-2xl text-secondary mb-6 sm:mb-8 leading-relaxed max-w-3xl mx-auto">
+              Efficient data to decisions: plain language insights for geospatial clarity.
+            </p>
+            <div className="flex flex-row gap-4 sm:gap-8 items-center justify-center">
+              <button 
+                onClick={() => router.push('/demo', { scroll: true })}
+                className="bg-white border text-coral px-8 py-2 sm:px-8 sm:py-3 rounded-lg text-base sm:text-lg font-medium transition-transform hover:bg-coral hover:text-white hover:scale-105"
+              >
+                Try Demo
+              </button>
+              <button 
+                onClick={() => router.push('/contact', { scroll: true })}
+                className="bg-white border text-secondary px-8 py-2 sm:px-8 sm:py-3 rounded-lg text-base sm:text-lg font-medium transition-transform hover:bg-secondary hover:text-white hover:scale-105"
+              >
+                Contact
+              </button>
             </div>
           </div>
         </div>
@@ -362,50 +363,67 @@ useEffect(() => {
         <FeatureSection />
 
       {/* Security Section */}
-      <section className="py-3 bg-gradient-to-b from-white/80 to-transparent">
-        <div className="container mx-auto px-6">
-          <div className="bg-coral/5 rounded-2xl p-12">
-            <div className="text-center max-w-3xl mx-auto mb-12">
-              <h2 className="text-4xl font-bold text-primary mb-4">
-                Your Data, Your Control
-              </h2>
-              <p className="text-xl text-secondary">
-                We prioritize your security with flexible deployment options that keep your data secure.
-              </p>
+<section className="py-16 bg-transparent">
+  <div className="container mx-auto px-6">
+    <div className="bg-neutral rounded-3xl p-8 sm:p-12 shadow-xl">
+      <div className="text-center max-w-3xl mx-auto mb-12">
+        <h2 className="text-4xl sm:text-4xl font-bold text-primary mb-4">
+          Your Data, Your Control
+        </h2>
+        <p className="text-lg text-secondary max-w-4xl mx-auto">
+          We prioritize your security with flexible deployment options that keep your data secure.
+        </p>
+      </div>
+      
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+        <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+          <div className="flex items-center mb-3">
+            <div className="bg-coral/10 p-3 rounded-xl inline-block mr-4">
+              <Shield className="w-10 h-10 text-coral" />
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="bg-white rounded-xl p-8 shadow-lg">
-                <Shield className="w-12 h-12 text-coral mb-4" />
-                <h3 className="text-2xl font-bold text-primary mb-4">Flexible Deployment</h3>
-                <p className="text-secondary">
-                  Keep complete control with deployment behind your firewall.
-                </p>
-              </div>
-              <div className="bg-white rounded-xl p-8 shadow-lg">
-                <Database className="w-12 h-12 text-coral mb-4" />
-                <h3 className="text-2xl font-bold text-primary mb-4">Data Sovereignty</h3>
-                <p className="text-secondary">
-                  Your data never leaves your servers or infrastructure.
-                </p>
-              </div>
-              <div className="bg-white rounded-xl p-8 shadow-lg">
-                <Lock className="w-12 h-12 text-coral mb-4" />
-                <h3 className="text-2xl font-bold text-primary mb-4">Custom Security</h3>
-                <p className="text-secondary">
-                  Integrate with your existing security policies and protocols.
-                </p>
-              </div>
-            </div>
-            <div className="py-8 text-center">
-              <Link href="/security">
-                <button className="bg-coral text-white px-8 py-4 rounded-lg font-semibold shadow-lg hover:bg-opacity-90 transition-all inline-flex items-center gap-2">
-                  Learn More <ArrowRight className="w-5 h-5" />
-                </button>
-              </Link>
-            </div>
+            <h3 className="text-2xl font-bold text-primary">Flexible Deployment</h3>
           </div>
+          <p className="text-secondary">
+            Keep complete control with deployment options behind your firewall, on your terms.
+          </p>
         </div>
-      </section>
+        
+        <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+          <div className="flex items-center mb-3">
+            <div className="bg-coral/10 p-3 rounded-xl inline-block mr-4">
+              <Database className="w-10 h-10 text-coral" />
+            </div>
+            <h3 className="text-2xl font-bold text-primary">Data Sovereignty</h3>
+          </div>
+          <p className="text-secondary">
+            Your sensitive data never leaves your servers or cloud infrastructure.
+          </p>
+        </div>
+        
+        <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+          <div className="flex items-center mb-3">
+            <div className="bg-coral/10 p-3 rounded-xl inline-block mr-4">
+              <Lock className="w-10 h-10 text-coral" />
+            </div>
+            <h3 className="text-2xl font-bold text-primary">Custom Security</h3>
+          </div>
+          <p className="text-secondary">
+            Seamlessly integrate with your existing security policies and authentication protocols.
+          </p>
+        </div>
+      </div>
+      
+      <div className="mt-12 text-center">
+        <Link href="/security" className="group">
+          <button className="bg-coral text-white px-8 py-4 rounded-lg font-semibold shadow-lg hover:bg-opacity-90 transition-all inline-flex items-center gap-2 group-hover:gap-3">
+            Learn More About Security <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+          </button>
+        </Link>
+      </div>
+    </div>
+  </div>
+</section>
+
       <section className="py-0 bg-transparent">
         <div className="container mx-auto px-4 md:px-6">
           <div className="relative">

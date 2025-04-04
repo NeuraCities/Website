@@ -235,7 +235,7 @@ const FeatureSection: React.FC = () => {
   }, []);
 
   return (
-    <div className="w-full bg-gradient-to-b from-neutral/50 to-neutral/50 py-16 px-4">
+    <div className="w-full bg-gradient-to-b from-transparent via-neutral/50 to-transparent py-16 px-4">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl font-bold text-center text-primary mb-2">Beyond Basic Tools</h2>
         <p className="text-lg text-center mb-8 text-secondary max-w-2xl mx-auto">

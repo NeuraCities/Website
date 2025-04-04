@@ -49,33 +49,34 @@ const SecurityPage = () => {
   const securityFeatures = [
     {
       title: 'Data Protection',
-      description: 'End-to-end encryption for all data at rest and in transit',
+      description: 'End-to-end encryption with AES-256 for data at rest and in transit.',
       icon: <Lock className="w-6 h-6 text-coral" />
     },
     {
       title: 'Access Control',
-      description: 'Role-based access control with detailed audit logging',
+      description: 'Robust role-based access control integrated with LDAP/SSO and comprehensive audit logging.',
       icon: <Shield className="w-6 h-6 text-coral" />
     },
     {
       title: 'Compliance',
-      description: 'Built to meet government and enterprise security standards',
+      description: 'Built to meet GDPR, HIPAA, and SOC 2 standards, ensuring enterprise-grade security.',
       icon: <CheckCircle2 className="w-6 h-6 text-coral" />
     }
   ];
+  
 
   return (
     <div className="min-h-screen bg-transparent">
       {/* Hero Section */}
       <header className="relative bg-transparent py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent" />
+        <div className="absolute inset-0 bg-transparent" />
         <div className="container mx-auto px-6 relative">
           <div className="max-w-4xl">
             <div className="inline-block bg-coral/10 text-coral px-4 py-2 rounded-full mb-6">
               Enterprise-Grade Security
             </div>
-            <h1 className="text-5xl font-bold text-primary mb-6 leading-tight">
-              Secure and Flexible <span className="text-coral">Deployment Options</span>
+            <h1 className="text-5xl font-bold text-coral mb-6 leading-tight">
+              Secure and Flexible <span className="text-primary">Deployment Options</span>
             </h1>
             <p className="text-xl text-secondary leading-relaxed">
               Deploy NeuraCities with confidence using our enterprise-ready security features and flexible infrastructure options.
@@ -85,18 +86,20 @@ const SecurityPage = () => {
       </header>
 
       {/* Security Features Section */}
-      <section className="bg-gradient-to-b from-primary/5 to-transparent">
+      <section className="bg-transparent">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {securityFeatures.map((feature, index) => (
-              <Card key={index} className="bg-white">
+              <Card key={index} className="bg-white hover:shadow-lg transition-shadow duration-300">
                 <CardHeader>
-                  <div className="bg-coral/10 p-3 rounded-xl w-fit mb-4">
-                    {feature.icon}
+                  <div className="flex items-center mb-1">
+                    <div className="bg-coral/10 p-3 rounded-xl inline-block mr-4">
+                      {feature.icon}
+                    </div>
+                    <CardTitle className="text-2xl font-semibold text-primary">
+                      {feature.title}
+                    </CardTitle>
                   </div>
-                  <CardTitle className="text-xl font-semibold text-primary">
-                    {feature.title}
-                  </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-secondary">{feature.description}</p>
@@ -107,9 +110,10 @@ const SecurityPage = () => {
         </div>
       </section>
 
+
       {/* Deployment Options Section */}
-      <section className="py-24 bg-gradient-to-b from-transparent to-white/50">
-        <div className="container mx-auto px-6">
+      <section className="py-24 bg-transparent">
+        <div className="container bg-neutral py-6 rounded-2xl mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-4xl font-bold text-primary mb-4">
               Flexible Deployment Options

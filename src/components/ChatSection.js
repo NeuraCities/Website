@@ -126,7 +126,7 @@ const LoginTile = ({ onClose}) => {
     const tenantId = "common";
     
     // This should match the route where your MicrosoftAuthCallback component is rendered
-    // If you're using React Router, this should be the path in your router configuration
+    // Using Next.js routing structure
     const redirectUri = window.location.origin + "/auth/microsoft/callback";
     
     // Scope for basic profile info and email
@@ -137,9 +137,6 @@ const LoginTile = ({ onClose}) => {
     
     // Store state in localStorage to verify when the user returns
     localStorage.setItem("microsoftOAuthState", state);
-    
-    // Store a flag to trigger infrastructure analysis flow after login
-    localStorage.setItem("triggerInfrastructureAnalysis", "true");
     
     // Build the authorization URL
     const authUrl = new URL(`https://login.microsoftonline.com/${tenantId}/oauth2/v2.0/authorize`);
@@ -243,9 +240,26 @@ const LoginTile = ({ onClose}) => {
     </div>
   );
 };
+
+// Modify the handleLoginSubmit function in your ChatSection component:
+
 const handleLoginSubmit = async (e) => {
   e.preventDefault();
   setShowLoginTile(false);
+
+  // Immediately update the chat history to remove the empty state
+  // This is the key addition - we'll push a temporary message to hide the initial button
+  const tempMessage = {
+    role: "user",
+    content: "I want to evaluate the Resilience of Infrastructure around downtown Austin"
+  };
+  
+  // Add this temporary message to chat history to immediately change the UI state
+  // The actual onSend below will properly update the chat history
+  if (typeof onSend === 'function') {
+    // Call onSend immediately to update chat history
+    onSend(tempMessage.content, { responseId: "1.0" });
+  }
 
   // Extract form data
   const form = e.target;
@@ -292,8 +306,7 @@ const handleLoginSubmit = async (e) => {
   // Explicitly mark flow as active to prevent multiple clicks
   setIsFlowActive(true);
   
-  // Send message and trigger response processing
-  onSend(buttonData.text, { responseId: buttonData.id });
+  // Show loading instead of waiting for response
   setShowLoadingMessage(true);
   setIsFirstResponse(true);
   
@@ -772,28 +785,25 @@ default:
     }
   };
 
-  // Add this function to your ChatSection.js file
-// This will check for OAuth redirects when the component mounts
-
+  // Add this useEffect to your ChatSection component or update the existing one
 useEffect(() => {
-  // Check if this is a redirect from Microsoft OAuth
+  // Check if this is a redirect from Microsoft OAuth or has the triggerInfrastructureAnalysis flag
   const checkForOAuthRedirect = () => {
-    const queryParams = new URLSearchParams(window.location.search);
-    const code = queryParams.get('code');
-    const state = queryParams.get('state');
-    const storedState = localStorage.getItem("microsoftOAuthState");
+    // Check for the triggerInfrastructureAnalysis flag that's set in the MicrosoftAuthCallback component
     const triggerAnalysis = localStorage.getItem("triggerInfrastructureAnalysis");
+    console.log('Checking for OAuth redirect, triggerAnalysis flag:', triggerAnalysis);
     
-    // If we have a code and the state matches what we stored, this is a valid OAuth redirect
-    if (code && state && state === storedState && triggerAnalysis === "true") {
-      console.log("Detected valid OAuth redirect");
+    // Only proceed if we have the trigger flag
+    if (triggerAnalysis === "true") {
+      console.log("Detected OAuth redirect with analysis flag");
       
       // Clean up localStorage
-      localStorage.removeItem("microsoftOAuthState");
       localStorage.removeItem("triggerInfrastructureAnalysis");
       
       // Clear query parameters from URL (optional but cleaner)
-      window.history.replaceState({}, document.title, window.location.pathname);
+      if (window.history && window.history.replaceState) {
+        window.history.replaceState({}, document.title, window.location.pathname);
+      }
       
       // Simulate clicking the infrastructure analysis button
       setTimeout(() => {
@@ -829,12 +839,65 @@ useEffect(() => {
           setShowTutorial(true);
         }, 12000);
       }, 1000); // Small delay to ensure component is fully mounted
+    }else {
+      console.log("No analysis flag found or flag is not 'true'");
     }
   };
   
   // Run the check
   checkForOAuthRedirect();
-}, [flowState, onSend, setResponseReady, setShowTutorial, triggerFlowSequence]); 
+}, [flowState, onSend, setResponseReady, setShowTutorial, triggerFlowSequence]);
+
+// Add this new useEffect to your ChatSection component
+useEffect(() => {
+  // Function to check for the flag
+  const checkForFlag = () => {
+    const triggerAnalysis = localStorage.getItem("triggerInfrastructureAnalysis");
+    console.log("Focus event: Checking for trigger flag:", triggerAnalysis);
+    if (triggerAnalysis === "true") {
+      console.log("Found trigger flag on focus, initiating analysis flow");
+      localStorage.removeItem("triggerInfrastructureAnalysis");
+      
+      // Trigger the infrastructure analysis flow
+      const buttonData = {
+        id: "1.0",
+        text: "I want to evaluate the Resilience of Infrastructure around downtown Austin",
+        nextState: "infrastructure-analysis"
+      };
+      
+      setFlowHistory(prev => [...prev, flowState]);
+      setFlowState("infrastructure-analysis");
+      setIsFlowActive(true);
+      
+      // Send message and trigger response processing
+      onSend(buttonData.text, { responseId: buttonData.id });
+      setShowLoadingMessage(true);
+      setIsFirstResponse(true);
+      
+      // For mobile, use a cleaner approach
+      if (window.innerWidth < 768) {
+        setTimeout(() => {
+          setResponseReady(true);
+        }, 2500);
+      } else {
+        triggerFlowSequence("1.0");
+      }
+      
+      // Show tutorial after a delay
+      setTimeout(() => {
+        setShowTutorial(true);
+      }, 12000);
+    }
+  };
+  
+  // Check when window gets focus, as this happens after redirect
+  window.addEventListener('focus', checkForFlag);
+  
+  // Cleanup
+  return () => {
+    window.removeEventListener('focus', checkForFlag);
+  };
+}, [flowState, onSend, setResponseReady, setShowTutorial, triggerFlowSequence]);
 
   useEffect(() => {
     // Reset critical state on mount

@@ -3,6 +3,8 @@ import { useState, useRef, useEffect } from "react";
 import { FileText, File, X, ArrowUpRight } from "lucide-react";
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { Input } from "./ui/input";
+import Checkbox from "./ui/Checkbox";
 
 export default function ChatSection({ chatHistory, onSend, isLoading,
   responseReady, setLayersVisibility, setResponseReady, setChartReady, setCustomChartReady, setActiveTab, artifacts, activeTab, onSelectArtifact,
@@ -167,23 +169,32 @@ const LoginTile = ({ onClose, onSubmit }) => {
         <h2 className="md:text-3xl text-xl font-bold text-primary md:mb-2 mb-1">Welcome to NeuraCities</h2>
         <p className="md:text-lg text-sm md:mb-6 mb-3 text-secondary">Please sign up to access the demo</p>
         
-        <form onSubmit={onSubmit} className="md:space-y-4 space-y-2">
-        <input
-  type="text"
-  placeholder="Name"
-  className="w-full md:p-3 p-2 border border-gray-300 rounded-lg md:text-lg text-16 focus:outline-none focus:ring-2 focus:ring-coral focus:border-transparent"
-  required
-/>
-          
-<input
-  type="email"
-  placeholder="Email"
-  className="w-full md:p-3 p-2 border border-gray-300 rounded-lg md:text-lg text-16 focus:outline-none focus:ring-2 focus:ring-coral focus:border-transparent"
-  required
-/>
+        <form name="demo-form" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/forms.html" onSubmit={onSubmit} className="md:space-y-4 space-y-2">
+        <input type="hidden" name="form-name" value="demo-form" />
+                <div hidden>
+                  <input name="bot-field" />
+                </div>
+                
+                {/* Add hidden input for newsletter value */}
+                <input type="hidden" name="newsletter" value={newsletter ? "yes" : "no"} />
+           <Input
+            type="text"
+            name="name"
+            placeholder="Name"
+            className="w-full md:p-3 p-2 border border-gray-300 rounded-lg md:text-lg text-16 focus:outline-none focus:ring-2 focus:ring-coral focus:border-transparent"
+            required
+          />
+                    
+          <input
+            name="email"
+            type="email"
+            placeholder="Email"
+            className="w-full md:p-3 p-2 border border-gray-300 rounded-lg md:text-lg text-16 focus:outline-none focus:ring-2 focus:ring-coral focus:border-transparent"
+            required
+          />
           
           <div className="flex items-center space-x-2 text-left">
-            <input
+            <Checkbox
               type="checkbox"
               id="newsletter"
               checked={newsletter}

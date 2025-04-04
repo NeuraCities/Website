@@ -4,3 +4,9 @@
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+[[redirects]]
+  from = "/auth/microsoft/callback"
+  to = "/.netlify/functions/auth-callback"
+  status = 200
+  force = true

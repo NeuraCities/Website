@@ -125,7 +125,7 @@ const LoginTile = ({ onClose, onSubmit }) => {
     const tenantId = "common";
     
     // This should be your callback URL where you handle the OAuth response
-    const redirectUri = "http://localhost:3000/auth/microsoft/callback";
+    const redirectUri = "https://neuracities.com/auth/microsoft/callback";
     
     // Scope for basic profile info and email
     const scope = "openid profile email User.Read";

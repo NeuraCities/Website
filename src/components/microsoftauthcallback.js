@@ -1,5 +1,4 @@
-// Create this as a new component file named MicrosoftAuthCallback.js
-
+// MicrosoftAuthCallback.js
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 

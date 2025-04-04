@@ -1,1 +1,5 @@
+# Redirect netlify subdomain to custom domain
 https://*.netlify.app/*  https://neuracities.com/:splat 301!
+
+# Handle client-side routing
+/* /index.html 200

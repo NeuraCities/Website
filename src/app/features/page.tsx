@@ -241,7 +241,7 @@ const FeatureSection: React.FC = () => {
         <p className="text-lg text-center mb-8 text-secondary max-w-2xl mx-auto">
           Capabilities that fundamentally transform how you solve Planning challenges.
         </p>
-        <p className="text-md text-center mb-2 text-secondary max-w-2xl mx-auto">
+        <p className="text-md text-center mb-2 bg-white text-secondary max-w-2xl mx-auto">
           Click the buttons to learn more!
         </p>
 
@@ -251,16 +251,26 @@ const FeatureSection: React.FC = () => {
             <button
               key={key}
               onClick={() => handleFeatureChange(key)}
-              className={`flex flex-col items-center p-4 rounded-xl transition-all duration-300 ${
-                activeFeature === key
+              className={`group flex flex-col items-center p-4 rounded-xl transition-all duration-300
+                ${activeFeature === key
                   ? `bg-gradient-to-br ${feature.color} text-white shadow-lg scale-105`
-                  : 'bg-white text-secondary hover:bg-coral hover:text-white shadow'
-              }`}
+                  : 'bg-white text-secondary hover:bg-coral hover:text-white shadow'}
+              `}
             >
-              <div className={`mb-2 transition-transform duration-300 ${activeFeature === key ? 'scale-110' : ''}`}>
-                {React.cloneElement(feature.icon, { 
+              <div
+                className={`mb-2 transition-transform duration-300
+                  ${activeFeature === key ? 'scale-110' : ''}
+                  ${activeFeature !== key ? 'group-hover:scale-110' : ''}
+                `}
+              >
+                {React.cloneElement(feature.icon, {
                   size: 28,
-                  className: activeFeature === key ? 'text-white' : 'text-secondary'
+                  // if active, stay white; if not, get white on hover via group-hover
+                  className: `${
+                    activeFeature === key
+                      ? 'text-white'
+                      : 'text-secondary group-hover:text-white'
+                  }`
                 })}
               </div>
               <span className="font-medium text-sm text-center">{feature.title}</span>

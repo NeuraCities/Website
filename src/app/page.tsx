@@ -12,9 +12,6 @@ import {
   Shield,
   Lock
 } from 'lucide-react';
-//import { Input } from '@/components/ui/input';
-//import { Button } from '@/components/ui/button';
-//import { Card, CardContent } from '@/components/ui/card';
 import Image from "next/image";
 import JsonLd from '@/components/JsonLd';
 import animationData from "@/Heading.json";
@@ -22,66 +19,6 @@ import dynamic from 'next/dynamic';
 const Lottie = dynamic(() => import('lottie-react'), { ssr: false });
 import FeatureSection from "@/app/features/page";
 
-{/*interface ChatMessage {
-  role: "user" | "assistant";
-  content: string;
-  metadata?: {
-    title: string | null;
-  };
-}
-interface GradioClient {
-  predict: (
-    endpoint: string,
-    data: {
-      message: string;
-      history: ChatMessage[];
-    }
-  ) => Promise<{
-    data: [ChatMessage[], string];
-  }>;
-}
-
-//const SPACE_NAME = "neuracities-ai/NeuraCitiesDemo";
-//const MAX_MESSAGES = 3;
-
-
-function formatAssistantMessage(content: string): React.ReactNode {
-  // Split the content by newline
-  const lines = content.split("\n");
-  return (
-    <div>
-      {lines.map((line, idx) => {
-        // Check for common bullet point patterns:
-        //  - A number followed by a period (e.g. "1.")
-        //  - A lowercase letter followed by a period (e.g. "a.")
-        //  - A dash followed by a space
-        if (/^\s*(?:\d+\.|[a-z]\.|-)\s+/.test(line)) {
-          return (
-            <p key={idx} className="border-l-4 border-gray-300 pl-2 my-1">
-              {line}
-            </p>
-          );
-        }
-        return (
-          <p key={idx} className="my-1">
-            {line}
-          </p>
-        );
-      })}
-      {/* Append the Citation link }
-      <p className="mt-4 text-right">
-        <a
-          href="https://opendata.vancouver.ca/pages/home/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-blue-600 underline text-sm"
-        >
-          Citation
-        </a>
-      </p>
-    </div>
-  );
-}*/}
 const challenges = [
   {
     id: 'geospatial',
@@ -128,7 +65,7 @@ const SponsorshipSection: React.FC = () => {
           className="text-center max-w-3xl mx-auto"
         >
           <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">Supported By</h2>
-          <p className="text-secondary mb-6 text-sm md:text-base">
+          <p className="text-secondary mb-2 text-sm md:text-base">
             We&apos;re proud to be part of the Microsoft Founders Hub program, 
             empowering us with resources and support to build innovative solutions.
           </p>
@@ -156,19 +93,19 @@ const VideoGallery: React.FC = () => {
     {
       id: "Lw5FHHviCnM",
       title: "Opening a new Coffee Shop",
-      description: "See how to perform complex GIS operations using simple natural language commands",
+      description: "See how AI-driven analysis from NeuraCities aids in strategic site selection.",
       thumbnail: "https://img.youtube.com/vi/Lw5FHHviCnM/hqdefault.jpg"
     },
     {
       id: "YI0cQfx_aVc",
       title: "Flood Risk Analysis in Vancouver", 
-      description: "Watch automated data collection and standardization from multiple sources",
+      description: "Discover how NeuraCities' AI delivers rapid flood risk assessments, enhancing city resilience.",
       thumbnail: "https://img.youtube.com/vi/YI0cQfx_aVc/hqdefault.jpg"
     },
     {
       id: "6snCiDmemGU",
       title: "Dallas Housing Policy Analysis",
-      description: "Discover how teams share insights and maintain data consistency effortlessly",
+      description: "NeuraCities transforms siloed data into a single source of truth for real-time policy insights.",
       thumbnail: "https://img.youtube.com/vi/6snCiDmemGU/hqdefault.jpg"
     }
   ];
@@ -270,95 +207,6 @@ const VideoGallery: React.FC = () => {
 const HomePage = () => {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
   const router = useRouter();
-  {/*const [message, setMessage] = useState("");
-  const [chatHistory, setChatHistory] = useState<ChatMessage[]>([]);
-  const [mapContent, setMapContent] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [client, setClient] = useState<GradioClient | null>(null);
-  const [showExamples, setShowExamples] = useState(true);
-  const [isClientReady, setIsClientReady] = useState(false);
-  const [, setStep] = useState(''); // Add this line to define setStep
-
-useEffect(() => {
-    const initClient = async () => {
-      try {
-        const { Client } = await import("@gradio/client");
-        const gradioClient = await Client.connect(SPACE_NAME) as GradioClient;
-        setClient(gradioClient);
-        setIsClientReady(true);
-      } catch (err) {
-        console.error("Failed to initialize Gradio client:", err);
-        setError("Failed to initialize the chat interface. Please try again later.");
-      }
-    };
-
-    initClient();
-  }, []);
-  const processMessage = async (userMessage: string) => {
-    if (!client || !isClientReady) {
-      console.error("Client not ready:", { client, isClientReady });
-      throw new Error("Chat interface not initialized");
-    }
-    try {
-      const result = await client.predict("/process_message", {
-        message: userMessage,
-        history: chatHistory
-      });
-      if (!Array.isArray(result.data) || result.data.length !== 2) {
-        throw new Error("Invalid response format from server");
-      }
-      return result.data;
-    } catch (error) {
-      console.error("API error:", error);
-      if (error instanceof Error) {
-        throw new Error(`Request failed: ${error.message}`);
-      } else {
-        throw new Error("An unexpected error occurred");
-      }
-    }
-  };
-
-  const handleSubmit = async (e?: FormEvent, overrideQuery?: string) => {
-    if (e) e.preventDefault();
-    // Use overrideQuery if provided; otherwise use the message state.
-    const currentMessage = (overrideQuery ?? message).trim();
-    if (!currentMessage || isLoading) return;
-    if (chatHistory.length >= MAX_MESSAGES * 2) {
-      return;
-    }
-    setIsLoading(true);
-    setError(null);
-    try {
-      const newUserMessage: ChatMessage = {
-        role: "user",
-        content: currentMessage,
-        metadata: { title: null }
-      };
-      // Immediately clear the input so the user sees the query appear.
-      setMessage("");
-      const updatedHistory = [...chatHistory, newUserMessage];
-      setChatHistory(updatedHistory);
-      setStep('full');
-  
-      const [newHistory, newMapContent] = await processMessage(currentMessage);
-      setChatHistory(newHistory);
-      setMapContent(newMapContent);
-    } catch (error) {
-      console.error("Error processing message:", error);
-      setError("Failed to process your message. Please try again.");
-      setChatHistory(chatHistory);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-  
-  const handleExampleQuery = async (query: string) => {
-    // Directly process the query using the override parameter.
-    await handleSubmit(undefined, query);
-    // Optionally hide example buttons after a selection
-    setShowExamples(false);
-  };*/}
   
   const getCardStyles = (id: string) => {
     return `bg-white border rounded-xl shadow-sm p-8 h-full transition-all duration-300 ${
@@ -398,9 +246,6 @@ useEffect(() => {
         <div className="absolute inset-0 bg-transparent" />
         <div className="container mx-auto px-6 relative">
           <div className="max-w-4xl sm:max-w-5xl mx-auto text-center">
-            {/*<div className="inline-block bg-coral/10 font-bold text-coral px-4 py-2 rounded-full mb-4">
-              Do More.
-            </div>*/}
             <h1 className="text-5xl sm:text-4xl text-center font-bold text-primary mb-4 sm:mb-6 leading-tight flex justify-center">
               <Lottie 
                 animationData={animationData} 

@@ -107,74 +107,94 @@ const Waitlist: React.FC = () => {
         <div className="container mx-auto">
           <div className="max-w-2xl mx-auto">
             {!submitted ? (
-                <form
-                name="waitlist"
-                method="POST"
-                data-netlify="true"
-                netlify-honeypot="bot-field"
-                onSubmit={handleSubmit}
-                action="/forms.html"
-              >
-                {/* Hidden fields required by Netlify */}
-                <input type="hidden" name="form-name" value="waitlist" />
-                <div hidden>
-                  <input name="bot-field" />
-                </div>
-              <div className="bg-white backdrop-blur-md p-8 sm:p-10 rounded-2xl shadow-xl border border-secondary">
+            <form
+            name="waitlist-form"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            onSubmit={handleSubmit}
+            action="/forms.html"
+            autoComplete="on"
+            >
+            {/* Netlify hidden inputs */}
+            <input type="hidden" name="form-name" value="waitlist-form" />
+            <div hidden>
+                <input name="bot-field" autoComplete="off" />
+            </div>
+
+            <div className="bg-white backdrop-blur-md p-8 sm:p-10 rounded-2xl shadow-xl border border-secondary">
                 <div className="text-center mb-8">
-                  <h2 className="text-2xl sm:text-3xl font-bold text-primary mb-3">
+                <h2 className="text-2xl sm:text-3xl font-bold text-primary mb-3">
                     Secure Your Early Access
-                  </h2>
-                  <p className="text-secondary">
+                </h2>
+                <p className="text-secondary">
                     Be among the first to experience the next generation of urban planning tools
-                  </p>
+                </p>
                 </div>
 
                 <div className="space-y-6">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    {/* Name */}
                     <div>
-                      <label className="block text-sm font-semibold text-secondary mb-2">
+                    <label
+                        htmlFor="waitlist-name"
+                        className="block text-sm font-semibold text-secondary mb-2"
+                    >
                         Name*
-                      </label>
-                      <input
+                    </label>
+                    <input
                         type="text"
+                        id="waitlist-name"
                         name="name"
                         value={formData.name}
                         required
                         onChange={handleChange}
-                        className="w-full p-4 border border-secondary/50 rounded-xl focus:outline-none focus:ring-2 focus:ring-coral focus:border-transparent text-base focus:bg-white bg-neutral/30 backdrop-blur-sm transition-all"
-                        placeholder="Enter your name"
-                      />
+                        autoComplete="name"
+                        placeholder="Your full name"
+                        className="w-full p-4 border border-secondary/50 rounded-xl focus:outline-none focus:ring-2 focus:ring-coral focus:border-transparent text-base bg-neutral/30 backdrop-blur-sm transition-all"
+                    />
                     </div>
 
+                    {/* Work Email */}
                     <div>
-                      <label className="block text-sm font-semibold text-secondary mb-2">
+                    <label
+                        htmlFor="waitlist-email"
+                        className="block text-sm font-semibold text-secondary mb-2"
+                    >
                         Work Email*
-                      </label>
-                      <input
+                    </label>
+                    <input
                         type="email"
+                        id="waitlist-email"
                         name="email"
                         value={formData.email}
                         required
                         onChange={handleChange}
-                        className="w-full p-4 border border-secondary/50 rounded-xl focus:outline-none focus:ring-2 focus:ring-coral focus:border-transparent text-base focus:bg-white bg-neutral/30 backdrop-blur-sm transition-all"
-                        placeholder="your@company.com"
-                      />
+                        autoComplete="email"
+                        placeholder="you@company.com"
+                        className="w-full p-4 border border-secondary/50 rounded-xl focus:outline-none focus:ring-2 focus:ring-coral focus:border-transparent text-base bg-neutral/30 backdrop-blur-sm transition-all"
+                    />
                     </div>
-                  </div>
+                </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    {/* Organization Type */}
                     <div>
-                      <label className="block text-sm font-semibold text-secondary mb-2">
+                    <label
+                        htmlFor="waitlist-organization"
+                        className="block text-sm font-semibold text-secondary mb-2"
+                    >
                         Organization Type*
-                      </label>
-                      <select
+                    </label>
+                    <select
+                        id="waitlist-organization"
                         name="organizationType"
                         value={formData.organizationType}
-                        onChange={handleChange}
-                        className="w-full p-4 border border-secondary/50 rounded-xl focus:outline-none focus:ring-2 focus:ring-coral focus:border-transparent text-base focus:bg-white bg-neutral/30 backdrop-blur-sm transition-all"
                         required
-                      >
+                        onChange={handleChange}
+                        autoComplete="organization"
+                        className="w-full p-4 border border-secondary/50 rounded-xl focus:outline-none focus:ring-2 focus:ring-coral focus:border-transparent text-base bg-neutral/30 backdrop-blur-sm transition-all"
+                    >
                         <option value="">Select organization type</option>
                         <option value="government">Government Planning Department</option>
                         <option value="urban-planning">Urban Planning Firm</option>
@@ -182,83 +202,103 @@ const Waitlist: React.FC = () => {
                         <option value="architecture">Retail</option>
                         <option value="real-estate">Real Estate</option>
                         <option value="other">Other</option>
-                      </select>
+                    </select>
                     </div>
 
+                    {/* Job Title */}
                     <div>
-                      <label className="block text-sm font-semibold text-slate-700 mb-2">
+                    <label
+                        htmlFor="waitlist-jobTitle"
+                        className="block text-sm font-semibold text-slate-700 mb-2"
+                    >
                         Job Title*
-                      </label>
-                      <input
+                    </label>
+                    <input
                         type="text"
+                        id="waitlist-jobTitle"
                         name="jobTitle"
                         value={formData.jobTitle}
                         required
                         onChange={handleChange}
-                        className="w-full p-4 border border-secondary/50 rounded-xl focus:outline-none focus:ring-2 focus:ring-coral focus:border-transparent text-base focus:bg-white bg-neutral/30 backdrop-blur-sm transition-all"
-                        placeholder="e.g., Senior Planner"
-                      />
+                        autoComplete="organization-title"
+                        placeholder="Your role"
+                        className="w-full p-4 border border-secondary/50 rounded-xl focus:outline-none focus:ring-2 focus:ring-coral focus:border-transparent text-base bg-neutral/30 backdrop-blur-sm transition-all"
+                    />
                     </div>
-                  </div>
+                </div>
 
-                  <div>
-                    <label className="block text-sm font-semibold text-secondary mb-2">
-                      City/Region <span className="text-xs">(This will get NeuraCities to your region!)</span>
+                {/* City/Region */}
+                <div>
+                    <label
+                    htmlFor="waitlist-city"
+                    className="block text-sm font-semibold text-secondary mb-2"
+                    >
+                    City/Region <span className="text-xs">(This will get NeuraCities to your region!)</span>
                     </label>
                     <input
-                      type="text"
-                      name="city"
-                      value={formData.city}
-                      onChange={handleChange}
-                        className="w-full p-4 border border-secondary/50 rounded-xl focus:outline-none focus:ring-2 focus:ring-coral focus:border-transparent text-base focus:bg-white bg-neutral/30 backdrop-blur-sm transition-all"
-                      placeholder="Where are you planning?"
+                    type="text"
+                    id="waitlist-city"
+                    name="city"
+                    value={formData.city}
+                    onChange={handleChange}
+                    autoComplete="address-level2"
+                    placeholder="Where are you planning?"
+                    className="w-full p-4 border border-secondary/50 rounded-xl focus:outline-none focus:ring-2 focus:ring-coral focus:border-transparent text-base bg-neutral/30 backdrop-blur-sm transition-all"
                     />
-                  </div>
+                </div>
 
-                  <div>
-                    <label className="block text-sm font-semibold text-secondary mb-2">
-                      What excites you most about NeuraCities?
+                {/* Interests (free text) */}
+                <div>
+                    <label
+                    htmlFor="waitlist-interests"
+                    className="block text-sm font-semibold text-secondary mb-2"
+                    >
+                    What excites you most about NeuraCities?
                     </label>
                     <textarea
-                      name="interests"
-                      value={formData.interests}
-                      rows={3}
-                      onChange={handleChange}
-                        className="w-full p-4 border border-secondary/50 rounded-xl focus:outline-none focus:ring-2 focus:ring-coral focus:border-transparent text-base focus:bg-white bg-neutral/30 backdrop-blur-sm transition-all"
-                      placeholder="Tell us what features or capabilities you're most looking forward to..."
-                    ></textarea>
-                  </div>
+                    id="waitlist-interests"
+                    name="interests"
+                    value={formData.interests}
+                    rows={3}
+                    onChange={handleChange}
+                    autoComplete="off"
+                    placeholder="Tell us what features you’re looking forward to…"
+                    className="w-full p-4 border border-secondary/50 rounded-xl focus:outline-none focus:ring-2 focus:ring-coral focus:border-transparent text-base bg-neutral/30 backdrop-blur-sm transition-all"
+                    />
+                </div>
 
-                  <div className="col-span-1 pt-2">
-                  <button
+                {/* Submit Button */}
+                <div className="col-span-1 pt-2">
+                    <button
                     type="submit"
-                    className="w-full p-3 border bg-cta text-white border-secondary/20 rounded-lg focus:outline-none focus:border-primary text-base font-medium"
-                  >
-                    Send
-                  </button>
+                    className="w-full p-4 bg-gradient-to-r from-cta/80 to-coral/80 hover:from-cta hover:to-coral text-white rounded-xl font-semibold text-lg transition-all duration-200 transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-cta focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none shadow-lg cursor-pointer text-center"
+                    >
+                    🚀 Join the Waitlist!
+                    </button>
                 </div>
 
-                  <p className="text-xs text-secondary text-center mt-4">
-                    By joining, youll get exclusive early access, beta features, and priority support. No spam, ever.
-                  </p>
+                <p className="text-xs text-secondary text-center mt-4">
+                    By joining, you’ll get exclusive early access, beta features, and priority support. No spam, ever.
+                </p>
                 </div>
-              </div>
-              </form>
+                </div>
+            </form>
+
             ) : (
-              <div className="bg-gradient-to-r from-coral/50 to-secondary/50 p-8 sm:p-10 rounded-2xl shadow-xl border border-coral/20 text-center">
+              <div className="bg-gradient-to-r from-coral to-coral p-8 sm:p-10 rounded-2xl shadow-xl border border-coral/20 text-center">
                 <div className="text-6xl mb-6">🎉</div>
-                <h2 className="text-2xl sm:text-3xl font-bold text-slate-800 mb-4">
+                <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
                   Welcome to the Future!
                 </h2>
-                <p className="text-lg text-secondary mb-6">
+                <p className="text-lg text-white mb-6">
                   You&apos;re now on the NeuraCities waitlist. We&apos;ll notify you as soon as early access becomes available.
                 </p>
                 <div className="bg-white p-4 rounded-xl border border-neutral">
-                  <p className="text-sm text-secondary font-medium">
-                    Expected early access: <span className="text-cta font-bold">Q2 2025</span>
+                  <p className="text-sm text-coral font-medium">
+                    Expected early access: <span className="text-cta font-semi-bold">June 2025</span>
                   </p>
                 </div>
-                <p className="text-sm text-secondary mt-4">
+                <p className="text-sm text-neutral mt-4">
                   Keep an eye on your inbox for exclusive updates and behind-the-scenes content.
                 </p>
               </div>

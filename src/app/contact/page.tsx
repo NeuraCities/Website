@@ -87,112 +87,144 @@ const Contact: React.FC = () => {
             {!submitted ? (
               <form
                 className="grid grid-cols-1 gap-4 sm:gap-6 bg-coral/90 p-6 sm:p-8 rounded-lg shadow-lg"
-                name="contact"
+                name="contact-form"
                 method="POST"
                 data-netlify="true"
                 netlify-honeypot="bot-field"
                 onSubmit={handleSubmit}
                 action="/forms.html"
+                autoComplete="on"
               >
                 {/* Hidden fields required by Netlify */}
                 <input type="hidden" name="form-name" value="contact" />
                 <div hidden>
-                  <input name="bot-field" />
+                  <input name="bot-field" autoComplete="off" />
                 </div>
 
+                {/* Organization Type */}
                 <div className="col-span-1">
-                  <label className="block text-sm font-medium text-neutral mb-1 sm:mb-2">
+                  <label
+                    htmlFor="contact-organization"
+                    className="block text-sm font-medium text-neutral mb-1 sm:mb-2"
+                  >
                     Organization Type
                   </label>
                   <select
+                    id="contact-organization"
                     name="organizationType"
                     value={formData.organizationType}
                     onChange={handleChange}
-                    className="w-full p-2 sm:p-3 border border-secondary/20 rounded-lg focus:outline-none focus:border-primary text-base"
                     required
+                    autoComplete="organization"
+                    className="w-full p-2 sm:p-3 border border-secondary/20 rounded-lg focus:outline-none focus:border-primary text-base"
                   >
                     <option value="">Select your organization type</option>
-                    <option value="government">
-                      Government Planning Department
-                    </option>
-                    <option value="urban-planning">
-                      Urban Planning Firm
-                    </option>
-                    <option value="land">
-                      Land Development
-                    </option>
+                    <option value="government">Government Planning Department</option>
+                    <option value="urban-planning">Urban Planning Firm</option>
+                    <option value="land">Land Development</option>
                     <option value="other">Other</option>
                   </select>
                 </div>
 
+                {/* Name */}
                 <div className="col-span-1">
-                  <label className="block text-sm font-medium text-neutral mb-1 sm:mb-2">
+                  <label
+                    htmlFor="contact-name"
+                    className="block text-sm font-medium text-neutral mb-1 sm:mb-2"
+                  >
                     Name
                   </label>
                   <input
                     type="text"
+                    id="contact-name"
                     name="name"
                     value={formData.name}
                     required
                     onChange={handleChange}
+                    autoComplete="name"
                     className="w-full p-2 sm:p-3 border border-secondary/20 rounded-lg focus:outline-none focus:border-primary text-base"
                   />
                 </div>
 
+                {/* Job Title */}
                 <div className="col-span-1">
-                  <label className="block text-sm font-medium text-neutral mb-1 sm:mb-2">
+                  <label
+                    htmlFor="contact-jobTitle"
+                    className="block text-sm font-medium text-neutral mb-1 sm:mb-2"
+                  >
                     Job Title
                   </label>
                   <input
                     type="text"
+                    id="contact-jobTitle"
                     name="jobTitle"
                     value={formData.jobTitle}
                     required
                     onChange={handleChange}
+                    autoComplete="organization-title"
                     className="w-full p-2 sm:p-3 border border-secondary/20 rounded-lg focus:outline-none focus:border-primary text-base"
                   />
                 </div>
 
+                {/* Work Email */}
                 <div className="col-span-1">
-                  <label className="block text-sm font-medium text-neutral mb-1 sm:mb-2">
+                  <label
+                    htmlFor="contact-email"
+                    className="block text-sm font-medium text-neutral mb-1 sm:mb-2"
+                  >
                     Work Email
                   </label>
                   <input
                     type="email"
+                    id="contact-email"
                     name="email"
                     value={formData.email}
                     required
                     onChange={handleChange}
+                    autoComplete="email"
                     className="w-full p-2 sm:p-3 border border-secondary/20 rounded-lg focus:outline-none focus:border-primary text-base"
                   />
                 </div>
 
+                {/* Phone */}
                 <div className="col-span-1">
-                  <label className="block text-sm font-medium text-neutral mb-1 sm:mb-2">
+                  <label
+                    htmlFor="contact-phone"
+                    className="block text-sm font-medium text-neutral mb-1 sm:mb-2"
+                  >
                     Phone
                   </label>
                   <input
                     type="tel"
+                    id="contact-phone"
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
+                    autoComplete="tel"
                     className="w-full p-2 sm:p-3 border border-secondary/20 rounded-lg focus:outline-none focus:border-primary text-base"
                   />
                 </div>
 
+                {/* Message */}
                 <div className="col-span-1">
-                  <label className="block text-sm font-medium text-neutral mb-1 sm:mb-2">
+                  <label
+                    htmlFor="contact-message"
+                    className="block text-sm font-medium text-neutral mb-1 sm:mb-2"
+                  >
                     Message
                   </label>
                   <textarea
+                    id="contact-message"
                     name="message"
                     value={formData.message}
                     rows={3}
                     onChange={handleChange}
+                    autoComplete="off"
                     className="w-full p-2 sm:p-3 border border-secondary/20 rounded-lg focus:outline-none focus:border-primary text-base"
-                  ></textarea>
+                  />
                 </div>
 
+                {/* Submit */}
                 <div className="col-span-1 pt-2">
                   <button
                     type="submit"

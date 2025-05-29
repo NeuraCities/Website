@@ -167,30 +167,66 @@ const LoginTile = ({ onClose}) => {
         <h2 className="md:text-3xl text-xl font-bold text-primary md:mb-2 mb-1">Welcome to NeuraCities</h2>
         <p className="md:text-lg text-sm md:mb-6 mb-3 text-secondary">Please sign up to access the demo</p>
         
-        <form name="demo-form" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/forms.html" onSubmit={handleLoginSubmit} className="md:space-y-4 space-y-2">
-        <input type="hidden" name="form-name" value="demo-form" />
-                <div hidden>
-                  <input name="bot-field" />
-                </div>
-                
-                {/* Add hidden input for newsletter value */}
-                <input type="hidden" name="newsletter" value={newsletter ? "yes" : "no"} />
-           <input
-            type="text"
-            name="name"
-            placeholder="Name"
-            className="w-full md:p-3 p-2 border border-secondary rounded-lg md:text-lg text-16 focus:outline-none focus:ring-2 focus:ring-coral focus:border-transparent"
-            required
-          />
-                    
+        <form
+          name="demo-form"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          action="/forms.html"
+          onSubmit={handleLoginSubmit}
+          className="md:space-y-4 space-y-2"
+          autoComplete="on"
+        >
+          <input type="hidden" name="form-name" value="demo-form" />
+          <div hidden>
+            <input name="bot-field" autoComplete="off" />
+          </div>
+          {/* Newsletter hidden field */}
           <input
-            name="email"
-            type="email"
-            placeholder="Email"
-            className="w-full md:p-3 p-2 border border-secondary rounded-lg md:text-lg text-16 focus:outline-none focus:ring-2 focus:ring-coral focus:border-transparent"
-            required
+            type="hidden"
+            name="newsletter"
+            value={newsletter ? "yes" : "no"}
           />
-          
+
+          {/* Name */}
+          <div>
+            <label
+              htmlFor="demo-name"
+              className="sr-only"
+            >
+              Name
+            </label>
+            <input
+              type="text"
+              id="demo-name"
+              name="name"
+              placeholder="Name"
+              required
+              autoComplete="name"
+              className="w-full md:p-3 p-2 border border-secondary rounded-lg md:text-lg text-16 focus:outline-none focus:ring-2 focus:ring-coral focus:border-transparent"
+            />
+          </div>
+
+          {/* Email */}
+          <div>
+            <label
+              htmlFor="demo-email"
+              className="sr-only"
+            >
+              Email
+            </label>
+            <input
+              id="demo-email"
+              name="email"
+              type="email"
+              placeholder="Email"
+              required
+              autoComplete="email"
+              className="w-full md:p-3 p-2 border border-secondary rounded-lg md:text-lg text-16 focus:outline-none focus:ring-2 focus:ring-coral focus:border-transparent"
+            />
+          </div>
+
+          {/* Newsletter Checkbox */}
           <div className="flex items-center space-x-2 text-left">
             <Checkbox
               type="checkbox"
@@ -199,15 +235,18 @@ const LoginTile = ({ onClose}) => {
               onChange={(e) => setNewsletter(e.target.checked)}
               className="md:w-4 md:h-4 w-3 h-3 text-coral border-secondary rounded focus:ring-coral"
             />
-            <label htmlFor="newsletter" className="md:text-base text-xs font-medium text-primary">
+            <label
+              htmlFor="newsletter"
+              className="md:text-base text-xs font-medium text-primary"
+            >
               Keep me updated with NeuraCities!
             </label>
           </div>
-          
+
           <p className="md:text-sm text-xs text-primary text-left mt-1">
             We respect your privacy. Your information will never be shared.
           </p>
-          
+
           <button
             type="submit"
             className="w-full md:py-3 py-2 px-4 bg-coral text-white rounded-lg hover:bg-coral/90 transition duration-200 md:text-lg text-sm font-medium"
@@ -215,6 +254,7 @@ const LoginTile = ({ onClose}) => {
             Get Started
           </button>
         </form>
+
         
         {/* OR divider */}
         <div className="flex items-center md:my-6 my-3">

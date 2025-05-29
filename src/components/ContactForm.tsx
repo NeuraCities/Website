@@ -150,52 +150,83 @@ const ContactAndFAQ: React.FC = () => {
               Get In Touch
             </h2>
             {!submitted ? (
-              <form 
-                name="footer-form" 
-                method="POST" 
-                data-netlify="true" 
+              <form
+                name="footer-form"
+                method="POST"
+                data-netlify="true"
                 netlify-honeypot="bot-field"
                 onSubmit={handleSubmit}
                 action="/forms.html"
+                autoComplete="on"
                 className="space-y-3 sm:space-y-4 text-center text-secondary"
               >
                 <input type="hidden" name="form-name" value="footer-form" />
                 <div hidden>
-                  <input name="bot-field" />
+                  <input name="bot-field" autoComplete="off" />
                 </div>
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-3 sm:px-4 py-2 text-base border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-600"
-                />
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-3 sm:px-4 py-2 text-base border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-600"
-                />
-                <textarea
-                  name="message"
-                  placeholder="Message"
-                  rows={3}
-                  value={formData.message}
-                  onChange={handleChange}
-                  className="w-full px-3 sm:px-4 py-2 text-base border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-600"
-                />
-                <button 
+
+                {/* NAME FIELD */}
+                <div className="text-left">
+                  <label htmlFor="footer-name" className="block text-sm font-medium text-secondary mb-1">
+                    
+                  </label>
+                  <input
+                    type="text"
+                    id="footer-name"
+                    name="name"
+                    placeholder="Your Name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    autoComplete="name"
+                    className="w-full px-3 sm:px-4 py-2 text-base border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-600"
+                  />
+                </div>
+
+                {/* EMAIL FIELD */}
+                <div className="text-left">
+                  <label htmlFor="footer-email" className="block text-sm font-medium text-secondary mb-1">
+                    
+                  </label>
+                  <input
+                    type="email"
+                    id="footer-email"
+                    name="email"
+                    placeholder="Email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    autoComplete="email"
+                    className="w-full px-3 sm:px-4 py-2 text-base border rounded-lg focus:outline-none focus:ring-2 focus:ring-coral"
+                  />
+                </div>
+
+                {/* MESSAGE FIELD */}
+                <div className="text-left mb-2">
+                  <label htmlFor="footer-message" className="block text-sm font-medium text-secondary mb-1">
+                    
+                  </label>
+                  <textarea
+                    id="footer-message"
+                    name="message"
+                    placeholder="Your message…"
+                    rows={3}
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                    autoComplete="off"
+                    className="w-full px-3 sm:px-4 py-2 text-base border rounded-lg focus:outline-none focus:ring-2 focus:ring-coral"
+                  />
+                </div>
+
+                <button
                   type="submit"
                   className="w-full bg-cta text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg hover:opacity-90 transition-colors text-base font-medium"
                 >
-                  Send Message
+                  Send
                 </button>
               </form>
+
             ) : (
               <div className="bg-coral p-6 sm:p-8 rounded-lg shadow-lg text-center">
                 <h2 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">

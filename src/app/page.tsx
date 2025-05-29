@@ -149,6 +149,124 @@ const SponsorshipSection: React.FC = () => {
   );
 };
 
+const VideoGallery: React.FC = () => {
+  const [playingVideo, setPlayingVideo] = useState<string | null>(null);
+
+  const videos = [
+    {
+      id: "Lw5FHHviCnM",
+      title: "Opening a new Coffee Shop",
+      description: "See how to perform complex GIS operations using simple natural language commands",
+      thumbnail: "https://img.youtube.com/vi/Lw5FHHviCnM/hqdefault.jpg"
+    },
+    {
+      id: "YI0cQfx_aVc",
+      title: "Flood Risk Analysis in Vancouver", 
+      description: "Watch automated data collection and standardization from multiple sources",
+      thumbnail: "https://img.youtube.com/vi/YI0cQfx_aVc/hqdefault.jpg"
+    },
+    {
+      id: "6snCiDmemGU",
+      title: "Dallas Housing Policy Analysis",
+      description: "Discover how teams share insights and maintain data consistency effortlessly",
+      thumbnail: "https://img.youtube.com/vi/6snCiDmemGU/hqdefault.jpg"
+    }
+  ];
+
+  const playVideo = (videoId: string) => {
+    setPlayingVideo(videoId);
+  };
+
+  const closeVideo = () => {
+    setPlayingVideo(null);
+  };
+
+  // Handle thumbnail error - fallback to default YouTube thumbnail
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement>) => {
+    const img = e.target as HTMLImageElement;
+    const videoId = img.getAttribute('data-video-id');
+    if (videoId) {
+      // Try medium quality thumbnail first, then default
+      if (img.src.includes('maxresdefault')) {
+        img.src = `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`;
+      } else if (img.src.includes('mqdefault')) {
+        img.src = `https://img.youtube.com/vi/${videoId}/default.jpg`;
+      }
+    }
+  };
+
+  return (
+    <>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        {videos.map((video) => (
+          <div
+            key={video.id}
+            className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+          >
+            {/* Video Thumbnail */}
+            <div 
+              className="relative aspect-video cursor-pointer group"
+              onClick={() => playVideo(video.id)}
+            >
+              <Image
+                src={video.thumbnail}
+                alt={video.title}
+                width={640}
+                height={360}
+                data-video-id={video.id}
+                onError={handleImageError}
+                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                unoptimized
+              />
+              <div className="absolute inset-0 bg-primary/10 group-hover:bg-black/20 transition-colors duration-300" />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="bg-white/90 hover:bg-white rounded-full p-4 transition-all duration-300 group-hover:scale-110 shadow-lg">
+                  <svg className="w-8 h-8 text-coral ml-1" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            
+            {/* Video Info */}
+            <div className="p-6">
+              <h3 className="text-xl font-bold text-primary mb-2">
+                {video.title}
+              </h3>
+              <p className="text-secondary text-sm leading-relaxed">
+                {video.description}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Modal for Playing Video */}
+      {playingVideo && (
+        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
+          <div className="relative w-full max-w-4xl aspect-video">
+            <button
+              onClick={closeVideo}
+              className="absolute -top-12 right-0 text-white hover:text-coral transition-colors duration-300"
+            >
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            <iframe
+              src={`https://www.youtube.com/embed/${playingVideo}?autoplay=1&rel=0`}
+              title="Video Player"
+              className="w-full h-full rounded-lg"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+        </div>
+      )}
+    </>
+  );
+};
+
 const HomePage = () => {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
   const router = useRouter();
@@ -297,7 +415,7 @@ useEffect(() => {
             <div className="flex flex-row gap-4 sm:gap-8 items-center justify-center">
               <button 
                 onClick={() => router.push('/demo', { scroll: true })}
-                className="bg-white border text-coral px-8 py-2 sm:px-8 sm:py-3 rounded-lg text-base sm:text-lg font-medium transition-transform hover:bg-coral hover:text-white hover:scale-105"
+                className="bg-coral border text-white px-8 py-2 sm:px-8 sm:py-3 rounded-lg text-base sm:text-lg font-medium transition-transform hover:bg-white hover:text-coral hover:scale-105"
               >
                 Try Demo
               </button>
@@ -312,8 +430,24 @@ useEffect(() => {
         </div>
       </header>
 
+      {/* Video Gallery Section */}
+      <section className="py-8 bg-coral">
+        <div className="container mx-auto px-6">
+          <div className="text-center max-w-3xl mx-auto mb-4">
+            <h2 className="text-4xl font-bold mb-2 text-white">
+              See It In Action
+            </h2>
+            <p className="text-lg text-neutral">
+              Click the videos to see them!
+            </p>
+          </div>
+          
+          <VideoGallery />
+        </div>
+      </section>
+      
       {/* Solutions Section */}
-      <section className="py-0 bg-transparent">
+      <section className="py-16 bg-transparent">
         <div className="container mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-8">
             <h2 className="text-4xl font-bold text-primary mb-2">
@@ -359,75 +493,74 @@ useEffect(() => {
             </div>
         </div>
       </section>
+      <section className="py-4 bg-transparent">
+        <div className="container bg-neutral rounded-3xl p-8 sm:p-12 shadow-xl mx-auto px-4 md:px-6">
+          <div className="relative">
+          <SponsorshipSection />
+          </div>
+        </div>
+      </section>
       {/* Features Section */}
         <FeatureSection />
 
       {/* Security Section */}
-<section className="py-16 bg-transparent">
-  <div className="container mx-auto px-6">
-    <div className="bg-neutral rounded-3xl p-8 sm:p-12 shadow-xl">
-      <div className="text-center max-w-3xl mx-auto mb-12">
-        <h2 className="text-4xl sm:text-4xl font-bold text-primary mb-4">
-          Your Data, Your Control
-        </h2>
-        <p className="text-lg text-secondary max-w-4xl mx-auto">
-          We prioritize your security with flexible deployment options that keep your data secure.
-        </p>
-      </div>
-      
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-        <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-          <div className="flex items-center mb-3">
-            <div className="bg-coral/10 p-3 rounded-xl inline-block mr-4">
-              <Shield className="w-10 h-10 text-coral" />
+      <section className="py-16 bg-transparent">
+        <div className="container mx-auto px-6">
+          <div className="bg-neutral rounded-3xl p-8 sm:p-12 shadow-xl">
+            <div className="text-center max-w-3xl mx-auto mb-12">
+              <h2 className="text-4xl sm:text-4xl font-bold text-primary mb-4">
+                Your Data, Your Control
+              </h2>
+              <p className="text-lg text-secondary max-w-4xl mx-auto">
+                We prioritize your security with flexible deployment options that keep your data secure.
+              </p>
             </div>
-            <h3 className="text-2xl font-bold text-primary">Flexible Deployment</h3>
-          </div>
-          <p className="text-secondary">
-            Keep complete control with deployment options behind your firewall, on your terms.
-          </p>
-        </div>
-        
-        <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-          <div className="flex items-center mb-3">
-            <div className="bg-coral/10 p-3 rounded-xl inline-block mr-4">
-              <Database className="w-10 h-10 text-coral" />
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+              <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                <div className="flex items-center mb-3">
+                  <div className="bg-coral/10 p-3 rounded-xl inline-block mr-4">
+                    <Shield className="w-10 h-10 text-coral" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-primary">Flexible Deployment</h3>
+                </div>
+                <p className="text-secondary">
+                  Keep complete control with deployment options behind your firewall, on your terms.
+                </p>
+              </div>
+              
+              <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                <div className="flex items-center mb-3">
+                  <div className="bg-coral/10 p-3 rounded-xl inline-block mr-4">
+                    <Database className="w-10 h-10 text-coral" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-primary">Data Sovereignty</h3>
+                </div>
+                <p className="text-secondary">
+                  Your sensitive data never leaves your servers or cloud infrastructure.
+                </p>
+              </div>
+              
+              <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                <div className="flex items-center mb-3">
+                  <div className="bg-coral/10 p-3 rounded-xl inline-block mr-4">
+                    <Lock className="w-10 h-10 text-coral" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-primary">Custom Security</h3>
+                </div>
+                <p className="text-secondary">
+                  Seamlessly integrate with your existing security policies and authentication protocols.
+                </p>
+              </div>
             </div>
-            <h3 className="text-2xl font-bold text-primary">Data Sovereignty</h3>
-          </div>
-          <p className="text-secondary">
-            Your sensitive data never leaves your servers or cloud infrastructure.
-          </p>
-        </div>
-        
-        <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-          <div className="flex items-center mb-3">
-            <div className="bg-coral/10 p-3 rounded-xl inline-block mr-4">
-              <Lock className="w-10 h-10 text-coral" />
+            
+            <div className="mt-12 text-center">
+              <Link href="/security" className="group">
+                <button className="bg-coral text-white px-8 py-4 rounded-lg font-semibold shadow-lg hover:bg-opacity-90 transition-all inline-flex items-center gap-2 group-hover:gap-3">
+                  Learn More About Security <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                </button>
+              </Link>
             </div>
-            <h3 className="text-2xl font-bold text-primary">Custom Security</h3>
-          </div>
-          <p className="text-secondary">
-            Seamlessly integrate with your existing security policies and authentication protocols.
-          </p>
-        </div>
-      </div>
-      
-      <div className="mt-12 text-center">
-        <Link href="/security" className="group">
-          <button className="bg-coral text-white px-8 py-4 rounded-lg font-semibold shadow-lg hover:bg-opacity-90 transition-all inline-flex items-center gap-2 group-hover:gap-3">
-            Learn More About Security <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-          </button>
-        </Link>
-      </div>
-    </div>
-  </div>
-</section>
-
-      <section className="py-0 bg-transparent">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="relative">
-          <SponsorshipSection />
           </div>
         </div>
       </section>

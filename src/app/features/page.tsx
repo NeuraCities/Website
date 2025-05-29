@@ -235,11 +235,14 @@ const FeatureSection: React.FC = () => {
   }, []);
 
   return (
-    <div className="w-full bg-gradient-to-b from-transparent via-neutral/50 to-transparent py-16 px-4">
+    <div className="w-full bg-gradient-to-b from-transparent via-neutral/50 to-transparent py-4 px-4">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold text-center text-primary mb-2">Beyond Basic Tools</h2>
+        <h2 className="text-4xl font-bold text-center text-primary mb-2">Beyond Your Basic Tool</h2>
         <p className="text-lg text-center mb-8 text-secondary max-w-2xl mx-auto">
           Capabilities that fundamentally transform how you solve Planning challenges.
+        </p>
+        <p className="text-md text-center mb-2 text-secondary max-w-2xl mx-auto">
+          Click the buttons to learn more!
         </p>
 
         {/* Feature Navigation */}
@@ -251,7 +254,7 @@ const FeatureSection: React.FC = () => {
               className={`flex flex-col items-center p-4 rounded-xl transition-all duration-300 ${
                 activeFeature === key
                   ? `bg-gradient-to-br ${feature.color} text-white shadow-lg scale-105`
-                  : 'bg-white text-secondary hover:bg-neutral shadow'
+                  : 'bg-white text-secondary hover:bg-coral hover:text-white shadow'
               }`}
             >
               <div className={`mb-2 transition-transform duration-300 ${activeFeature === key ? 'scale-110' : ''}`}>

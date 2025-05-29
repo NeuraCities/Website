@@ -22,39 +22,47 @@ const Navbar = () => {
     }`}>
       <div className="container mx-auto px-6 py-4">
         <div className="flex justify-between items-center">
-          <Link href="/" className="flex text-primary font-semibold items-center gap-2">
-            {/*<Image 
-              src="/images/500x500-NC_Logo.svg" 
-              alt="NeuraCities Logo" 
-              width={40} 
-              height={40} 
-               
-            />*/}
-            <Image 
-              src="/images/880x191-NC_Name.svg" 
-              alt="NeuraCities" 
-              width={146.67} 
-              height={31.833} 
-               
-            />
-          </Link>
+          {/* Left side - Logo and Navigation Links */}
+          <div className="flex items-center gap-8">
+            <Link href="/" className="flex text-primary font-semibold items-center gap-2">
+              <Image 
+                src="/images/880x191-NC_Name.svg" 
+                alt="NeuraCities" 
+                width={146.67} 
+                height={31.833} 
+              />
+            </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            <div className="flex space-x-8 text-primary/80">
-              <Link href="/how-it-works" className="hover:text-coral transition-colors">
-                Solution
-              </Link>
-              <Link href="/demo" className="hover:text-coral transition-colors">
-                Demo
-              </Link>
-              <Link href="/security" className="hover:text-coral transition-colors">
-                Security
-              </Link>
-              <Link href="/about" className="hover:text-coral transition-colors">
-                About
-              </Link>
+            {/* Desktop Navigation Links */}
+            <div className="hidden md:flex items-center space-x-8">
+              <div className="flex space-x-8 text-primary/80">
+                <Link href="/how-it-works" className="hover:text-coral transition-colors">
+                  Solution
+                </Link>
+                <Link href="/security" className="hover:text-coral transition-colors">
+                  Security
+                </Link>
+                <Link href="/about" className="hover:text-coral transition-colors">
+                  About
+                </Link>
+              </div>
             </div>
+          </div>
+
+          {/* Right side - Auth Buttons */}
+          <div className="hidden md:flex items-center space-x-4">
+            <Link 
+              href="/demo" 
+              className="text-primary/80 hover:text-coral transition-colors px-4 py-2"
+            >
+              Guided Demo
+            </Link>
+            <Link 
+              href="/waitlist" 
+              className="bg-coral text-white hover:bg-coral/90 transition-colors px-6 py-2 rounded-lg font-medium"
+            >
+              Join the Waitlist!
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -98,7 +106,7 @@ const Navbar = () => {
                   className="block text-primary/80 hover:text-coral transition-colors"
                   onClick={() => setIsOpen(false)}
                 >
-                  Demo
+                  Guided Demo
                 </Link>
                 <Link 
                   href="/security" 
@@ -113,6 +121,21 @@ const Navbar = () => {
                   onClick={() => setIsOpen(false)}
                 >
                   About
+                </Link>
+                <hr className="border-gray-200 my-6" />
+                <Link 
+                  href="/demo" 
+                  className="block text-primary/80 hover:text-coral transition-colors"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Guided Demo
+                </Link>
+                <Link 
+                  href="/waitlist" 
+                  className="block bg-coral text-white hover:bg-coral/90 transition-colors px-6 py-3 rounded-lg font-medium text-center"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Join the Waitlist!
                 </Link>
               </div>
             </div>

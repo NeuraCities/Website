@@ -44,6 +44,20 @@ const Footer = () => {
           />
         </a>
         <a 
+          href="https://www.youtube.com/@NeuraCities" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="text-secondary hover:text-teal-600"
+          aria-label="NeuraCities on YouTube"
+        >
+          <Image 
+            src="/images/youtube.svg"
+            alt="Youtube"
+            width={24} // Set the desired width
+            height={24} // Set the desired height
+          />
+        </a>
+        <a 
           href="mailto:contact@neuracities.com" 
           className="text-secondary hover:text-teal-600"
           aria-label="Email NeuraCities"

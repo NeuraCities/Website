@@ -2,10 +2,10 @@
 "use client";
 
 import { useState, useEffect, Suspense } from "react";
-import ResizablePanels from "../../components/ResizablePanels";
 import ArtifactService from "@/app/services/ArtifactService";
-import TutorialOverlay from "../../components/TutorialOverlay"
-import SearchParamsWrapper from "../../components/SearchParamsWrapper";
+import ResizablePanels from "@/components/ResizablePanels";
+import TutorialOverlay from "@/components/TutorialOverlay"
+import SearchParamsWrapper from "@/components/SearchParamsWrapper";
 
 export default function ChatPage() {
   

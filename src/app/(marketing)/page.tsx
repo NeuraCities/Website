@@ -17,7 +17,7 @@ import JsonLd from '@/components/JsonLd';
 import animationData from "@/Heading.json";
 import dynamic from 'next/dynamic';
 const Lottie = dynamic(() => import('lottie-react'), { ssr: false });
-import FeatureSection from "@/app/features/page";
+import FeatureSection from "@/app/(marketing)/features/page";
 
 const challenges = [
   {

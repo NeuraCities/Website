@@ -1,6 +1,3 @@
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import ContactForm from "../components/ContactForm";
 import React from "react";
 import "./globals.css";
 import Script from 'next/script';
@@ -78,10 +75,7 @@ export default function RootLayout({
               filter: "opacity(0.1)",
             }}
           />
-          <Navbar />
-          <main className="relative z-20">{children}</main>
-          <ContactForm />
-          <Footer />
+          {children}
         </div>
       </body>
     </html>

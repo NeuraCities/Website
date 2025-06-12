@@ -6,10 +6,10 @@ import { Button } from '@/components/ui/button';
 import Link from "next/link";
 import 'leaflet/dist/leaflet.css';
 import dynamic from 'next/dynamic';
-const AnimatedDataRetrieval = dynamic(() => import('@/app/how-it-works/solution-visualizations').then(mod => mod.AnimatedDataRetrieval), { ssr: false });
-const AnimatedMapping = dynamic(() => import('@/app/how-it-works/solution-visualizations').then(mod => mod.AnimatedMapping), { ssr: false });
-const AnimatedWorkflow = dynamic(() => import('@/app/how-it-works/solution-visualizations').then(mod => mod.AnimatedWorkflow), { ssr: false });
-const AnimatedCollaboration = dynamic(() => import('@/app/how-it-works/solution-visualizations').then(mod => mod.AnimatedCollaboration), { ssr: false });
+const AnimatedDataRetrieval = dynamic(() => import('../how-it-works/solution-visualizations').then(mod => mod.AnimatedDataRetrieval), { ssr: false });
+const AnimatedMapping = dynamic(() => import('../how-it-works/solution-visualizations').then(mod => mod.AnimatedMapping), { ssr: false });
+const AnimatedWorkflow = dynamic(() => import('../how-it-works/solution-visualizations').then(mod => mod.AnimatedWorkflow), { ssr: false });
+const AnimatedCollaboration = dynamic(() => import('../how-it-works/solution-visualizations').then(mod => mod.AnimatedCollaboration), { ssr: false });
 
 const SolutionsPage = () => {
   const [activeSection, setActiveSection] = useState(0);
